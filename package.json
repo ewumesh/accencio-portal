@@ -1,11 +1,11 @@
 {
-  "name": "blog-web",
+  "name": "portal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --prod --aot && aws s3 sync dist/blog-web s3://blog-web-appbucket-3bqi1srw72i6  && aws cloudfront create-invalidation --distribution-id E246919W70295G --paths /",
+    "deploy": "ng build --prod --aot && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E246919W70295G --paths /",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "aws-amplify": "^3.0.9",
+    "aws-amplify-angular": "^5.0.9",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

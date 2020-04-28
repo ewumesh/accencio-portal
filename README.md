@@ -27,11 +27,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-aws cloudformation deploy --template-file template.yml --stack-name blog-web --parameter-overrides BaseUrl=accencio.com AppUrl=portal.accencio.com AcmCertArn=arn:aws:acm:us-east-1:923214416668:certificate/6c507c92-45dd-4d06-9224-1436767008d1
+aws cloudformation deploy --template-file template.yml --stack-name portal --parameter-overrides BaseUrl=accencio.com AppUrl=portal.accencio.com AcmCertArn=arn:aws:acm:us-east-1:923214416668:certificate/6c507c92-45dd-4d06-9224-1436767008d1
 
 
 -- describe 
-aws cloudformation describe-stacks --stack-name blog-web --query "Stacks[0].Outputs[?OutputKey==`DistributionId` || OutputKey==`AppBucket`]"
+aws cloudformation describe-stacks --stack-name portal --query "Stacks[0].Outputs[?OutputKey==`DistributionId` || OutputKey==`AppBucket`]"
 
 
 https://medium.com/@ibliskavka/aws-angular-stack-automation-b45767bda2ec
