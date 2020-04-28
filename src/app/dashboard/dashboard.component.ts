@@ -12,7 +12,7 @@ import { throwError } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
-  public email: any;
+  public username: any;
   profile:any = {};
   user: any;
 
@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit {
     this.profile = await Auth.currentUserInfo();
     this.user = await Auth.currentAuthenticatedUser();
 
-    //console.log(this.profile);
-    //console.log(this.user);
+    console.log(this.profile);
+    console.log(this.user);
     //this.email = this.profile.attributes['email'];
     //if ( this.profile.attributes['profile'] ) {
     //  this.avatar = this.profile.attributes['profile'];
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
     //this.lnameInput.setValue(this.profile.attributes['family_name']);
     //this.phoneInput.setValue(this.profile.attributes['phone_number']);
     //this.loading.hide();
-    this.email = this.profile.attributes["email"];
+    this.username = this.user.username;
   }
 
   getStaticData(): void {

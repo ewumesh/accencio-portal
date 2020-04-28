@@ -18,14 +18,14 @@ export class SignupComponent implements OnInit {
   }
 
 
-  singUpToAWS(email: HTMLInputElement,contactNo: HTMLInputElement,username: HTMLInputElement,password: HTMLInputElement) {
+  singUpToAWS(email: HTMLInputElement,username: HTMLInputElement,password: HTMLInputElement) {
     this.userName = username.value;
     const user = {
       username: username.value,
       password: password.value,
       attributes: {
-          email: email.value,          // optional
-          phone_number: contactNo.value,   // optional - E.164 number convention
+          email: email.value          // optional
+          //phone_number: contactNo.value,   // optional - E.164 number convention
       }
     }
     Auth.signUp(user)
