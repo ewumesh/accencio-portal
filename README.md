@@ -35,7 +35,7 @@ aws cloudformation deploy --template-file template.yml --stack-name portal --par
 
 
 -- describe 
-aws cloudformation describe-stacks --stack-name portal --query "Stacks[0].Outputs[?OutputKey==`DistributionId` || OutputKey==`AppBucket`]"
+aws cloudformation describe-stacks --stack-name portal --query "Stacks[0].Outputs[?OutputKey=='DistributionId' || OutputKey=='AppBucket']"
 
 
 https://medium.com/@ibliskavka/aws-angular-stack-automation-b45767bda2ec

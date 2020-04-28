@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --prod --aot && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E246919W70295G --paths /",
+    "deploy": "ng build --prod --aot && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E2SDMKVCPENPIT --paths /\*",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
