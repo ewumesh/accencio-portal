@@ -11,7 +11,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(public router: Router, private http: HttpClient) { }
   ngOnInit() { }
 
   
