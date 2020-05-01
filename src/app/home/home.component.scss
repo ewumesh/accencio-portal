@@ -6,10 +6,6 @@
     align-items: center;
 }
 
-.header {
-    background: #f3f3f3;
-}
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -19,4 +15,12 @@ nav {
 .nav-brand p {
     padding: 5px;
     margin-bottom: 0;
+}
+
+.navbar{
+  background-color: transparent !important;
+}
+
+body{
+  font-size: 30px;
 }

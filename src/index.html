@@ -7,8 +7,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Monetization of deprioritized or dormant intellectual property (IP) is a significant problem for IP owners across every industry."/>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg bg-dark-red main-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.png" class="logo-img">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+          <div id="closeMobileMenu" class="hidden">
+            <i class="material-icons">
+              close
+            </i>
+          </div>
+          <li class="nav-item">
+            <a class="nav-link" href="https://accencio.com">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://accencio.com/meet-the-team.html">Meet the Team</a>
+          </li>
+
+          <li class="nav-item dropdown show">
+            <a class="nav-link our-products-menu-item" href="https://accencio.com/our-products.html">Our Products <img class="dropdown-arrow-img" src="assets/images/down-arrow.svg"></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="https://accencio.com/ip-compview.html">IP-CompView&trade; tool</a>
+              <a class="dropdown-item" href="https://accencio.com/ip-folioview.html">IP-FolioView&trade; tool</a>
+              <a class="dropdown-item" href="https://accencio.com/ip-geoscape.html">IP-GeoScape&trade; tool</a>
+              <a class="dropdown-item" href="https://accencio.com/ip-kinship.html">IP-Kinship&trade; tool</a>
+              <a class="dropdown-item" href="https://accencio.com/how-we-work-with-you.html">How we work with you</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://accencio.com/contact-us.html">Contact Us</a>
+          </li>
+          <li class="nav-item login-link">
+            <a class="nav-link" href="/signin">Login</a>
+          </li>
+          <!--<li class="nav-item login-link hide-on-mobile" onClick="openSearchBox()">
+              <a class="nav-link" href="#"><img class="search-icon" src="assets/images/search.svg"></a>
+          </li>-->
+        </ul>
+      </div>
+
+      <!--<div class="search-bar hidden">
+          <form action="search.html" name="searchform" method="post" class="search-form">
+              <input type="text" name="search" class="input-def" placeholder="Search...">
+              <a onClick="submitSearchForm()">
+                  <img src="assets/images/search.svg">
+              </a>
+              <a onClick="closeSearch()">
+                  <img src="assets/images/close.svg">
+              </a>
+          </form>
+      </div>-->
+    </div>
+  </nav>
   <app-root></app-root>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $("a").tooltip();
+
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+
+      $(".navbar-toggler").click(function(){
+        $('body').addClass("fixedPosition");
+      });
+
+      $("#closeMobileMenu").click(function(){
+        $('.navbar-collapse').collapse('hide');
+        $('body').removeClass("fixedPosition");
+      });
+
+      $('#navbarsExampleDefault').click(function(e){
+        if(e.target == this){
+          $('.navbar-collapse').collapse('hide');
+          $('body').removeClass("fixedPosition");
+        }
+      });
+
+      $(document).ready(function(){
+
+        var width = $(window).width();
+        if(width > 992)
+        {
+          $('ul.navbar-nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(200);
+          }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(200);
+          });
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container-fluid pre-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="footer-col">
+              <img class="footer-logo" src="assets/images/logo-footer.png">
+              <div class="contact-info">
+                <div class="group">
+                  <img src="assets/images/icon-place.svg">
+                  <p>
+                    2417 Welsh Road, Suite 21<br>
+                    Philadelphia, PA 19114
+                  </p>
+                </div>
+
+                <div class="group">
+                  <img src="assets/images/icon-phone.svg">
+                  <p>
+                    +1 (484) 352-3215
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="footer-col">
+              <h3>
+                Useful Links
+              </h3>
+              <ul class="useful-links">
+                <li>
+                  <a href="https://accencio.com">Home</a>
+                </li>
+                <li>
+                  <a href="https://accencio.com/meet-the-team.html">Meet the Team</a>
+                </li>
+                <li>
+                  <a href="https://accencio.com/our-products.html">Our Products</a>
+                </li>
+                <li>
+                  <a href="https://accencio.com/contact-us.html">Contact Us</a>
+                </li>
+                <li>
+                  <a href="https://visualize.accencio.com/#/signin">Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="footer-col">
+              <h3>
+                We are Social
+              </h3>
+              <div class="social-icons-footer">
+                <div class="group">
+                  <a href="https://www.facebook.com/accencioip/">
+                    <img src="assets/images/facebook.svg">
+                  </a>
+                </div>
+                <div class="group">
+                  <a href="https://twitter.com/accencioip">
+                    <img src="assets/images/twitter.svg">
+                  </a>
+                </div>
+                <div class="group">
+                  <a href="https://www.linkedin.com/company/11112922">
+                    <img src="assets/images/linkedin.svg">
+                  </a>
+                </div>
+                <div class="group">
+                  <a href="https://www.youtube.com/channel/UCQmA47q0_afY-4b9ps58CaA">
+                    <img src="assets/images/youtube.svg">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid pre-footer footer-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+                        <span class="copyright-text">
+                            © 2020 Accencio, LLC - All rights reserved.
+                        </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

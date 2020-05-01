@@ -1,31 +1,36 @@
+<style>
+  .navbar{
+    background-color: transparent !important;
+  }
+</style>
 <header class="header">
-</header>
-<div class="container h-100">
-  <div class="slide-1-content">
-      <h1>
-          SEE IP DIFFERENTLY
-      </h1>
-      <h3>
-          Global data through an IP lens
-      </h3>
-      <div class="separator"></div>
-      <p>
-          Visual intelligence technology and strategy for molecular-based industry and research.
-      </p>
-      <a href="our-products.html" class="btn btn-primary">
-          Learn More
-      </a>
-      
-      <div class="separator"></div>
-          <button type="button" class="btn btn-info" (click)="router.navigate(['signin'])">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="slide-1-content">
+          <h1>
+            SEE IP DIFFERENTLY
+          </h1>
+          <h3>
+            Global data through an IP lens
+          </h3>
+          <div class="separator"></div>
+          <p>
+            Visual intelligence technology and strategy for molecular-based industry and research.
+          </p>
+          <button type="button" class="btn primary-btn" (click)="router.navigate(['signin'])">
             Sign in
           </button>
-        
-          <button type="button" class="btn btn-warning" (click)="router.navigate(['signup'])">
+
+          <button type="button" class="btn primary-btn-orange" (click)="router.navigate(['signup'])">
             Register
           </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="all">
- 
-</div>
+</header>
+<!--<div class="all">
+
+</div>-->
