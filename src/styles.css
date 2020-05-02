@@ -198,8 +198,8 @@ p{
 }
 
 .primary-btn-orange:hover{
-  background-color: transparent;
-  color: var(--accent-orange);
+  background-color: transparent !important;
+  color: var(--accent-orange) !important;
   text-decoration: none;
   transition: 0.2s;
 }
@@ -1530,3 +1530,157 @@ label{
 }
 
 /* End of Portal Styling */
+
+
+.sub-header-user{
+  background-color: #303031;
+  color: white;
+}
+
+.sub-header-user-box{
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+
+.sub-header-user-box p{
+  margin-bottom: 0px;
+}
+
+.workbooks-container .workbooks-selection{
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.workbooks-container .workbooks-selection .selection-box{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.workbooks-container{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.checkbox-workbooks{
+  width: 30px;
+  height: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.checkbox-workbooks:hover{
+  cursor: pointer;
+}
+
+.selection-box span{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.checkbox-workbooks img{
+  height: 20px;
+  width: 20px;
+  opacity: 0;
+}
+
+.checkbox-workbooks.selected img {
+  opacity: 1;
+}
+
+.workbooks-selection .selection-box{
+  display: flex;
+  align-items: center;
+}
+
+.workbooks-listing{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.workbooks-listing .workbook-box{
+  margin-right: 30px;
+  margin-bottom: 30px;
+  padding: 25px;
+  box-shadow: 0px 0px 16px 1px #0000000f;
+  flex-basis: 30%;
+}
+
+.workbook-box .featured-image{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.workbook-box h4{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-bottom: 5px !important;
+}
+
+.workbook-box .date{
+  color: #00000059;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.hidden{
+  display: none !important;
+}
+
+.workbook-box .actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.workbook-box .actions .action-item{
+  display: flex;
+  align-items: center;
+  margin-right: 7px;
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 4px 12px;
+}
+
+.workbook-box .actions .action-item:hover{
+  cursor: pointer;
+  background-color: #041324;
+  transition: 0.2s;
+}
+
+.workbook-box .actions .action-item span{
+  color: white;
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+.workbook-box .actions .action-item p{
+  font-size: 14px;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+.workbook-box .workbook-header{
+  display: flex;
+}
+
+.workbook-box .workbook-header .fav-icon{
+  color: #3ab3e4;
+  opacity: 1;
+  margin-right: 5px;
+}

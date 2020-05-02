@@ -1,4 +1,616 @@
-<header class="header">
+<div class="container-fluid sub-header-user">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sub-header-user-box">
+          <p>Welcome {{username}}</p>
+          <button type="button" class="btn primary-btn" (click)="onLogOut()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="workbooks-container">
+
+        <div class="workbooks-selection">
+          <div class="selection-box">
+            <div class="checkbox-workbooks selected" onClick="chooseSelection('all-wb')" id="all-wb">
+              <img src="/assets/images/tick.svg">
+            </div>
+            <span>All Workbooks</span>
+          </div>
+          <div class="selection-box">
+            <div class="checkbox-workbooks" onClick="chooseSelection('fav-wb')" id="fav-wb">
+              <img src="/assets/images/tick.svg">
+            </div>
+            <span>Favourite Workbooks</span>
+          </div>
+          <div class="selection-box">
+            <div class="checkbox-workbooks" onClick="chooseSelection('last-wb')" id="last-wb">
+              <img src="/assets/images/tick.svg">
+            </div>
+            <span>Last Open Workbooks</span>
+          </div>
+        </div>
+
+        <div class="workbooks-listing" id="content-all-wb">
+            <div class="workbook-box">
+              <div class="workbook-header">
+                <span class="material-icons fav-icon">
+                  star
+                </span>
+                <h4>Workbook Name</h4>
+              </div>
+              <span class="date">14th of April 2020</span>
+              <img class="featured-image" src="/assets/images/new-geoscape.png">
+              <div class="actions">
+                <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                  <p>
+                    View
+                  </p>
+                </div>
+                <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                  <p>
+                    Edit
+                  </p>
+                </div>
+                <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                  <p>
+                    Delete
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="workbook-box">
+              <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+                <h4>Workbook Name</h4>
+              </div>
+              <span class="date">14th of April 2020</span>
+              <img class="featured-image" src="/assets/images/new-geoscape.png">
+              <div class="actions">
+                <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                  <p>
+                    View
+                  </p>
+                </div>
+                <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                  <p>
+                    Edit
+                  </p>
+                </div>
+                <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                  <p>
+                    Delete
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <div class="workbook-box">
+              <div class="workbook-header">
+                    <span class="material-icons fav-icon">
+                      star_outline
+                    </span>
+                <h4>Workbook Name</h4>
+              </div>
+              <span class="date">14th of April 2020</span>
+              <img class="featured-image" src="/assets/images/new-geoscape.png">
+              <div class="actions">
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    View
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Edit
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Delete
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="workbook-box">
+              <div class="workbook-header">
+                    <span class="material-icons fav-icon">
+                      star_outline
+                    </span>
+                <h4>Workbook Name</h4>
+              </div>
+              <span class="date">14th of April 2020</span>
+              <img class="featured-image" src="/assets/images/new-geoscape.png">
+              <div class="actions">
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    View
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Edit
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Delete
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="workbook-box">
+              <div class="workbook-header">
+                    <span class="material-icons fav-icon">
+                      star
+                    </span>
+                <h4>Workbook Name</h4>
+              </div>
+              <span class="date">14th of April 2020</span>
+              <img class="featured-image" src="/assets/images/new-geoscape.png">
+              <div class="actions">
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    View
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Edit
+                  </p>
+                </div>
+                <div class="action-item">
+                      <span class="material-icons">
+                        create
+                      </span>
+                  <p>
+                    Delete
+                  </p>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="workbooks-listing hidden" id="content-fav-wb">
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                <span class="material-icons fav-icon">
+                  star
+                </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="workbooks-listing hidden" id="content-last-wb">
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                <span class="material-icons fav-icon">
+                  star
+                </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                  <span class="material-icons">
+                    create
+                  </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbook-box">
+            <div class="workbook-header">
+                  <span class="material-icons fav-icon">
+                    star_outline
+                  </span>
+              <h4>Workbook Name</h4>
+            </div>
+            <span class="date">14th of April 2020</span>
+            <img class="featured-image" src="/assets/images/new-geoscape.png">
+            <div class="actions">
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  View
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Edit
+                </p>
+              </div>
+              <div class="action-item">
+                    <span class="material-icons">
+                      create
+                    </span>
+                <p>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<header class="header">
   <nav>
     <div class="nav-brand">
       <p>Welcome {{username}}</p>
@@ -12,7 +624,8 @@
 </header>
 
 <div class="all">
- 
+
   <div><h4>{{copyright}}</h4>
   </div>
 </div>
+-->

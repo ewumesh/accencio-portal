@@ -10,6 +10,11 @@
 
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-dark-red main-navbar">
@@ -49,9 +54,9 @@
           <li class="nav-item">
             <a class="nav-link" href="https://accencio.com/contact-us.html">Contact Us</a>
           </li>
-          <li class="nav-item login-link">
+          <!--<li class="nav-item login-link">
             <a class="nav-link" href="/signin">Login</a>
-          </li>
+          </li>-->
           <!--<li class="nav-item login-link hide-on-mobile" onClick="openSearchBox()">
               <a class="nav-link" href="#"><img class="search-icon" src="assets/images/search.svg"></a>
           </li>-->
@@ -72,10 +77,6 @@
     </div>
   </nav>
   <app-root></app-root>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
 
   <script>
     $(document).ready(function(){
@@ -114,6 +115,18 @@
         }
       });
     });
+  </script>
+
+  <script>
+    function chooseSelection(id_item)
+    {
+      $('.checkbox-workbooks').removeClass('selected');
+      $('#'+id_item).addClass('selected');
+      var content_to_show = "#content-" + id_item;
+      $('.workbooks-listing').addClass('hidden');
+      $(content_to_show).removeClass('hidden').fadeOut(0).fadeIn(200);
+    }
+
   </script>
 
   <footer>
