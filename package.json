@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start-1": "ng serve",
+    "start": "ng serve --host 192.168.1.129 --port 4200",
     "build": "ng build",
     "deploy": "ng build --prod --aot && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E2SDMKVCPENPIT --paths /",
     "test": "ng test",

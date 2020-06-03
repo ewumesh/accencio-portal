@@ -4,6 +4,7 @@ import { Auth } from "aws-amplify";
 
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { ASession } from 'src/request/session';
 
 @Component({
   selector: "app-dashboard",
@@ -13,12 +14,15 @@ import { throwError } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   public username: any;
+  public company: any;
   profile:any = {};
   user: any;
 
   public copyright: string;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router,
+              private http: HttpClient,
+              private session: ASession) {}
 
   ngOnInit() {
     this.getUserInfo();
@@ -28,8 +32,6 @@ export class DashboardComponent implements OnInit {
   onLogOut() {
     Auth.signOut()
       .then(data => {
-        //console.log(data);
-        console.log("You are successfully logged out");
         this.router.navigate(["/login"]);
       })
       .catch(err => console.log(err));
@@ -52,14 +54,22 @@ export class DashboardComponent implements OnInit {
     //this.phoneInput.setValue(this.profile.attributes['phone_number']);
     //this.loading.hide();
     this.username = this.user.username;
+    this.company = this.user.attributes["custom:company"];
   }
 
   getStaticData(): void {
-    const url = "https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/item/topx";
-    this.http.get(url).subscribe((response) => {
-      this.copyright = response[0].title;
+    //var url = 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/item/topx';
+    //this.http.get(url).subscribe((response) => {
+    //  debugger;
+      //this.copyright = response[0].title;
+    //});
+
+    var url = 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/trusted';
+    this.http.get(url).subscribe(response => {
+      console.log(response);
     });
-  }
+
+  };
 
   private handleError(error: HttpErrorResponse) {
     console.log('error', error);

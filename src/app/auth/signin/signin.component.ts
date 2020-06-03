@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
+import { ASession } from 'src/request/session';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +13,7 @@ export class SigninComponent implements OnInit {
   toVerifyEmail: boolean = false;
   userName: string;
 
-  constructor( private route: Router) { }
+  constructor( private route: Router, public session: ASession) { }
 
   ngOnInit() {
   }
@@ -31,7 +32,6 @@ export class SigninComponent implements OnInit {
     }
     Auth.signUp(user)
       .then(data => {
-        console.log(data);
         this.toVerifyEmail = true;
         this.signstatus = "";
       })
@@ -39,15 +39,23 @@ export class SigninComponent implements OnInit {
   }
 
   signInToAWS(email: HTMLInputElement, password: HTMLInputElement ) {
-
     const authInfo = {
       username: email.value,
       password: password.value
-    }
+    };
 
     Auth.signIn(authInfo).then(user => {
+      this.getUserInfo();
       this.route.navigate(['/dashboard']);
     })
       .catch(err => console.log(err));
+  }
+
+  
+  async getUserInfo() {
+    this.session.isLogged = true;
+    var au = await Auth.currentAuthenticatedUser();
+    this.session.username = au.username;
+    this.session.company = au.attributes['custom:company'];
   }
 }

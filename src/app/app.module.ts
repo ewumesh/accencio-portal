@@ -11,6 +11,9 @@ import { UnauthGuard } from './auth/unauth';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './auth/user-setting/user.component';
+import { UserInfoComponent } from './auth/userinfo/userinfo.component';
+import { ASession } from 'src/request/session';
 
 
 @NgModule({
@@ -20,14 +23,16 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     HomeComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [AuthGuard, UnauthGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard, UnauthGuard, ASession],
+  bootstrap: [AppComponent, UserInfoComponent]
 })
 export class AppModule { }
