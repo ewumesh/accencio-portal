@@ -36,7 +36,7 @@
             <label for="exampleInputCompany">Company</label>
             <input type="text" class="input-def" id="exampleInputCompany" placeholder="Company" #company>
           </div>
-          <button type="button" class="primary-btn" (click)="singUpToAWS(email,username,password,company)">Sign Up</button>
+          <button type="button" class="primary-btn" >Sign Up</button>
         </div>
 
         <div class="sign-in-form-wrapper" *ngIf="toVerifyEmail">
@@ -45,7 +45,7 @@
             <input type="number" class="input-def" id="exampleInputverifycode1" aria-describedby="verifyCodeHelp" placeholder="Enter the code" #verifycode>
             <small id="emailHelp" class="small-label-notice">Please enter the verification code that we sent to your email</small>
           </div>
-          <button type="button" class="primary-btn" (click)="onVerify(verifycode)">Verify</button>
+          <button type="button" class="primary-btn">Verify</button>
         </div>
 
       </div>

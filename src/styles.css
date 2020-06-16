@@ -1614,7 +1614,7 @@ label{
   margin-bottom: 30px;
   padding: 25px;
   box-shadow: 0px 0px 16px 1px #0000000f;
-  flex-basis: 30%;
+  flex-basis: 100%;
 }
 
 .workbook-box .featured-image{

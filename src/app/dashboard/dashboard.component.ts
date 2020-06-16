@@ -5,6 +5,8 @@ import { Auth } from "aws-amplify";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { ASession } from 'src/request/session';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Workbook } from './workbook';
 
 @Component({
   selector: "app-dashboard",
@@ -18,15 +20,18 @@ export class DashboardComponent implements OnInit {
   profile:any = {};
   user: any;
 
+  wbs: Workbook[];
+  
   public copyright: string;
 
   constructor(private router: Router,
+              private sanitizer: DomSanitizer,
               private http: HttpClient,
               private session: ASession) {}
 
   ngOnInit() {
     this.getUserInfo();
-    this.getStaticData();
+    this.getDashboardData();
   }
 
   onLogOut() {
@@ -42,8 +47,8 @@ export class DashboardComponent implements OnInit {
     this.profile = await Auth.currentUserInfo();
     this.user = await Auth.currentAuthenticatedUser();
 
-    console.log(this.profile);
-    console.log(this.user);
+    //console.log(this.profile);
+    //console.log(this.user);
     //this.email = this.profile.attributes['email'];
     //if ( this.profile.attributes['profile'] ) {
     //  this.avatar = this.profile.attributes['profile'];
@@ -57,19 +62,27 @@ export class DashboardComponent implements OnInit {
     this.company = this.user.attributes["custom:company"];
   }
 
-  getStaticData(): void {
+  getDashboardData(): void {
     //var url = 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/item/topx';
     //this.http.get(url).subscribe((response) => {
     //  debugger;
       //this.copyright = response[0].title;
     //});
 
-    var url = 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/trusted';
-    this.http.get(url).subscribe(response => {
-      console.log(response);
+    this.wbs = [
+      new Workbook("IP-CompView/IntellectualProperty", new Date(2020, 1, 1), null),
+      new Workbook("IP-FolioView/Overview", new Date(2020, 1, 1), null),
+      new Workbook("IP-GeoScape_PDE9/Overview", new Date(2020, 1, 1), null),
+      new Workbook("IP-KinShip/IP-KinShip", new Date(2020, 1, 1), null),
+      
+    ]
+    const url = 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/trusted';
+    this.wbs.forEach(element => {
+    this.http.get(url).subscribe(tik => {
+        element.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://visualize.accencio.com/trusted/" + tik + "/t/Demo/views/" + element.name)
+      });
     });
-
-  };
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.log('error', error);
