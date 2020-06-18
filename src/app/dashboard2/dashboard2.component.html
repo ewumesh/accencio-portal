@@ -27,7 +27,6 @@
           <iframe class="embed-responsive-item" [src]="wb.url">
           </iframe>
         </div>
-
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -36,7 +35,7 @@
 <div class="row" #spotcont>
   <div class="col-sm-6" *ngFor="let wb of wbsspot">
     <div widget class="card">
-      <div class="card-header text-white mb-3">
+      <div class="card-header bg-dark text-white mb-3">
         {{wb.title}}
         <div class="widget-controls">
           <a data-widgster="expand" href="#" class="transition">

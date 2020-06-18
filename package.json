@@ -6,7 +6,7 @@
     "start-1": "ng serve",
     "start": "ng serve --port 4200",
     "build": "ng build",
-    "deploy": "ng build --prod --aot && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E2SDMKVCPENPIT --paths /",
+    "deploy": "ng build --aot --prod && aws s3 sync dist/portal s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E2SDMKVCPENPIT --paths /",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "@fortawesome/angular-fontawesome": "^0.6.1",
+    "@fortawesome/angular-fontawesome": "0.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "aws-amplify": "^3.0.9",
