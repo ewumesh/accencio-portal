@@ -7,15 +7,24 @@ import { throwError } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { ASession } from 'src/request/session';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Workbook } from './workbook';
 import { environment } from '../../environments/environment';
+import { Workbook } from '../dashboard/workbook';
 
+import { faExpand, faWindowRestore, faWindowMinimize, faRestroom, faAdjust, faAddressBook, faWindowClose,faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"]
+  selector: "app-dashboard2",
+  templateUrl: "./dashboard2.component.html",
+  styleUrls: ["./dashboard2.component.scss"]
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class Dashboard2Component implements OnInit, AfterViewInit {
+  faWindowClose = faWindowClose;
+  faWindowMaximize = faWindowMaximize;
+  faWindowRestore = faWindowRestore;
+  faAdjust = faAdjust;
+  faAddressBook = faAddressBook;
+  faRestroom = faRestroom;
+  faWindowMinimize = faWindowMinimize;
+  faExpand = faExpand;
   constructor(private router: Router,
     private sanitizer: DomSanitizer,
     private http: HttpClient,
@@ -79,27 +88,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.username = this.user.username;
     this.company = this.user.attributes["custom:company"];
 
+
     const jwtToken = this.user.getSignInUserSession().getIdToken().getJwtToken();
 
-    //let headers = new HttpHeaders();
-    //headers = headers.set('Authorization', jwtToken);
     this.wbs = [];
     this.wbsspot = [];
-
-    //this.isLoaded = true;
-    //const token='QWRtaW5pc3RyYXRvcjpPSCVwQ3JkdlBOISo2PUdHUj95dlElbE1YQHp6ZTthQw==';
-    //var options = {
-    //  headers: new HttpHeaders()
-    //    .set('Authorization',  `Basic ${token}`)
-    //}
-    
-    
-    // /this.http.get('https://visualizer.accencio.com/spotfire/wp/GetJavaScriptApi.ashx?Version=7.5', options).subscribe(
-    //  // el => {
-    //    console.log('xxxxxxxxxxxxxxxxxx...' + el)
-    // /    debugger;
-    // });
-
     this.http.get(environment.API_GATEWAY + '/wb/' + this.company).subscribe(wbData => {
       (wbData as Workbook[]).forEach(element => {
         if (!element.analysis) {
@@ -127,22 +120,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       const lloadspot = this.loadspot;
       const lwbsspot = this.wbsspot;
       this.observer = new MutationObserver(mutations => {
-
         mutations.forEach(function (mutation) {
-          const id = (mutation.addedNodes[0].childNodes[1] as HTMLElement).id;
-          const wb = lwbsspot.find(el => el.name == id);
-          lloadspot(wb.analysis, wb.name);
+          if (mutation.addedNodes[0].childNodes) {
+            const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1] as HTMLElement).id;
+            const wb = lwbsspot.find(el => el.name == id);
+            lloadspot(wb.analysis, wb.name);
+          }
         });
       });
       const config = { attributes: true, childList: true, characterData: true };
       this.observer.observe(this.spotcont.nativeElement, config);
     });
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.log('error', error);
-    // return an observable with a user-facing error message
-    return throwError(
-      'Internal Error.');
   }
 }

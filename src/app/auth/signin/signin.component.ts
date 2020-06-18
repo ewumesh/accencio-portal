@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
 
     Auth.signIn(authInfo).then(user => {
       this.getUserInfo();
-      this.route.navigate(['/dashboard']);
+      this.route.navigate(['/dashboard2']);
     })
       .catch(err => console.log(err));
   }

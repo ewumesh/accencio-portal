@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-sm-6" *ngFor="let wb of wbs">
+    <div widget class="card">
+      <div class="card-header text-white bg-dark mb-3">
+        {{wb.title}}
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition">
+            <fa-icon [icon]="faWindowMaximize"></fa-icon>
+          </a>
+          <a data-widgster="collapse" href="#" class="transition">
+            <fa-icon [icon]="faWindowMinimize"></fa-icon>
+          </a>
+          <a data-widgster="fullscreen" href="#" class="transition">
+            <fa-icon [icon]="faExpand"></fa-icon>
+          </a>
+          <a data-widgster="restore" href="#" class="transition">
+            <fa-icon [icon]="faWindowRestore"></fa-icon>
+          </a>
+          <a data-widgster="close" href="#" class="transition" aria-hidden="true">
+            <fa-icon [icon]="faWindowClose"></fa-icon>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-text" [innerHTML]="wb.description"></div>
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" [src]="wb.url">
+          </iframe>
+        </div>
+
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" #spotcont>
+  <div class="col-sm-6" *ngFor="let wb of wbsspot">
+    <div widget class="card">
+      <div class="card-header text-white bg-dark mb-3">
+        {{wb.title}}
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition">
+            <fa-icon [icon]="faWindowMaximize"></fa-icon>
+          </a>
+          <a data-widgster="collapse" href="#" class="transition">
+            <fa-icon [icon]="faWindowMinimize"></fa-icon>
+          </a>
+          <a data-widgster="fullscreen" href="#" class="transition">
+            <fa-icon [icon]="faExpand"></fa-icon>
+          </a>
+          <a data-widgster="restore" href="#" class="transition">
+            <fa-icon [icon]="faWindowRestore"></fa-icon>
+          </a>
+          <a data-widgster="close" href="#" class="transition" aria-hidden="true">
+            <fa-icon [icon]="faWindowClose"></fa-icon>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-text" [innerHTML]="wb.description"></div>
+        <div id="{{wb.name}}" class="embed-responsive embed-responsive-4by3"></div>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
