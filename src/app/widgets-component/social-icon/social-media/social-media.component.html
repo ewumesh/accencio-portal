@@ -1,0 +1,6 @@
+<!--Social Media-->
+<div class="social-btn-wrapper d-flex align-items-center  mx-n1">
+	<div class="mx-1" *ngFor="let socialIcon of socialIcons">
+		<a href="{{socialIcon.link}}" class="btn {{socialIcon.socialIconClass}} circle square-50"><i class="fa {{socialIcon.icon}}"></i></a>
+	</div>
+</div>

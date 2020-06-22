@@ -1,0 +1,163 @@
+/*=========== Timeline Css Style =========*/
+.timeline-widget::before {
+	background-color: rgba(0, 0, 0, 0.12);
+}
+.timeline-widget::before {
+	bottom: 0;
+	content: "";
+	left: 0.6rem;
+	position: absolute;
+	top: 5px;
+	width: 1px;
+}
+.timeline-widget {
+	position: relative;
+	.timeline-point {
+		position: relative;
+		z-index: 9;
+	}
+}
+.bg-grey {
+	background-color: $gray-300;
+}
+/*=========== Timeline page css style =============*/
+.timeline-flow {
+	position: relative;
+	overflow: hidden;
+	&::before {
+		background: $gray-500;
+		content: "";
+		height: 100%;
+		left: 50%;
+		position: absolute;
+		top: 0;
+		width: 2px;
+	}
+	.timeline-block {
+		position: relative;
+		margin: 2rem 0;
+		&:nth-child(2n) {
+			left: auto; //top: 24px;
+			.timeline-card {
+				float: right;
+			}
+			.timeline-date {
+				right: 125%;
+				left: auto;
+				text-align: right;
+			}
+		}
+		&::after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+	}
+	.timeline-date {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(1rem);
+		transition: all 0.3s ease;
+	}
+	.timeline-badge {
+		backface-visibility: hidden;
+		height: 60px;
+		left: 50%;
+		margin-left: -30px;
+		transform: translateZ(0px);
+		width: 60px;
+		border-radius: 50%;
+		box-shadow: 0 0 6px 0 rgba(154, 161, 171, 0.65);
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		.icon {
+			left: 0px;
+			right: 0;
+			text-align: center;
+			top: 15px;
+			position: absolute;
+		}
+		&:hover {
+			+ .timeline-card {
+				.timeline-date {
+					opacity: 1;
+					visibility: visible;
+					transform: translate(0);
+				}
+			}
+		}
+	}
+	.timeline-card {
+		background-color: $gray-400;
+		width: 45%;
+		@include border(1px solid, $input-border-color, left right top bottom);
+		box-shadow: 0 3px 0 $gray-400;
+		border-radius: 5px;
+		position: relative;
+		.timeline-date {
+			left: 125%;
+			position: absolute;
+			top: 15px;
+			background-color: $gray-500;
+			color: $body-color;
+			border-radius: 4px;
+			padding: 0.3rem 0.6rem;
+		}
+	}
+	.video-wrapper {
+		.timeline-img {
+			position: relative;
+			.icon-wrap {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: rgba($white, 0.7);
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease;
+			}
+		}
+		.card-body:hover .icon-wrap {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+/*======= Time line Responsive Style =======*/
+@media (max-width: 767px) {
+	.timeline-flow {
+		.timeline-badge {
+			margin-left: 10px;
+			left: auto;
+		}
+		&::before {
+			left: 38px;
+		}
+		.timeline-card {
+			width: 75%;
+			float: right;
+		}
+		.timeline-date {
+			left: -30% !important;
+			right: auto !important;
+			top: 65px !important;
+		}
+	}
+}
+@media (max-width: 415px) {
+	.timeline-flow {
+		.timeline-badge,
+		.timeline-date {
+			display: none;
+		}
+		&::before {
+			display: none;
+		}
+		.timeline-card {
+			width: 100%;
+		}
+	}
+}

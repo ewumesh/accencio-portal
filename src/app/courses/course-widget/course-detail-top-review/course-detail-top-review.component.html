@@ -1,0 +1,12 @@
+<!--Course Top Reviews-->
+<div class="reviews-wrap">
+	<div class="ratings d-inline-block">
+		<bar-rating class="set-margin" [rate]="topReviews.rating" [max]="5" [readOnly]="true" [theme]="'fontawesome-o'"></bar-rating>
+	</div>
+	<div class="ratings-meta font-sm text-muted mb-3">
+		<span class="border-right mr-3 pr-3">By {{topReviews.reviesBy}}</span><span class="date">{{topReviews.date}}</span>
+	</div>
+	<div class="sec-content">
+		<p>{{topReviews.review}}</p>
+	</div>
+</div>

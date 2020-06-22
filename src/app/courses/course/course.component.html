@@ -1,0 +1,188 @@
+<!--Courses landing-->
+<div class="course-wrap">
+	<div class="banner-wrap bg-secondary py-5">
+		<div class="container">
+			<div class="banner-content">
+				<div class="sec-title mb-3">
+					<h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">{{'Software Development'|translate}}</span></h2>
+					<span class="tooltip-wrap d-inline-block">
+                  <span class="p-1 shadow-box" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Software development courses will build your skills for creating web application and learn modern frameworks.">
+                     <i class="mat-icon material-icons">info</i>
+                  </span>
+					</span>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-11">
+						<ul class="tags-slider-wrap course-tags-list pl-0 mx-n2 mb-0">
+							<li class="d-inline-block px-2 mb-2" *ngFor="let developer of courseDeveloper">
+								<a class="course-tag d-inline-block w-100 text-center p-3 bg-white shadow-box">{{developer}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Filters-->	
+	<div class="filters-wrap mb-5 bg-white border-bottom">
+		<div class="container">
+			<div class="row no-gutters align-items-center">
+				<div class="col-12 col-lg-12 col-xl-8">
+					<nav class="navbar navbar-expand-lg navbar-light px-0">
+						<h4 class="mb-0 mr-4 font-weight-normal text-nowrap">Filter <span class="d-none d-lg-inline">by :</span></h4>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="true" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+                  </button>
+						<div class="navbar-collapse collapse" id="navbarsExample03">
+							<ul class="navbar-nav mr-auto px-0">
+								<li class="nav-item mr-3">
+									<div class="dropdown show">
+										<a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-nowrap" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{'Skills'|translate}}</a>
+										<div class="dropdown-menu px-3" aria-labelledby="dropdown01">
+											<span class="custom-control mb-2 dropdown-item custom-checkbox" *ngFor="let skill of skill">
+												<label class="p-cursor mb-0">
+													<input class="custom-control-input" type="checkbox">
+													<span class="custom-control-label"></span>
+													<span class="custom-control-description d-inline-block">{{skill|translate}}</span>
+												</label>
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="nav-item mr-3">
+									<div class="dropdown show">
+										<a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-nowrap" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{'Job Title'|translate}}</a>
+										<div class="dropdown-menu px-3" aria-labelledby="dropdown02">
+											<span class="custom-control mb-2 dropdown-item custom-checkbox" *ngFor="let title of job_title">
+												<label class="p-cursor mb-0">
+													<input class="custom-control-input" type="checkbox">
+													<span class="custom-control-label"></span>
+													<span class="custom-control-description d-inline-block">{{title|translate}}</span>
+												</label>
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="nav-item mr-3">
+									<div class="dropdown show">
+										<a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-nowrap" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{'Levels'|translate}}</a>
+										<div class="dropdown-menu px-3" aria-labelledby="dropdown03">
+											<span class="custom-control mb-2 dropdown-item custom-checkbox" *ngFor="let level of course_level">
+                                    <label class="p-cursor mb-0">
+                                       <input class="custom-control-input" type="checkbox">
+                                       <span class="custom-control-label"></span>
+													<span class="custom-control-description d-inline-block">{{level|translate}}</span>
+												</label>
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="nav-item mr-3">
+									<div class="dropdown show">
+										<a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between text-nowrap" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{'Languages'|translate}}</a>
+										<div class="dropdown-menu px-3" aria-labelledby="dropdown04">
+											<span class="custom-control mb-2 dropdown-item custom-checkbox" *ngFor="let language of course_language">
+                                    <label class="p-cursor mb-0">
+                                       <input class="custom-control-input" type="checkbox">
+                                       <span class="custom-control-label"></span>
+													<span class="custom-control-description d-inline-block">{{language|translate}}</span>
+												</label>
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="nav-item dropdown show pl-lg-3 border-left mt-3 mt-lg-0">
+									<button class="btn btn-primary rounded-0 btn-lg w-100 d-block d-lg-inline-block" type="button">Apply</button>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<div class="col-12 col-lg-6 col-xl-4">
+					<div class="search-wrap px-xl-3 pt-2 pt-lg-3 pb-3 mr-xl-n3">
+						<input class="form-control" placeholder="Search" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="courses-content-wrap">
+		<div class="container">
+			<div class="degree-wrap">
+				<div class="row" *ngIf="jsonResponse.earnDegree && jsonResponse.earnDegree.length>0">
+					<ng-container *ngFor="let earnDegree of jsonResponse.earnDegree">
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3 grid-b-space">
+							<app-course-degree [earnDegree]="earnDegree"></app-course-degree>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+		<!--Trending course-->
+		<div class="courses-grid-slider py-4" dir="ltr">
+			<div class="container">
+				<div class="sec-title mrgn-b-2">
+					<h4 class="font-weight-light"><span class="font-2x">{{'Trending Courses'|translate}}</span></h4>
+				</div>
+				<div *ngIf="jsonResponse.courses && jsonResponse.courses.length>0">
+					<ng-container *ngIf="getCoursesByType('trending').length>4; else noSlider">
+						<div class="mx-n3">
+							<ngx-slick-carousel [config]="trendingCourseSlideConfig">
+								<ng-container ngxSlickItem *ngFor="let course of getCoursesByType('trending')">
+									<div class="px-3 course-item {{course.sell}}">
+										<app-course-card [course]="course"></app-course-card>
+									</div>
+								</ng-container>
+							</ngx-slick-carousel>
+						</div>
+					</ng-container>
+					<ng-template #noSlider>
+						<div class="row">
+							<ng-container *ngFor="let course of getCoursesByType('trending')">
+								<div class="col-12 col-md-3 grid-b-space course-item {{course.sell}}">
+									<app-course-card [course]="course"></app-course-card>
+									<app-course-detail [course]="course"></app-course-detail>
+								</div>
+							</ng-container>
+						</div>
+					</ng-template>
+				</div>
+			</div>
+		</div>
+		<!--	Testimonial	-->
+		<div class="testimonial-wrap py-4" dir="ltr">
+			<div class="container">
+				<div class="testimonial-slider">
+					<div class="card shadow-box border p-4">
+						<ngx-slick-carousel [config]="testimonialSlideConfig">
+							<ng-container ngxSlickItem *ngFor="let testimonial of jsonResponse.testimonial">
+								<app-course-testimonial [testimonial]="testimonial"></app-course-testimonial>
+							</ng-container>
+						</ngx-slick-carousel>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<!--Popular Courses-->
+		<div class="courses-grid-layout pt-4">
+			<div class="container">
+				<div class="sec-title mrgn-b-2">
+					<h4 class="font-weight-light"><span class="font-2x">{{'Popular Courses'|translate}}</span></h4>
+				</div>
+				<div class="row" *ngIf="jsonResponse.courses && jsonResponse.courses.length>0">
+					<ng-container *ngFor="let course of getCoursesByType('popular'); let i = index">
+						<ng-container *ngIf="i<showCount">
+							<div class="col-12 col-sm-6 col-lg-3 grid-b-space course-item {{course.sell}}">
+								<app-course-card [course]="course"></app-course-card>
+								<app-course-detail [course]="course"></app-course-detail>
+							</div>
+						</ng-container>
+					</ng-container>
+				</div>
+				<div class="show-more-text text-center" *ngIf="showMoreStatus">
+					<button class="btn bg-white border btn-lg mr-2 mb-3" type="button" (click)="showMorePopularCourse()">{{'Show More'|translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

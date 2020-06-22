@@ -1,0 +1,62 @@
+/*==========Tour===========*/
+.popover-header {
+	font-size: $tour-main-heading-font-size;
+	font-weight: normal;
+	border-radius: 5px 5px 0 0;
+}
+.popover-body {
+	padding: 9px 14px 16px;
+	border-radius: 0 0 5px 5px;
+}
+.tour-step-content {
+	font-size: $tour-step-font-size;
+}
+.popover {
+	border: medium none;
+	width: 300px;
+	max-width: 300px;
+	border-radius: 7px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 5px 14px 1px rgba(65, 70, 88, 0.43);
+}
+.tour-step-navigation {
+	.btn {
+		width: 66px;
+		padding: 1px 6px;
+		margin-right: 0.6rem;
+		border-radius: 3px;
+		background: transparent;
+		border: 1px solid $body-color;
+		color: $body-color;
+		&:focus {
+			box-shadow: none;
+		}
+		&:last-child {
+			margin: 0;
+		}
+	}
+	i {
+		font-size: 1rem;
+		vertical-align: sub;
+	}
+}
+.popover.bs-popover-bottom .arrow::after,
+.popover.bs-popover-auto[x-placement^="bottom"] .arrow::after {
+	border-bottom-color: $popover-header-bg;
+}
+.popover.bs-popover-bottom .popover-header::before,
+.popover.bs-popover-auto[x-placement^="bottom"] .popover-header::before {
+	border-bottom: 1px solid $popover-header-bg;
+}
+.popover.bs-popover-right .arrow::after,
+.popover.bs-popover-auto[x-placement^="right"] .arrow::after {
+	border-right-color: $white;
+}
+.popover.bs-popover-left .arrow::after,
+.popover.bs-popover-auto[x-placement^="left"] .arrow::after {
+	border-left-color: $white;
+}
+.popover.bs-popover-left .arrow::before,
+.popover.bs-popover-auto[x-placement^="left"] .arrow::before {
+	border-left-color: $white;
+}

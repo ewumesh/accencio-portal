@@ -1,0 +1,130 @@
+<!--Courses payment-->
+<div class="course-wrap courses-payment">
+	<div class="banner-wrap bg-primary py-5 mb-5">
+		<div class="container">
+			<div class="banner-content">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 mb-12">
+						<div class="sec-title mb-3">
+							<p class="mb-1">Lorem ipsum is simply a dummy text Lorem <b>ipsum is simply a dummy text</b></p>
+							<h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">Choose from our 600+ courses available online</span></h2>
+						</div>
+						<div class="button-group">
+							<a class="btn btn-lg font-weight-bold text-uppercase bg-white mr-2 mb-3 d-inline-block" [routerLink]="['/courses/courses']">Browse Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="courses-content-wrap">
+		<div class="container">
+			<div class="payment-sec-wrap row">
+				<div class="col-12 col-md-11 mx-auto">
+					<div class="chk-block p-4">
+						<div class="sec-title">
+							<h2>Payment Options</h2>
+						</div>
+						<ul class="nav nav-pills border-bottom" id="pills-tab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="pills-credit-tab" data-toggle="pill" href="#pills-credit" role="tab" aria-controls="pills-credit" aria-selected="true">Credit Card</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-netb-tab" data-toggle="pill" href="#pills-netb" role="tab" aria-controls="pills-netb" aria-selected="false">NetBanking</a>
+							</li>
+						</ul>
+						<!--Card tab-->
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active" id="pills-credit" role="tabpanel" aria-labelledby="pills-credit-tab">
+								<div class="payment-banner py-5 bg-light text-center mb-5">
+									<div class="image-wrap mb-4">
+										<img alt="card" class="img-fluid" src="assets/img/card.png">
+									</div>
+									<h3>Enter Card Details</h3>
+								</div>
+								<div class="payemnt-form-wrap row">
+									<div class="col-12 col-md-6 mb-4 mb-md-0">
+										<form class="row mx-n2" card container=".card-container" [formGroup]="form">
+											<div class="form-group col-12 px-2">
+												<input type="text" class="form-control" placeholder="Card Number" [formControl]="form.controls['cardNumber']" card-number>
+                                    <small *ngIf="form.controls['cardNumber'].hasError('required') && form.controls['cardNumber'].touched" class="text-danger">
+                                       You must include a Card Number.
+                                    </small>
+											</div>
+											<div class="form-group col-12 px-2">
+												<input type="text" class="form-control" placeholder="Name" [formControl]="form.controls['cardName']" card-name>
+                                    <small *ngIf="form.controls['cardName'].hasError('required') && form.controls['cardName'].touched" class="text-danger">
+                                       You must include a Name.
+                                    </small>
+											</div>
+											<div class="form-group col-12 col-md-6 px-2">
+												<input type="text" class="form-control" placeholder="CVV" [formControl]="form.controls['cardCvv']" card-cvc>
+                                    <small *ngIf="form.controls['cardCvv'].hasError('required') && form.controls['cardCvv'].touched" class="text-danger">
+                                       You must include a CVV.
+                                    </small>
+											</div>
+											<div class="form-group col-12 col-md-6 px-2">
+												<input type="text" class="form-control" [formControl]="form.controls['cardExpiryDate']" placeholder="Expiry Date" card-expiry>
+                                    <small *ngIf="form.controls['cardExpiryDate'].hasError('required') && form.controls['cardExpiryDate'].touched" class="text-danger">
+                                       You must include a Expiry Date.
+                                    </small>
+											</div>
+											<div class="col-12 px-2">
+												<button type="submit" class="btn btn-primary shadow-box mr-2 mb-2" (click)="onSubmit(form)">Submit</button>
+												<button type="button" class="btn btn-white shadow-box border mb-2">Clear</button>
+											</div>
+										</form>
+									</div>
+									<div class="col-12 col-md-6 mb-4 mb-md-0">
+										<div class="card-container"></div>
+									</div>
+								</div>
+							</div>
+							<!--Net banking tab-->
+							<div class="tab-pane fade" id="pills-netb" role="tabpanel" aria-labelledby="pills-netb-tab">
+								<div class="payment-banner py-5 bg-light text-center mb-5">
+									<div class="image-wrap mb-4">
+										<img alt="card" class="img-fluid" src="assets/img/online-shop.png">
+									</div>
+									<h3>Select Bank For NetBanking</h3>
+								</div>
+								<hr>
+								<div class="logo-radios pt-4 mb-5">
+									<div class="form-check form-check-inline p-3 border">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+										<label class="form-check-label p-cursor" for="inlineRadio1"><img alt="Bank" class="img-fluid m-0" src="assets/img/client-logo-1.png" width="150" height="30"></label>
+									</div>
+									<div class="form-check form-check-inline p-3 border">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+										<label class="form-check-label p-cursor" for="inlineRadio2"><img alt="Bank" class="img-fluid m-0" src="assets/img/client-logo-2.png" width="150" height="30"></label>
+									</div>
+									<div class="form-check form-check-inline p-3 border">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+										<label class="form-check-label p-cursor" for="inlineRadio3"><img alt="Bank" class="img-fluid m-0" src="assets/img/client-logo-3.png" width="150" height="30"></label>
+									</div>
+									<div class="form-check form-check-inline p-3 border">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+										<label class="form-check-label p-cursor" for="inlineRadio4"><img alt="Bank" class="img-fluid m-0" src="assets/img/client-logo-4.png" width="150" height="30"></label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="sec-title">
+											<h3 class="mb-4">All Banks</h3>
+										</div>
+										<select class="custom-select mb-4">
+                                 <option selected>Option 1</option>
+                                 <option value="1">Option 2</option>
+                                 <option value="2">Option 3</option>
+                              </select>
+										<button type="submit" class="btn btn-primary shadow-box mb-2">Make Payment</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

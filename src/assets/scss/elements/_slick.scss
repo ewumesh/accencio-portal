@@ -1,0 +1,56 @@
+/*==========  Slick Slider ===========*/
+body .slick-slider {
+	.slick-prev,
+	.slick-next {
+		top: 50%;
+		height: auto;
+		width: auto;
+		&::before {
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			line-height: 1;
+			letter-spacing: normal;
+			text-transform: none;
+			display: inline-block;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			-moz-font-feature-settings: 'liga';
+			-moz-osx-font-smoothing: grayscale;
+			font-size: 4rem;
+			color: $body-color;
+		}
+	}
+	.slick-prev {
+		right: calc(100% - 1rem);
+		left: auto;
+		&::before {
+			content: "chevron_left"
+		}
+	}
+	.slick-next {
+		right: auto;
+		left: calc(100% - 1rem);
+		&::before {
+			content: "chevron_right"
+		}
+	}
+	.slick-prev.slick-disabled::before,
+	.slick-next.slick-disabled::before {
+		display: none;
+	}
+	.course-grid-item.shadow-box {
+		box-shadow: 0 0 10px 0 rgba(154, 161, 171, 0.15);
+	}
+}
+.banner-content {
+	.slick-slider .slick-prev::before,
+	.slick-slider .slick-next::before {
+		color: $white;
+		opacity: 1;
+	}
+}
+.slick-slider .slick-track {
+	transform: translate3d(0, 0, 0);
+}

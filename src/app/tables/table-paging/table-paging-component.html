@@ -1,0 +1,24 @@
+<!--Table Paging-->
+<div class="table-paging-wrap">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<div class="d-flex justify-content-between">
+						<div class="d-flex align-self-center">
+							<h3 class="text-capitalize">{{'Table Paging'|translate}}</h3>
+						</div>
+					</div>
+				</div>
+				<!-- chk block title closed -->
+				<div class="chk-block-content">
+					<ngx-datatable class="material" [rows]="rows" [columns]="[{name:'Name'},{name:'Gender'},{name:'Company'}]" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
+					</ngx-datatable>
+				</div>
+				<!-- chk block content closed -->
+			</div>
+			<!-- chk block closed -->
+		</div>
+	</div>
+</div>
+<!-- row closed -->

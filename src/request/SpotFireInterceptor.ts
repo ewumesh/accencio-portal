@@ -11,7 +11,6 @@ import { Observable } from 'rxjs/Observable';
 export class SpotFireInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger;
     if (request.url.startsWith("https://visualizer.accencio.com/spotfire"))
     request = request.clone({
       setHeaders: {

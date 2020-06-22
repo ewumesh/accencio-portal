@@ -1,0 +1,112 @@
+<!--User Contact-->
+<div class="user-contact-wrapper">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 grid-b-space" *ngFor="let user of users">
+			<div class="card-wrapper user-contact-wrp">
+				<div class="card-wrap">
+					<div class="d-flex justify-content-start">
+						<div class="d-flex align-items-start flex-column mr-4">
+							<img src="{{user.image}}" class="rounded-circle" alt="thumb image" width="100" height="100" />
+						</div>
+						<div class="d-flex align-items-start flex-column">
+							<div class="mb-2">
+								<p class="mb-0">{{user.name}}</p>
+								<span class="text-muted small d-block">{{user.post}}</span>
+							</div>
+							<address>
+                        <span class="mb-1 d-flex align-items-center justify-content-center"><i class="fa fa-envelope-o mr-1"></i><span> schaden_oren@gmail.com</span></span>
+                        <span class="mb-1"><i class="fa fa-phone mr-1"></i> 975-018-7349</span>
+                        <span class="mb-1"><i class="fa fa-dollar mr-1"></i> $75179.09</span>
+                     </address>
+						</div>
+					</div>
+				</div>
+				<div class="card-action-link text-right">
+					<ul class="list-inline action-icon">
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-eye"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-comments-o"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-envelope-o"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-skype"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="chk-ui-heading">
+		<h3 class="text-capitalize">{{'Simplified User Grid'|translate}}</h3>
+	</div>
+	<div class="simplifie-user-grid">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 grid-b-space" *ngFor="let user of users2">
+				<div class="card border">
+					<div class="d-flex justify-content-start">
+						<div class="d-flex align-items-start flex-column">
+							<a href="javascript:void(0)"> 
+                        <img alt="media thumb" class="img-fluid"  src="{{user.image}}" width="160" height="160"> 
+                     </a>
+						</div>
+						<div class="d-flex align-items-start flex-column">
+							<div class="card-body">
+								<div class="mb-4">
+									<p class="mb-1">{{user.name}}</p>
+									<span class="text-muted">{{user.post}}</span>
+								</div>
+								<div class="user-action">
+									<ul class="list-inline m-0">
+										<li class="list-inline-item">
+											<a href="javascript:void(0)" class="square-40 circle bg-primary shadow-box"><i class="fa fa-comment-o "></i></a>
+										</li>
+										<li class="list-inline-item">
+											<a href="javascript:void(0)" class="square-40 circle bg-light shadow-box"><i class="fa fa-phone "></i></a>
+										</li>
+										<li class="list-inline-item">
+											<a href="javascript:void(0)" class="square-40 circle bg-white shadow-box border"><i class="fa fa-video-camera "></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="chk-ui-heading">
+		<h3 class="text-capitalize">{{'Bigger Photo Cards'|translate}}</h3>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 grid-b-space" *ngFor="let user of users3">
+			<div class="card">
+				<div class="overlay-wrap translate-ele-wrap">
+					<img src="{{user.image}}" alt="thumb image" class="img-fluid" width="500" height="370" />
+					<div class="card-img-overlay primary-tp-layer pos-center text-center translate-ele-content">
+						<div class="center-holder">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a href="javascript:void(0)" class="square-40 circle bg-primary"><i class="fa fa-comment-o "></i></a>
+								</li>
+								<li class="list-inline-item">
+									<a href="javascript:void(0)" class="square-40 circle bg-light"><i class="fa fa-phone "></i></a>
+								</li>
+								<li class="list-inline-item">
+									<a href="javascript:void(0)" class="square-40 circle bg-white"><i class="fa fa-video-camera "></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="card-body text-center">
+					<p>{{user.name}}</p>
+					<p class="text-muted">{{user.post}}</p>
+					<div class="card-links">
+						<ul class="list-inline">
+							<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-facebook  text-muted"></i></a></li>
+							<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-twitter  text-muted"></i></a></li>
+							<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-linkedin  text-muted"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

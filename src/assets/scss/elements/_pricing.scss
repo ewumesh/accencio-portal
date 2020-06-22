@@ -1,0 +1,93 @@
+/*======= Pricing Section Css Style ========*/
+.pricing-wrapper {
+	.card {
+		border-radius: 5px;
+		margin-bottom: $block-margin;
+	}
+}
+.card-primary,
+.card-danger,
+.card-warning,
+.card-info,
+.card-success {
+	color: $white;
+}
+.card-feature {
+	li {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+}
+/*========== Pricing V2 ===========*/
+.pricingV2 {
+	.btn {
+		font-size: 15px;
+	}
+	.buynow-btn {
+		padding: 0.7rem 1.5rem;
+	}
+	.card-feature {
+		hr {
+			width: 55px;
+		}
+	}
+	.pricing-item .card-body {
+		padding: 3rem;
+		.ribbon {
+			display: none;
+		}
+		.card-feature li {
+			font-size: 1.125rem;
+		}
+	}
+	.popular {
+		transform: translateY(-0.2rem);
+		box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+		.card-body .ribbon {
+			display: block;
+			top: 0;
+			margin: 0;
+			span {
+				transform: rotate(-90deg) translate(-7px, 15px);
+				height: 70px;
+				white-space: nowrap;
+				transform-origin: center center;
+				text-transform: uppercase;
+				font-size: 12px;
+			}
+		}
+	}
+	.onoffswitch-inner {
+		&::after,
+		&::before {
+			content: "";
+		}
+	}
+	.subscribe-sec-wrap {
+		padding-left: 6rem;
+		padding-right: 6rem;
+		button {
+			padding: 15px 65px;
+		}
+	}
+}
+@media(max-width:1380px) {
+	.pricingV2 .pricing-item .card-body {
+		padding: 2rem;
+	}
+	.pricingV2 .subscribe-sec-wrap {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+}
+@media(max-width:1280px) {
+	.pricingV2 .pricing-item .card-body {
+		padding: 2rem 1.2rem;
+	}
+}
+@media(max-width:460px) {
+	.pricingV2 .subscribe-sec-wrap {
+		padding-left: 1.2rem;
+		padding-right: 1.2rem;
+	}
+}

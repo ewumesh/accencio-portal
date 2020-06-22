@@ -1,0 +1,714 @@
+{
+	"earnDegree" : [
+		{
+			"image" : "assets/img/course4.jpg",
+			"degree" : "Master of Networking",
+			"university" : "Adipisicing University"
+		},
+		{
+			"image" : "assets/img/course2.jpg",
+			"degree" : "Master of Designing",
+			"university" : "Consectetur University"
+		},
+		{
+			"image" : "assets/img/course4.jpg",
+			"degree" : "Doctrate in Biology",
+			"university" : "Exercitation  University"
+		},
+		{
+			"image" : "assets/img/course1.jpg",
+			"degree" : "Master of Computer",
+			"university" : "Cupidatat University"
+		}
+	],
+	"courses" : [
+		{  
+         "link":"/courses/course-detail",
+			"image":"assets/img/course3.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo1.jpg",
+			"title" : "Python",
+			"university" : "Excepteur University",
+			"bestseller" : false,
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Lorem ipsum is simply dummy text adipisicing elit sed do eiusmod duis aute irure dolor in reprehenderit."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course2.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo2.jpg",
+			"title" : "Web Development",
+			"university" : "Deserunt University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Ut enim ad minim veniam quis lorem ipsum is simply dummy text dolor sit amet consectetur adipisicing."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course5.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo3.jpg",
+			"title" : "JavaScript",
+			"university" : "Exercitation University",
+			"bestseller" : false,
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Lorem ipsum is simply dummy text consectetur adipisicing elit excepteur sint occaecat cupidatat non."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course1.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo4.jpg",
+			"title" : "Web Designing",
+			"university" : "Consectetur University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Consectetur adipisicing elit excepteu Consectetur adipisicing elit excepteu Ut enim ad minim veniam quis."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course2.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo2.jpg",
+			"title" : "iOS Development",
+			"university" : "Adipisicing University",
+			"bestseller" : false,
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Duis aute irure dolor in reprehenderit sunt in culpa qui officia deserunt excepteur sint occaecat cupidatat non."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course5.jpg",
+			"type" : "trending",
+			"logo" : "assets/img/univ-logo3.jpg",
+			"title" : "Game Development Fundamentals",
+			"university" : "Reprehenderi University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Ut labore et dolore magna aliqua cillum dolore eu fugiat nulla pariatur sunt in culpa qui officia deserunt mollit."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course4.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo1.jpg",
+			"title" : "Web Development",
+			"university" : "Fugiat University",
+			"bestseller" : false,
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Duis aute irure dolor in reprehenderit sunt in culpa qui officia deserunt excepteur sint occaecat cupidatat non."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course5.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo4.jpg",
+			"title" : "iOS Development",
+			"university" : "Deserunt University",
+			"bestseller" : false,
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Lorem ipsum is simply dummy text consectetur adipisicing elit excepteur sint occaecat cupidatat non."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course2.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo2.jpg",
+			"title" : "React",
+			"university" : "Adipisicing University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Voluptate velit esse cillum fugiat excepteur sint occaecat cupidatat non officia deserunt mollit anim id est laborum."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course5.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo3.jpg",
+			"title" : "Game Development Fundamentals",
+			"university" : "Excepteur University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Excepteur sint occaecat cupidatat non officia deserunt mollit anim id est laborum sunt in culpa qui officia deserunt."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course1.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo2.jpg",
+			"title" : "Angular",
+			"university" : "Cupidatat University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Cillum dolore eu fugiat nulla pariatur duis aute irure dolor in reprehenderit voluptate velit esse cillum fugiat."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course5.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo4.jpg",
+			"title" : "JavaScript",
+			"university" : "Voluptate University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Voluptate velit esse cillum fugiat lorem ipsum is simply dummy text lorem ipsum is simply dummy text."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course1.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo2.jpg",
+			"title" : "Docker",
+			"university" : "Lorem University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Duis aute irure dolor in reprehenderit dolore eu fugiat nulla pariatur deserunt mollit anim id est laborum."
+		},
+		{
+         "link":"/courses/course-detail",
+			"image":"assets/img/course1.jpg",
+			"type" : "popular",
+			"logo" : "assets/img/univ-logo1.jpg",
+			"title" : "Unreal Engine",
+			"university" : "Pariatur University",
+			"bestseller" : true,
+			"sell" : "bestseller",
+			"availableCourse" : [
+				{
+					"icon" : "computer",
+					"feature" : "Online Course"
+				},
+				{
+					"icon" : "poll",
+					"feature" : "Intermediate level"
+				},
+				{
+					"icon" : "chat",
+					"feature" : "24/7 available support"
+				}
+			],
+			"learn" : "Skills you are going to learn",
+			"content" : "Nostrud exercitation ullamco laboris consectetur adipisicing elit sed do eiusmod lorem ipsum is simply dummy text."
+		}
+	],
+	"testimonial" : [
+		{
+         "img" : "assets/img/user-3.jpg",
+         "content" : "Lorem Ipsum is a simply dummy text. Lorem Ipsum is a simply dummy text. Lorem Ipsum is a simply dummy text.",
+         "name" : "- Abhijit Thapa"
+      },
+      {
+         "img" : "assets/img/user-2.jpg",
+         "content" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+         "name" : "- Alisha Garg"
+      },
+      {
+         "img" : "assets/img/user-4.jpg",
+         "content" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin.",
+         "name" : "- Shilpa Sharma"
+      }
+	],
+	"courseDetail" : {
+		"aboutCourse" : {
+			"rating" : "4",
+			"content" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose." 
+		},
+		"learn" : [
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			"Vestibulum at mauris semper, tristique nulla et, tristique nulla.",
+			"Proin sit amet ex in quam vehicula maximus sit amet vel mauris.",
+			"Proin sit amet ex in quam vehicula maximus sit amet vel mauris",
+			"Quisque hendrerit ex quis dui eleifend, dapibus vehicula lacus semper.",
+			"Fusce ut libero consectetur, aliquet velit sed, hendrerit sem.",
+			"Maecenas eget urna sagittis, efficitur arcu posuere, pellentesque metus",
+			"Donec sit amet nisi ac tellus mattis venenatis volutpat sit amet mi"
+		],
+		"skillsGain" : [
+			"Design Ethics",
+			"UX Design",
+			"Responsive Design",
+			"Graphic Design",
+			"HTML5",
+			"CSS3",
+			"JavaScript"
+		],
+		"courseFeature" : [
+			{
+				"icon" : "brightness_high",
+				"heading" : "Approx. 10 hours course duration",
+				"content" : "Suggested: 2-4 hours/week"
+			},
+			{
+				"icon" : "computer",
+				"heading" : "All resources available online",
+				"content" : "Access easily from anywhere"
+			},
+			{
+				"icon" : "insert_chart",
+				"heading" : "Schedule Deadlines",
+				"content" : "Change your deadlines according to convenience"
+			},
+			{
+				"icon" : "chat",
+				"heading" : "Chat with your instructor",
+				"content" : "Questions online during sessions"
+			}
+
+		],
+		"syllabous" : [ 
+			{
+				"week" : "1",
+				"hoursToComplete" : "2 Hours to complete",
+				"chapter" : "One",
+				"heading" : "What is Web Designing?",
+				"content" : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.",
+				"id"  : "1",
+				"videos" : [
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.1 - Introduction"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.2 - Web Meaning"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.3 - Resources Intro"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.4 - Expressions"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.5 - Lorem Ipsum"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.6 - Contrary Belief"
+					}
+				],
+				"reading" : [
+					"Link of all future resources need."
+				],
+				"quizzes" : [
+					"Quiz 1",
+					"Quiz 2",
+					"Quiz 3"
+				]
+			},
+			{
+				"week" : "2",
+				"hoursToComplete" : "3 Hours to complete",
+				"chapter" : "Two",
+				"heading" : "Why is Web Designing?",
+				"content" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+				"id"  : "2",
+				"videos" : [
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.1 - Introduction"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.2 - Web Meaning"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.3 - Resources Intro"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.4 - Expressions"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.5 - Lorem Ipsum"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.6 - Contrary Belief"
+					}
+				],
+				"reading" : [
+					"Link of all future resources need."
+				],
+				"quizzes" : [
+					"Quiz 1",
+					"Quiz 2",
+					"Quiz 3"
+				]
+			},
+			{
+				"week" : "3",
+				"hoursToComplete" : "3 Hours to complete",
+				"chapter" : "Three",
+				"heading" : "Advance Topics",
+				"content" : "Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.",
+				"id"  : "3",
+				"videos" : [
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.1 - Introduction"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.2 - Web Meaning"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.3 - Resources Intro"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.4 - Expressions"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.5 - Lorem Ipsum"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.6 - Contrary Belief"
+					}
+				],
+				"reading" : [
+					"Link of all future resources need."
+				],
+				"quizzes" : [
+					"Quiz 1",
+					"Quiz 2",
+					"Quiz 3"
+				]
+			},
+			{
+				"week" : "4",
+				"hoursToComplete" : "3 Hours to complete",
+				"chapter" : "Four",
+				"heading" : "Wrapping Up",
+				"content" : "Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.",
+				"id"  : "4",
+				"videos" : [
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.1 - Introduction"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.2 - Web Meaning"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.3 - Resources Intro"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=SrBfA8fpd8E",
+						"name" : "1.4 - Expressions"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=LywZELVl_10",
+						"name" : "1.5 - Lorem Ipsum"
+					},
+					{
+						"demoVideoUrl" : "https://www.youtube.com/watch?v=drQD9oq9tTk",
+						"name" : "1.6 - Contrary Belief"
+					}
+				],
+				"reading" : [
+					"Link of all future resources need."
+				],
+				"quizzes" : [
+					"Quiz 1",
+					"Quiz 2",
+					"Quiz 3"
+				]
+			}
+		],
+		"coureReviews" : {
+			"rating" : "4.8",
+			"reviews" : "16382",
+			"courseBenefits" : [
+				{
+					"icon" : "fa-headphones",
+					"iconBorder" : "bg-white",
+					"afterCourseBenefits" : "34%",
+					"benefit" : "Started new job after completing this course"
+				},
+				{
+					"icon" : "fa-headphones",
+					"iconBorder" : "bg-secondary",
+					"afterCourseBenefits" : "11%",
+					"benefit" : "Repolished their basic and advance skills"
+				},
+				{
+					"icon" : "fa-headphones",
+					"iconBorder" : "bg-primary",
+					"afterCourseBenefits" : "20%",
+					"benefit" : "Got higher positions in their job"
+				}
+			],
+			"topReviews" : [
+				{
+					"reviesBy" : "Lorem",
+					"date" : "May 13th 2017",
+					"rating" : "4.5",
+					"review" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+				},
+				{
+					"reviesBy" : "Lorem",
+					"date" : "May 13th 2017",
+					"rating" : "4",
+					"review" : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected ."
+				},
+				{
+					"reviesBy" : "Lorem",
+					"date" : "May 13th 2017",
+					"rating" : "5",
+					"review" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+				},
+				{
+					"reviesBy" : "Lorem",
+					"date" : "May 13th 2017",
+					"rating" : "4.5",
+					"review" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+				}
+			]
+		},
+		"courseFaq" : [
+			{	
+				"headingId" : "headingOne",
+				"collapseId" : "collapseOne",
+				"heading" : "What is the Payment Procedure ?",
+				"content" : "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth you probably haven't heard of them accusamus labore sustainable VHS."
+			},
+			{
+				"headingId" : "headingTwo",
+				"collapseId" : "collapseTwo",
+				"heading" : "Can I enroll to a single instructor ?",
+				"content" : "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth you probably haven't heard of them accusamus labore sustainable VHS."
+			},
+			{
+				"headingId" : "headingThree",
+				"collapseId" : "collapseThree",
+				"heading" : "How do i manage my schedule for extra courses ?",
+				"content" : "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth you probably haven't heard of them accusamus labore sustainable VHS."
+			}
+		],
+		"instructor" : [ 
+			{
+				"image" : "assets/img/user-3.jpg",
+				"name" : "Charles Smith",
+				"profession" : "Associate Professor",
+				"trade" : "School Of Information"
+			},
+			{
+				"image" : "assets/img/user-4.jpg",
+				"name" : "Quara Goyal",
+				"profession" : "Associate Professor",
+				"trade" : "School Of Information"
+			}
+		],
+		"description1" : {
+			"image" : "assets/img/univ-bg.jpg",
+			"heading" : "University of Reprehenderit",
+			"content" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+		},
+		"description2" : {
+			"image" : "assets/img/gallery7.jpg",
+			"heading" : "University of Consectetur",
+			"content" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+		}
+	}
+}

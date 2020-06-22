@@ -1,0 +1,84 @@
+<!--Form Upload-->
+<div class="form-upload-wrapper">
+	<div class="chk-block">
+		<div class="chk-block-title">
+			<h3 class="text-capitalize">{{'File Upload'|translate}}</h3>
+		</div>
+		<div class="chk-block-content">
+			<div class="row">
+				<div class="col-md-12 col-lg-3 col-xl-3 mb-3">
+					<div class="chk-ui-heading">
+						<h3 class="text-capitalize">Select files</h3>
+					</div>
+					<div class="file-type" ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader">Base drop zone</div>
+					<div class="file-type" ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader">Another drop zone</div>
+					<div class="chk-ui-heading">
+						<h3 class="text-capitalize">Multiple files</h3>
+					</div>
+					<input class="mb-3" type="file" ng2FileSelect [uploader]="uploader" multiple />
+					<div class="chk-ui-heading">
+						<h6 class="text-capitalize">Single files</h6>
+					</div>
+					<input type="file" ng2FileSelect [uploader]="uploader" />
+				</div>
+				<div class="col-md-12 col-lg-9 col-xl-9">
+					<div class="chk-ui-heading">
+						<h3>
+							<span>Upload queue</span>
+							<span>Queue length: {{ uploader?.queue?.length }}</span>
+						</h3>
+						<div class="table-responsive px-1">
+							<table class="table mb-3 material">
+								<thead>
+									<tr>
+										<th width="50%">Name</th>
+										<th>Size</th>
+										<th>Progress</th>
+										<th>Status</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<ng-container *ngIf="uploader.queue.length > 0; else elseBlock">
+										<tr *ngFor="let item of uploader.queue">
+											<td><strong>{{ item?.file?.name }}</strong></td>
+											<td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+											<td *ngIf="uploader.options.isHTML5">
+												<div class="progress mb-0">
+													<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+												</div>
+											</td>
+											<td class="text-center">
+
+												<span *ngIf="item.isSuccess"><i class="fa fa-check text-success" aria-hidden="true"></i></span>
+												<span *ngIf="item.isCancel"><i class="fa fa-ban text-warning" aria-hidden="true"></i></span>
+												<span *ngIf="item.isError"><i class="fa fa-trash text-danger" aria-hidden="true"></i></span>
+											</td>
+											<td nowrap>
+												<button type="button" class="btn btn-success btn-xs rounded-0 mr-1" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                       <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+												<button type="button" class="btn btn-warning btn-xs rounded-0 mr-1" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                       <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+												<button type="button" class="btn btn-danger btn-xs rounded-0" (click)="item.remove()">
+                                       <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+											</td>
+										</tr>
+									</ng-container>
+									<ng-template #elseBlock>
+										No data to display
+									</ng-template>
+								</tbody>
+							</table>
+						</div>
+						<button class="btn btn-square btn-success mb-1 mr-1" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload all</button>
+						<button class="btn btn-square btn-warning mb-1 mr-1" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">Cancel all</button>
+						<button class="btn btn-square btn-danger mb-1" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">Remove all</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

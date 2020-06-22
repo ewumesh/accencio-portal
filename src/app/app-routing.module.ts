@@ -1,28 +1,58 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserAuthenticationComponent } from './auth/user-authentication.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuard } from './auth/auth.guard';
-import { UnauthGuard } from './auth/unauth';
-import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { UserComponent } from './auth/user-setting/user.component';
-import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
+import { MainComponent }   from './main/main.component';
+import { AuthComponent }   from './auth/auth.component';
+import { HorizontalLayoutComponent } from './horizontal-layout/horizontal-layout.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent,  canActivate: [UnauthGuard]},
-  { path: 'signin', component: SigninComponent,  canActivate: [UnauthGuard]},
-  { path: 'signup', component: SignupComponent,  canActivate: [UnauthGuard]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'dashboard2', component: Dashboard2Component, canActivate: [AuthGuard]},
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
-  { path: '**', redirectTo: '', canActivate: [AuthGuard]}
-];
-
+export const AppRoutes: Routes = [
+   {
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
+   },
+   {
+      path: 'session',loadChildren: () =>
+      import('./session/session.module').then(m =>m.SessionDemoModule)
+   },
+   {
+   path: '',
+   component: MainComponent,
+   canActivate: [AuthGuard],
+   runGuardsAndResolvers: 'always',
+   children: [{
+      path: 'dashboard', loadChildren: ()=> 
+      import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+   },{
+      path: 'dash-widget',loadChildren: ()=> 
+      import('./dashboard-widgets/dashboard-widgets.module').then(m => m.DashboardWidgetsModule)
+   },{
+      path: 'chat',loadChildren: ()=>
+      import('./chat/chat.module').then (m => m.ChatModule)
+   },{
+      path: 'user-pages',loadChildren: ()=>
+      import('./user-pages/users.module').then (m => m.UsersDemoModule)
+   },{
+      path: 'user-management',loadChildren: ()=>
+      import('./user-manage/user-manage.module').then(m => m.UserManageModule)
+   }],
+   },
+   {
+      path: 'horizontal',
+      component: HorizontalLayoutComponent,
+      children: [],
+   },
+   {
+      path: '**',
+      redirectTo: 'session'
+   }
+   ];
+  
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(AppRoutes)],
+  exports: [RouterModule],
+  providers: []
 })
-export class AppRoutingModule { }
+export class RoutingModule { }
+

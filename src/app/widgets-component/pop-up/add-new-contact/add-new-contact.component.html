@@ -1,0 +1,93 @@
+<!--Add New Contact-->
+<div class="contact-list-popup mx-auto bg-white shadow-box rounded">
+	<div class="p-4 border-bottom">
+		<h3 class="mb-0">{{'Add New Contact'|translate}}</h3>
+	</div>
+	<div class="form-field-wrap border-bottom">
+		<form [formGroup]="addNewContactForm">
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="First name" formControlName="firstName">
+					<small *ngIf="addNewContactForm.controls['firstName'].hasError('required') && addNewContactForm.controls['firstName'].touched" class="text-danger">
+						You must include a first name.
+					</small>
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Last name" formControlName="lastName">
+					<small *ngIf="addNewContactForm.controls['lastName'].hasError('required') && addNewContactForm.controls['lastName'].touched" class="text-danger">
+						You must include a last name.
+					</small>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Company" formControlName="company">
+					<small *ngIf="addNewContactForm.controls['company'].hasError('required') && addNewContactForm.controls['company'].touched" class="text-danger">
+						You must include a company.
+					</small>
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Location" formControlName="location">
+					<small *ngIf="addNewContactForm.controls['location'].hasError('required') && addNewContactForm.controls['location'].touched" class="text-danger">
+						You must include a location.
+					</small>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="email" placeholder="Email" formControlName="email">
+					<small *ngIf="addNewContactForm.controls['email'].hasError('required') && addNewContactForm.controls['email'].touched" class="text-danger">
+						You must include an email address.
+					</small>
+					<small *ngIf="addNewContactForm.controls['email'].errors && !(addNewContactForm.controls['email'].hasError('required')) && addNewContactForm.controls['email'].touched" class="text-danger">
+						You must include a valid email address.
+					</small>
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Work" formControlName="work">
+					<small *ngIf="addNewContactForm.controls['work'].hasError('required') && addNewContactForm.controls['work'].touched" class="text-danger">
+						You must include a work.
+					</small>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-phone font-2x" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Phone No" formControlName="phoneNumber">
+					<small *ngIf="addNewContactForm.controls['phoneNumber'].hasError('required') && addNewContactForm.controls['phoneNumber'].touched" class="text-danger">
+						You must include a Phone Number.
+					</small>
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Phone No" formControlName="phoneNumber">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-file-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-0 col-10 col-sm-10 col-md-10 col-lg-10">
+					<input class="form-control" type="phone" placeholder="etc etc etc" formControlName="etc">
+					<small *ngIf="addNewContactForm.controls['etc'].hasError('required') && addNewContactForm.controls['etc'].touched" class="text-danger">
+						You must include etc.
+					</small>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="p-3">
+		<button class="btn text-primary mr-2 font-weight-bold" (click)="activeModal.dismiss()">Cancel</button>
+		<button class="btn font-weight-bold text-muted" (click)="onFormSubmit()">Save</button>
+	</div>
+</div>

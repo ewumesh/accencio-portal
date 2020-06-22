@@ -1,0 +1,36 @@
+<!--User Profile Card-->
+<div class="row">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+		<div class="d-block d-md-flex">
+			<div class="profile-thumb mb-lg-0 mb-3 mr-3">
+				<img src="{{userProfileCard.image}}" alt="profile thumb" class="img-fluid d-inline-block" width="160" height="160">
+			</div>
+			<div class="profile-content mb-3 mb-lg-0">
+				<div>
+					<h5 class="mb-1">{{userProfileCard.name}}</h5>
+					<p class="mb-2">{{userProfileCard.profile}}</p>
+					<span class="d-block font-sm">
+               <i class="fa fa-github mr-3"></i>{{userProfileCard.workedOn}}
+               </span>
+					<span class="d-block font-sm">
+               <i class="fa fa-calendar-minus-o mr-3"></i>{{userProfileCard.wentTo}}
+               </span>
+					<span class="d-block font-sm">
+               <i class="fa fa-location-arrow mr-3"></i>{{userProfileCard.livesIn}}
+               </span>
+					<span class="d-block font-sm">
+               <i class="fa fa-user mr-3"></i>{{userProfileCard.about}}
+               </span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 align-self-lg-center">
+		<div class="row mx-n2">
+			<div class="col-3 col-sm-3 col-md-3 col-lg-6 col-xl-6 px-2 mb-0 mb-lg-3" *ngFor="let socialIcons of userProfileCard.socialIcons">
+				<a class="chk-block rounded px-2 py-2 mb-0 d-flex align-items-center justify-content-center bg-white" href="javascript:void(0)"><i class="fa {{socialIcons}} fa-2x" 
+               aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+.ngx-datatable.fullscreen {
+  bottom: 0;
+  height: auto;
+  left: 0;
+  margin-bottom: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.ngx-datatable.scroll-vertical {
+  height: 70vh;
+}
+.table-full {
+  -moz-box-flex: 1;
+  box-sizing: border-box;
+  display: block;
+  flex: 1 0 auto;
+  margin: 0;
+  padding: 1rem;
+  position: relative;
+}
+

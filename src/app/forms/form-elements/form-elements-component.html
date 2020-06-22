@@ -1,0 +1,662 @@
+<!--Form elements-->
+<div class="form-wrapper">
+	<div class="row">
+		<div class="col-lg-12 col-xl-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Default Bootstrap elements'|translate}} </h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group">
+							<label for="formInputEmail1">Email address</label>
+							<input type="email" class="form-control" id="formInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+						</div>
+						<div class="form-group">
+							<label for="formInputPassword1">Password</label>
+							<input type="password" class="form-control" id="formInputPassword1" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<label for="formSelect1">Example select</label>
+							<select class="form-control" id="formSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                     </select>
+						</div>
+						<div class="form-group">
+							<label for="formSelect2">Example multiple select</label>
+							<select multiple class="form-control" id="formSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                     </select>
+						</div>
+						<div class="form-group">
+							<label for="formTextarea">Example textarea</label>
+							<textarea class="form-control" id="formTextarea" rows="3"></textarea>
+						</div>
+						<div class="form-group mb-4">
+							<label for="formInputFile">File input</label>
+							<input type="file" class="form-control-file" id="formInputFile" aria-describedby="fileHelp">
+							<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text
+                        for the above input. It's a bit lighter and easily wraps to a new line.</small>
+						</div>
+						<fieldset class="form-group">
+							<legend>Radio buttons</legend>
+							<div class="form-check">
+								<label class="form-check-label">
+                           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1"
+                              checked>
+                           Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+                           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                           Option two can be something else and selecting it will deselect option one
+                        </label>
+							</div>
+							<div class="form-check disabled">
+								<label class="form-check-label">
+                           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3"
+                              disabled>
+                           Option three is disabled
+                        </label>
+							</div>
+						</fieldset>
+						<div class="form-check">
+							<label class="form-check-label mb-2">
+                        <input type="checkbox" class="form-check-input">
+                        Check me out
+                     </label>
+						</div>
+						<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Textual inputs'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group row">
+							<label for="text-input" class="col-12 col-md-2 col-xl-2 col-form-label">Text</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="text" value="Artisanal kale" id="text-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="search-input" class="col-12 col-md-2 col-xl-2 col-form-label">Search</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="search" value="How do I shoot web" id="search-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="email-input" class="col-12 col-md-2 col-xl-2 col-form-label">Email</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="email" value="bootstrap@example.com" id="email-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="url-input" class="col-12 col-md-2 col-xl-2 col-form-label">URL</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="url" value="https://getbootstrap.com" id="url-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="tel-input" class="col-12 col-md-2 col-xl-2 col-form-label">Telephone</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="tel" value="1-(555)-555-5555" id="tel-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password-input" class="col-12 col-md-2 col-xl-2 col-form-label">Password</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="password" value="hunter2" id="password-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="number-input" class="col-12 col-md-2 col-xl-2 col-form-label">Number</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="number" value="42" id="number-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="datetime-local-input" class="col-12 col-md-2 col-xl-2 col-form-label">Date and time</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="datetime-local-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="date-input" class="col-12 col-md-2 col-xl-2 col-form-label">Date</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="date" value="2011-08-19" id="date-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="month-input" class="col-12 col-md-2 col-xl-2 col-form-label">Month</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="month" value="2011-08" id="month-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="week-input" class="col-12 col-md-2 col-xl-2 col-form-label">Week</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="week" value="2011-W33" id="week-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="time-input" class="col-12 col-md-2 col-xl-2 col-form-label">Time</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="time" value="13:45:00" id="time-input">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="color-input" class="col-12 col-md-2 col-xl-2 col-form-label">Color</label>
+							<div class="col-12 col-md-10 col-xl-10">
+								<input class="form-control" type="color" value="#563d7c" id="color-input">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Form Group'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group">
+							<label for="formGroupExampleInput">Example label</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+						</div>
+						<div class="form-group">
+							<label for="formGroupExampleInput2">Another label</label>
+							<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Inline forms'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form class="form-inline">
+						<label class="sr-only" for="inlineFormInput">Name</label>
+						<input type="text" class="form-control mr-3 mb-3" id="inlineFormInput" placeholder="Jane Doe">
+						<label class="sr-only" for="inlineFormInputGroup">Username</label>
+						<div class="input-group mr-3 mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text d-inline-block input-group-text">@</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Username">
+						</div>
+						<div class="form-check mr-3 mb-3">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"> Remember me
+                     </label>
+						</div>
+						<button type="submit" class="btn btn-primary btn-lg mb-3">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Custom Controls'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<p>Custom form controls and selects are also supported. </p>
+					<div class="form-row align-items-center mx-n2">
+						<label class="px-2 mb-3" for="inlineFormCustomSelect">Preference</label>
+						<div class="col-12 col-md-4 px-2 mb-3">
+							<select class="custom-select mb-0" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                     </select>
+						</div>
+						<div class="mb-3 px-2">
+							<div class="custom-control custom-checkbox mb-0">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing25">
+								<label class="custom-control-label mb-0" for="customControlAutosizing25">Remember my preference</label>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Checkboxes and radios'|translate}} </h3>
+				</div>
+				<div class="chk-block-content">
+					<div class="mb-3">
+						<h3 class="chk-ui-heading">Default (stacked)</h3>
+						<div class="form-check mb-2">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        Option one is this and that&mdash;be sure to include why it's great
+                     </label>
+						</div>
+						<div class="form-check disabled mb-2">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" disabled>
+                        Option two is disabled
+                     </label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<h3 class="chk-ui-heading"></h3>
+						<div class="form-check mb-2">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                           checked>
+                        Option one is this and that&mdash;be sure to include why it's great
+                     </label>
+						</div>
+						<div class="form-check mb-2">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        Option two can be something else and selecting it will deselect option one
+                     </label>
+						</div>
+						<div class="form-check disabled mb-2">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+                           disabled>
+                        Option three is disabled
+                     </label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<h3 class="chk-ui-heading">{{'Inline'|translate}}</h3>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                     </label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                     </label>
+						</div>
+						<div class="form-check form-check-inline disabled">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                        3
+                     </label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        1
+                     </label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        2
+                     </label>
+						</div>
+						<div class="form-check form-check-inline disabled">
+							<label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"
+                           disabled> 3
+                     </label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Static controls'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group row align-items-center mb-3">
+							<label class="col-sm-2 col-form-label mb-0">Email</label>
+							<div class="col-sm-10">
+								<p class="form-control-static mb-0">email@example.com</p>
+							</div>
+						</div>
+						<div class="form-group row mb-3 align-items-center">
+							<label for="inputPassword" class="col-sm-2 col-form-label mb-0">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+							</div>
+						</div>
+					</form>
+					<form class="form-inline">
+						<div class="form-group mb-2 mr-3">
+							<label class="sr-only">Email</label>
+							<p class="form-control-static mb-0">email@example.com</p>
+						</div>
+						<div class="form-group mb-2 mr-2">
+							<label for="inputPassword2" class="sr-only">Password</label>
+							<input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-primary btn-lg mb-2">Confirm identity</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-xl-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Disabled states'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<fieldset disabled>
+							<div class="form-group">
+								<label for="disabledTextInput">Disabled input</label>
+								<input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+							</div>
+							<div class="form-group">
+								<label for="disabledSelect">Disabled select menu</label>
+								<select id="disabledSelect" class="form-control">
+                           <option>Disabled select</option>
+                        </select>
+							</div>
+							<div class="checkbox">
+								<label>
+                           <input type="checkbox"> Can't check this
+                        </label>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Readonly inputs'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<p class="small text-muted">Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input’s value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.</p>
+					<form>
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Control sizing'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group">
+							<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Default input">
+						</div>
+						<div class="form-group">
+							<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
+						</div>
+						<div class="form-group">
+							<select class="form-control form-control-lg">
+                        <option>Large select</option>
+                     </select>
+						</div>
+						<div class="form-group">
+							<select class="form-control">
+                        <option>Default select</option>
+                     </select>
+						</div>
+						<div class="form-group">
+							<select class="form-control form-control-sm">
+                        <option>Small select</option>
+                     </select>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Column sizing'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<div class="row">
+						<div class="col-2">
+							<input type="text" class="form-control" placeholder=".col-2">
+						</div>
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder=".col-3">
+						</div>
+						<div class="col-4">
+							<input type="text" class="form-control" placeholder=".col-4">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Help text'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form class="mb-4">
+						<label for="inputPassword5">Password</label>
+						<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+						<p id="passwordHelpBlock" class="form-text text-muted">
+							Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+						</p>
+					</form>
+					<form class="form-inline">
+						<div class="form-group">
+							<label class="mb-0" for="inputPassword4">Password</label>
+							<input type="password" id="inputPassword4" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+							<small id="passwordHelpInline" class="text-muted">
+                        Must be 8-20 characters long.
+                     </small>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Validation'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group has-success">
+							<label class="form-control-label" for="inputSuccess1">Input with success</label>
+							<input type="text" class="form-control form-control-success" id="inputSuccess1">
+							<div class="form-control-feedback">Success! You've done it.</div>
+							<small class="form-text text-muted">Example help text that remains unchanged.</small>
+						</div>
+						<div class="form-group has-warning">
+							<label class="form-control-label" for="inputWarning1">Input with warning</label>
+							<input type="text" class="form-control form-control-warning" id="inputWarning1">
+							<div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+							<small class="form-text text-muted">Example help text that remains unchanged.</small>
+						</div>
+						<div class="form-group has-danger">
+							<label class="form-control-label" for="inputDanger1">Input with danger</label>
+							<input type="text" class="form-control form-control-danger" id="inputDanger1">
+							<div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+							<small class="form-text text-muted">Example help text that remains unchanged.</small>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Horizontal Validation'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group row has-success">
+							<label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+								<div class="form-control-feedback">Success! You've done it.</div>
+								<small class="form-text text-muted">Example help text that remains unchanged.</small>
+							</div>
+						</div>
+						<div class="form-group row has-warning">
+							<label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+								<div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+								<small class="form-text text-muted">Example help text that remains unchanged.</small>
+							</div>
+						</div>
+						<div class="form-group row has-danger">
+							<label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+								<div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+								<small class="form-text text-muted">Example help text that remains unchanged.</small>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Checkboxes &amp; radios'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<div class="form-check has-success">
+						<label class="form-check-label">
+                     <input type="checkbox" class="form-check-input" id="checkboxSuccess" value="option1">
+                     Checkbox with success
+                  </label>
+					</div>
+					<div class="form-check has-warning">
+						<label class="form-check-label">
+                     <input type="checkbox" class="form-check-input" id="checkboxWarning" value="option1">
+                     Checkbox with warning
+                  </label>
+					</div>
+					<div class="form-check has-danger">
+						<label class="form-check-label">
+                     <input type="checkbox" class="form-check-input" id="checkboxDanger" value="option1">
+                     Checkbox with danger
+                  </label>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Custom forms'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group">
+							<p class="text-muted">Checkboxes</p>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<label>
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-label"></span>
+                        <span class="custom-control-description d-inline-block align-middle">Check this custom checkbox</span>
+                     </label>
+						</div>
+						<div class="form-group">
+							<p class="text-muted">Radios</p>
+						</div>
+						<div class="custom-control custom-radio d-inline-block mr-3">
+							<label>
+                        <input id="radio1" name="radio" type="radio" class="custom-control-input">
+                        <span class="custom-control-label"></span>
+                        <span class="custom-control-description">Toggle this custom radio</span>
+                     </label>
+						</div>
+						<div class="custom-control custom-radio d-inline-block">
+							<label>
+                        <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                        <span class="custom-control-label"></span>
+                        <span class="custom-control-description">Or toggle this other custom radio</span>
+                     </label>
+						</div>
+
+						<div class="form-group">
+							<p>Disabled</p>
+							<div class="custom-control custom-checkbox mr-3 d-inline-block">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing11" disabled>
+								<label class="custom-control-label" for="customControlAutosizing11">Check this custom checkbox</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-block">
+								<input type="radio" class="custom-control-input" id="customControlAutosizing12" disabled>
+								<label class="custom-control-label" for="customControlAutosizing12">Toggle this custom radio</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Custom Validation states'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="form-group has-success">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing15">
+								<label class="custom-control-label" for="customControlAutosizing15">Check this custom checkbox</label>
+							</div>
+						</div>
+						<div class="form-group has-warning">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing16">
+								<label class="custom-control-label" for="customControlAutosizing16">Check this custom checkbox</label>
+							</div>
+						</div>
+						<div class="form-group has-danger mb-0">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing17">
+								<label class="custom-control-label" for="customControlAutosizing17">Check this custom checkbox</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Stacked'|translate}}</h3>
+				</div>
+				<div class="chk-block-content">
+					<form>
+						<div class="custom-controls-stacked mb-4">
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="customControlAutosizing13">
+								<label class="custom-control-label" for="customControlAutosizing13">Toggle this custom radio</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="customControlAutosizing14">
+								<label class="custom-control-label" for="customControlAutosizing14">Or toggle this other custom
+                           radio</label>
+							</div>
+						</div>
+						<div class="mb-3">
+							<p class="text-muted">Select menu</p>
+							<div class="form-group">
+								<select class="custom-select">
+                           <option selected>Open this select menu</option>
+                           <option value="1">One</option>
+                           <option value="2">Two</option>
+                           <option value="3">Three</option>
+                        </select>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

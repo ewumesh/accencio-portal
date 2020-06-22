@@ -1,0 +1,178 @@
+<!--Courses Detail-->
+<div class="course-wrap course-detail">
+	<div class="banner-wrap bg-primary py-5">
+		<div class="container">
+			<div class="banner-content">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 mb-4">
+						<div class="sec-title mb-3">
+							<p class="mb-1">Software development courses will build your skills for creating web application and <span class="font-weight-bold"> learn modern frameworks.</span></p>
+							<h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">{{'Software Development'|translate}}</span></h2>
+						</div>
+						<div class="button-group">
+							<a class="btn btn-lg font-weight-bold text-uppercase bg-white mr-2 mb-3 d-inline-block" [routerLink]="['/courses/course-signin']">Enroll Now</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-12 col-md-4 ml-auto mb-4">
+						<div class="sec-meta">
+							<div class="partner-logo">
+								<p class="font-weight-bold">Offered By</p>
+								<img class="img-fluid mb-4" alt="example-image" src="assets/img/univ-partner.png">
+							</div>
+							<div class="language-wrap d-inline-block mr-3">
+								<i class="fa fa-comment d-inline-block mr-2" aria-hidden="true"></i>
+								<p class="d-inline-block">English</p>
+							</div>
+							<div class="subtitle-wrap d-inline-block">
+								<i class="fa fa-cc d-inline-block mr-2" aria-hidden="true"></i>
+								<p class="d-inline-block">English, German, French</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="courses-content-wrap">
+		<div class="custom-tab-menu border-bottom">
+			<nav class="bg-white shadow-box mb-2">
+				<div class="container">
+					<div class="nav nav-tabs border-0 mx-n3" role="tablist">
+						<a class="nav-item nav-link active border-0 bg-white" id="nav-about1-tab" data-toggle="tab" href="#nav-about1" role="tab" aria-controls="nav-about1" aria-selected="true">{{'About'|translate}}</a>
+						<a class="nav-item nav-link border-0 bg-white" id="nav-syllabus1-tab" data-toggle="tab" href="#nav-syllabus1" role="tab" aria-controls="nav-syllabus1" aria-selected="false">{{'Syllabus'|translate}}</a>
+						<a class="nav-item nav-link border-0 bg-white" id="nav-reviews1-tab" data-toggle="tab" href="#nav-reviews1" role="tab" aria-controls="nav-reviews1" aria-selected="false">{{'Reviews'|translate}}</a>
+						<a class="nav-item nav-link border-0 bg-white" id="nav-faq1-tab" data-toggle="tab" href="#nav-faq1" role="tab" aria-controls="nav-faq1" aria-selected="false">{{'FAQ'|translate}}</a>
+					</div>
+				</div>
+			</nav>
+			<div class="tab-content">
+				<!--About Tab-->
+				<div class="tab-pane fade show active" id="nav-about1" role="tabpanel" aria-labelledby="nav-about1-tab">
+					<div class="about-sec-wrap bg-white pt-5 pb-4">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 col-md-8">
+									<div class="about-sec grid-b-space">
+										<div class="sec-title mb-4">
+											<h3 class="font-weight-light"><span class="font-2x">{{'About This Course'|translate}}</span></h3>
+										</div>
+										<ng-container *ngIf="jsonResponse.courseDetail">
+											<app-course-detail-about [aboutCourse]="jsonResponse.courseDetail.aboutCourse"></app-course-detail-about>
+										</ng-container>
+									</div>
+									<div class="description-wrap py-3 px-4 bg-white shadow-box border grid-b-space" *ngIf="jsonResponse.courseDetail">
+										<app-course-detail-learn [courseLearn]="jsonResponse.courseDetail.learn"></app-course-detail-learn>
+									</div>
+									<div class="description-wrap pt-3 pb-2 px-4 bg-white shadow-box border grid-b-space" *ngIf="jsonResponse.courseDetail">
+										<app-course-detail-skills [skillsGain]="jsonResponse.courseDetail.skillsGain"></app-course-detail-skills>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="about-sidebar-wrap" *ngIf="jsonResponse.courseDetail">
+										<ng-container *ngFor="let courseFeature of jsonResponse.courseDetail.courseFeature">
+											<app-course-detail-feature [courseFeature]="courseFeature"></app-course-detail-feature>
+										</ng-container>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-syllabus1" role="tabpanel" aria-labelledby="nav-syllabus1-tab">
+					<!--Syllabus-->
+					<div class="syllabus-sec-wrap pt-5 pb-4">
+						<div class="container">
+							<div class="syllabus-sec">
+								<div class="sec-title mb-4">
+									<h3 class="font-weight-light"><span class="font-2x">{{'Curriculum - Sketch of your course content !'|translate}}</span></h3>
+								</div>
+								<div *ngIf="jsonResponse.courseDetail">
+									<ng-container *ngFor="let syllabous of jsonResponse.courseDetail.syllabous; let i = index">
+										<ng-container *ngIf="i<showSyllabousCount">
+											<app-course-detail-syllabus [syllabous]="syllabous"></app-course-detail-syllabus>
+										</ng-container>
+									</ng-container>
+								</div>
+								<div class="show-more-syllabus text-center" *ngIf="showMoreStatus">
+									<a class="btn btn-lg font-weight-bold text-uppercase bg-white border shadow-box mb-2 d-inline-block" (click)="showSyllabousMore()">{{'Show More'|translate}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-reviews1" role="tabpanel" aria-labelledby="nav-reviews1-tab">
+					<!--Reviews-->
+					<div class="course-rating-info bg-white pb-5 pt-5">
+						<div class="container">
+							<div class="course-rating-sec">
+								<div class="row">
+									<div class="col-12 col-md-4 border-right" *ngIf="jsonResponse.courseDetail">
+										<app-course-detail-review [coureReviews]="jsonResponse.courseDetail.coureReviews"></app-course-detail-review>
+									</div>
+									<div class="col-12 col-md-8">
+										<div class="top-reviews pl-md-4">
+											<div class="sec-title mb-4">
+												<h2 class="font-weight-light">{{'Top Reveiws'|translate}}</h2>
+											</div>
+											<div class="row" *ngIf="jsonResponse.courseDetail">
+												<div class="col-12 col-md-6" *ngFor="let topReviews of jsonResponse.courseDetail.coureReviews.topReviews">
+													<app-course-detail-top-review [topReviews]="topReviews"></app-course-detail-top-review>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fad" id="nav-faq1" role="tabpanel" aria-labelledby="nav-faq1-tab">
+					<!--Faq-->
+					<div class="course-faq-wrap pb-5 pt-5">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 col-md-10 mx-auto">
+									<div class="sec-title mb-4 text-center">
+										<h3 class="font-weight-light"><span class="font-2x">{{'Frequently Asked Questions'|translate}}</span></h3>
+									</div>
+									<div class="accordion" *ngIf="jsonResponse.courseDetail">
+										<ng-container *ngFor="let courseFaq of jsonResponse.courseDetail.courseFaq">
+											<app-course-detail-faq [courseFaq]="courseFaq"></app-course-detail-faq>
+										</ng-container>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="instructor-sec-wrap py-5">		
+			<!--Instructor-->
+			<div class="container">
+				<div class="instructor-sec">
+					<div class="sec-title mb-4">
+						<h3 class="font-weight-light"><span class="font-2x">{{'Instructor'|translate}}</span></h3>
+					</div>
+					<div class="instructor-items-wrap row" *ngIf="jsonResponse.courseDetail">
+						<ng-container *ngFor="let instructor of jsonResponse.courseDetail.instructor">
+							<div class="instructor-item col-12 col-md-6 grid-b-space">
+								<app-course-detail-instructor [instructor]="instructor"></app-course-detail-instructor>
+							</div>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-unv-course">
+			<div class="container-fluid" *ngIf="jsonResponse.courseDetail">
+				<app-course-detail-description1 [courseDescription]="jsonResponse.courseDetail.description1"></app-course-detail-description1>
+			</div>
+			<div class="about-unv-item py-5">
+				<div class="container" *ngIf="jsonResponse.courseDetail">
+					<app-course-detail-description2 [courseDescription]="jsonResponse.courseDetail.description2"></app-course-detail-description2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

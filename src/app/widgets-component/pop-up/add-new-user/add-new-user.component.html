@@ -1,0 +1,66 @@
+<!--Add New User popup-->
+<div class="userlist-popup mx-auto bg-white px-4 py-4 shadow-box rounded">
+	<div class="grid-b-space">
+		<h4 class="mb-0">{{'Add New User'|translate}}</h4>
+	</div>
+	<form [formGroup]="addNewUserForm">
+		<div class="form-group grid-b-space">
+			<input class="form-control" type="text" placeholder="First name" formControlName="accountName">
+			<small *ngIf="addNewUserForm.controls['accountName'].hasError('required') && addNewUserForm.controls['accountName'].touched" class="text-danger">
+	         You must include account.
+	      </small>
+		</div>
+		<div class="form-group grid-b-space">
+			<input class="form-control" type="password" placeholder="First name" formControlName="password">
+			<small *ngIf="addNewUserForm.controls['password'].hasError('required') && addNewUserForm.controls['password'].touched" class="text-danger">
+	         You must include account.
+	      </small>
+		</div>
+		<div class="form-group grid-b-space">
+			<input class="form-control" type="text" placeholder="Full name" formControlName="name">
+			<small *ngIf="addNewUserForm.controls['name'].hasError('required') && addNewUserForm.controls['name'].touched" class="text-danger">
+	         You must include a name.
+	      </small>
+		</div>
+		<div class="form-group grid-b-space">
+			<input class="form-control" type="email" placeholder="Email" formControlName="email" autocomplete="">
+			<small *ngIf="addNewUserForm.controls['email'].hasError('required') && addNewUserForm.controls['email'].touched" class="text-danger">
+	         You must include an email address.
+	      </small>
+			<small *ngIf="addNewUserForm.controls['email'].errors && !(addNewUserForm.controls['email'].hasError('required')) && addNewUserForm.controls['email'].touched" class="text-danger">
+	         You must include a valid email address.
+	      </small>
+		</div>
+		
+		<div class="form-group grid-b-space">
+			<select class="form-control h-auto p-cursor custom-select" formControlName="project">
+            <option>Demo</option>
+            <option>Drexel</option>
+			<option>Novartis</option>
+			<option>Sales</option>
+         </select>
+			<small *ngIf="addNewUserForm.controls['project'].touched && !addNewUserForm.controls['project'].valid">
+	         <small *ngIf="addNewUserForm.controls['project'].hasError('required')" class="text-danger">  
+	         You must Select a Project.
+	         </small>
+			</small>
+		</div>
+
+		<div class="form-group grid-b-space">
+			<select class="form-control h-auto p-cursor custom-select" formControlName="accountType">
+            <option>USER</option>
+            <option>CLIENTADMIN</option>
+			<option>ACCENCIOADMIN</option>
+         </select>
+			<small *ngIf="addNewUserForm.controls['accountType'].touched && !addNewUserForm.controls['accountType'].valid">
+	         <small *ngIf="addNewUserForm.controls['accountType'].hasError('required')" class="text-danger">  
+	         You must Select account type.
+	         </small>
+			</small>
+		</div>
+	</form>
+	<div class="d-flex">
+		<button class="btn btn-lg bg-primary mr-3" (click)="activeModal.dismiss()">Close</button>
+		<button class="btn btn-lg bg-light" (click)="onFormSubmit()">Submit</button>
+	</div>
+</div>

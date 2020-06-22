@@ -1,0 +1,18 @@
+/*======= Editor style ==========*/
+$editor-bg:$block-bg;
+$editor-header-bg:$block-bg;
+.ql-container {
+	background-color: $editor-bg;
+}
+.ql-toolbar.ql-snow {
+	padding: 15px;
+	background-color: $editor-header-bg;
+}
+.note-btn-group .dropdown-menu > li > .btn-group {
+	display: inline-block;
+}
+@media(min-width:1280px) {
+	body .ql-container .ql-editor {
+		min-height: 400px;
+	}
+}

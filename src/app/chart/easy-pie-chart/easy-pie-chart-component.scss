@@ -1,0 +1,16 @@
+.chankya-easy-page .chankya-absolute {
+	font-weight: bold;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 45%;
+}
+@media(max-width:767px) {
+	easy-pie-chart canvas {
+		width: 100% !important;
+	}
+}
+pre {
+	overflow-x: auto;
+}

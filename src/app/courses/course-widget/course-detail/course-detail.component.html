@@ -1,0 +1,28 @@
+<!--Course Hover Item-->
+<div class="course-hover-item shadow-box px-3 py-4 bg-white">
+	<div class="partner-logo mb-4">
+		<img class="img-fluid" alt="example-image" src="{{course.logo}}" width="60" height="60">
+	</div>
+	<div class="sec-heading">
+		<h3 class="font-weight-light"><a routerLink="{{course.link}}" class="text-dark">{{course.title}}</a></h3>
+	</div>
+	<div class="ratings-wrap mb-3">
+	</div>
+	<hr>
+	<div class="course-feature-list">
+		<ul class="list-unstyled">
+			<li class="list-item mb-2" *ngFor="let available of course.availableCourse">
+				<i class="mat-icon material-icons mr-2 text-muted align-middle">{{available.icon}}</i>
+				<span class="list-item">{{available.feature}}</span>
+			</li>
+		</ul>
+	</div>
+	<hr>
+	<div class="sec-content">
+		<h4>{{course.learn}}</h4>
+		<p>{{course.content}}</p>
+		<div class="view-syllabus-link">
+			<a class="btn bg-primary" routerLink="{{course.link}}">View Syllabus</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<!--Table Pinning-->
+<div class="row">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-self-center">
+						<h3 class="text-capitalize">{{'Table Pinning'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<!-- chk block title closed -->
+			<div class="chk-block-content">
+				<ngx-datatable class="material pinning" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="rows">
+					<ngx-datatable-column name="Name" [width]="300" [frozenLeft]="true">
+					</ngx-datatable-column>
+					<ngx-datatable-column name="Gender">
+					</ngx-datatable-column>
+					<ngx-datatable-column name="Age">
+					</ngx-datatable-column>
+					<ngx-datatable-column name="City" [width]="150" prop="address.city">
+					</ngx-datatable-column>
+					<ngx-datatable-column name="State" [width]="300" prop="address.state" [frozenRight]="true">
+					</ngx-datatable-column>
+				</ngx-datatable>
+			</div>
+			<!-- chk block content closed -->
+		</div>
+		<!-- chk block closed -->
+	</div>
+</div>
+<!-- row closed -->

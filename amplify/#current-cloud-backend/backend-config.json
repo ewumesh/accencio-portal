@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"portal8b0894a8": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

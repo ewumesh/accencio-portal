@@ -1,0 +1,12 @@
+<!--Course Detail About-->
+<div class="ratings wrap">
+	<bar-rating [rate]="aboutCourse.rating" [max]="5" [readOnly]="true" [theme]="'default'"></bar-rating>
+</div>
+<div class="add-to-cart">
+	<p class="text-muted align-middle font-weight-bold mr-3 d-inline-block mb-2">Interested in this course?</p>
+	<a routerLink="/courses/course-signin" class="btn btn-lg font-weight-bold text-uppercase bg-primary shadow-box mb-2 d-inline-block">Add to Cart</a>
+</div>
+<hr>
+<div class="sec-content">
+	<p>{{aboutCourse.content}}</p>
+</div>

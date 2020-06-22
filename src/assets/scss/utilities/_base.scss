@@ -1,0 +1,179 @@
+/*==========Basics bg classes color text fonts==========*/
+.bg-primary,
+.bg-success,
+.bg-inverse,
+.bg-info,
+.bg-warning,
+.bg-danger,
+.bg-green,
+.bg-yellow {
+	color: $white!important;
+}
+.bg-grey {
+	color: $gray-800;
+}
+table {
+	table-layout: auto;
+}
+/*========== List Style ===========*/
+.list-item-border {
+	li {
+		border-bottom: 1px solid $input-border-color;
+	}
+}
+.list-item-space {
+	li {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+}
+.relative {
+	position: relative;
+}
+/*========== Custom Space bottom Classes ===========*/
+.grid-b-space {
+	margin-bottom: $grid-gutter-width; 
+}
+.mrgn-b-2 {
+	margin-bottom: 2rem;
+}
+/*========== Chankya Card inner ===========*/
+.chankya-card-inner,
+.flex-align {
+	align-items: center;
+}
+.flex-align-top {
+	align-items: flex-start;
+}
+//Height Auto
+.h-auto {
+	height: auto;
+}
+/*========== Chankya Card Content ===========*/
+.chankya-card-content-sm {
+	padding: 0.5rem 0 0;
+}
+.chankya-card-content {
+	padding: 1.3rem 0 1rem 0;
+}
+.chankya-card-footer {
+	.mat-divider {
+		padding: 0.3em
+	}
+}
+//Toast
+.toast {
+   opacity: 1;
+}
+// List 
+.chankya-list {
+	list-style: none;
+	padding-left: 0;
+	padding-right: 0;
+	margin: 0;
+	> li {
+		margin-bottom: 1rem;
+	}
+}
+/*========== Helper Classes ===========*/
+.over-visible {
+	overflow: visible !important;
+}
+.box-inset {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3) inset;
+}
+.chankya-span {
+	display: inline-block;
+	vertical-align: top;
+}
+.p-cursor {
+	cursor: pointer;
+}
+.chankya-block {
+	display: block;
+}
+.shadow-none {
+	box-shadow: none!important;
+}
+.table-responsive {
+	padding: 0 1px;
+}
+.background-none {
+	background-color: transparent!important;
+}
+/*======Custom control checkboxes and radio buttons======*/
+.custom-control-label {
+	&::before,
+	&::after {
+		top: calc(50% - 0.5rem);
+	}
+}
+.text-ellipse {
+	text-overflow: ellipsis;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+/*======== Drag And Drop ======*/
+.dragula-items-wrap,
+.sortable-drag-list {
+	min-height: 300px;
+}
+/*==== Modal ====*/
+.modal-open.feedback-modal .modal.d-block {
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   .modal-content{
+      padding: 1rem;
+   }
+}
+.feedback-modal .modal-dialog {
+   max-width: 100000px;
+   margin: 0;
+   height: 110vh;
+   display: flex;
+   align-items: center;
+}
+@media(max-width:680px){
+   .modal-open.feedback-modal .modal.d-block .modal-dialog{
+      width: 90%;
+   }
+   .modal-content{
+      padding: 1rem;
+   }
+   .modal-dialog{
+      margin: 1rem;
+   }
+}
+@media(max-width:480px){
+   .modal-content{
+      padding: 0rem;
+   }
+   .modal-dialog{
+      margin: 2rem;
+   }
+}
+
+/*==== Maps ====*/
+#vmap{
+   .jqvmap-zoomin, .jqvmap-zoomout{
+      width:17px;
+      height:17px;
+      line-height:17px;
+      padding:0px;
+   }
+}   
+/*==== Ios Responsive ====*/
+.ng-sidebar__content {
+   overflow: hidden !important;
+}
+/*==== Progress Bar ====*/
+.progress{
+   height: auto;
+}
+//ng sidebar ios scrolling set issue
+.ng-sidebar__content{
+   -webkit-overflow-scrolling: auto !important;
+ }

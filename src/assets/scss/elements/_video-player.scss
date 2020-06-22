@@ -1,0 +1,65 @@
+/*========Video Player=========*/
+.video-player-wrap {
+	.video-pl {
+		display: flex;
+		justify-content: center;
+		border-radius: 4px;
+		width: auto;
+		video {
+			width: 700px;
+			cursor: pointer;
+		}
+	}
+	.audio-pl {
+		height: 50px;
+	}
+	vg-controls {
+		left: 0;
+		right: 0;
+	}
+	vg-scrub-bar {
+		left: 2rem;
+		width: calc(100% - 4rem);
+	}
+	.vg-overlay-play {
+		left: 0;
+   }
+   .vg-buffering{
+      left: 0;
+   }
+   vg-scrub-bar,vg-controls{
+      z-index:12;
+   }
+}
+app-video-player{
+   iframe{
+      width: 100%;
+      min-height: 400px;
+      height: 100%;
+   }
+   .modal-dialog{
+      margin:0;
+   }
+   .modal-content,.modal-body{
+      padding: 0;
+      border:0;
+   }
+}
+@media (max-width:767px) {
+	.video-player-wrap {
+		.video-pl {
+			video {
+				width: 100%;
+			}
+		}
+	}
+}
+@media (max-width:400px) {
+	.video-player-wrap {
+		.video-pl {
+			video {
+				height: 280px;
+			}
+		}
+	}
+}

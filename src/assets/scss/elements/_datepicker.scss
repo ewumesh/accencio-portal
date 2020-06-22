@@ -1,0 +1,21 @@
+/*========= DatePicker Css Style ========*/
+.datepicker-wrapper {
+	.input-group-addon,
+	.input-group-btn,
+	.input-group .form-control {
+		display: inline-block;
+	}
+	.ngxmdp {
+		.selectorarrow {
+			margin-top: 40px;
+		}
+		.selector {
+			margin-left: 45px;
+		}
+	}
+}
+@media(max-width: 576px) {
+	.datepicker-wrapper .ngxmdp .selector {
+		margin-left: 0;
+	}
+}

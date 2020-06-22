@@ -1,0 +1,131 @@
+<!--User Profile V2-->
+<div class="user-profile-v2">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+				<div class="card px-3 py-3 grid-b-space shadow-box" *ngFor="let userProfileCard of profileCard">
+					<app-user-profile-card [userProfileCard]="userProfileCard"></app-user-profile-card>
+				</div>
+				<div class="card px-3 py-3 grid-b-space shadow-box" *ngFor="let description of userProfileDescription_1">
+					<div class="d-flex">
+						<div class="img-thumb mr-3">
+							<img src="{{description.image}}" alt="profile thumb" class="img-fluid rounded-circle d-inline-block" width="80" height="80">
+						</div>
+						<div class="card-content">
+							<div class="mb-3">
+								<h5 class="mb-1">{{description.name}}</h5>
+								<p class="mb-1">{{description.content}}</p>
+							</div>
+							<div class="row mb-3 mx-n2">
+								<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 px-2 mb-3" *ngFor="let images of description.images">
+									<img src="{{images}}" alt="profile thumb" class="img-fluid d-inline-block" width="700" height="940">
+								</div>
+							</div>
+							<div>
+								<div class="d-block d-sm-flex mb-4" *ngFor="let profileCard of description.childProfileCard">
+									<div class="child-thumb mb-sm-0 mb-3 mr-3">
+										<img src="{{profileCard.image}}" alt="profile thumb" class="img-fluid rounded-circle d-inline-block" width="60" height="60">
+									</div>
+									<div class="card-content">
+										<p class="mb-0">{{profileCard.content}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card px-3 py-3 grid-b-space shadow-box">
+					<div class="d-flex" *ngFor="let description of userProfileDescription_2">
+						<div class="img-thumb mr-3">
+							<img src="{{description.userImage}}" alt="profile thumb" class="img-fluid rounded-circle d-inline-block" width="80" height="80">
+						</div>
+						<div class="card-content">
+							<div class="mb-4">
+								<h5 class="mb-1">{{description.name}}</h5>
+								<p class="mb-3">{{description.content}}</p>
+							</div>
+							<div class="mr-2">
+								<img src="{{description.image}}" alt="profile thumb" class="img-fluid d-inline-block" width="700" height="940">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card grid-b-space px-3 py-3 shadow-box">
+					<div class="mb-3">
+						<h4>Highlights</h4>
+					</div>
+					<div class="d-flex" *ngFor="let miniCard of userProfileMiniCard">
+						<div class="img-thumb mr-3">
+							<img src="{{miniCard.image}}" alt="profile thumb" class="img-fluid rounded-circle d-inline-block" width="80" height="80">
+						</div>
+						<div class="card-content">
+							<h5 class="mb-1">{{miniCard.heading}}</h5>
+							<p class="mb-0">{{miniCard.content}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+				<div class="chk-block px-3 py-3 grid-b-space shadow-box">
+					<div class="mb-3 d-flex">
+						<h4 class="mr-2">Likes</h4>
+						<a href=""><small>View All</small></a>
+					</div>
+					<div class="d-flex mb-3" *ngFor="let likes of likesCard">
+						<div class="follow-img-wrap mr-3">
+							<img src="{{likes.image}}" alt="profile thumb" class="img-fluid rounded-circle d-inline-block" width="40" height="40">
+						</div>
+						<div>
+							<h5 class="mb-1">{{likes.name}}</h5>
+							<button class="btn btn-sm btn-outline-primary d-flex align-items-center"><i class="fa fa-user-o mr-2"></i>Follow</button>
+						</div>
+					</div>
+				</div>
+				<div class="card px-3 py-3 grid-b-space shadow-box">
+					<div>
+						<h5>The truth about is about to be revealed.</h5>
+						<p class="mb-0">consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim lorem ipsum dolor sit amet veniam.</p>
+					</div>
+				</div>
+				<div class="chk-block grid-b-space px-1 py-1 shadow-box">
+					<div class="overlay-wrap">
+						<img src="assets/img/project-1.jpg" alt="profile thumb" class="img-fluid img-responsive d-inline-block" width="700" height="940">
+						<div class="card-img-overlay bg-overlay d-flex align-items-end">
+							<div class="content">
+								<div class="mb-3">
+									<h2 class="fa-inverse">
+										How to plan for your dream house
+									</h2>
+								</div>
+								<div>
+									<button class="btn btn-primary">Contact Us</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card px-3 py-3 grid-b-space shadow-box" *ngFor="let card of titleCard">
+					<div class="mb-3 sec-title">
+						<h4 class="mb-0">Title</h4>
+					</div>
+					<div class="img-wrap mb-3">
+						<img src="{{card.image}}" alt="profile thumb" class="img-fluid" width="700">
+					</div>
+					<div class="mb-3">
+						<h4>{{card.heading}}</h4>
+						<p class="mb-0">{{card.content}}</p>
+					</div>
+					<div>
+						<button class="btn btn-primary">Go to Post</button>
+					</div>
+				</div>
+				<div class="card px-3 py-3 grid-b-space shadow-box">
+					<div>
+						<p class="text-muted mb-1">© 2019 Bootstrap</p>
+						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

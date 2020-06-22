@@ -1,0 +1,81 @@
+<!--Add Comment-->
+<div class="feedback-popup mx-auto shadow-box card">
+	<div class="d-flex bg-primary justify-content-between align-items-center border-bottom px-4 py-3">
+		<div class="font-sm d-flex align-items-center">
+			<div class="dropdown text-nowrap">
+				<button class="btn dropdown-toggle drop-btn p-0 mr-3" type="button" id="dropdownMenu22" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="text-white" href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a>
+            </button>
+				<div class="dropdown-menu p-2 px-0" aria-labelledby="dropdownMenu22">
+					<button class="dropdown-item btn btn-sm px-0 py-1 bg-white mb-3 text-center" type="button" id=
+					"comment-lock" (click)="commentsLock()">Lock</button>
+					<button class="dropdown-item btn btn-sm px-0 py-1 bg-white text-center" type="button">Delete</button>
+				</div>
+			</div>
+			<div class="dropdown text-nowrap">
+				<button class="btn dropdown-toggle drop-btn p-0" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="text-white" href="javascript:void(0)"><i class="fa fa-flag"></i></a>
+            </button>
+				<div class="dropdown-menu p-4" aria-labelledby="dropdownMenu2">
+					<button class="dropdown-item btn btn-sm bg-success mb-3 text-center" type="button">completed</button>
+					<button class="dropdown-item btn btn-sm bg-warning text-center" type="button">pending</button>
+				</div>
+			</div>
+		</div>
+		<div class="card text-nowrap">
+			<button class="btn border" type="button" (click)="likeByCurrentUser()">{{commentLikes}}<i class="fa fa-caret-up ml-2"></i></button>
+		</div>
+	</div>
+	<div class="px-4 pt-4 border-bottom bg-white comments-wrap">
+		<div class="mrgn-b-2">
+			<h4>Lorem Ipsum is simply dummy text</h4>
+		</div>
+		<div class="comment-popup-wrap">
+			<div class="d-flex mrgn-b-2" *ngFor="let comment of commentList;let i= index">
+				<div class="mr-3 image-wrap">
+					<img class="rounded-circle" src="{{comment.image}}" height="40" width="40">
+				</div>
+				<div class="content-wrap">
+					<ng-container *ngIf="lockStatus">
+						<a class="text-muted lock-status" href="javascript:void(0)"><i class="fa fa-lock"></i></a>
+					</ng-container>
+					<h6 class="mb-1">{{comment.comment}}</h6>
+					<small class="text-muted meta-info">by {{comment.by}} - <a class="text-muted" href="javascript:void(0)"> {{comment.daysAgo}}</a></small>
+					<span class="text-muted d-block">
+               <a class="{{i}}-wishlist text-muted" href="javascript:void(0)" id="{{i}}-wishlist" (click)="commentAddToWishlist(i+'-wishlist')"><i class="fa fa-heart mr-3" aria-hidden="true"></i></a>
+               <a class="text-muted" href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a>
+               </span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="px-4 py-3 bg-white">
+		<form class="mr-1" [formGroup]="addNewComment">
+			<div class="row align-items-center text-nowrap">
+				<ng-container *ngIf="lockStatus; else elseBlock">
+					<div class="comment-wrap form-group col-12">
+						<input type="text" class="form-control mr-3" placeholder="Leave comment" formControlName="newComment" disabled="true">
+					</div>
+				</ng-container>
+				<ng-template #elseBlock>
+					<div class="comment-wrap form-group col-12">
+						<input type="text" class="form-control mr-3" placeholder="Leave comment" formControlName="newComment">
+					</div>
+					<div class="col-12 d-flex justify-content-end">
+						<div class="text-right text-muted font-sm mr-3 d-flex align-items-center">
+							<a class="text-muted mr-3" href="javascript:void(0)"><i class="fa fa-eye"></i></a>
+							<div class="form-group mb-0 mr-3 over-hidden">
+								<label class="form-label position-relative mb-0 text-muted" for="exampleFormControlFile1"><i class="fa fa-paperclip"></i></label>
+								<input type="file" class="form-control-file" id="exampleFormControlFile1">
+							</div>
+							<a class="text-muted" href="javascript:void(0)"><i class="fa fa-star"></i></a>
+						</div>
+						<div>
+							<button class="btn btn-primary" (click)="sendComment()">Comment</button>
+						</div>
+					</div>
+				</ng-template>
+			</div>
+		</form>
+	</div>
+</div>

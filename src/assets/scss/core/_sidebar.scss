@@ -1,0 +1,712 @@
+/*=========== Layout Style =============*/
+.app {
+	height: 100%;
+	overflow: hidden;
+}
+.breadcrumb-item {
+	display: inline-block;
+	float: none;
+}
+.ng-sidebar-container--animate .ng-sidebar__content {
+	transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1) 0s, padding 0.3s cubic-bezier(0, 0, 0.3, 1) 0s;
+}
+.ng-sidebar__content {
+	display: block;
+	height: 100%;
+	position: static;
+	> div {
+		height: 100%;
+		overflow: hidden;
+	}
+}
+.sidebar-container.ps {
+	overflow: visible !important;
+}
+.ng-sidebar-container--animate[_nghost-c0] .ng-sidebar__content[_ngcontent-c0] {
+	transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1) 0s, padding 0.3s cubic-bezier(0, 0, 0.3, 1) 0s;
+}
+.chankya-base-container {
+	height: calc(100% - 4.5rem);
+}
+.horizontal-wrapper .chankya-base-container {
+	height: calc(100% - 9rem);
+}
+.chankya-base-container {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.main-contents {
+	height: 100%;
+}
+.sidebar-panel {
+	width: $sidebar-width;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background: $sidebar-bg;
+	position: relative;
+	z-index: 99;
+	transition-duration: 0.2s, 0.2s, 0.35s;
+	transition-property: top, bottom, width;
+	transition-timing-function: linear, linear, ease;
+	&:before {
+		background-color: $sidebar-overlay-bg;
+		bottom: -11px;
+		content: "";
+		display: block;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+/*=========== Main Logo =============*/
+.sidebar-logo-wrap {
+	z-index: 9;
+	position: relative;
+}
+.sidebar-panel .sidebar-logo-wrap .sidebar-logo {
+	height: $header-height;
+}
+.sidebar-logo {
+	padding: 1rem 1rem;
+	@include background-opacity($sidebar-logo-bg, 0.7);
+}
+/*=========== User Section =============*/
+.user-section {
+	background-color: $user-thumb-section-bg;
+	transition: height 0.3s ease 0s;
+	-moz-transition: height 0.3s ease 0s;
+	-ms-transition: height 0.3s ease 0s;
+	-webkit-transition: height 0.3s ease 0s;
+	-o-transition: height 0.3s ease 0s;
+	position: relative;
+	z-index: 9;
+	.user-name {
+		color: $user-name-color;
+	}
+	.user-menu {
+		position: absolute;
+		.user-cog-link {
+			color: $user-name-color;
+			cursor: pointer;
+			&:hover {
+				color: $user-name-color;
+				opacity: 0.7;
+			}
+			i {
+				font-size: 20px;
+			}
+		}
+	}
+}
+.ng-sidebar {
+	z-index: 999!important;
+	box-shadow: 0 -6px 11px rgba(154, 161, 171, 0.15);
+	height: 100%;
+	overflow: hidden !important;
+}
+.icon-sidebar-wrap .ng-sidebar {
+	overflow: visible !important;
+}
+.sidebar-user-wrap {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	padding: $user-pad-y $user-pad-x;
+	text-align: center;
+	position: relative;
+	.sidebar-user-inner {
+		display: inline-block;
+		cursor: pointer;
+	}
+	.thumb-wrap {
+		border-radius: 100%;
+		display: inline-block;
+		overflow: hidden;
+		padding: 5px;
+		img {
+			border-radius: 100%;
+			border: 1px solid #979797;
+		}
+	}
+	.user-action {
+		position: absolute;
+		right: 6%;
+	}
+	.sidebar-user-menu {
+		background-color: $white;
+		box-shadow: 0 5px 8px 1px rgba(0, 0, 0, 0.2);
+		right: 20%;
+		opacity: 0;
+		overflow: hidden;
+		padding: 0.5rem 0.7rem;
+		position: absolute;
+		border-radius: 5px;
+		transform: translateY(20px);
+		transition: all 0.3s ease 0s;
+		visibility: hidden;
+		width: 11.25rem;
+		z-index: 999;
+		ul {
+			list-style: outside none none;
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			li {
+				border-bottom: 1px solid $input-border-color;
+				&:last-child {
+					border-bottom: none;
+				}
+				a {
+					color: #414658;
+					display: block;
+					padding: 10px;
+					font-size: 0.8125rem;
+					display: flex;
+					i {
+						font-size: 18px;
+						margin-right: 1.5rem
+					}
+				}
+			}
+		}
+	}
+}
+.sidebar-user-menu .sidebar-user-menu .sidebar-user-info-wrap .sidebar-user-name,
+.sidebar-user-name,
+.sidebar-user-role {
+	color: $user-name-color;
+}
+.sidebar-user-menu ul .menu-side-wrap .sidebar-user-menu ul li .sidebar-user-wrap .sidebar-user-inner .user-action:hover {
+	cursor: pointer;
+}
+.sidebar-user-wrap .user-action:hover .sidebar-user-menu {
+	opacity: 1;
+	transform: translateY(0px);
+	visibility: visible;
+}
+/*=========== Sidebar Navigation =============*/
+.navigation {
+	padding-top: 2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	> ul {
+		padding-left: 0;
+		list-style: none;
+		li {
+			.fa-caret-down {
+				transition: all 0.4s ease-in-out 0s;
+				position: absolute;
+				right: 16px;
+				top: calc(50% - 9px);
+			}
+			&.open .fa-caret-down {
+				transform: rotate(180deg);
+			}
+			&.open > .sub-menu {
+				max-height: 1000px;
+			}
+			a {
+				padding: 0.8rem 1rem;
+				position: relative;
+				margin-bottom: 0.5rem;
+				outline: none;
+            color: $sidebar-menu-text;
+            display: flex;
+				i:not(.fa-caret-down) {
+					font-size: $sidebar-icon-size;
+					line-height: 1.5;
+					margin-right: 1rem;
+					text-align: center;
+					width: 27px;
+            }
+            p{
+               width:calc(100% - 38px)
+            }
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.05);
+					border-radius: $border-radius;
+					outline: none;
+				}
+				:active,
+				:focus {
+					outline: none;
+				}
+			}
+			ul.sub-menu {
+				padding-left: 0;
+				list-style: none;
+				overflow: hidden;
+				max-height: 0;
+				-webkit-transition: .5s cubic-bezier(.35, 0, .25, 1);
+				-moz-transition: .5s cubic-bezier(.35, 0, .25, 1);
+				transition: .5s cubic-bezier(.35, 0, .25, 1);
+				-webkit-transition-property: max-height;
+				-moz-transition-property: max-height;
+				transition-property: max-height;
+				li a {
+					//                    padding-left: 3.7rem;
+				}
+			}
+		}
+	}
+}
+/*=========== Active Menu =============*/
+.navigation > ul li a.active-link {
+	background-color: $white;
+	color: $body-color;
+	border-radius: $border-radius;
+}
+/*=========== Dot Note  =============*/
+.dot-note {
+	font-size: 0.7rem !important;
+	position: absolute;
+	right: 18px;
+	top: 11px;
+}
+.sidebar-panel .navigation .nav-item p,
+.sidebar-panel .logo-text {
+	opacity: 1;
+	transform: translate3d(0px, 0px, 0px);
+	-ms-transform: translate3d(0px, 0px, 0px);
+	-moz-transform: translate3d(0px, 0px, 0px);
+	-o-transform: translate3d(0px, 0px, 0px);
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	transition: opacity 300ms linear 0s, transform 300ms linear 0s;
+	-webkit-transition: opacity 300ms linear 0s, transform 300ms linear 0s;
+	-o-transition: opacity 300ms linear 0s, transform 300ms linear 0s;
+	-ms-transition: opacity 300ms linear 0s, transform 300ms linear 0s;
+	-moz-transition: opacity 300ms linear 0s, transform 300ms linear 0s;
+	white-space: nowrap;
+	margin: 0;
+}
+/*=========== Collasped Sidebar =============*/
+.collapsed-sidebar {
+	.ng-sidebar__content {
+		padding: 0 0 0 71px !important;
+	}
+	&.sidebar-closed {
+		.ng-sidebar__content {
+			padding: 0 0 0 0 !important;
+		}
+	}
+	&.sidebar-opened {
+		.ng-sidebar__content {
+			padding: 0 0 0 71px !important;
+		}
+	}
+	
+	.sidebar-panel .navigation .nav-item p,
+	.sidebar-panel .navigation > ul li .fa-caret-down,
+	.sidebar-panel .logo-text {
+		opacity: 0;
+      transform: translate3d(-25px, 0px, 0px);
+      visibility: hidden;
+   }
+   .sidebar-panel .navigation > ul li .fa-caret-down{
+      transition-delay: -0.5s;
+   }
+   .sidebar-panel:hover .navigation > ul li .fa-caret-down{
+      transition-delay: 0.1s;
+   }
+   .sidebar-panel:not(:hover) .navigation .nav-item {
+      p,.sidebar-label{
+      display: none;
+      }
+   }
+	.sidebar-user-info-wrap {
+		display: none;
+	}
+	.sidebar-user-menu {
+		display: none;
+	}
+	.sidebar-user-wrap .thumb-wrap {
+		border: none;
+		border-radius: 100%;
+		display: inline-block;
+		overflow: hidden;
+		padding: 0;
+		width: 70%;
+	}
+	.sidebar-panel {
+		width: 4.5rem;
+		&:hover {
+			width: $sidebar-width;
+         .navigation .nav-item p,
+         .navigation > ul li .fa-caret-down,
+			.logo-text {
+				opacity: 1;
+            transform: translate3d(0px, 0px, 0px);
+            display: block;
+            visibility: visible;
+			}
+		}
+	}
+	.user-section {
+		opacity: 0;
+      height: 0;
+      display: none;
+	}
+}
+
+//Icon Sidebar
+body .icon-sidebar{
+   width: 135px !important;
+   position: relative;
+   .sidebar-label{
+      top: 33%;
+      right: 5px;
+   }
+   &::before{
+      background-color:rgba($white,1); 
+   }
+   .navigation > ul li a p,
+   .navigation > ul li a i:not(.fa-caret-down){
+      width:100%;
+      text-align:center;
+   }
+   .navigation > ul .sub-menu li a p,
+   .navigation > ul .sub-menu li a i:not(.fa-caret-down) {
+      width: auto;
+   }
+   .logo-text{
+      display: none !important;
+   }
+   .sidebar-logo{
+      justify-content: center;
+   }
+   .navigation{
+      padding-top: 1rem;
+      padding-left:0;
+      padding-right: 0;
+   }
+   .navigation > ul li a.active-link{
+      box-shadow: inset 0 -6px 7px -7px rgba(65, 70, 88, 0.2);
+      border-radius: 0;
+      background-color:$primary;
+      color:$white;
+   }
+   .user-section{
+      display: none;
+   }
+   .sidenav-scrollbar-container{
+      height: calc(100vh - #{$header-height});
+   }
+   .navigation > ul > li > a > .fa-caret-down{
+      transform: rotate(0) !important;
+      font-size:1.8rem;
+      top: 2px;
+      right: 6px;
+      color: #eee;
+      &::before{
+         content:"\f0c9";
+      }
+   }
+   .navigation > .chankya-nav { 
+      > li > a{
+         text-align: center;
+         border-radius:0;
+         padding: 1.3rem 1rem;
+         border-bottom: 1px solid $block-border-color;
+         margin-bottom: 0;
+         display: block;
+      }
+      >li:first-child a {
+         padding-top: 0;
+      }
+   }
+   .navigation > .chankya-nav > li > a > i:not(.fa-caret-down){
+      font-size: 1.7rem;
+      display: block;
+      margin-right: 0;
+      width: 100%;
+      float:none;
+      margin-bottom: 0rem;
+   }
+   &.sidebar-panel .navigation .nav-item p{
+      font-size: 0.9rem;
+      transform: unset !important;
+		white-space: normal !important;
+		font-weight: 500;
+   }
+   &.sidebar-panel .navigation .nav-item .sub-menu{
+      padding-top: 1rem;
+    a{
+      padding: 0.6rem 1rem;
+      margin-bottom: 0;
+    }
+    p{
+         font-size: 1rem;
+         text-align:left;
+      }
+   }
+   .navigation > ul li { 
+      ul.sub-menu{
+         max-height: 100%;
+         width: 232px;
+         position: fixed;
+         left: 134px;
+         top: calc(72px);
+         z-index: 3;
+         opacity: 0;
+         visibility: hidden;
+         bottom: 0;
+         background-color: $gray-400;
+         transition: all 0s ease 0.4s;
+         box-shadow: 5px 6px 11px rgba(154, 161, 171, 0.12);
+         overflow: hidden;
+         overflow-y: auto;
+         transition-delay: 0s;
+         .sidebar-label{
+            top: 31%;
+            right: 15px;
+         }         
+      }
+      &.menu-item-has-child{
+         position: relative;
+         overflow: hidden;
+         &:hover{
+            ul.sub-menu{
+               opacity: 1;
+               visibility: visible;
+               pointer-events: all;
+               transition-delay: 0s;
+            }
+         }
+      }
+   }
+   perfect-scrollbar > .ps.ps--active-y > .ps__rail-y{
+      pointer-events: none;
+      background-color: transparent;
+   }
+   .sidebar-panel .navigation .nav-item p, .sidebar-panel .logo-text {
+      white-space: unset !important;  
+   }
+}
+body .collapsed-sidebar.icon-sidebar-wrap .sidebar-panel:not(:hover) .navigation .nav-item {
+   p,.sidebar-label{
+   display: block;
+   }
+}
+body .collapsed-sidebar.icon-sidebar-wrap .sidebar-panel .navigation > ul li .fa-caret-down{
+   opacity:1;
+   visibility: visible;
+}
+.icon-sidebar-wrap .ng-sidebar__content {
+   padding: 0px 0px 0px 135px !important;
+}
+.icon-sidebar-wrap.sidebar-closed .ng-sidebar__content{
+   padding: 0px 0px 0px 0px !important;
+}
+.icon-sidebar-wrap {
+	.ng-sidebar__content {
+		padding: 0 0 0 136px !important;
+	}
+	&.sidebar-closed {
+		.ng-sidebar__content {
+			padding: 0 0 0 0 !important;
+		}
+	}
+	&.sidebar-opened {
+		.ng-sidebar__content {
+			padding: 0 0 0 136px !important;
+		}
+	}
+}
+@media(max-width:959px) {
+	.sidebar-panel {
+		width: 16rem; // height: auto;
+		overflow-x: hidden;
+	}
+}
+/*=========== Theme styling  =============*/
+.primary {
+	.sidebar-panel::before {
+		@include background-opacity($primary, 0.87);
+   }
+   .icon-sidebar .navigation > ul li.menu-item-has-child:hover ul.sub-menu{
+      background-color: $primary !important;
+   }
+	.user-section {
+		background-color: $primary;
+	}
+	.sidebar-logo {
+		@include background-opacity($primary, 0);
+	}
+	.customizer-toggle {
+		background-color: $primary !important;
+	}
+	.navigation > ul li a {
+		color: $white;
+		&.active-link {
+         background-color: $primary !important;
+         color: $white !important;
+		}
+	}
+}
+.success {
+	.sidebar-panel::before{
+		@include background-opacity($success, 0.87);
+   }
+   .icon-sidebar .navigation > ul li.menu-item-has-child:hover ul.sub-menu{
+      background-color: $success !important;
+   }
+	.user-section {
+		background-color: $success;
+	}
+	.sidebar-logo {
+		@include background-opacity($success, 0);
+	}
+	.customizer-toggle,.customizer-toggle:hover {
+		background-color: $success !important;
+	}
+	.navigation > ul li a {
+		color: $white;
+		&.active-link {
+         background-color: $success !important;
+         color: $white !important;
+		}
+	}
+	.user-section {
+		.sidebar-user-name,
+		.user-action a {
+			color: $white !important;
+		}
+	}
+}
+.warning {
+	.sidebar-panel::before {
+		@include background-opacity($warning, 0.87);
+   }
+   .icon-sidebar .navigation > ul li.menu-item-has-child:hover ul.sub-menu{
+      background-color: $warning !important;
+   }
+	.user-section {
+		background-color: $warning !important;
+	}
+	.sidebar-logo {
+		@include background-opacity($warning, 0);
+	}
+	.customizer-toggle,.customizer-toggle:hover {
+		background-color: $warning !important;
+	}
+	.navigation > ul li a {
+		color: $white;
+		&.active-link {
+         background-color: $warning !important;
+         color: $white !important;
+		}
+	}
+}
+// all class color
+.primary,
+.success,
+.warning {
+	.user-section {
+		.sidebar-user-name,
+		.user-action a {
+			color: $white !important;
+		}
+	}
+}
+.more-theme-style {
+	a {
+		color: $body-color;
+		i {
+			padding-left: 0.2rem;
+			padding-right: 0.5rem;
+		}
+	}
+}
+.sidenav-scrollbar-container {
+	position: relative;
+	overflow: hidden;
+	height: calc(100vh - 229px);
+}
+.collapsed-sidebar .sidenav-scrollbar-container {
+	position: relative;
+	overflow: hidden;
+	height: calc(100vh - 72px);
+}
+.search-form input[type="text"]:focus {
+	box-shadow: none;
+}
+//new label
+.sidebar-label {
+   position: absolute;
+   background: $primary;
+   color: $white;
+   padding: .1rem .2rem;
+   border-radius: 5px;
+   font-size: .6rem;
+   top: 31%;
+   right: 34px;
+   letter-spacing: 1px;
+}
+body [dir="rtl"]{
+   .sidebar-label {
+      right: auto;
+      left: 34px;
+   }
+   .icon-sidebar .sidebar-label {
+      right:auto;
+      left: 5px;
+  }
+  .icon-sidebar .navigation > ul li ul.sub-menu .sidebar-label {
+   right:auto;
+   left: 15px;
+   }
+}
+
+//sidebar backdrop overlay
+div.ng-sidebar__backdrop {
+    z-index: 99 !important;
+}
+//Sidebar layout issue after selecting and toggling collapse sidebar multiple times
+.sidebar-opened .ng-sidebar__content{
+	padding: 0px 0px 0px 300px !important;
+}
+@media(max-width:959px) {
+	body .ng-sidebar {
+		z-index: 999999 !important;
+		overflow-x: hidden !important;
+		overflow-y: auto !important;
+	}
+	.sidebar-panel {
+		overflow-y: hidden;
+      z-index: 999999 !important;      
+      &.icon-sidebar{
+         overflow: visible !important;
+      }
+   }
+}
+@media(max-width:1199px) {
+	.secondary-menu-list {
+		.fullscreen-toggle,
+		.fav-links {
+			display: none !important;
+		}
+	}
+}
+
+//For all sidebar as sidebar goes into overlay state
+@media(max-width:1279px){
+   body .sidebar-opened .ng-sidebar__content, body .icon-sidebar-wrap.sidebar-opened .ng-sidebar__content, body .collapsed-sidebar.sidebar-opened .ng-sidebar__content,
+   body [dir="rtl"].icon-sidebar-wrap.sidebar-opened .ng-sidebar__content,body [dir="rtl"].collapsed-sidebar.sidebar-opened .ng-sidebar__content{
+      padding: 0px 0px 0px 0px !important;
+   }
+   body .icon-sidebar .navigation > ul li ul.sub-menu{
+      top:0;
+   }
+}
+body .app-dark{
+   &.warning,&.primary,&.success, &.light {
+   .icon-sidebar .navigation > ul li.menu-item-has-child:hover ul.sub-menu {
+      background-color: #424242 !important;
+   }
+}
+}
+@media (max-width:420px){
+   body .icon-sidebar .navigation > ul li ul.sub-menu{
+      width:186px;
+   }
+}

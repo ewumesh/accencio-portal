@@ -1,0 +1,59 @@
+<!--Courses Signin-->
+<div class="course-wrap courses-signin">
+   <div class="banner-wrap bg-primary py-5 mb-5">
+      <div class="container">
+         <div class="banner-content">
+            <div class="row">
+               <div class="col-12 col-sm-12 col-md-12 mb-12">
+                  <div class="sec-title mb-3">
+                     <p class="mb-1">Lorem ipsum is simply a dummy text<span class="font-weight-bold"> incididunt ut labore et dolore magna aliqua.</span></p>
+                     <h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">Choose from our 600+ courses available online</span></h2>
+                  </div>
+                  <div class="button-group">
+                     <a class="btn btn-lg font-weight-bold text-uppercase bg-white mr-2 mb-3 d-inline-block" [routerLink]="['/courses/courses']">Browse Now</a>
+                  </div>                
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="courses-content-wrap">
+      <div class="container">
+         <div class="row signin-sec-wrap">
+            <div class="col-12 col-md-6 grid-b-space">
+               <div class="card shadow-box border p-4">
+                  <h2 class="mb-4">{{'Sign In' | translate}}</h2>
+                  <form>
+                     <div class="form-group mb-4">
+                        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                     </div>
+                     <div class="form-group mb-4">
+                        <input type="password" class="form-control" placeholder="Password">
+                     </div>
+                     <div class="d-flex mb-3 flex-wrap justify-content-between align-items-center">
+                        <div class="form-group has-success mb-0">
+                           <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="customControlAutosizing15">
+                              <label class="custom-control-label" for="customControlAutosizing15">Remember me</label>
+                           </div>
+                        </div>   
+                        <a class="mb-2" [routerLink] = "['/session/forgot-password']">Forgot Password</a>
+                     </div>
+                     <button class="btn btn-lg btn-primary mb-3">Sign In</button>
+                     <p>Don't have an account? <a [routerLink] = "['/session/register']">Click here to create one</a></p>
+                  </form>
+               </div>
+            </div>
+            <div class="col-12 col-md-6 grid-b-space"> 
+               <div class="card shadow-box border p-4">
+                  <h2 class="mb-3">{{'Guest Checkout' | translate}}</h2>
+                  <p>Proceed to checkout and create an account later.</p>
+                  <div>
+                     <button class="btn btn-lg btn-primary mb-3" [routerLink]="['/courses/course-payment']">Continue as Guest</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

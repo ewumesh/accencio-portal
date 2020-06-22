@@ -1,0 +1,26 @@
+<!--LockScreen-->
+<div class="registerone-wrapper lockscreen-wrapper bg-sc d-flex align-items-center justify-content-center">
+	<div class="login-block text-center position-relative shadow-box lockscreen-content">
+		<div class="login-icon mb-5">
+			<span class="square-100"><i class="fa fa-unlock-alt"></i></span>
+		</div>
+		<div class="pos-relative d-inline-block mrgn-b-2">
+			<span class="badge badge-success badge-circle status-top-right fa-notify"><i class="fa fa-unlock-alt"></i></span>
+			<span>
+            <img src="assets/img/user-1.jpg" class="img-fluid rounded-circle d-inline-block mb-3" alt="admin thumb" width="150" height="150" />
+         </span>
+			<p>Anisha Willams</p>
+		</div>
+		<form class="login-form" action="javascript:void(0)" method="post">
+			<div class="form-group mb-4">
+				<input type="password" name="password" class="form-control session-input-font input-square" placeholder="Password" required>
+			</div>
+			<div class="mrgn-b-2">
+				<a routerLink="/dashboard/dashboard-v1" class="btn btn-primary btn-block btn-square btn-lg">Unlock</a>
+			</div>
+			<span>Not you? <a routerLink="/session/loginone" class="text-muted">Sign in as different user</a></span>
+		</form>
+		<!-- login form closed -->
+	</div>
+</div>
+<!-- login wrapper closed -->

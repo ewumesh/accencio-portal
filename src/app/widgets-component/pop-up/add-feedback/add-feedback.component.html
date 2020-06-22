@@ -1,0 +1,38 @@
+<!--Add Feedback-->
+<div class="feedback-popup mx-auto shadow-box card">
+	<div class="d-flex bg-primary justify-content-between align-items-center border-bottom px-4 py-3">
+		<div>
+			<h4 class="mb-0">{{'Add Your feedback'|translate}}</h4>
+		</div>
+		<div class=""><a class="text-white" href="javascript:void(0)"><i class="fa fa-cog"></i></a></div>
+	</div>
+	<div class="px-4 py-4 border-bottom bg-white">
+		<form [formGroup]="addNewFeedbackForm">
+			<div class="mb-4">
+				<div class="form-group mb-4">
+					<label>Title</label>
+					<input class="form-control" name="search" placeholder="A short descriptive title" type="text" formControlName="heading">
+				</div>
+				<div class="form-group mb-0">
+					<label for="exampleFormControlTextarea1">Details</label>
+					<textarea class="form-control" placeholder="Please include feedback...." rows="6" formControlName="detail"></textarea>
+				</div>
+			</div>
+		</form>
+		<div class="font-sm d-flex align-items-center justify-content-end">
+			<a class="text-muted mr-3" href="javascript:void(0)"><i class="fa fa-eye"></i></a>
+			<form>
+				<div class="form-group mb-0 mr-3 over-hidden">
+					<label class="form-label position-relative mb-0 text-muted p-cursor" for="exampleFormControlFile1"><i class="fa fa-paperclip"></i></label>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+				</div>
+			</form>
+			<a class="text-muted" href="javascript:void(0)"><i class="fa fa-star"></i></a>
+		</div>
+	</div>
+	<div class="px-4 py-3 bg-white">
+		<div class="d-flex justify-content-end text-nowrap">
+			<button class="btn btn-primary" (click)="onFormSubmit()">Submit Feedback</button>
+		</div>
+	</div>
+</div>

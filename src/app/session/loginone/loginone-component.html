@@ -1,0 +1,57 @@
+<!--Login Wrapper-->
+<div class="loginone-wrapper pt-xl-5">
+	<div class="login-content text-center">
+		<div class="login-inner-wrapper-2 shadow-box p-4">
+			<div class="sidebar-logo d-flex justify-content-center mb-4">
+				<div class="logo-sign">
+					<img src="assets/img/logo.png" alt="Accencio">
+				</div>
+				
+			</div>
+			<div class="mb-4">
+				<p class="text-muted font-weight-bold mb-0 letter-space-1">{{'Welcome To Accencio'|translate}}</p>
+				<h2 class="text-primary font-weight-normal">{{'Sign into your account'|translate}}</h2>
+			</div>
+			<form #form="ngForm" (ngSubmit)=logIn(form.value) class="login-form" action="javascript:void(0)" method="post">
+				<div class="form-group">
+					<input name="fname" [(ngModel)]="name" class="form-control session-input-font input-square" type="text" placeholder="Account" required>
+				</div>
+				<div class="form-group">
+					<input name="password" type="password" [(ngModel)]="password" placeholder="Password" class="form-control session-input-font input-square" required>
+				</div>
+				<div class="login-meta mb-3">
+					<div class="row">
+						<div class="col-12 col-sm-6 col-md-6">
+							<div class="custom-control custom-checkbox">
+								<label class="mb-2 mr-sm-2 mb-sm-0 d-flex">
+                           <input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox">
+                           <span class="custom-control-label"></span>
+                           <span class="custom-control-description d-inline-block align-text-top">{{'Remember Me'|translate}}</span>
+                        </label>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-md-6 text-left text-sm-right">
+							<a routerLink="/session/forgot-password" class="text-muted">{{'Forgot Password?'|translate}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3">
+					<button type="submit" class="btn btn-primary btn-block btn-lg btn-square">{{'Sign In'|translate}}</button>
+				</div>
+				<!-- <div class="mb-3">
+					<a routerLink="/session/register" class="text-muted">{{'Still no account? Please go to Register'|translate}}</a>
+				</div> -->
+				<div class="login-social-icon">
+					<ul class="list-inline">
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-google-plus fa-lg text-warning"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-twitter fa-lg text-info"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-facebook-official fa-lg text-primary"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-instagram fa-lg text-danger"></i></a></li>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<!-- login form wrapper closed -->
+	</div>
+	<!-- login-one- wrapper closed -->
+</div>

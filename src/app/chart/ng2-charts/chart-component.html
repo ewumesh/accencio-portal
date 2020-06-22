@@ -1,0 +1,184 @@
+<!--Ng2 Charts-->
+<div class="row">
+	<!-- bar -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Bar'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas height="100" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- horizontal bar -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Horizontal Bar'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas height="100" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barHorizontalChartOptions" [colors]="barChartColors" [legend]="barHorizontalChartLegend" [chartType]="barHorizontalChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Stacked bar -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Stacked Bar'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas height="100" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barStackChartOptions" [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Line Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Line Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Stepped Line Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Stepped Line Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [datasets]="lineChartSteppedData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Point Line Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Points Line Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [datasets]="linePointChartData" [labels]="lineChartLabels" [options]="linePointChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Pie Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Pie Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [data]="pieChartData" [options]="PieChartOptions" [colors]="pieChartColors" [chartType]="pieChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Doughnut Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Doughnut Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [data]="doughnutChartData" [options]="PieChartOptions" [colors]="pieChartColors" [chartType]="doughnutChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Polar Area Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Polar Area Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [colors]="pieChartColors" [chartType]="polarAreaChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Radar Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Radar Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [datasets]="radarChartData" [labels]="radarChartLabels" [legend]="polarAreaLegend" [colors]="lineChartColors" [chartType]="radarChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- bubble -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Bubble Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas height="100" baseChart [datasets]="bubbleChartData" [labels]="lineChartLabels" [options]="bubbleChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="bubbleChartType"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Mixed Chart -->
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Mixed Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<canvas baseChart height="100" [datasets]="mixedPointChartData" [labels]="lineChartLabels" [options]="mixedChartOptions" [colors]="barChartColors" [legend]="lineChartLegend" [chartType]="barChartType"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Row Closed -->

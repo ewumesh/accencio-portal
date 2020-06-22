@@ -1,0 +1,24 @@
+<!--Course Review-->
+<div class="review-stats">
+	<div class="sec-title grid-b-space">
+		<h2 class="font-xl sec-color">{{coureReviews.rating}}
+			<bar-rating class="d-inline-block align-text-bottom" [rate]="coureReviews.rating" [max]="5" [readOnly]="true" [theme]="'fontawesome-o'"></bar-rating>
+		</h2>
+	</div>
+	<div class="total-count grid-b-space">
+		<h2 class="font-2x font-weight-light"><span class="text-muted">{{coureReviews.reviews}} Reviews</span></h2>
+	</div>
+	<ul class="stats-list-wrap list-unstyled ">
+		<li class="w-100 d-flex flex-wrap align-items-center justify-content-start grid-b-space" *ngFor="let review of coureReviews.courseBenefits">
+			<div class="icon-wrap {{review.iconBorder}} border shadow-box d-flex align-items-center justify-content-center mr-2 rounded-circle ">
+				<i class="fa {{review.icon}}" aria-hidden="true"></i>
+			</div>
+			<div class="percent-wrap mr-2 text-center">
+				<span class="font-2x">{{review.afterCourseBenefits}}</span>
+			</div>
+			<div class="sec-content">
+				<p class="mb-0">{{review.benefit}}</p>
+			</div>
+		</li>
+	</ul>
+</div>

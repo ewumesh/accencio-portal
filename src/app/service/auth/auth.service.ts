@@ -1,0 +1,149 @@
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
+import { Auth } from 'aws-amplify';
+import { ASession } from 'request/session';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+	user 		  : Observable<firebase.User>;
+	userData   : any;
+   isLoggedIn = false;
+
+   constructor(private firebaseAuth: AngularFireAuth,
+               private router : Router,
+               private session : ASession,
+               private toastr: ToastrService) { 
+   	this.user = firebaseAuth.authState;
+   }
+
+   /*
+    *  getLocalStorageUser function is used to get local user profile data.
+    */
+   getLocalStorageUser(){
+      this.userData = JSON.parse(localStorage.getItem("userProfile"));
+      if(this.userData) {
+         this.isLoggedIn = true;
+         return true;
+      } else {
+         this.isLoggedIn = false;
+         return false;
+      }    
+   }
+
+  	/*
+    * signupUserProfile method save email and password into firabse &
+    * signupUserProfile method save the user sign in data into local storage. 
+    */
+   signupUserProfile(value) {
+    	/*this.firebaseAuth
+   	.auth
+      .createUserWithEmailAndPassword(value.email, value.password)
+      .then(value => {
+        this.toastr.success('Account Created!');
+        this.setLocalUserProfile(value);
+        this.router.navigate(['/']);
+      })
+      .catch(err => {
+         this.toastr.error(err.message);
+      });    */
+
+      const authInfo = {
+         username: value.account,
+         password: value.password
+       };
+   
+       Auth.signIn(authInfo).then(user => {
+         //this.getUserInfo();
+         //this.route.navigate(['/dashboard2']);
+         this.setLocalUserProfile(value);
+         this.router.navigate(['/']);
+       })
+         .catch(err => this.toastr.error(err.message)); 
+   }
+
+   /*
+    * loginUser fuction used to login.
+    */
+   loginUser(value) {
+      const authInfo = {
+         username: value.fname,
+         password: value.password
+       };
+      Auth.signIn(authInfo).then(user => {
+         this.getUserInfo();
+         //this.route.navigate(['/dashboard2']);
+         this.toastr.success('You have been successfully logged In!');
+         this.setLocalUserProfile(value);
+         this.router.navigate(['dash-widget']);
+       })
+         .catch(err => this.toastr.error(err.message)); 
+/*
+      this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(value.email,value.password)
+      .then(value => {
+         this.setLocalUserProfile(value);
+         this.toastr.success('You have been successfully logged In!');
+         this.router.navigate(['/']);
+      })
+      .catch(err => {
+         this.toastr.error(err.message);
+      });*/
+   }
+
+   /*
+    * resetPassword is used to reset your password.
+    */
+   resetPassword(value) {
+      this.firebaseAuth.auth.sendPasswordResetEmail(value.email)
+         .then(value => {
+          	this.toastr.success("Email Sent");
+          	this.router.navigate(['/session/loginone']);
+         })
+         .catch(err => {
+            this.toastr.error(err.message);
+         });
+    }
+
+   /*
+    * logOut function is used to sign out . 
+    */
+   logOut() {
+      this.firebaseAuth
+      .auth
+      .signOut();
+      localStorage.removeItem("userProfile");
+      this.isLoggedIn = false;
+      this.toastr.success("You have been successfully logged out!");
+      this.router.navigate(['/session/loginone']);
+   }   
+
+   /*
+    * setLocalUserProfile function is used to set local user profile data.
+    */
+   setLocalUserProfile(value){
+   	localStorage.setItem("userProfile", JSON.stringify(value));
+      this.isLoggedIn = true;
+   }
+   public async getUserInfo() {
+      var au = await Auth.currentAuthenticatedUser();
+      if (!au)
+         return;
+      this.session.isLogged = true;
+      //var au = await Auth.currentAuthenticatedUser();
+      debugger;
+      this.session.username = au.username;
+      this.session.name = au.attributes['given_name'];
+      this.session.company = au.attributes['custom:company'];
+      this.session.role = au.attributes['custom:g1'];
+    } 
+}

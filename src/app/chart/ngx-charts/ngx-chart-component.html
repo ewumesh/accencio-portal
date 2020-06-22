@@ -1,0 +1,247 @@
+<!--Ngx Charts-->
+<div class="ngx-chart-wrapper">
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Vertical Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-vertical (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-vertical>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Horizontal Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-horizontal (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-horizontal>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Grouped Vertical Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-vertical-2d (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-vertical-2d>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Grouped Horizontal Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-horizontal-2d (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-horizontal-2d>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Stacked Vertical Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-vertical-stacked (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-vertical-stacked>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Stacked Horizontal Bar Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-horizontal-stacked (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-horizontal-stacked>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Normalized Vertical Bar'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-vertical-normalized (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-vertical-normalized>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Normalized Horizontal Bar'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-bar-horizontal-normalized (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-bar-horizontal-normalized>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Pie Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-pie-chart (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" [legend]="showLegend" [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient" (select)="onSelect($event)">
+					</ngx-charts-pie-chart>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Advanced Pie Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-advanced-pie-chart (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" (select)="onSelect($event)">
+					</ngx-charts-advanced-pie-chart>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Pie Grid Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-pie-grid (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+					</ngx-charts-pie-grid>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Line Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-line-chart (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
+					</ngx-charts-line-chart>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Area Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-area-chart (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
+					</ngx-charts-area-chart>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Stacked Area Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-area-chart-stacked (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-area-chart-stacked>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Normalized Area Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-area-chart-normalized (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-area-chart-normalized>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Heat Map Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-heat-map (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="multi" [legend]="showLegend" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+					</ngx-charts-heat-map>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+	<div class="row">
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Tree Map Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-tree-map (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+					</ngx-charts-tree-map>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+		<div class="col-md-12 col-lg-6">
+			<div class="chk-block">
+				<div class="chk-block-title">
+					<h3 class="text-capitalize">{{'Number Card Chart'|translate}}</h3>
+				</div>
+				<div class="chk-block-content over-hidden">
+					<ngx-charts-number-card (window:resize)="onResize($event)" [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+					</ngx-charts-number-card>
+				</div>
+			</div>
+		</div>
+		<!-- Col Closed -->
+	</div>
+	<!-- Row Closed -->
+</div>
+<!-- NGX Chart Wrapper Closed -->

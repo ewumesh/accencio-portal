@@ -1,0 +1,25 @@
+<!--Course degree Card-->
+<div class="card shadow-box border">
+	<figure class="imghvr-zoom-in">
+		<a class="p-cursor" (click)="openDetails()">
+			<ng-container *ngIf="earnDegree.image; else elseBlock">
+				<img class="img-fluid" alt="example-image" src="{{earnDegree.image}}">
+			</ng-container>
+			<ng-template #elseBlock>
+				<img class="img-fluid" alt="example-image" src="assets/img/degree-dummy.jpg">
+			</ng-template>
+		</a>
+	</figure>
+	<div class="card-body">
+		<div class="sec-content">
+			<h4><a (click)="openDetails()" class="text-dark">{{earnDegree.degree}}</a></h4>
+			<span class="description">{{earnDegree.university}}</span>
+		</div>
+	</div>
+	<div class="card-custom-footer">
+		<div class="course-footer-descp">
+			<span class="footer-shape d-flex align-items-center justify-content-start"><i class="fa fa-certificate mx-3" aria-hidden="true"></i>
+         </span>
+		</div>
+	</div>
+</div>

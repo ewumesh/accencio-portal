@@ -1,0 +1,34 @@
+<!--Courses Card-->
+<div class="card shadow-box border course-grid-item">
+	<figure class="imghvr-zoom-in">
+		<ng-container *ngIf="course.image; else dummyImage">
+			<a routerLink="{{course.link}}">
+				<div class="img-main" [ngStyle]="{'background-image': 'url(' + course.image + ')'}"></div>
+			</a>
+		</ng-container>
+		<ng-template #dummyImage>
+			<a routerLink="{{course.link}}">
+				<div class="img-main" style="background-image:url('assets/img/course-dummy.jpg')"></div>
+			</a>
+		</ng-template>
+	</figure>
+	<div class="card-body">
+		<div class="partner-logo p-2 bg-white shadow-box rounded">
+			<img class="img-fluid" alt="example-image" src="{{course.logo}}" width="60" height="60">
+		</div>
+		<div class="sec-content">
+			<h3 class="font-weight-light"><a routerLink="{{course.link}}" class="text-dark">{{course.title}}</a></h3>
+			<span class="description text-muted">{{course.university}}</span>
+		</div>
+	</div>
+	<div class="card-footer border-0">
+		<div class="course-footer-descp">
+			<ng-container *ngIf="course.bestseller; else elseBlock">
+				<span class="category">BestSeller</span>
+			</ng-container>
+			<ng-template #elseBlock>
+				<span class="category">Course</span>
+			</ng-template>
+		</div>
+	</div>
+</div>

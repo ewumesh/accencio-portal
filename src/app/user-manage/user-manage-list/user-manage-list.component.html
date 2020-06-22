@@ -1,0 +1,109 @@
+<!--User Manage List-->
+<div class="user-manage-list">
+	<div class="chk-block mb-0">
+		<div class="chk-block-title px-4">
+			<div class="d-block d-sm-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-start align-items-center mb-sm-0 mb-3">
+					<div class="mr-3">
+						<a class="text-muted" href="javascript:void(0)"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+					</div>
+					<div class="form-group form-field mr-3 mb-0 text-nowrap">
+						<select class="form-control h-auto p-cursor custom-select">
+                     <option>All</option>
+                     <option>Edit</option>
+                     <option>Delete</option>
+                     <option>New</option>
+                  </select>
+					</div>
+				</div>
+				<div class="d-flex justify-content-start align-items-center">
+					<button class="btn btn-primary" (click)="addNewUserDialog()">Add User<i class="fa fa-plus ml-2"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="chk-block-content p-0">
+			<div class="table-responsive">
+				<table class="table table-striped mb-0">
+					<thead>
+						<tr class="text-muted font-sm">
+							<th scope="row">
+								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" (change)="selectall($event)"><span class="custom-control-label p-cursor"></span></label></div>
+							</th>
+							<th scope="col">User</th>
+							<th scope="col">Email Address</th>
+							<th scope="col">Status</th>
+							<th class="text-center text-nowrap" scope="col">Account Type</th>
+							<th class="text-center text-nowrap" scope="col">Date Created</th>
+							<th class="text-center" scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let userList of userManageList;let i = index">
+							<th scope="row">
+								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" name="checkboxes"><span class="custom-control-label p-cursor"></span></label></div>
+							</th>
+							<td>
+								<div class="d-flex align-items-center">
+									<div class="mr-3">
+										<img class="rounded-circle" src="{{userList.image}}" height="50" width="50">
+									</div>
+									<div>
+										<h6 class="mb-0">{{userList.firstName}} {{userList.lastName}}</h6>
+										<ng-container *ngIf="userList.newStatus">
+											<span class="badge badge-primary mt-1">New</span>
+										</ng-container>
+									</div>
+								</div>
+							</td>
+							<td>
+								<span class="font-sm">{{userList.email}}</span>
+							</td>
+							<td>
+								<div class="d-flex">
+									<span class="fa fa-circle {{userList.statusType}} mr-2"></span>
+									<div>
+										<div class="font-sm">{{userList.status}}</div>
+										<div class="font-sm text-muted">{{userList.time}}</div>
+									</div>
+								</div>
+							</td>
+							<td class="text-center">
+								<span class="badge badge-{{userList.accountTypeColor}}">{{userList.accountType}}</span>
+							</td>
+							<td class="text-center font-sm">{{userList.dateCreated|date}}</td>
+							<td class="text-center font-sm text-nowrap">
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onEditUserList(userList,i)"><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(i)"><i class="fa fa-times" aria-hidden="true"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="invoice-pagination px-3 py-3 d-flex justify-content-sm-end justify-content-center">
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-end mb-0">
+						<li class="page-item">
+							<a class="page-link" href="javascript:;" aria-label="Previous">
+                        <span aria-hidden="true">
+                           <i class="fa fa-angle-double-left fa-lg" aria-hidden="true"></i>
+                        </span>
+                     </a>
+						</li>
+						<li class="active page-item"><a class="page-link bg-white mx-1 shadow-box" href="javascript:;">1</a></li>
+						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">2</a></li>
+						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">3</a></li>
+						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">4</a></li>
+						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">5</a></li>
+						<li class="page-item">
+							<a class="page-link" href="javascript:;" aria-label="Next">
+                        <span aria-hidden="true">
+                           <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
+                        </span>
+                     </a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>

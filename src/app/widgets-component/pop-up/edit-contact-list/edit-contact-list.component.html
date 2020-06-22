@@ -1,0 +1,72 @@
+<!--Edit Contact List Popup-->
+<div class="contact-list-popup mx-auto bg-white shadow-box rounded">
+	<div class="p-4 border-bottom">
+		<h3 class="mb-0">{{'Edit Contact'|translate}}</h3>
+	</div>
+	<div class="form-field-wrap border-bottom">
+		<form [formGroup]="form">
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="First name" formControlName="firstName">
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Last name" formControlName="lastName">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Company" formControlName="company">
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Location" formControlName="location">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="email" placeholder="Email" formControlName="email">
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Work" formControlName="work">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="mb-3 d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-phone font-2x" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-3 col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Phone No" formControlName="phoneNumber">
+				</div>
+				<div class="form-group mb-3 ml-auto col-10 col-sm-10 col-md-5 col-lg-5">
+					<input class="form-control" type="text" placeholder="Phone No" formControlName="phoneNumber">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="d-flex align-items-center  justify-content-center col-2 col-sm-2 col-md-2 col-lg-2 border-left">
+					<a class="font-lg text-muted" href="javascript:void(0)"><i class="fa fa-file-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group mb-0 col-10 col-sm-10 col-md-10 col-lg-10">
+					<input class="form-control" type="phone" placeholder="etc etc etc" formControlName="etc">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="p-4 border-bottom">
+		<div class="mb-3">
+			<h4 class="mb-0">Social profile</h4>
+		</div>
+		<app-social-media [socialIcons]="socialIcons"></app-social-media>
+	</div>
+	<div class="p-3">
+		<button class="btn text-primary mr-2 font-weight-bold" (click)="activeModal.dismiss()">Cancel</button>
+		<button class="btn font-weight-bold text-muted" (click)="onFormSubmit()">Save</button>
+	</div>
+</div>

@@ -1,11 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { Auth } from "aws-amplify";
+import { Component, Optional, ViewEncapsulation } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from './service/auth/auth.service';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	selector: 'chankya-app',
+	template:'<router-outlet></router-outlet>',
+	encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
-  public isl = false;
+
+export class ChankyaAppComponent {
+   constructor(translate: TranslateService, authService: AuthService) {
+		translate.addLangs(['en', 'fr', 'he', 'ru' , 'ar' , 'zh' ,'de' , 'es', 'ja', 'ko' , 'it' ,'hu']);
+		translate.setDefaultLang('en');
+
+		const browserLang: string = translate.getBrowserLang();
+		translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+
+		authService.getUserInfo();
+	}
 }

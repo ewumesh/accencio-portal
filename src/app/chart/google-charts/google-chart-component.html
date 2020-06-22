@@ -1,0 +1,125 @@
+<!--Google Chart-->
+<div class="row">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Line'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="columnChartData"></google-chart>
+				<input type="button" value="Change data" (click)="changeData()"> <input type="button" value="Change chart type" (click)="changeChartType()">
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Animated Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart #cchart [data]="columnChartData2"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Pie Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="pieChartData"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Gauge Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="gaugeChartData"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Scatter Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="scatterChartData"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Timeline Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="timelineChartData"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Line Chart With Events'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="lineChartData" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-items-start flex-row">
+						<h3 class="text-capitalize">{{'Combo Chart'|translate}}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content">
+				<google-chart [data]="comboChartData" (mouseOver)="mouseOver($event)"></google-chart>
+			</div>
+		</div>
+		<!-- Chk Block Closed -->
+	</div>
+</div>
+<!-- Row Closed -->

@@ -1,0 +1,32 @@
+<!--User List-->
+<div class="chk-block">
+	<div class="chk-block-title">
+		<h3 class="text-capitalize">{{'User List'|translate}}</h3>
+	</div>
+	<div class="chk-block-content">
+		<div class="row">
+			<div class="col-sm-6 col-lg-6 col-xl-3 mb-3" *ngFor="let user of users">
+				<div class="card border">
+					<figure class="imghvr-zoom-in"><img src="{{user.image}}" class="img-fluid" alt="example-image">
+						<figcaption class="card-img-overlay pos-center text-center">
+							<div class="center-holder">
+								<a href="javascript:void(0)" class="square-40 circle bg-light shadow-box border"><i class="fa fa-search"></i></a>
+							</div>
+						</figcaption>
+					</figure>
+					<div class="card-body text-center">
+						<p>{{user.name}}</p>
+						<p class="text-muted">{{user.post}}</p>
+						<div class="card-links">
+							<ul class="list-inline">
+								<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-facebook fa-lg text-muted"></i></a></li>
+								<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-twitter fa-lg text-muted"></i></a></li>
+								<li class="list-inline-item"><a href="javascript:void(0)"><i class="fa fa-linkedin fa-lg text-muted"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

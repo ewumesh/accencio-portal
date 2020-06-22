@@ -1,0 +1,10 @@
+<!--Video Player-->
+<div role="document" class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-body">
+			<div *ngIf="yt_iframe_html">
+				<div [innerHtml]="yt_iframe_html"></div>
+			</div>
+		</div>
+	</div>
+</div>

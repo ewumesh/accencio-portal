@@ -1,0 +1,175 @@
+/*========== Session Scss Style =========*/
+.login-icon {
+	span {
+		box-shadow: 0 6px 12px 3px rgba(0, 0, 0, 0.17);
+		background-color: $blue;
+		color: #fff;
+		border-radius: 100%;
+	}
+}
+.session-input-font {
+	font-size: 1rem;
+	height: calc(2.875rem + 2px);
+	padding: 0.5rem 1rem;
+}
+.login-block {
+	background: $block-bg;
+	border-radius: 10px;
+	padding: 5.5rem 3rem 3rem;
+	.checkbox {
+		margin: 0;
+	}
+	.login-icon {
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: -50px;
+	}
+}
+
+/*========== Main Login ===========*/
+.bg-sc {
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: auto;
+	padding: 4rem 2rem;
+	background-attachment: fixed;
+	min-height: 100vh;
+	width: 100%;
+}
+.loginone-wrapper {
+	background-color: #fff;
+	background-image: url("assets/img/login-1-banner.jpg");
+	@extend .bg-sc;
+	background-position: center center;
+	height: 100vh;
+	padding: 0;
+}
+.bg-container {
+	margin-bottom: 2rem;
+	padding-top: 6rem;
+}
+.login-content {
+	float: right;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	margin-right: 8rem;
+}
+.login-content,
+.register-content,
+.lockscreen-content {
+	width: 485px;
+}
+
+/*========== Register ===========*/
+.registerone-wrapper {
+	background-image: url("assets/img/login-banner2.jpg");
+	@extend .bg-sc;
+	background-position: bottom left;
+}
+
+/*========== Forgot Password ===========*/
+.forgot-password {
+	background-image: url("assets/img/login-2-banner.jpg");
+	@extend .bg-sc;
+	background-position: center center;
+	.login-block {
+		width: 650px;
+	}
+}
+
+/*========== Under Maintenance ===========*/
+.under-maintenance-wrapper {
+	background-image: url("assets/img/under-maintain.jpg");
+}
+
+/*========== Not Found ===========*/
+.not-found {
+	background-image: url("assets/img/404page.jpg");
+	.not-found-wrapper {
+		background-color: rgba($white, 0.7);
+	}
+}
+
+/*========== Main Login Ends ===========*/
+.login-inner-wrapper-2 {
+	background: $block-bg;
+	padding: 10px 30px;
+	border-radius: 10px;
+}
+.login-form-wrapper-3 {
+	color: $white;
+	@include background("assets/img/login-banner-3.png",
+	left center,
+	no-repeat,
+	100% 100%);
+	padding: 10rem 0;
+	.checkbox {
+		margin: 0;
+	}
+}
+.login-block-2 {
+	background-color: rgba(0, 0, 0, 0.44);
+	padding: 30px 30px;
+	border-radius: 10px;
+}
+.authentication-block-content {
+	padding-left: 6em;
+	padding-top: 8rem;
+}
+.coming-wrapper {
+	@include background("assets/img/coming-soon-banner.jpg",
+	center center,
+	no-repeat,
+	cover);
+	padding: 5rem 1rem;
+}
+
+//=========== Login Responsive Css =========//
+@media (max-width: 767px) {
+	.login-content {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.login-content,
+	.register-content,
+	.lockscreen-content,
+	.forgot-password .login-block {
+		width: 80%;
+	}
+	.font-5x {
+		font-size: 3em;
+	}
+	.font-4x {
+		font-size: 2em;
+	}
+}
+@media (max-width: 576px) {
+	.login-block {
+		padding: 5rem 2rem 3rem;
+	}
+	.login-content,
+	.register-content,
+	.lockscreen-content,
+	.forgot-password .login-block {
+		width: 100%;
+	}
+	.loginone-wrapper {
+		padding: 1rem;
+	}
+	.login-inner-wrapper-2 {
+		padding: 15px;
+	}
+}
+@media(max-width:420px) {
+	.bg-sc,
+	.loginone-wrapper,
+	.registerone-wrapper,
+	.forgot-password {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}

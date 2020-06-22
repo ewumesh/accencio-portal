@@ -1,0 +1,75 @@
+<!--Contact List Popup-->
+<div class="contact-list-popup mx-auto bg-white shadow-box rounded">
+	<div class="p-4 border-bottom">
+		<div class="d-flex flex-wrap align-items-center justify-content-between">
+			<div class="d-flex align-items-center mb-sm-0 mb-3">
+				<div class="square-50 circle bg-primary align-self-center p-1 mr-3">{{data.shortName}}</div>
+				<div>
+					<h3 class="mb-0">{{data.firstName}} {{data.lastName}}</h3>
+				</div>
+			</div>
+			<div class="mb-sm-0 mb-3 d-flex align-items-start">
+				<div class="dropdown text-nowrap">
+					<button class="btn dropdown-toggle drop-btn p-0" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          	 	<a class="d-inline-block px-3 text-muted" href="javascript:void(0)"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+	            </button>
+					<div class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenu2">
+						<button class="dropdown-item btn mb-2 px-2 d-flex align-items-center" type="button"><i class="fa fa-print mr-3"></i>Print</button>
+						<button class="dropdown-item btn mb-2 px-2 d-flex align-items-center" type="button"><i class="fa fa-cloud-upload mr-3"></i>Export</button>
+						<button class="dropdown-item btn px-2 d-flex align-items-center" type="button"><i class="fa fa-trash mr-3"></i>Delete</button>
+					</div>
+				</div>
+				<a class="d-inline-block px-3 text-muted" href="javascript:void(0)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+				<a class="d-inline-block px-3 text-muted" href="javascript:void(0)" (click)="activeModal.dismiss()"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="p-4 border-bottom">
+		<div class="mb-3">
+			<h4 class="mb-0">Contact details</h4>
+		</div>
+		<div>
+			<div class="d-flex align-items-start mb-3">
+				<div class="detail-icon">
+					<i class="fa fa-address-card-o text-muted" aria-hidden="true"></i>
+				</div>
+				<div class="detail-content">
+					<span>{{data.work}}, {{data.company}}</span>
+				</div>
+			</div>
+			<div class="d-flex align-items-start mb-3">
+				<div class="detail-icon">
+					<i class="fa fa-envelope-o text-muted" aria-hidden="true"></i>
+				</div>
+				<div class="detail-content d-inline-block">
+					<a class="mr-2 d-inline-block" href="javascript:void(0)">{{data.email}}</a>
+					<span class="text-muted d-inline-block">
+                  <i class="fa fa-circle mr-1" aria-hidden="true"></i><span>Work</span>
+					</span>
+				</div>
+			</div>
+			<div class="d-flex align-items-start mb-3">
+				<div class="detail-icon">
+					<i class="fa fa-phone font-2x text-muted" aria-hidden="true"></i>
+				</div>
+				<div class="detail-content">
+					<a href="javascript:void(0)">+91 {{data.phoneNumber}}</a>
+				</div>
+			</div>
+			<div class="d-flex align-items-start">
+				<div class="detail-icon">
+					<i class="fa fa-file-o text-muted" aria-hidden="true"></i>
+				</div>
+				<div class="detail-content">
+					<span>{{data.etc}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="p-4">
+		<div class="mb-3">
+			<h4 class="mb-0">Social profile</h4>
+		</div>
+		<app-social-media [socialIcons]="socialIcons"></app-social-media>
+	</div>
+</div>

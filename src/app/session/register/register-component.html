@@ -1,0 +1,64 @@
+<!--Register-->
+<div class="registerone-wrapper d-flex align-items-center justify-content-between">
+	<div class="login-block text-center register-content shadow-box border mx-auto position-relative">
+		<div class="login-icon mb-4">
+			<span class="square-100 fa-notify"><i class="fa fa-unlock-alt"></i></span>
+		</div>
+		<div class="grid-b-space">
+			<p class="text-primary mb-2 letter-space-1">{{'Welcome To Chankya'|translate}}</p>
+			<h2 class="text-muted">{{'Register with Us'|translate}}</h2>
+		</div>
+		<form [formGroup]="ngForm" class="login-form" action="javascript:;" method="post">
+			<div class="form-group">
+				<input class="form-control session-input-font input-square" type="text" placeholder="First Name" formControlName="firstName">
+				<small *ngIf="ngForm.controls['firstName'].hasError('required') && ngForm.controls['firstName'].touched" class="text-danger">
+               You must include a first name.
+            </small>
+			</div>
+			<div class="form-group">
+				<input class="form-control session-input-font input-square" type="text" placeholder="Last Name" formControlName="lastName">
+				<small *ngIf="ngForm.controls['lastName'].hasError('required') && ngForm.controls['lastName'].touched" class="text-danger">
+               You must include a last name.
+            </small>
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control session-input-font input-square" placeholder="Email Address" formControlName="email">
+				<small *ngIf="ngForm.controls['email'].hasError('required') && ngForm.controls['email'].touched" class="text-danger">
+               You must include an email address.
+            </small>
+				<small *ngIf="ngForm.controls['email'].errors && !(ngForm.controls['email'].hasError('required')) && ngForm.controls['email'].touched" class="text-danger">
+               You must include a valid email address.
+            </small>
+			</div>
+			<div class="form-group mb-4">
+				<input type="password" name="password" class="form-control session-input-font input-square" placeholder="Password" formControlName="password">
+				<small *ngIf="ngForm.controls['password'].hasError('required') && ngForm.controls['password'].touched" class="text-danger">
+              You must include password.
+           </small>
+			</div>
+			<div class="login-meta mb-4">
+				<div class="row">
+					<div class="col-12 col-sm-6 col-md-6">
+						<div class="custom-control custom-checkbox">
+							<label class="mb-2 mr-sm-2 mb-sm-0 d-flex">
+                        <input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox">
+                        <span class="custom-control-label"></span>
+                        <span class="custom-control-description d-inline-block align-text-top">{{'Remember Me'|translate}}</span>
+                     </label>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 text-left text-sm-right">
+						<a routerLink="/session/forgot-password" class="text-muted">{{'Forgot Password?'|translate}}</a>
+					</div>
+				</div>
+			</div>
+			<!-- login meta closed -->
+			<div class="mb-3">
+				<button type="submit" (click)="register()" class="btn btn-primary btn-block btn-lg btn-square">{{'Sign In'|translate}}</button>
+			</div>
+			<span>{{'Dont have account yet?'|translate}} <a routerLink="/session/loginone" class="text-primary">{{'Sign in here'|translate}}</a></span>
+		</form>
+		<!-- Login Form closed -->
+	</div>
+</div>
+<!-- login wrapper closed -->

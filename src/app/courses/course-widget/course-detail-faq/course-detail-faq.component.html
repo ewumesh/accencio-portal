@@ -1,0 +1,16 @@
+<!--Course Detail Faq-->
+<div class="card border mb-3">
+	<div class="card-header p-1 bg-white border-0" id="{{courseFaq.headingId}}">
+		<h2 class="mb-0">
+			<button class="font-weight-normal collapsed btn btn-link w-100 h-100 d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" attr.data-target="#{{courseFaq.collapseId}}" aria-expanded="true" aria-controls="courseFaq.collapseId">
+            <span class="font-lg">{{courseFaq.heading}}</span>
+            <i class="mat-icon material-icons acc-icon text-primary">keyboard_arrow_down</i>
+         </button>
+		</h2>
+	</div>
+   <div id="{{courseFaq.collapseId}}" class="collapse" aria-labelledby="courseFaq.headingId">
+      <div class="card-body">
+         {{courseFaq.content}}
+      </div>
+   </div>
+</div>

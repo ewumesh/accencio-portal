@@ -1,0 +1,38 @@
+<!--User Manage-->
+<div class="user-grid-list-wrap">
+	<div class="row">
+		<div class="col-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let grid of userManageGrid">
+			<div class="chk-block grid-list-card shadow-box">
+				<div class="row align-items-center no-gutters flex-wrap px-3 pt-3">
+					<div class="col-12 col-sm-7">
+						<div class="d-flex align-items-center  user-info">
+							<div class="img-thumb mr-3 mb-3 d-inline-block">
+								<img class="rounded-circle" src="{{grid.userImage}}" height="50" width="50">
+							</div>
+							<div class="sec-title mb-3">
+								<h6 class="m-0">{{grid.name}}</h6>
+								<span class="d-flex align-items-center font-sm"><i class="fa fa-map-marker mr-2" aria-hidden="true"></i>{{grid.location}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-sm-5 text-right resp-width">
+						<div class="social-icon-wrapper d-flex align-items-center mb-3 justify-content-sm-end mx-n2">
+							<a href="javascript:void(0)" class="icon facebook px-2 text-dark font-lg" *ngFor="let socialIcons of grid.socialIcons">
+                        <i class="fa {{socialIcons}}" aria-hidden="true"></i>
+                     </a>
+						</div>
+					</div>
+				</div>
+				<div class="grid-image">
+					<img class="img-fluid" src="{{grid.image}}" height="450" width="700">
+				</div>
+				<div class="p-3">
+					<button class="btn btn-lg btn-dark mb-3">SEND MESSAGE<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></button>
+					<span class="d-flex align-items-center text-{{grid.availableColor}}">
+                  <i class="fa {{grid.availableIcon}} mr-2" aria-hidden="true"></i><small>{{grid.availableText}}</small>
+               </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

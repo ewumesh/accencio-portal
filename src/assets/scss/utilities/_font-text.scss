@@ -1,0 +1,43 @@
+//====== Font size =======//
+.font-xs {
+	font-size: $font-size-sm - 0.35rem !important;
+}
+.font-lg {
+	font-size: $font-size-lg;
+}
+.font-sm {
+	font-size: $font-size-sm !important;
+}
+.font-md {
+	font-size: $font-size-lg + 0.35rem;
+}
+.font-2x {
+	font-size: 2em;
+}
+.font-3x {
+	font-size: 3em;
+}
+.font-4x {
+	font-size: 4em !important;
+}
+.font-5x {
+	font-size: 5em;
+}
+.font-xl {
+	font-size: 42px;
+}
+.letter-space-1 {
+	letter-spacing: 1px;
+}
+.letter-space-2 {
+	letter-spacing: 2px;
+}
+.letter-space-3 {
+	letter-spacing: 3px;
+}
+.text-inverse {
+	color: #fff;
+}
+/*========== Custom Text Color ===========*/
+@include text-emphasis-variant('.text-green', $green);
+@include text-emphasis-variant('.text-yellow', $yellow);
