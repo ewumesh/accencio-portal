@@ -18,8 +18,6 @@ import { SidebarModule } from 'ng-sidebar';
 import { ToastrModule } from 'ngx-toastr';
 import 'hammerjs'; 
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './service/auth/auth.service';
 
 import { ChankyaAppComponent} from './app.component';
@@ -39,14 +37,6 @@ export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 } 
 
-export const firebase = {
-	apiKey: "AIzaSyAYQ701NLzFMFFtx-A71OzNfORfJhR1RvI",
-	authDomain: "chankya-e0e7a.firebaseapp.com",
-	databaseURL: "https://chankya-e0e7a.firebaseio.com",
-	projectId: "chankya-e0e7a",
-	storageBucket: "chankya-e0e7a.appspot.com",
-	messagingSenderId: "531424365001"
-}
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	suppressScrollX: true
@@ -84,9 +74,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 			timeOut: 2000,
 			preventDuplicates: true
 		}),		
-		WidgetsComponentModule,
-		AngularFireModule.initializeApp(firebase),
-		AngularFireAuthModule
+		WidgetsComponentModule
     ],
 	declarations: [
 		ChankyaAppComponent, 

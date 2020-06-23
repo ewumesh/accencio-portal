@@ -36,6 +36,9 @@ export const AppRoutes: Routes = [
    },{
       path: 'user-management',loadChildren: ()=>
       import('./user-manage/user-manage.module').then(m => m.UserManageModule)
+   },{
+      path: 'courses',loadChildren: ()=> 
+      import('./courses/courses.module').then(m => m.CoursesModule)
    }],
    },
    {

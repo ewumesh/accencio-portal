@@ -40,3 +40,6 @@ aws cloudformation describe-stacks --stack-name portal --query "Stacks[0].Output
 
 
 https://medium.com/@ibliskavka/aws-angular-stack-automation-b45767bda2ec
+
+
+curl -X OPTION https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/item/all  -H "Access-Control-Allow-Origin:*" -H "Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept"

@@ -30,6 +30,7 @@
 								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" (change)="selectall($event)"><span class="custom-control-label p-cursor"></span></label></div>
 							</th>
 							<th scope="col">User</th>
+							<th scope="col">Name</th>
 							<th scope="col">Email Address</th>
 							<th scope="col">Status</th>
 							<th class="text-center text-nowrap" scope="col">Account Type</th>
@@ -44,16 +45,16 @@
 							</th>
 							<td>
 								<div class="d-flex align-items-center">
-									<div class="mr-3">
-										<img class="rounded-circle" src="{{userList.image}}" height="50" width="50">
-									</div>
 									<div>
-										<h6 class="mb-0">{{userList.firstName}} {{userList.lastName}}</h6>
+										<h6 class="mb-0">{{userList.accountName}}</h6>
 										<ng-container *ngIf="userList.newStatus">
 											<span class="badge badge-primary mt-1">New</span>
 										</ng-container>
 									</div>
 								</div>
+							</td>
+							<td>
+								<span class="font-sm">{{userList.name}}</span>
 							</td>
 							<td>
 								<span class="font-sm">{{userList.email}}</span>
@@ -73,7 +74,7 @@
 							<td class="text-center font-sm">{{userList.dateCreated|date}}</td>
 							<td class="text-center font-sm text-nowrap">
 								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onEditUserList(userList,i)"><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(i)"><i class="fa fa-times" aria-hidden="true"></i></a>
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(userList, i)"><i class="fa fa-times" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 					</tbody>

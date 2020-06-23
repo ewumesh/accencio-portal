@@ -223,7 +223,6 @@ export class MainComponent implements OnInit, OnDestroy {
 	  * changeHeaderColor function filter the color for header section.
 	  */
 	changeHeaderColor(color) {
-		debugger;
 		this.headerSkinColor = color;
 	}
 

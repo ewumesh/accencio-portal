@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,15 +12,13 @@ import { ASession } from 'request/session';
 })
 export class AuthService {
 
-	user 		  : Observable<firebase.User>;
 	userData   : any;
    isLoggedIn = false;
 
-   constructor(private firebaseAuth: AngularFireAuth,
-               private router : Router,
+   constructor(private router : Router,
                private session : ASession,
                private toastr: ToastrService) { 
-   	this.user = firebaseAuth.authState;
+   	
    }
 
    /*
@@ -104,27 +100,27 @@ export class AuthService {
     * resetPassword is used to reset your password.
     */
    resetPassword(value) {
-      this.firebaseAuth.auth.sendPasswordResetEmail(value.email)
+   /*   this.firebaseAuth.auth.sendPasswordResetEmail(value.email)
          .then(value => {
           	this.toastr.success("Email Sent");
           	this.router.navigate(['/session/loginone']);
          })
          .catch(err => {
             this.toastr.error(err.message);
-         });
+         });*/
     }
 
    /*
     * logOut function is used to sign out . 
     */
    logOut() {
-      this.firebaseAuth
+      /*this.firebaseAuth
       .auth
       .signOut();
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out!");
-      this.router.navigate(['/session/loginone']);
+      this.router.navigate(['/session/loginone']);*/
    }   
 
    /*
@@ -139,8 +135,7 @@ export class AuthService {
       if (!au)
          return;
       this.session.isLogged = true;
-      //var au = await Auth.currentAuthenticatedUser();
-      debugger;
+      this.session.id_token = au.signInUserSession.idToken.getJwtToken();
       this.session.username = au.username;
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];

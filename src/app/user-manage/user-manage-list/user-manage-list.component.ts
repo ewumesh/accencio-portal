@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 import { CoreService } from '../../service/core/core-service.service';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ASession } from 'request/session';
+import { environment } from 'environments/environment';
+import { Http, Response, Headers, RequestOptions, ResponseContentType } from '@angular/http';
 
 @Component({
 	selector: 'app-user-manage-list',
@@ -18,137 +22,12 @@ export class UserManageListComponent implements OnInit {
 		"Gold": "success",
 		"Silver": "warning"
 	}
-	user2ManageList: any = [
+	userManageList = [];
+	userManage3List: any = [
 		{
 			image: "assets/img/user-1.jpg",
-			firstName: "Joseph",
-			lastName: "Pinney",
-			newStatus: true,
-			email: "JosephAPinney@rhyta.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 1 Hour",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "27 Oct 2018"
-		},
-		{
-			image: "assets/img/user-2.jpg",
-			firstName: "Jane",
-			lastName: "Walker",
-			newStatus: true,
-			email: "JaneDWalker@rhyta.com",
-			status: "Inactive",
-			statusType: "offline",
-			time: "Since 30 min",
-			accountType: "Gold",
-			accountTypeColor: "success",
-			dateCreated: "29 Mar 2018"
-		},
-		{
-			image: "assets/img/user-4.jpg",
-			firstName: "Carl",
-			lastName: "McClellan",
-			email: "CarlCMcClellan@rhyta.com",
-			status: "Inactive",
-			statusType: "offline",
-			time: "Since 45 min",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "11 May 2018"
-		},
-		{
-			image: "assets/img/user-3.jpg",
-			firstName: "Gordon",
-			lastName: "Schrom",
-			email: "GordonESchrom@jourrapide.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 10 min",
-			accountType: "Silver",
-			accountTypeColor: "warning",
-			dateCreated: "26 Dec 2018"
-		},
-		{
-			image: "assets/img/user-5.jpg",
-			firstName: "Bradly",
-			lastName: "Tucker",
-			email: "BradlyDTucker@rhyta.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 5 min",
-			accountType: "Gold",
-			accountTypeColor: "success",
-			dateCreated: "04 Dec 2018"
-		},
-		{
-			image: "assets/img/user-6.jpg",
-			firstName: "Ruby",
-			lastName: "Young",
-			email: "RubyJYoung@jourrapide.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 1 Hour",
-			accountType: "Silver",
-			accountTypeColor: "warning",
-			dateCreated: "16 May 2018"
-		},
-		{
-			image: "assets/img/user-7.jpg",
-			firstName: "Allen",
-			lastName: "Hall",
-			email: "AllenTHall@armyspy.com",
-			status: "Inactive",
-			statusType: "offline",
-			time: "Since 25 min",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "16 May 2018"
-		},
-		{
-			image: "assets/img/user-8.jpg",
-			firstName: "Nancy",
-			lastName: "Hall",
-			email: "NancyRPaz@teleworm.us",
-			status: "Active",
-			statusType: "online",
-			time: "Since 55 min",
-			accountType: "Gold",
-			accountTypeColor: "success",
-			dateCreated: "06 Oct 2018"
-		},
-		{
-			image: "assets/img/user-9.jpg",
-			firstName: "Sheryl",
-			lastName: "Brown",
-			email: "SherylEBrown@rhyta.com",
-			status: "Inactive",
-			statusType: "offline",
-			time: "Since 2 Hour",
-			accountType: "Silver",
-			accountTypeColor: "warning",
-			dateCreated: "08 May 2018"
-		},
-		{
-			image: "assets/img/user-10.jpg",
-			firstName: "Lauren",
-			lastName: "Hang",
-			email: "LaurenCHang@rhyta.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 3 Hour",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "27 Dec 2018"
-		}
-	]
-
-
-	userManageList: any = [
-		{
-			image: "assets/img/user-1.jpg",
-			firstName: "Joseph",
-			lastName: "Pinney",
+			name: "Joseph",
+			accountName: "Pinney",
 			newStatus: true,
 			email: "JosephAPinney@rhyta.com",
 			status: "Active",
@@ -162,11 +41,31 @@ export class UserManageListComponent implements OnInit {
 
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
-		public translate: TranslateService) { }
+		public translate: TranslateService,
+		private http: HttpClient,
+		private session: ASession) { }
 
 	ngOnInit() {
 		this.translate.get('User Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
+		});
+		console.log(this.session.id_token);
+		this.http.get(environment.API_GATEWAY + '/user/list').subscribe(users => {
+			(users.Users as Object[]).forEach(user => {
+				this.userManageList.push({
+					image: "assets/img/user-1.jpg",
+					name: user.Attributes.find(el => el.Name == "given_name").Value,
+					accountName: user.Username,
+					newStatus: false,
+					email: user.Attributes.find(el => el.Name == "email").Value,
+					status: user.UserStatus,
+					statusType: "online",
+					time: "Since 1 Hour",
+					accountType: user.Attributes.find(el => el.Name == "custom:g1").Value,
+					accountTypeColor: "primary",
+					dateCreated: "27 Oct 2018"
+				})
+			});
 		});
 	}
 
@@ -197,9 +96,8 @@ export class UserManageListComponent implements OnInit {
 	getAddUserPopupResponse(response: any) {
 		if (response) {
 			let addUser = {
-				image: "assets/img/user-4.jpg",
-				firstName: response.firstName,
-				lastName: response.lastName,
+				name: response.name,
+				accountName: response.accountName,
 				email: response.email,
 				accountType: response.accountType,
 				status: "Active",
@@ -215,9 +113,21 @@ export class UserManageListComponent implements OnInit {
 	/** 
 	   * onDelete method is used to open a delete dialog.
 	   */
-	onDelete(i) {
+	onDelete(data, i) {
+		const  headers = new  HttpHeaders();
+		//.set("Access-Control-Allow-Origin", "*");
+
+		let accountName = data.accountName;
+
+		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
-			then(res => { this.getDeleteResponse(res, i) })
+			then(res => {
+				console.log(accountName)
+				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName, {headers}).subscribe(r => {
+								this.getDeleteResponse(res, i)
+							});
+					
+			})
 			.catch(error => console.log(error))
 	}
 
@@ -244,8 +154,8 @@ export class UserManageListComponent implements OnInit {
 	   */
 	getEditResponse(response: any, data, i) {
 		if (response) {
-			this.userManageList[i].firstName = response.firstName,
-				this.userManageList[i].lastName = response.lastName,
+			this.userManageList[i].accountName = response.accountName,
+				this.userManageList[i].name = response.name,
 				this.userManageList[i].email = response.email,
 				this.userManageList[i].accountType = response.accountType,
 				this.userManageList[i].accountTypeColor = this.color[response.accountType]

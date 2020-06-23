@@ -45,10 +45,7 @@ export class CourseComponent implements OnInit {
    ]
 
    course_language : any [] =[
-      "English",
-      "French",
-      "German",
-      "Hindi"
+      "English"
    ]
 
    trendingCourseSlideConfig  = {"slidesToShow": 4, "slidesToScroll": 1,"arrows": true,"autoplay": true, "autoplaySpeed": 1500,

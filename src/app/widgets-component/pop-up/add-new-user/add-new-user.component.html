@@ -5,7 +5,7 @@
 	</div>
 	<form [formGroup]="addNewUserForm">
 		<div class="form-group grid-b-space">
-			<input class="form-control" type="text" placeholder="First name" formControlName="accountName">
+			<input class="form-control" type="text" placeholder="Account name" formControlName="accountName">
 			<small *ngIf="addNewUserForm.controls['accountName'].hasError('required') && addNewUserForm.controls['accountName'].touched" class="text-danger">
 	         You must include account.
 	      </small>
