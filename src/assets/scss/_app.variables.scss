@@ -56,7 +56,7 @@ $chat-block-font-color:             #fff;
 
 $chat-item-padding:                 1rem;
 $chat-item-border:                  1px solid $input-border-color;
-$chat-item-bg-color:                #fff;			 
+$chat-item-bg-color:                #fff;
 
 //--- Dropdown variables ---//
 $dropdown-min-width:                null;
@@ -77,7 +77,7 @@ $input-square:                      0px;
 $input-rounded:                     10rem;
 
 //--- Header ---//
-$header-bg:                         #fff;
+$header-bg:                         #303031;
 $header-height:                     72px;
 $header-bottom-border:              1px solid $input-border-color;
 $header-pad-left-right:             1.3rem;
@@ -113,12 +113,12 @@ $preloader-bg-two:                  $orange;
 //--- SidebarWidths ---//
 $sidebar-width: 					      18.75rem;
 $sidebar-menu-text:         	      $body-color;
-$sidebar-bg: 				            url("assets/img/sidebar-bg.jpg");
+$sidebar-bg: 				            url("assets/img/background-accencio-2.jpg");
 $sidebar-overlay-bg:                rgba($white, 0.87);
 
 //--- Sidebar logo ---//
 $sidebar-logo-bg:                   $white;
-$sidebar-icon-size:                 1.1rem; 
+$sidebar-icon-size:                 1.1rem;
 
 //--- Square box ---//
 $square-font-size:                  0.5; // 50% relative to the container
@@ -144,4 +144,4 @@ $popover-body-font-color:				#fff;
 $card-box-shadow: 						0 0 35px 0 rgba(154,161,171,.15);
 
 //modal-default-width
-$modal-def-width:             		600px;  
+$modal-def-width:             		600px;
