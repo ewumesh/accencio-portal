@@ -3,3 +3,6 @@ export class User {
     UserStatus: string;
     Attributes: any[];
 }
+export class UserResponse {
+    Users: User[];
+}

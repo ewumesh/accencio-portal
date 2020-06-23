@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
-import { User } from './User';
+import { User, UserResponse } from './User';
 
 
 @Component({
@@ -50,10 +50,10 @@ export class UserManageListComponent implements OnInit {
 		this.translate.get('User Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		//console.log(this.session.id_token);
-		this.http.get(environment.API_GATEWAY + '/user/list').subscribe(users => {
+		console.log(this.session.id_token);
+		this.http.get<UserResponse>(environment.API_GATEWAY + '/user/list').subscribe(users => {
 			debugger;
-			(users.Users as Object[]).forEach(user => {
+			users.Users.forEach(user => {
 				this.userManageList.push({
 					image: "assets/img/user-1.jpg",
 					name: user.Attributes.find(el => el.Name == "given_name").Value,
