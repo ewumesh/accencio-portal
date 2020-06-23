@@ -265,7 +265,6 @@ export class MainComponent implements OnInit, OnDestroy {
 	  * toggleSidebar method is used to switch between Icon sidebar and Sidebar.
 	  */
 	toggleSidebar(isChecked) {
-		console.log(isChecked)
 		this.miniSidebar = !isChecked;
 		if (isChecked) {         
 			document.getElementById('showSidebar').classList.remove('icon-sidebar');
