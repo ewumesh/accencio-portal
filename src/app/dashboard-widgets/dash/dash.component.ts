@@ -135,8 +135,6 @@ export class DashComponent implements OnInit, AfterViewInit {
          });
          const config = { attributes: true, childList: true, characterData: true };
          this.observer.observe(this.spotcont.nativeElement, config);
-   
-         console.log('end init ...');
       });
    }
 
@@ -207,8 +205,6 @@ export class DashComponent implements OnInit, AfterViewInit {
    }
 
    ngAfterViewInit() {
-
-      console.log('after init')
    }
 
    ngOnInit() {

@@ -77,7 +77,7 @@ export class AuthService {
       Auth.signIn(authInfo).then(user => {
          this.getUserInfo();
          //this.route.navigate(['/dashboard2']);
-         this.toastr.success('You have been successfully logged In!');
+         this.toastr.success('You have been successfully logged In');
          this.setLocalUserProfile(value);
          this.router.navigate(['dash-widget']);
        })
@@ -116,11 +116,11 @@ export class AuthService {
    logOut() {
       /*this.firebaseAuth
       .auth
-      .signOut();
+      .signOut();*/
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
-      this.toastr.success("You have been successfully logged out!");
-      this.router.navigate(['/session/loginone']);*/
+      this.toastr.success("You have been successfully logged out.");
+      this.router.navigate(['/session/loginone']);
    }   
 
    /*
