@@ -128,7 +128,6 @@ export class AuthService {
       this.isLoggedIn = true;
    }
    public async getUserInfo() {
-      debugger;
       var au = await Auth.currentAuthenticatedUser();
       if (!au)
          return;
