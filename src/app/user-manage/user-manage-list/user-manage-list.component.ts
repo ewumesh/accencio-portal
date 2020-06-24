@@ -114,15 +114,17 @@ export class UserManageListComponent implements OnInit {
 	   * onDelete method is used to open a delete dialog.
 	   */
 	onDelete(data, i) {
-		const  headers = new  HttpHeaders();
-		//.set("Access-Control-Allow-Origin", "*");
+		var  headers = new  HttpHeaders();
+		//headers = headers.set('Accept', 'application/json');
+		//headers = headers.set('Content-Type', 'application/json');
+		//headers = headers.set('Access-Control-Allow-Origin', '*');
 
 		let accountName = data.accountName;
 
 		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
 			then(res => {
-				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName,{headers}).subscribe(r => {
+				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName, {headers}).subscribe(r => {
 								this.getDeleteResponse(res, i)
 							});
 					
