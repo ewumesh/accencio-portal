@@ -166,12 +166,12 @@
 }
 @media (max-width:767px){
    .custom-chart-height {
-      height: 270px !important;  
+      height: 270px !important;
   }
 }
 @media (max-width:450px){
    .custom-chart-height {
-      height: 200px !important;  
+      height: 200px !important;
   }
 }
 /*========== Tooltip Effect for dashboard ==========*/
@@ -286,7 +286,7 @@ div.ngx-charts-outer.ng-trigger.ng-trigger-animationState {
    }
    .media-body {
       flex: auto;
-      width: calc(100% - 140px);  
+      width: calc(100% - 140px);
   }
 }
 @media(max-width:768px) {
@@ -433,7 +433,7 @@ div.ngx-charts-outer.ng-trigger.ng-trigger-animationState {
 	min-height: 215px;
 	background-size: cover;
 }
-// dashboard-2 table 
+// dashboard-2 table
 .widget-table {
 	.badge {
 		font-size: 11px;
@@ -476,3 +476,8 @@ div.ngx-charts-outer.ng-trigger.ng-trigger-animationState {
    }
 }
 
+.tableauTabbedNavigation .dijitTabContainerTop-tabs {
+  border: none;
+  border-bottom: 1px solid #e1e1e1 !important;
+  background-color: #fff !important;
+}

@@ -43,6 +43,12 @@ const MENUITEMS = [
       type: 'link',
       icon: 'icon-organization icons'
    },
+  {
+    state: 'courses',
+    name: 'Training',
+    type: 'link',
+    icon: 'icon-book-open icons'
+  },
    // {
    //    state: 'courses',
    //    name: 'COURSES',

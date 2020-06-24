@@ -17,8 +17,8 @@ export class AuthService {
 
    constructor(private router : Router,
                private session : ASession,
-               private toastr: ToastrService) { 
-   	
+               private toastr: ToastrService) {
+
    }
 
    /*
@@ -32,12 +32,12 @@ export class AuthService {
       } else {
          this.isLoggedIn = false;
          return false;
-      }    
+      }
    }
 
   	/*
     * signupUserProfile method save email and password into firabse &
-    * signupUserProfile method save the user sign in data into local storage. 
+    * signupUserProfile method save the user sign in data into local storage.
     */
    signupUserProfile(value) {
     	/*this.firebaseAuth
@@ -56,14 +56,14 @@ export class AuthService {
          username: value.account,
          password: value.password
        };
-   
+
        Auth.signIn(authInfo).then(user => {
          //this.getUserInfo();
          //this.route.navigate(['/dashboard2']);
          this.setLocalUserProfile(value);
          this.router.navigate(['/']);
        })
-         .catch(err => this.toastr.error(err.message)); 
+         .catch(err => this.toastr.error(err.message));
    }
 
    /*
@@ -81,7 +81,7 @@ export class AuthService {
          this.setLocalUserProfile(value);
          this.router.navigate(['dash-widget']);
        })
-         .catch(err => this.toastr.error(err.message)); 
+         .catch(err => this.toastr.error(err.message));
 /*
       this.firebaseAuth
       .auth
@@ -111,7 +111,7 @@ export class AuthService {
     }
 
    /*
-    * logOut function is used to sign out . 
+    * logOut function is used to sign out .
     */
    logOut() {
       /*this.firebaseAuth
@@ -121,7 +121,7 @@ export class AuthService {
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");
       this.router.navigate(['/session/loginone']);
-   }   
+   }
 
    /*
     * setLocalUserProfile function is used to set local user profile data.
@@ -140,5 +140,5 @@ export class AuthService {
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
       this.session.role = au.attributes['custom:g1'];
-    } 
+    }
 }

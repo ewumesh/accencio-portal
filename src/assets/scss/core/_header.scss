@@ -630,3 +630,14 @@
   background-color: transparent !important;
   color: white !important;
 }
+
+.toast-container .toast-success{
+  background-color: $primary !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.14) !important;
+}
+
+
+.toast-container .toast-error{
+  background-color: $orange !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.14) !important;
+}

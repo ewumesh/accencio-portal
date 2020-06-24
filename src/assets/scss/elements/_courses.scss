@@ -349,7 +349,7 @@
 	.course-wrap .stats-list-wrap .sec-content {
 		width: 100%;
 		margin-top: 1rem;
-	}	
+	}
 	.jp-card-container {
 		width: 100%;
 	}
@@ -382,4 +382,46 @@
 	.course-wrap .course-grid-item .img-main {
 		height: 135px;
 	}
+}
+
+/* Accencio training style */
+
+.product-box-accencio{
+  background-color: transparent;
+  box-shadow: 0 0 20px #0000000d;
+  padding: 35px;
+  margin-bottom: 35px;
+}
+
+.product-box-accencio img{
+  display: block;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.product-box-accencio h4{
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+.product-box-accencio .main-button{
+  background-color: $primary;
+  color: white;
+  border: 1px solid $primary;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 35px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.product-box-accencio .main-button:hover{
+  color: $primary;
+  background-color: white;
+  transition: 0.2s;
 }

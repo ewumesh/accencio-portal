@@ -32,6 +32,14 @@
 	-ms-animation: move-right 800ms ease-in-out infinite alternate;
 	animation: move-right 800ms ease-in-out infinite alternate;
 }
+.ball3 {
+  background: none !important;
+  height: 35px;
+  -webkit-animation: move-right 800ms ease-in-out infinite alternate;
+  -moz-animation: move-right 800ms ease-in-out infinite alternate;
+  -ms-animation: move-right 800ms ease-in-out infinite alternate;
+  animation: move-right 800ms ease-in-out infinite alternate;
+}
 @-webkit-keyframes move-left {
 	to {
 		-webkit-transform: translate(50px, 0);
