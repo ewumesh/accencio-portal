@@ -114,9 +114,6 @@ export class AuthService {
     * logOut function is used to sign out .
     */
    logOut() {
-      /*this.firebaseAuth
-      .auth
-      .signOut();*/
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");

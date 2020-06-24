@@ -50,9 +50,7 @@ export class UserManageListComponent implements OnInit {
 		this.translate.get('User Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		console.log(this.session.id_token);
 		this.http.get<UserResponse>(environment.API_GATEWAY + '/user/list').subscribe(users => {
-			debugger;
 			users.Users.forEach(user => {
 				this.userManageList.push({
 					image: "assets/img/user-1.jpg",
@@ -124,8 +122,7 @@ export class UserManageListComponent implements OnInit {
 		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
 			then(res => {
-				console.log(accountName)
-				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName, {headers}).subscribe(r => {
+				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName,{headers}).subscribe(r => {
 								this.getDeleteResponse(res, i)
 							});
 					
