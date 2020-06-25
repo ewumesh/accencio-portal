@@ -1,0 +1,15 @@
+<!--Video Player-->
+<div class="video-player-wrap">
+	<div class="chk-block px-4 py-3 mb-3 border-5">
+		<div>
+			<h3 class="mb-0">{{'Tools'|translate}}</h3>
+		</div>
+	</div>
+	<vg-player class="video-pl mb-5">
+		<video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+        <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+        <source src="http://vjs.zencdn.net/v/oceans.ogg" type="video/ogg" />
+        <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+      </video>
+	</vg-player>
+</div>

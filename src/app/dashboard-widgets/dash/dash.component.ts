@@ -127,6 +127,7 @@ export class DashComponent implements OnInit, AfterViewInit {
          this.observer = new MutationObserver(mutations => {
            mutations.forEach(function (mutation) {
              if (mutation.addedNodes[0].childNodes) {
+                debugger;
                const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
                const wb = lwbsspot.find(el => el.name == id);
                lloadspot(wb.analysis, wb.name);
@@ -208,7 +209,7 @@ export class DashComponent implements OnInit, AfterViewInit {
    }
 
    ngOnInit() {
-      this.translate.get('Widgets').subscribe((res: string) => {
+      this.translate.get('Dashboard').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
 

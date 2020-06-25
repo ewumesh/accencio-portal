@@ -39,7 +39,10 @@ export const AppRoutes: Routes = [
    },{
       path: 'courses',loadChildren: ()=> 
       import('./courses/courses.module').then(m => m.CoursesModule)
-   }],
+   },{
+      path: 'video-player',loadChildren: ()=>
+      import('./video-player/video-player.module').then(m => m.VideoPlayerModule)
+   },],
    },
    {
       path: 'horizontal',

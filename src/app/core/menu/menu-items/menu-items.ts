@@ -45,7 +45,7 @@ const MENUITEMS = [
    },
   {
     state: 'courses',
-    name: 'Training',
+    name: 'Learning',
     type: 'link',
     icon: 'icon-book-open icons'
   },
@@ -73,13 +73,13 @@ const MENUITEMS = [
    //       { state: 'management-grid-list', name: 'USER GRID' }
    //    ]
    // },
-   // {
-   //    state: 'video-player',
-   //    name: 'VIDEO PLAYER',
-   //    type: 'link',
-   //    icon: 'icon-control-play icons',
-   //    label: 'New'
-   // },
+   {
+      state: 'video-player',
+      name: 'Media',
+      type: 'link',
+      icon: 'icon-control-play icons',
+      label: ''
+   },
    // {
    //    state: 'taskboard',
    //    name: 'TASK BOARD',

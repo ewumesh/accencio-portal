@@ -2,7 +2,7 @@
 	"earnDegree" : [
 		{
 			"image" : "assets/img/course4.jpg",
-			"degree" : "Master of Networking",
+			"degree" : "Master of Library",
 			"university" : "Accencio"
 		},
 		{
@@ -12,13 +12,13 @@
 		},
 		{
 			"image" : "assets/img/course4.jpg",
-			"degree" : "Doctrate in Biology",
+			"degree" : "Patenting",
 			"university" : "Accencio"
 		},
 		{
 			"image" : "assets/img/course1.jpg",
-			"degree" : "Master of Computer",
-			"university" : "Cupidatat University"
+			"degree" : "Research&Development",
+			"university" : "Accencio"
 		}
 	],
 	"courses" : [
@@ -26,9 +26,9 @@
          "link":"/courses/course-detail",
 			"image":"assets/img/course3.jpg",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo1.jpg",
-			"title" : "Python",
-			"university" : "Excepteur University",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "See IP Differently",
+			"university" : "Accencio",
 			"bestseller" : false,
 			"availableCourse" : [
 				{
@@ -49,13 +49,13 @@
 		},
 		{
          "link":"/courses/course-detail",
-			"image":"assets/img/course2.jpg",
+			"image":"assets/img/new-compview.png",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo2.jpg",
-			"title" : "Web Development",
-			"university" : "Deserunt University",
-			"bestseller" : true,
-			"sell" : "bestseller",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "IP-CompView™",
+			"university" : "Accencio",
+			"bestseller" : false,
+			"sell" : "tool",
 			"availableCourse" : [
 				{
 					"icon" : "computer",
@@ -75,11 +75,11 @@
 		},
 		{
          "link":"/courses/course-detail",
-			"image":"assets/img/course5.jpg",
+			"image":"assets/img/new-folioview.png",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo3.jpg",
-			"title" : "JavaScript",
-			"university" : "Exercitation University",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "IP-FolioView™",
+			"university" : "Accencio",
 			"bestseller" : false,
 			"availableCourse" : [
 				{
@@ -100,13 +100,13 @@
 		},
 		{
          "link":"/courses/course-detail",
-			"image":"assets/img/course1.jpg",
+			"image":"assets/img/new-kinship.png",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo4.jpg",
-			"title" : "Web Designing",
-			"university" : "Consectetur University",
-			"bestseller" : true,
-			"sell" : "bestseller",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "IP-Kinship™",
+			"university" : "Accencio",
+			"bestseller" : false,
+			"sell" : "tool",
 			"availableCourse" : [
 				{
 					"icon" : "computer",
@@ -126,11 +126,11 @@
 		},
 		{
          "link":"/courses/course-detail",
-			"image":"assets/img/course2.jpg",
+			"image":"assets/img/new-geoscape.png",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo2.jpg",
-			"title" : "iOS Development",
-			"university" : "Adipisicing University",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "IP-GeoScape™",
+			"university" : "Accencio",
 			"bestseller" : false,
 			"availableCourse" : [
 				{
@@ -151,13 +151,13 @@
 		},
 		{
          "link":"/courses/course-detail",
-			"image":"assets/img/course5.jpg",
+			"image":"assets/img/new-rnai.png",
 			"type" : "trending",
-			"logo" : "assets/img/univ-logo3.jpg",
-			"title" : "Game Development Fundamentals",
-			"university" : "Reprehenderi University",
-			"bestseller" : true,
-			"sell" : "bestseller",
+			"logo" : "assets/img/accencio-class.jpg",
+			"title" : "RNAi for Hyperchol",
+			"university" : "Accencio",
+			"bestseller" : false,
+			"sell" : "tool",
 			"availableCourse" : [
 				{
 					"icon" : "computer",
@@ -179,9 +179,9 @@
          "link":"/courses/course-detail",
 			"image":"assets/img/course4.jpg",
 			"type" : "popular",
-			"logo" : "assets/img/univ-logo1.jpg",
+			"logo" : "assets/img/accencio-class.jpg",
 			"title" : "Web Development",
-			"university" : "Fugiat University",
+			"university" : "Accencio",
 			"bestseller" : false,
 			"availableCourse" : [
 				{
@@ -206,7 +206,7 @@
 			"type" : "popular",
 			"logo" : "assets/img/univ-logo4.jpg",
 			"title" : "iOS Development",
-			"university" : "Deserunt University",
+			"university" : "Accencio",
 			"bestseller" : false,
 			"availableCourse" : [
 				{
@@ -231,7 +231,7 @@
 			"type" : "popular",
 			"logo" : "assets/img/univ-logo2.jpg",
 			"title" : "React",
-			"university" : "Adipisicing University",
+			"university" : "Accencio",
 			"bestseller" : true,
 			"sell" : "bestseller",
 			"availableCourse" : [
@@ -401,8 +401,8 @@
 	],
 	"courseDetail" : {
 		"aboutCourse" : {
-			"rating" : "4",
-			"content" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose." 
+			"rating" : "5",
+			"content" : "1It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose." 
 		},
 		"learn" : [
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -415,19 +415,17 @@
 			"Donec sit amet nisi ac tellus mattis venenatis volutpat sit amet mi"
 		],
 		"skillsGain" : [
-			"Design Ethics",
-			"UX Design",
-			"Responsive Design",
-			"Graphic Design",
-			"HTML5",
-			"CSS3",
-			"JavaScript"
+			"Design ",
+			"Research Scientists",
+			"Business Development",
+			"Algorithm",
+			"Licensing  "
 		],
 		"courseFeature" : [
 			{
 				"icon" : "brightness_high",
 				"heading" : "Approx. 10 hours course duration",
-				"content" : "Suggested: 2-4 hours/week"
+				"content" : "Suggested: 1-2 hours/day"
 			},
 			{
 				"icon" : "computer",
@@ -436,12 +434,12 @@
 			},
 			{
 				"icon" : "insert_chart",
-				"heading" : "Schedule Deadlines",
+				"heading" : "Schedule",
 				"content" : "Change your deadlines according to convenience"
 			},
 			{
 				"icon" : "chat",
-				"heading" : "Chat with your instructor",
+				"heading" : "Chat with us",
 				"content" : "Questions online during sessions"
 			}
 
