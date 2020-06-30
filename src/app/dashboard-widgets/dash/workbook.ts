@@ -2,6 +2,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 
 export class Workbook {
   constructor(
+    public id: string,
     public title: string,
     public description: string,
     public site: string,
