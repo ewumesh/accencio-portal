@@ -4,7 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"deploy": "ng build --aot --prod && aws s3 sync dist s3://portal-appbucket-8fuy6q95hq9i  && aws cloudfront create-invalidation --distribution-id E2SDMKVCPENPIT --paths /",
-		"start": "ng serve",
+		"start": "ng serve --host 192.168.1.129",
 		"build": "ng build",
 		"test": "ng test",
 		"lint": "ng lint",

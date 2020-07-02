@@ -17,12 +17,11 @@ export class CourseComponent implements OnInit {
    jsonResponse    : any = [];
 
    courseDeveloper : any = [
-      "App Development",
-      "Mobile Development",
+      "Research Scientists",
+      "Business Development",
+      "Licensing",
       "Algorithm",
-      "Web Development",
-      "Web Designing",
-      "Php Development"
+      "How we work"
    ]
 
    skill : any [] =[
@@ -45,7 +44,10 @@ export class CourseComponent implements OnInit {
    ]
 
    course_language : any [] =[
-      "English"
+      "English",
+      "French",
+      "German",
+      "Hindi"
    ]
 
    trendingCourseSlideConfig  = {"slidesToShow": 4, "slidesToScroll": 1,"arrows": true,"autoplay": true, "autoplaySpeed": 1500,
@@ -74,7 +76,7 @@ export class CourseComponent implements OnInit {
                public translate: TranslateService) { }
 
    ngOnInit() {
-      this.translate.get('Course').subscribe((res: string) => {
+      this.translate.get('Learning').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
 

@@ -6,27 +6,25 @@
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-6 mb-4">
 						<div class="sec-title mb-3">
-							<p class="mb-1">Software development courses will build your skills for creating web application and <span class="font-weight-bold"> learn modern frameworks.</span></p>
-							<h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">{{'Software Development'|translate}}</span></h2>
+							<p class="mb-1">
+								<span class="font-weight-bold"> Global data through an IP lens.</span></p>
+							<h2 class="d-inline-block mb-0 font-weight-light"><span class="font-2x">{{'SEE IP DIFFERENTLY'|translate}}</span></h2>
 						</div>
 						<div class="button-group">
-							<a class="btn btn-lg font-weight-bold text-uppercase bg-white mr-2 mb-3 d-inline-block" [routerLink]="['/courses/course-signin']">Enroll Now</a>
+							<a class="btn btn-lg font-weight-bold text-uppercase bg-white mr-2 mb-3 d-inline-block" [routerLink]="['/courses/course-detail']">Read more</a>
 						</div>
 					</div>
 					<div class="col-12 col-sm-12 col-md-4 ml-auto mb-4">
 						<div class="sec-meta">
 							<div class="partner-logo">
-								<p class="font-weight-bold">Offered By</p>
-								<img class="img-fluid mb-4" alt="example-image" src="assets/img/univ-partner.png">
+								<p class="font-weight-bold">By</p>
+								<img class="img-fluid mb-4" alt="example-image" src="assets/img/logo.png">
 							</div>
 							<div class="language-wrap d-inline-block mr-3">
 								<i class="fa fa-comment d-inline-block mr-2" aria-hidden="true"></i>
 								<p class="d-inline-block">English</p>
 							</div>
-							<div class="subtitle-wrap d-inline-block">
-								<i class="fa fa-cc d-inline-block mr-2" aria-hidden="true"></i>
-								<p class="d-inline-block">English, German, French</p>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -54,7 +52,7 @@
 								<div class="col-12 col-md-8">
 									<div class="about-sec grid-b-space">
 										<div class="sec-title mb-4">
-											<h3 class="font-weight-light"><span class="font-2x">{{'About This Course'|translate}}</span></h3>
+											<h3 class="font-weight-light"><span class="font-2x">{{'About This Webinar'|translate}}</span></h3>
 										</div>
 										<ng-container *ngIf="jsonResponse.courseDetail">
 											<app-course-detail-about [aboutCourse]="jsonResponse.courseDetail.aboutCourse"></app-course-detail-about>
@@ -62,9 +60,6 @@
 									</div>
 									<div class="description-wrap py-3 px-4 bg-white shadow-box border grid-b-space" *ngIf="jsonResponse.courseDetail">
 										<app-course-detail-learn [courseLearn]="jsonResponse.courseDetail.learn"></app-course-detail-learn>
-									</div>
-									<div class="description-wrap pt-3 pb-2 px-4 bg-white shadow-box border grid-b-space" *ngIf="jsonResponse.courseDetail">
-										<app-course-detail-skills [skillsGain]="jsonResponse.courseDetail.skillsGain"></app-course-detail-skills>
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
@@ -144,33 +139,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div class="instructor-sec-wrap py-5">		
-			<!--Instructor-->
-			<div class="container">
-				<div class="instructor-sec">
-					<div class="sec-title mb-4">
-						<h3 class="font-weight-light"><span class="font-2x">{{'Instructor'|translate}}</span></h3>
-					</div>
-					<div class="instructor-items-wrap row" *ngIf="jsonResponse.courseDetail">
-						<ng-container *ngFor="let instructor of jsonResponse.courseDetail.instructor">
-							<div class="instructor-item col-12 col-md-6 grid-b-space">
-								<app-course-detail-instructor [instructor]="instructor"></app-course-detail-instructor>
-							</div>
-						</ng-container>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="about-unv-course">
-			<div class="container-fluid" *ngIf="jsonResponse.courseDetail">
-				<app-course-detail-description1 [courseDescription]="jsonResponse.courseDetail.description1"></app-course-detail-description1>
-			</div>
-			<div class="about-unv-item py-5">
-				<div class="container" *ngIf="jsonResponse.courseDetail">
-					<app-course-detail-description2 [courseDescription]="jsonResponse.courseDetail.description2"></app-course-detail-description2>
 				</div>
 			</div>
 		</div>
