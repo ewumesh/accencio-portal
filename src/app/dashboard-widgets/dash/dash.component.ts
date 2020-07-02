@@ -32,7 +32,7 @@ export class DashComponent implements OnInit, AfterViewInit {
    public company: any;
    @ViewChild('spotcont', null) spotcont: ElementRef;
    observer: MutationObserver;
- 
+
 
    public orders: any[];
    public products: any[];
@@ -118,7 +118,7 @@ export class DashComponent implements OnInit, AfterViewInit {
                   element.site,
                   element.name,
                   element.date,
-                  null, '', element.analysis));      
+                  null, '', element.analysis));
             }
          });
 
@@ -208,6 +208,7 @@ export class DashComponent implements OnInit, AfterViewInit {
    }
 
    ngOnInit() {
+
       this.translate.get('Widgets').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
