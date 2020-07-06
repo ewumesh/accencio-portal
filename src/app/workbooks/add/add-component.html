@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<h3 class="text-capitalize">{{title}}</h3>
+			</div>
+			<div class="chk-block-content">
+				<form [formGroup]="form" (submit)="onSubmit()">
+					<div class="form-group">
+						<label for="type">Type</label>
+						<select formControlName="type" class="form-control h-auto p-cursor custom-select">
+							<option value="1">Tableau</option>
+							<option value="2">Spotfire</option>
+							<option value="3">Content</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input class="form-control" placeholder="workbook title" [formControl]="form.controls['title']">
+						<small class="chankya-block"
+							*ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched"
+							class="text-danger">
+							workbook title.
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input class="form-control" placeholder="workbook name" [formControl]="form.controls['name']">
+						<small class="chankya-block"
+							*ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+							class="text-danger">
+							workbook name.
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input class="form-control" placeholder="workbook description"
+							[formControl]="form.controls['description']">
+					</div>
+					<div class="form-group" *ngIf="form.value.type==1">
+						<input class="form-control" placeholder="tableau account"
+							[formControl]="form.controls['account']">
+					</div>
+					<div class="form-group" *ngIf="form.value.type==2">
+						<label for="analysis">Spotfire analysis</label>
+						<input class="form-control" placeholder="spotfire analysis"
+							[formControl]="form.controls['analysis']">
+					</div>
+					<div class="form-group" *ngIf="form.value.type==3">
+						<label for="content">Content</label>
+						<input class="form-control" placeholder="content" [formControl]="form.controls['content']">
+					</div>
+
+					<div class="pad-wrap">
+						<div>
+							<button class="btn btn-primary btn-lg btn-square" type="submit"
+								[disabled]="!form.valid">Submit</button>
+								&nbsp;
+							<button  class="btn btn-white btn-lg btn-square" [routerLink]="['/workbooks/list']">Back</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
