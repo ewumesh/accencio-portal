@@ -7,7 +7,7 @@ import { WorkbookRoutes } from './workbook.routing';
 import { ListComponent } from './list/list-component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddComponent } from './add/add-component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
    imports: [
@@ -15,6 +15,7 @@ import { AddComponent } from './add/add-component';
       FormsModule,
       ReactiveFormsModule,
       NgxDatatableModule,
+      AngularEditorModule,
       RouterModule.forChild(WorkbookRoutes),
       TranslateModule
    ],

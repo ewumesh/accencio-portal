@@ -8,12 +8,13 @@ import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
-   selector: 'ms-formvalidation',
+   selector: 'ms-workbook-addedit',
    templateUrl:'./add-component.html',
    styleUrls: ['./add-component.scss'],
    encapsulation: ViewEncapsulation.None
@@ -21,8 +22,9 @@ const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 export class AddComponent implements OnInit {
 
 	public  form : FormGroup;
-  
+	public config: AngularEditorConfig;
 	public title = "Add new";
+	public description: string;
 	private id: string;
   	constructor(private fb: FormBuilder,
                private pageTitleService: PageTitleService,
@@ -34,6 +36,30 @@ export class AddComponent implements OnInit {
               private session: ASession) {}
 
   	ngOnInit() {
+
+		this.config = {
+			editable: true,
+			spellcheck: true,
+			height: '15rem',
+			minHeight: '5rem',
+			placeholder: 'Enter text here...',
+			translate: 'no',
+			customClasses: [
+			  {
+				name: "quote",
+				class: "quote",
+			  },
+			  {
+				name: 'redText',
+				class: 'redText'
+			  },
+			  {
+				name: "titleText",
+				class: "titleText",
+				tag: "h1",
+			  },
+			]
+		  };
       this.translate.get('Workbooks').subscribe((res: string) => {
         this.pageTitleService.setTitle(res);
       });
