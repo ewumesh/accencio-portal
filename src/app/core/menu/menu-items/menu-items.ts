@@ -80,6 +80,13 @@ const MENUITEMS = [
       icon: 'icon-control-play icons',
       label: ''
    },
+  {
+    state: 'libraries',
+    name: 'Libraries',
+    type: 'link',
+    icon: 'icon-equalizer icons',
+    label: ''
+  },
    // {
    //    state: 'taskboard',
    //    name: 'TASK BOARD',

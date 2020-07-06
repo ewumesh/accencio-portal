@@ -22,10 +22,10 @@ export const AppRoutes: Routes = [
    canActivate: [AuthGuard],
    runGuardsAndResolvers: 'always',
    children: [{
-      path: 'dashboard', loadChildren: ()=> 
+      path: 'dashboard', loadChildren: ()=>
       import('./dashboard/dashboard.module').then(m => m.DashboardModule)
    },{
-      path: 'dash-widget',loadChildren: ()=> 
+      path: 'dash-widget',loadChildren: ()=>
       import('./dashboard-widgets/dashboard-widgets.module').then(m => m.DashboardWidgetsModule)
    },{
       path: 'chat',loadChildren: ()=>
@@ -37,7 +37,10 @@ export const AppRoutes: Routes = [
       path: 'user-management',loadChildren: ()=>
       import('./user-manage/user-manage.module').then(m => m.UserManageModule)
    },{
-      path: 'courses',loadChildren: ()=> 
+     path: 'libraries',loadChildren: ()=>
+       import('./libraries/libraries.module').then(m => m.LibrariesModule)
+   },{
+      path: 'courses',loadChildren: ()=>
       import('./courses/courses.module').then(m => m.CoursesModule)
    },{
       path: 'video-player',loadChildren: ()=>
@@ -58,7 +61,7 @@ export const AppRoutes: Routes = [
       redirectTo: 'session'
    }
    ];
-  
+
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutes)],
   exports: [RouterModule],
