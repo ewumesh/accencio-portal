@@ -13,6 +13,7 @@ import { DashWidgetsComponent } from './dash-widgets/dash-widgets.component';
 import { DashboardWidgetsRoutes } from './dashboard-widgets.routing';
 import { DashWidgets2Component } from './dash-widgets2/dash-widgets2.component';
 import { DashComponent } from './dash/dash.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	suppressScrollX: true
@@ -23,6 +24,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		CommonModule,
 		FormsModule,
 		TranslateModule,
+		AngularEditorModule,
 		NgxChartsModule,
 		DirectivesModule,
 		PerfectScrollbarModule,

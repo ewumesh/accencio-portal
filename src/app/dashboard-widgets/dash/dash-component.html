@@ -29,10 +29,12 @@
 			<div class="chk-block-content widget-body">
 				<div class="reports mb-2">
 					<div class="card-text" [innerHTML]="wb.description"></div>
-					<div class="embed-responsive embed-responsive-16by9 z-depth-1">
+					<div class="embed-responsive embed-responsive-16by9 z-depth-1" *ngIf="wb.type==1">
 						<iframe class="embed-responsive-item" [src]="wb.url" [id]="">
 						</iframe>
 					</div>
+					<angular-editor #description="ngModel" id="description" name="description" [ngModel]="wb.content" [config]="config" *ngIf="wb.type==3">
+					</angular-editor>
 				</div>
 				<div class="text-center text-muted"><a class="">View All</a>
 				</div>

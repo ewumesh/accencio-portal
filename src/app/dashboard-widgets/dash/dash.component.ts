@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
+import { WorkbookType } from './workbooktype';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 var i = 1;
 var lwbsspot: any;
@@ -23,7 +25,6 @@ function onReady2Callback(response, newApp) {
       
       
       if (wb) {
-         console.log(wb.analysis);
          lloadspot(wb.analysis, wb.name, lwbsspot);
       }
       //if (i == 1) {
@@ -50,6 +51,8 @@ export class DashComponent implements OnInit {
    wbsspot: Workbook[];
    wbs: Workbook[];
    public company: any;
+   public config: AngularEditorConfig;
+
    @ViewChild('spotcont', null) spotcont: ElementRef;
    observer: MutationObserver;
 
@@ -72,7 +75,6 @@ export class DashComponent implements OnInit {
          showToolBar: false,
          showUndoRedo: false
       }
-      console.log(analysis);
       var parameters = '';
       var reloadInstances = true;
       var apiVersion = "7.14";
@@ -95,31 +97,41 @@ export class DashComponent implements OnInit {
       this.wbsspot = [];
       this.http.get(environment.API_GATEWAY + '/wb/' + this.company).subscribe(wbData => {
          (wbData as Workbook[]).forEach(element => {
-            if (!element.analysis) {
+            if (element.type == 1) {
                const params = "?username=" + element.account + "&target_site=" + element.site;
                this.http.get(environment.API_GATEWAY + '/auth/trusted' + params).subscribe(ticket => {
                   const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
                   this.wbs.push(new Workbook(
                      element.name,
+                     element.type,
                      element.title,
                      element.description,
                      element.site,
                      element.name,
                      element.date,
-                     wbUrl, '', ''));
+                     wbUrl, '', '', null));
                });
+            } else if (element.type == 3) {
+                  this.wbs.push(new Workbook(
+                     element.name,
+                     element.type,
+                     element.title,
+                     element.description,
+                     element.site,
+                     element.name,
+                     element.date,
+                     null, '', '', element.content));
             } else { //spotfire
                this.wbsspot.push(new Workbook(
                   "spot-" + i.toString(),
+                  element.type,
                   element.title,
                   element.description,
                   element.site,
                   element.name,
                   element.date,
-                  null, '', element.analysis));
+                  null, '', element.analysis, ''));
                i++;
-               console.log(element.analysis);
-               //this.loadspot(element.analysis, element.name);
             }
          });
          i = 1;
@@ -134,7 +146,6 @@ export class DashComponent implements OnInit {
                      lloadspot(wb.analysis, wb.name);
                }
             });
-            //lloadspot('/Covid-19/TLR7antag_2020Q1_Clinical','TLR7antag_2020Q1_Clinical', lwbsspot);
          });
          const config = { attributes: true, childList: true, characterData: true };
          this.observer.observe(this.spotcont.nativeElement, config);
@@ -148,6 +159,11 @@ export class DashComponent implements OnInit {
       private http: HttpClient,
       private session: ASession) {
          i = 1;
+         this.config = {
+            editable: false,
+            showToolbar: false,
+            translate: 'no'
+          };
    }
 
    ngOnInit() {
