@@ -45,7 +45,11 @@ export const AppRoutes: Routes = [
    },{
       path: 'video-player',loadChildren: ()=>
       import('./video-player/video-player.module').then(m => m.VideoPlayerModule)
-   },],
+   },
+   {
+      path: 'workbooks', loadChildren: ()=>
+      import('./workbooks/workbook.module').then (m => m.WorkbookModule)
+   }],
    },
    {
       path: 'horizontal',
