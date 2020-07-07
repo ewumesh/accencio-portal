@@ -45,7 +45,8 @@ export class UserManageListComponent implements OnInit {
 					name: user.Attributes.find(el => el.Name == "given_name").Value,
 					company: user.Attributes.find(el => el.Name == "custom:company").Value,
 					accountName: user.Username,
-					newStatus: false,
+					enabled: user.Enabled,
+					statusType: user.Enabled ? "online" :"",
 					email: user.Attributes.find(el => el.Name == "email").Value,
 					status: user.UserStatus,
 					accountType: user.Attributes.find(el => el.Name == "custom:g1").Value,
@@ -122,12 +123,45 @@ export class UserManageListComponent implements OnInit {
 			.catch(error => console.log(error))
 	}
 
+
+	onEnabled(data, i) {
+		const accountName = data.accountName;
+		this.coreService.deleteUserDialog("Are you sure you want to enable this user?").
+			then(res => {
+				this.http.post(environment.API_GATEWAY + '/user/enable/' + accountName, {}).subscribe(r => {
+								this.updateIsEnabledResponse(res, i, true);
+								this.toastr.success('User has been enabled.');
+							});
+					
+			})
+			.catch(error => console.log(error))
+	}
+
+	onDisabled(data, i) {
+		const accountName = data.accountName;
+		this.coreService.deleteUserDialog("Are you sure you want to disable this user?").
+			then(res => {
+				this.http.post(environment.API_GATEWAY + '/user/disable/' + accountName, {}).subscribe(r => {
+								this.updateIsEnabledResponse(res, i, false);
+								this.toastr.success('User has been disabled.');
+							});
+					
+			})
+			.catch(error => console.log(error))
+	}
 	/**
 	  * getDeleteResponse method is used to delete a user from the user list.
 	  */
 	getDeleteResponse(response, i) {
 		if (response === true) {
 			this.userManageList.splice(i, 1);
+		}
+	}
+
+	updateIsEnabledResponse(response, i, isEnabled) {
+		if (response === true) {
+			this.userManageList[i].enabled = isEnabled;
+			this.userManageList[i].statusType = isEnabled ? 'online':'';
 		}
 	}
 

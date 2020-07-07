@@ -3,6 +3,7 @@ export class User {
     UserStatus: string;
     UserCreateDate: any;
     Attributes: any[];
+    Enabled: any;
 }
 export class UserResponse {
     Users: User[];
