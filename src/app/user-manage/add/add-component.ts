@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
 	public config: AngularEditorConfig;
 	public title = "Add new";
 	public description: string;
-	private id: string;
+	public id: string;
 	companies: any;
 	roles: any;
 	constructor(private fb: FormBuilder,
