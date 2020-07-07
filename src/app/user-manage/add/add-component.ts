@@ -73,11 +73,6 @@ export class AddUserComponent implements OnInit {
 					name:user.Username
 				});
 			});
-			//this.http.get(environment.API_GATEWAY + '/org/byid/' + this.id).subscribe(
-			//	res=> {
-			//		this.form.setValue(res);
-			//	}
-			//) 
 		}
 		if (this.session.role === 'ACCENCIOADMIN') {
 			this.http.get(environment.API_GATEWAY + '/org/all').subscribe(
@@ -97,7 +92,6 @@ export class AddUserComponent implements OnInit {
 				{ name: 'USER' }
 			]
 		}
-
 	}
 
 	onSubmit() {
