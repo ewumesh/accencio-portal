@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { User, UserResponse } from './User';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,25 +26,12 @@ export class UserManageListComponent implements OnInit {
 		"Silver": "warning"
 	}
 	userManageList = [];
-	userManage3List: any = [
-		{
-			image: "assets/img/user-1.jpg",
-			name: "Joseph",
-			accountName: "Pinney",
-			newStatus: true,
-			email: "JosephAPinney@rhyta.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 1 Hour",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "27 Oct 2018"
-		}];
-
 
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
+		private router: Router,
 		public translate: TranslateService,
+		private toastr: ToastrService,
 		private http: HttpClient,
 		private session: ASession) { }
 
@@ -50,20 +39,18 @@ export class UserManageListComponent implements OnInit {
 		this.translate.get('User Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.http.get<UserResponse>(environment.API_GATEWAY + '/user/list').subscribe(users => {
+		this.http.get<UserResponse>(environment.API_GATEWAY + '/user/' + (this.session.role === 'ACCENCIOADMIN' ? 'list' : 'list-o/' + this.session.company)).subscribe(users => {
 			users.Users.forEach(user => {
 				this.userManageList.push({
-					image: "assets/img/user-1.jpg",
 					name: user.Attributes.find(el => el.Name == "given_name").Value,
+					company: user.Attributes.find(el => el.Name == "custom:company").Value,
 					accountName: user.Username,
 					newStatus: false,
 					email: user.Attributes.find(el => el.Name == "email").Value,
 					status: user.UserStatus,
-					statusType: "online",
-					time: "Since 1 Hour",
 					accountType: user.Attributes.find(el => el.Name == "custom:g1").Value,
 					accountTypeColor: "primary",
-					dateCreated: "27 Oct 2018"
+					dateCreated: user.UserCreateDate
 				})
 			});
 		});
@@ -82,10 +69,8 @@ export class UserManageListComponent implements OnInit {
 	/** 
 	  * addNewUserDialog method is used to open a add new user dialog.
 	  */
-	addNewUserDialog() {
-		this.coreService.addNewUserDialog().
-			then(res => { this.getAddUserPopupResponse(res) })
-			.catch(error => console.log(error));
+	addNew() {
+			this.router.navigate(['/user-management/add']);
 	}
 
 
@@ -128,8 +113,9 @@ export class UserManageListComponent implements OnInit {
 		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
 			then(res => {
-				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName, {headers}).subscribe(r => {
-								this.getDeleteResponse(res, i)
+				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName).subscribe(r => {
+								this.getDeleteResponse(res, i);
+								this.toastr.success('User has been deleted.');
 							});
 					
 			})

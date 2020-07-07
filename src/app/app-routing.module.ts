@@ -49,6 +49,10 @@ export const AppRoutes: Routes = [
    {
       path: 'workbooks', loadChildren: ()=>
       import('./workbooks/workbook.module').then (m => m.WorkbookModule)
+   },
+   {
+      path: 'org', loadChildren: ()=>
+      import('./organizations/organization.module').then (m => m.OrganizationModule)
    }],
    },
    {

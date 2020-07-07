@@ -32,6 +32,7 @@ import { SessionDemoModule } from './session/session.module';
 import { WidgetsComponentModule } from './widgets-component/widgets-component.module';
 import { ASession } from 'request/session';
 import { WorkbookModule } from './workbooks/workbook.module';
+import { OrganizationModule } from './organizations/organization.module';
 
 /********** Custom option for ngx-translate ******/
 export function createTranslateLoader(http: HttpClient) {
@@ -65,6 +66,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		MenuToggleModule,
 		HttpClientModule,
 		WorkbookModule,
+		OrganizationModule,
 		TranslateModule.forRoot({
 		loader: {
 			provide: TranslateLoader,

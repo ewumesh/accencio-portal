@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import { ASession } from 'request/session';
 
 export interface ChildrenItems {
-  state: string;
-  name: string;
-  type?: string;
-  label?:string;
+   state: string;
+   name: string;
+   type?: string;
+   label?: string;
 }
 
 export interface Menu {
-  state: string;
-  name: string;
-  type: string;
-  icon: string;
-  label?:string;
-  children?: ChildrenItems[];
+   state: string;
+   name: string;
+   type: string;
+   icon: string;
+   label?: string;
+   children?: ChildrenItems[];
 }
 
 const MENUITEMS = [
@@ -23,7 +24,7 @@ const MENUITEMS = [
    //    type: 'link',
    //    icon: 'icon-calendar icons'
    // },
-     {
+   {
       state: 'dash-widget',
       name: 'Dashboard',
       type: 'link',
@@ -43,12 +44,12 @@ const MENUITEMS = [
       type: 'link',
       icon: 'icon-organization icons'
    },
-  {
-    state: 'courses',
-    name: 'Learning',
-    type: 'link',
-    icon: 'icon-book-open icons'
-  },
+   {
+      state: 'courses',
+      name: 'Learning',
+      type: 'link',
+      icon: 'icon-book-open icons'
+   },
    // {
    //    state: 'courses',
    //    name: 'COURSES',
@@ -80,13 +81,13 @@ const MENUITEMS = [
       icon: 'icon-control-play icons',
       label: ''
    },
-  {
-    state: 'libraries',
-    name: 'Libraries',
-    type: 'link',
-    icon: 'icon-equalizer icons',
-    label: ''
-  },
+   //   {
+   //     state: 'libraries',
+   //     name: 'Libraries',
+   //     type: 'link',
+   //     icon: 'icon-equalizer icons',
+   //     label: ''
+   //   },
    // {
    //    state: 'taskboard',
    //    name: 'TASK BOARD',
@@ -357,10 +358,118 @@ const MENUITEMS = [
 
 ];
 
+const MENUITEMS_USER = [
+
+   {
+      state: 'dash-widget',
+      name: 'Dashboard',
+      type: 'link',
+      label: '',
+      icon: 'icon-speedometer icons'
+   },
+   {
+      state: 'chat',
+      name: 'CHAT',
+      type: 'link',
+      label: 'new',
+      icon: 'icon-bubbles icons'
+   },
+   {
+      state: 'courses',
+      name: 'Learning',
+      type: 'link',
+      icon: 'icon-book-open icons'
+   },
+   {
+      state: 'video-player',
+      name: 'Media',
+      type: 'link',
+      icon: 'icon-control-play icons',
+      label: ''
+   }
+];
+
+
+
+const MENUITEMS_CLIENT_ADMIN = [
+   {
+      state: 'dash-widget',
+      name: 'Dashboard',
+      type: 'link',
+      label: '',
+      icon: 'icon-speedometer icons'
+   },
+   {
+      state: 'chat',
+      name: 'CHAT',
+      type: 'link',
+      label: 'new',
+      icon: 'icon-bubbles icons'
+   },
+   {
+      state: 'courses',
+      name: 'Learning',
+      type: 'link',
+      icon: 'icon-book-open icons'
+   },  
+   {
+      state: 'video-player',
+      name: 'Media',
+      type: 'link',
+      icon: 'icon-control-play icons',
+      label: ''
+   },
+   {
+      state: 'user-management',
+      name: 'My Organization',
+      type: 'link',
+      icon: 'icon-organization icons'
+   },
+];
+
+const MENUITEMS_ACCENCIO_ADMIN = [
+   {
+      state: 'dash-widget',
+      name: 'Dashboard',
+      type: 'link',
+      label: '',
+      icon: 'icon-speedometer icons'
+   },
+   {
+      state: 'chat',
+      name: 'CHAT',
+      type: 'link',
+      label: 'new',
+      icon: 'icon-bubbles icons'
+   },
+     {
+      state: 'org',
+      name: 'Organizations',
+      type: 'link',
+      icon: 'icon-organization icons'
+     },
+     {
+      state: 'user-management',
+      name: 'Users',
+      type: 'link',
+      icon: 'icon-organization icons'
+     }
+];
+
 @Injectable()
 export class MenuItems {
+   constructor(private session: ASession) {
+
+   }
    getAll(): Menu[] {
-      return MENUITEMS;
+      console.log(this.session.role);
+      if (this.session.role === 'CLIENTADMIN') {
+         return MENUITEMS_CLIENT_ADMIN;
+      }
+      if (this.session.role === 'ACCENCIOADMIN') {
+         return MENUITEMS_ACCENCIO_ADMIN;
+      }
+      return MENUITEMS_USER;
    }
    add(menu: any) {
       MENUITEMS.push(menu);
