@@ -53,6 +53,10 @@ export const AppRoutes: Routes = [
    {
       path: 'org', loadChildren: ()=>
       import('./organizations/organization.module').then (m => m.OrganizationModule)
+   },
+   {
+      path: 'perm', loadChildren: ()=>
+      import('./permissions/permission.module').then (m => m.PermModule)
    }],
    },
    {

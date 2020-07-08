@@ -453,6 +453,18 @@ const MENUITEMS_ACCENCIO_ADMIN = [
       name: 'Users',
       type: 'link',
       icon: 'icon-organization icons'
+     },
+     {
+      state: 'perm',
+      name: 'Permission',
+      type: 'link',
+      icon: 'icon-organization icons'
+     },
+     {
+      state: 'workbooks',
+      name: 'Workbooks',
+      type: 'link',
+      icon: 'icon-organization icons'
      }
 ];
 
@@ -462,7 +474,6 @@ export class MenuItems {
 
    }
    getAll(): Menu[] {
-      console.log(this.session.role);
       if (this.session.role === 'CLIENTADMIN') {
          return MENUITEMS_CLIENT_ADMIN;
       }

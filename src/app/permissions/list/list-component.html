@@ -1,0 +1,58 @@
+<div class="user-table-wrapper">
+	<div class="chk-block mb-0">
+		<div class="chk-block-title px-4">
+			<div class="d-block d-sm-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-start align-items-center mb-sm-0 mb-3">
+					<div class="mr-3">
+						<a class="text-muted" href="javascript:void(0)"><i class="fa fa-refresh"
+								aria-hidden="true"></i></a>
+					</div>
+					<div class="form-group form-field mr-3 mb-0 text-nowrap">
+						<select class="form-control h-auto p-cursor custom-select">
+							<option>All</option>
+							<option>Edit</option>
+							<option>Delete</option>
+							<option>New</option>
+						</select>
+					</div>
+				</div>
+				<div class="d-flex justify-content-start align-items-center">
+					<button class="btn btn-primary" (click)="apply()">Apply permission<i class="fa fa-plus ml-2"></i></button>
+
+				</div>
+			</div>
+		</div>
+		<div class="chk-block-content p-0">
+			<div class="table-responsive">
+				<table class="table table-striped mb-0">
+					<thead>
+						<tr class="text-muted font-sm">
+							<th scope="col">Org</th>
+							<th *ngFor="let wb of workbooks">{{wb.shortName}}</th>
+							<th class="text-center" scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let org of records">
+							<td>
+								<div class="d-flex align-items-center">
+									<div>
+										<h6 class="mb-0">{{org.name}}</h6>
+									</div>
+								</div>
+							</td>
+							<td  *ngFor="let wb of workbooks">
+								  <label class="switch">
+									<input [(ngModel)] = "tabs[org.id][wb.id]" [checked]=""  type="checkbox">
+									<span class="slider"></span>
+								  </label>
+							</td>
+							<td class="text-center font-sm text-nowrap">								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

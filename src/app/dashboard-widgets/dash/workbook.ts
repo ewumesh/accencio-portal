@@ -2,6 +2,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 import { WorkbookType } from './workbooktype';
 
 export class Workbook {
+  public shortName: string;
   constructor(
     public id: string,
     public type: WorkbookType,
@@ -14,6 +15,5 @@ export class Workbook {
     public account: string,
     public analysis: string,
     public content: string,
-    ) { }
-
+  ) {}
 }
