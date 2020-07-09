@@ -42,7 +42,7 @@ const MENUITEMS = [
       state: 'user-management',
       name: 'MANAGEMENT',
       type: 'link',
-      icon: 'icon-organization icons'
+      icon: 'icon-compass icons'
    },
    {
       state: 'courses',
@@ -453,25 +453,25 @@ const MENUITEMS_ACCENCIO_ADMIN = [
       state: 'user-management',
       name: 'Users',
       type: 'link',
-      icon: 'icon-organization icons'
+      icon: 'icon-people icons'
      },
      {
       state: 'perm',
       name: 'Permission',
       type: 'link',
-      icon: 'icon-organization icons'
+      icon: 'icon-shield icons'
      },
      {
       state: 'workbooks',
       name: 'Workbooks',
       type: 'link',
-      icon: 'icon-organization icons'
+      icon: 'icon-note icons'
      },
      {
       state: 'libraries',
       name: 'Libraries',
       type: 'link',
-      icon: 'icon-organization icons'
+      icon: 'icon-notebook icons'
    }
 ];
 

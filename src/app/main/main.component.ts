@@ -4,7 +4,7 @@ import { Router, NavigationEnd, Event } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from "@angular/flex-layout";
 import PerfectScrollbar from 'perfect-scrollbar';
-import { TourService,IStepOption } from 'ngx-tour-ng-bootstrap';
+import { TourService, IStepOption } from 'ngx-tour-ng-bootstrap';
 import { filter } from 'rxjs/operators';
 
 import { MenuItems } from '../core/menu/menu-items/menu-items';
@@ -12,7 +12,7 @@ import { PageTitleService } from '../core/page-title/page-title.service';
 import { AuthService } from '../service/auth/auth.service';
 import { CoreService } from '../service/core/core-service.service';
 import { ASession } from 'request/session';
-declare var  require;
+declare var require;
 
 const screenfull = require('screenfull');
 
@@ -22,58 +22,58 @@ const screenfull = require('screenfull');
 	styleUrls: ['./main-material.scss'],
 	encapsulation: ViewEncapsulation.None
 })
- 
+
 export class MainComponent implements OnInit, OnDestroy {
 
-	dark                   : boolean;
-	boxed                  : boolean;
-	collapseSidebar        : boolean;
-	compactSidebar         : boolean;
-	customizerIn           : boolean = false;
-	chatWindowOpen         : boolean = false;
-	chatSidebar            : boolean = false;
-	sidebarClosed          : boolean = false;
-	chatpanelOpen          : boolean = false;
-	sidenavOpen            : boolean = true;
-	isMobile               : boolean = false;
-	isFullscreen           : boolean = false;
-	_opened                : boolean = true;
-	_showBackdrop          : boolean = false;
-	_closeOnClickOutside   : boolean = false;
-	showSettings           : boolean = false;
+	dark: boolean;
+	boxed: boolean;
+	collapseSidebar: boolean;
+	compactSidebar: boolean;
+	customizerIn: boolean = false;
+	chatWindowOpen: boolean = false;
+	chatSidebar: boolean = false;
+	sidebarClosed: boolean = false;
+	chatpanelOpen: boolean = false;
+	sidenavOpen: boolean = true;
+	isMobile: boolean = false;
+	isFullscreen: boolean = false;
+	_opened: boolean = true;
+	_showBackdrop: boolean = false;
+	_closeOnClickOutside: boolean = false;
+	showSettings: boolean = false;
 
-	_mode               : string = "push";
-	sidenavMode         : string = 'side';
-	themeSkinColor      : any = "light";
-	headerSkinColor     : any = "primary";
-	root                : any = 'ltr';
-	layout              : any = 'ltr';
-	header              : string;
-	url                 : string;
-	public innerWidth   : any;
-	input               : any;
-	miniSidebar			  : boolean = true;
-	private _router                     : Subscription;
-	private _mediaSubscription          : Subscription;
-	private _routerEventsSubscription   : Subscription;
+	_mode: string = "push";
+	sidenavMode: string = 'side';
+	themeSkinColor: any = "light";
+	headerSkinColor: any = "primary";
+	root: any = 'ltr';
+	layout: any = 'ltr';
+	header: string;
+	url: string;
+	public innerWidth: any;
+	input: any;
+	miniSidebar: boolean = true;
+	private _router: Subscription;
+	private _mediaSubscription: Subscription;
+	private _routerEventsSubscription: Subscription;
 
 	currentLang = 'en';
-	@ViewChild('sidenav', {static: false}) sidenav;
+	@ViewChild('sidenav', { static: false }) sidenav;
 
 	constructor(
 		public session: ASession,
 		public tourService: TourService,
-					private coreService: CoreService,
-					private authService: AuthService,
-					public menuItems: MenuItems,
-					private pageTitleService: PageTitleService,
-					public translate: TranslateService,
-					private router: Router,
-					private media: MediaObserver) {
+		private coreService: CoreService,
+		private authService: AuthService,
+		public menuItems: MenuItems,
+		private pageTitleService: PageTitleService,
+		public translate: TranslateService,
+		private router: Router,
+		private media: MediaObserver) {
 
 		const browserLang: string = translate.getBrowserLang();
 		translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-	  
+
 		this.tourService.events$.subscribe();
 		this.tourService.initialize([
 			{
@@ -81,7 +81,7 @@ export class MainComponent implements OnInit, OnDestroy {
 				content: 'Welcome to user portal tour!',
 				placement: 'below',
 				title: 'Welcome to Accencio',
-			},   
+			},
 			{
 				anchorId: 'tour-search',
 				content: 'Enjoying Search box with sugestion and many more things',
@@ -94,9 +94,9 @@ export class MainComponent implements OnInit, OnDestroy {
 				placement: 'below',
 				title: 'Full Screen',
 			}
-			]
+		]
 		);
-		
+
 		if (window.innerWidth > 1280) {
 			this.tourService.start();
 		}
@@ -142,7 +142,7 @@ export class MainComponent implements OnInit, OnDestroy {
 		}
 
 		this._mediaSubscription = this.media.media$.subscribe((change: MediaChange) => {
-			let isMobile = (change.mqAlias == 'xs') || (change.mqAlias == 'sm')  || (change.mqAlias == 'md');
+			let isMobile = (change.mqAlias == 'xs') || (change.mqAlias == 'sm') || (change.mqAlias == 'md');
 
 			this.isMobile = isMobile;
 			this._mode = (isMobile) ? 'over' : 'push';
@@ -159,13 +159,22 @@ export class MainComponent implements OnInit, OnDestroy {
 		});
 
 		//Add class on focus of search box in header
-		document.getElementById('search-field').addEventListener("focusin",function(){
+		document.getElementById('search-field').addEventListener("focusin", function () {
 			document.getElementById('search-field').parentElement.classList.add("search-active");
 		})
 
-		document.getElementById('search-field').addEventListener("focusout",function(){
+		document.getElementById('search-field').addEventListener("focusout", function () {
 			document.getElementById('search-field').parentElement.classList.remove("search-active");
 		})
+
+		document.getElementById('#osearch').addEventListener('keypress', function (e) {
+			debugger;
+			if (e.key === 'Enter') {
+			  // code for enter
+			  document.getElementById('search-field').parentElement.classList.remove("search-active");
+	
+			}
+		});
 	}
 
 	ngOnDestroy() {
@@ -260,17 +269,17 @@ export class MainComponent implements OnInit, OnDestroy {
 			this.coreService.rtlShowStatus = false;
 		}
 	}
-	
+
 	/**
 	  * toggleSidebar method is used to switch between Icon sidebar and Sidebar.
 	  */
 	toggleSidebar(isChecked) {
 		this.miniSidebar = !isChecked;
-		if (isChecked) {         
+		if (isChecked) {
 			document.getElementById('showSidebar').classList.remove('icon-sidebar');
 			document.getElementsByClassName('app')[0].classList.remove("icon-sidebar-wrap");
 			document.getElementById('boxed-layout').classList.remove('disabled-checkbox');
-		}  else {         
+		} else {
 			document.getElementById('showSidebar').className += " icon-sidebar";
 			document.getElementsByClassName('app')[0].className += " icon-sidebar-wrap";
 			document.getElementById('boxed-layout').className += " disabled-checkbox";
@@ -287,12 +296,12 @@ export class MainComponent implements OnInit, OnDestroy {
 	/**
 	  *closeOnClickOutside method is used when click on outside close/open the sidebar.
 	  */
-	closeOnClickOutside(){
-		if(this._opened){
+	closeOnClickOutside() {
+		if (this._opened) {
 			this.sidebarClosed = false;
 		}
-		else{
-			this.sidebarClosed =  true;
+		else {
+			this.sidebarClosed = true;
 		}
 		return this._closeOnClickOutside;
 	}
@@ -300,11 +309,11 @@ export class MainComponent implements OnInit, OnDestroy {
 	/**
 	  * boxedLayout method is used to show the box layout.
 	  */
-	boxedLayout(isChecked){
-		if(isChecked){
+	boxedLayout(isChecked) {
+		if (isChecked) {
 			this.boxed = true;
 			document.getElementById('icon-sidebar').className += " disabled-checkbox";
-		}else{
+		} else {
 			this.boxed = false;
 			document.getElementById('icon-sidebar').classList.remove('disabled-checkbox');
 		}
