@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<h3 class="text-capitalize">{{title}}</h3>
+			</div>
+			<div class="chk-block-content">
+				<form [formGroup]="form" (submit)="onSubmit()">
+					<div class="form-group">
+						<label for="name">Acccount Name</label>
+						<input class="form-control" placeholder="account name" [formControl]="form.controls['name']">
+						<small class="chankya-block"
+							*ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+							class="text-danger">
+							account name.
+						</small>
+					</div>
+					<div class="form-group" *ngIf="!id">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" placeholder="password"
+							[formControl]="form.controls['password']">
+					</div>
+					<div class="form-group">
+						<label for="fullname">Full name</label>
+						<input class="form-control" placeholder="full name" [formControl]="form.controls['fullname']">
+					</div>
+
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input class="form-control" placeholder="email" [formControl]="form.controls['email']">
+					</div>
+
+					<div class="form-group">
+						<label for="state">Role</label>
+						<select class="form-control" name="role" formControlName="role">
+							<option *ngFor="let r of roles" [ngValue]="r.name">
+								{{r.name}}
+							</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="company">Company</label>
+						<select class="form-control" name="company" formControlName="company">
+							<option *ngFor="let o of companies" [ngValue]="o.name">
+								{{o.name}}
+							</option>
+						</select>
+					</div>
+
+					<div class="pad-wrap">
+						<div>
+							<button class="btn btn-primary btn-lg btn-square" type="submit">Submit</button>
+							&nbsp;
+							<button class="btn btn-white btn-lg btn-square"
+								[routerLink]="['/user-management']">Back</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

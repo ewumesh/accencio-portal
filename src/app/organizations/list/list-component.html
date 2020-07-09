@@ -35,13 +35,13 @@
 							</th>
 							<th scope="col">Id</th>
 							<th scope="col">Name</th>
-							<th scope="col">Title</th>
-							<th class="text-center text-nowrap" scope="col">Date</th>
+							<th scope="col">Address1</th>
+							<th scope="col">City,State</th>
 							<th class="text-center" scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let wb of workbooks; let i = index">
+						<tr *ngFor="let r of records; let i = index">
 							<th scope="row">
 								<div class="custom-control custom-checkbox user-grid-chkbox"><label
 										class="text-relative"><input
@@ -52,38 +52,27 @@
 							<td>
 								<div class="d-flex align-items-center">
 									<div>
-										<h6 class="mb-0">{{wb.id}}</h6>
-										<ng-container *ngIf="wb.type==2">
-											<span class="badge badge-primary mt-1">Spotfire</span>
-										</ng-container>
-										<ng-container *ngIf="wb.type==1">
-											<span class="badge badge-success mt-1">Tableau</span>
-										</ng-container>
-										<ng-container *ngIf="wb.type==3">
-											<span class="badge badge-warning mt-1">Content</span>
-										</ng-container>
+										<h6 class="mb-0">{{r.id}}</h6>
 									</div>
 								</div>
 							</td>
 							<td>
-								<span class="font-sm">{{wb.name}}<br />
-									<ng-container *ngIf="wb.type==1">
-										{{wb.account}}
-									</ng-container>
-									<ng-container *ngIf="wb.type==2">
-										{{wb.analysis}}
-									</ng-container>
+								<span class="font-sm">{{r.name}}
 								</span>
 							</td>
 							<td>
-								<span class="font-sm">{{wb.title}}</span>
+								<span class="font-sm">{{r.address1}}
+								</span>
 							</td>
-							<td class="text-center font-sm">{{wb.date|date}}</td>
+							<td>
+								<span class="font-sm">{{r.city}}, {{r.state}} {{r.zip}}</span>
+							</td>
+							
 							<td class="text-center font-sm text-nowrap">
 								<a class="mr-3 text-muted" href="javascript:void(0)"
-								[routerLink]="['/workbooks/edit',wb.id]"><i class="fa fa-edit"
+								[routerLink]="['/org/edit',r.id]"><i class="fa fa-edit"
 										aria-hidden="true"></i></a>
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(wb.id, i)"><i
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(r.id, i)"><i
 										class="fa fa-times" aria-hidden="true"></i></a>
 							</td>
 						</tr>

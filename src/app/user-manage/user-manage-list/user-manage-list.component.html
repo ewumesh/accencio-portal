@@ -5,19 +5,20 @@
 			<div class="d-block d-sm-flex justify-content-between align-items-center">
 				<div class="d-flex justify-content-start align-items-center mb-sm-0 mb-3">
 					<div class="mr-3">
-						<a class="text-muted" href="javascript:void(0)"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+						<a class="text-muted" href="javascript:void(0)"><i class="fa fa-refresh"
+								aria-hidden="true"></i></a>
 					</div>
 					<div class="form-group form-field mr-3 mb-0 text-nowrap">
 						<select class="form-control h-auto p-cursor custom-select">
-                     <option>All</option>
-                     <option>Edit</option>
-                     <option>Delete</option>
-                     <option>New</option>
-                  </select>
+							<option>All</option>
+							<option>Edit</option>
+							<option>Delete</option>
+							<option>New</option>
+						</select>
 					</div>
 				</div>
 				<div class="d-flex justify-content-start align-items-center">
-					<button class="btn btn-primary" (click)="addNewUserDialog()">Add User<i class="fa fa-plus ml-2"></i></button>
+					<button class="btn btn-primary" (click)="addNew()">Add User<i class="fa fa-plus ml-2"></i></button>
 				</div>
 			</div>
 		</div>
@@ -27,8 +28,13 @@
 					<thead>
 						<tr class="text-muted font-sm">
 							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" (change)="selectall($event)"><span class="custom-control-label p-cursor"></span></label></div>
+								<div class="custom-control custom-checkbox user-grid-chkbox"><label
+										class="text-relative"><input
+											class="custom-control-input ng-untouched ng-pristine ng-valid"
+											type="checkbox" (change)="selectall($event)"><span
+											class="custom-control-label p-cursor"></span></label></div>
 							</th>
+							<th scope="col">Company</th>
 							<th scope="col">User</th>
 							<th scope="col">Name</th>
 							<th scope="col">Email Address</th>
@@ -41,8 +47,15 @@
 					<tbody>
 						<tr *ngFor="let userList of userManageList;let i = index">
 							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" name="checkboxes"><span class="custom-control-label p-cursor"></span></label></div>
+								<div class="custom-control custom-checkbox user-grid-chkbox"><label
+										class="text-relative"><input
+											class="custom-control-input ng-untouched ng-pristine ng-valid"
+											type="checkbox" name="checkboxes"><span
+											class="custom-control-label p-cursor"></span></label></div>
 							</th>
+							<td>
+								<span class="font-sm">{{userList.company}}</span>
+							</td>
 							<td>
 								<div class="d-flex align-items-center">
 									<div>
@@ -53,6 +66,7 @@
 									</div>
 								</div>
 							</td>
+
 							<td>
 								<span class="font-sm">{{userList.name}}</span>
 							</td>
@@ -63,8 +77,7 @@
 								<div class="d-flex">
 									<span class="fa fa-circle {{userList.statusType}} mr-2"></span>
 									<div>
-										<div class="font-sm">{{userList.status}}</div>
-										<div class="font-sm text-muted">{{userList.time}}</div>
+										<div class="font-sm">{{userList.enabled?'Enabled':'Disabled'}}</div>
 									</div>
 								</div>
 							</td>
@@ -73,8 +86,17 @@
 							</td>
 							<td class="text-center font-sm">{{userList.dateCreated|date}}</td>
 							<td class="text-center font-sm text-nowrap">
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onEditUserList(userList,i)"><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(userList, i)"><i class="fa fa-times" aria-hidden="true"></i></a>
+								<button *ngIf="!userList.enabled" class="btn btn-primary btn-square" 
+								(click)="onEnabled(userList, i)">Enable</button>
+								<button *ngIf="userList.enabled" class="btn btn-warning btn-square" href="javascript:void(0)"
+								(click)="onDisabled(userList, i)">Disable</button>
+								&nbsp;
+								<a class="mr-3 text-muted" href="javascript:void(0)"
+									[routerLink]="['/user-management/edit',userList.accountName]"><i class="fa fa-edit"
+										aria-hidden="true"></i></a>
+								
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(userList, i)"><i
+										class="fa fa-times" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 					</tbody>
@@ -85,22 +107,23 @@
 					<ul class="pagination justify-content-end mb-0">
 						<li class="page-item">
 							<a class="page-link" href="javascript:;" aria-label="Previous">
-                        <span aria-hidden="true">
-                           <i class="fa fa-angle-double-left fa-lg" aria-hidden="true"></i>
-                        </span>
-                     </a>
+								<span aria-hidden="true">
+									<i class="fa fa-angle-double-left fa-lg" aria-hidden="true"></i>
+								</span>
+							</a>
 						</li>
-						<li class="active page-item"><a class="page-link bg-white mx-1 shadow-box" href="javascript:;">1</a></li>
+						<li class="active page-item"><a class="page-link bg-white mx-1 shadow-box"
+								href="javascript:;">1</a></li>
 						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">2</a></li>
 						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">3</a></li>
 						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">4</a></li>
 						<li class="page-item"><a class="page-link bg-white mx-1 shadow-box">5</a></li>
 						<li class="page-item">
 							<a class="page-link" href="javascript:;" aria-label="Next">
-                        <span aria-hidden="true">
-                           <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
-                        </span>
-                     </a>
+								<span aria-hidden="true">
+									<i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
+								</span>
+							</a>
 						</li>
 					</ul>
 				</nav>
