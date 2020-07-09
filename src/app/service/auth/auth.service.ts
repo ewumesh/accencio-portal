@@ -116,7 +116,8 @@ export class AuthService {
    /*
     * logOut function is used to sign out .
     */
-   logOut() {
+   async logOut() {
+      await Auth.signOut();
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");

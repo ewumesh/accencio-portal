@@ -11,7 +11,8 @@ import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { WorkbookType } from './workbooktype';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-
+import { Observable, forkJoin } from 'rxjs';
+import { WorkbookPerm } from './workbookperm';
 var i = 1;
 var lwbsspot: any;
 var lloadspot: any;
@@ -22,23 +23,12 @@ function onReady2Callback(response, newApp) {
 
       i++;
       const wb = lwbsspot.find(el => el.id == ("spot-" + i.toString()));
-      
-      
       if (wb) {
          lloadspot(wb.analysis, wb.name, lwbsspot);
-      }
-      //if (i == 1) {
-         //   lloadspot('/IP-GeoScapeTM Library/Demo1/EGFR_2020Q1_Demo','TLR7antag_2020Q1_Clinical1', lwbsspot);
-      //}
-
-      //if (i == 2) {
-         // lloadspot('/Demo/PDE9_IP-GeoScape1','TLR7antag_2020Q1_Clinical', lwbsspot);
-      //}
-      
+      }    
    }
 }
 
-//declare function onReadyCallback(response, newApp) : any;
 @Component({
    selector: 'ms-dash',
    templateUrl: './dash-component.html',
@@ -93,63 +83,75 @@ export class DashComponent implements OnInit {
 
    getDashboardData() {
       this.company = this.session.company;
+      console.log(this.company);
       this.wbs = [];
       this.wbsspot = [];
-      this.http.get(environment.API_GATEWAY + '/wb/' + this.company).subscribe(wbData => {
-         (wbData as Workbook[]).forEach(element => {
-            if (element.type == 1) {
-               const params = "?username=" + element.account + "&target_site=" + element.site;
-               this.http.get(environment.API_GATEWAY + '/auth/trusted' + params).subscribe(ticket => {
-                  const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
-                  this.wbs.push(new Workbook(
-                     element.name,
-                     element.type,
-                     element.title,
-                     element.description,
-                     element.site,
-                     element.name,
-                     element.date,
-                     wbUrl, '', '', null));
-               });
-            } else if (element.type == 3) {
-                  this.wbs.push(new Workbook(
-                     element.name,
-                     element.type,
-                     element.title,
-                     element.description,
-                     element.site,
-                     element.name,
-                     element.date,
-                     null, '', '', element.content));
-            } else { //spotfire
-               this.wbsspot.push(new Workbook(
-                  "spot-" + i.toString(),
+      const allpermService = this.http.get(environment.API_GATEWAY + '/permission/byid/' + this.company);
+      allpermService.subscribe(result => {
+         
+         const wbData = (result as WorkbookPerm).w;
+         console.log(wbData);
+         //const permData = results[1] as Object[];
+         //this.workbooks = results[1] as Workbook[];
+         this.initworkbooks(wbData);
+      });
+      
+      //this.http.get(environment.API_GATEWAY + '/wb/' + this.company).subscribe(wbData => {
+   }
+   initworkbooks(workbooks: Workbook[]) {
+      workbooks.forEach(element => {
+         if (element.type == 1) {
+            const params = "?username=" + element.account + "&target_site=" + element.site;
+            this.http.get(environment.API_GATEWAY + '/auth/trusted' + params).subscribe(ticket => {
+               const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
+               this.wbs.push(new Workbook(
+                  element.name,
                   element.type,
                   element.title,
                   element.description,
                   element.site,
                   element.name,
                   element.date,
-                  null, '', element.analysis, ''));
-               i++;
+                  wbUrl, '', '', null));
+            });
+         } else if (element.type == 3) {
+               this.wbs.push(new Workbook(
+                  element.name,
+                  element.type,
+                  element.title,
+                  element.description,
+                  element.site,
+                  element.name,
+                  element.date,
+                  null, '', '', element.content));
+         } else { //spotfire
+            this.wbsspot.push(new Workbook(
+               "spot-" + i.toString(),
+               element.type,
+               element.title,
+               element.description,
+               element.site,
+               element.name,
+               element.date,
+               null, '', element.analysis, ''));
+            i++;
+         }
+      });
+      i = 1;
+      lloadspot = this.loadspot;
+      lwbsspot = this.wbsspot;
+      this.observer = new MutationObserver(mutations => {
+         mutations.forEach(function (mutation) {
+            if (mutation.addedNodes[0].childNodes) {
+               const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
+               const wb = lwbsspot.find(el => el.id == id);
+               if (id == "spot-1")
+                  lloadspot(wb.analysis, wb.name);
             }
          });
-         i = 1;
-         lloadspot = this.loadspot;
-         lwbsspot = this.wbsspot;
-         this.observer = new MutationObserver(mutations => {
-            mutations.forEach(function (mutation) {
-               if (mutation.addedNodes[0].childNodes) {
-                  const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
-                  const wb = lwbsspot.find(el => el.id == id);
-                  if (id == "spot-1")
-                     lloadspot(wb.analysis, wb.name);
-               }
-            });
-         });
-         const config = { attributes: true, childList: true, characterData: true };
-         this.observer.observe(this.spotcont.nativeElement, config);
       });
+      const config = { attributes: true, childList: true, characterData: true };
+      this.observer.observe(this.spotcont.nativeElement, config);
    }
 
    constructor(private pageTitleService: PageTitleService,
