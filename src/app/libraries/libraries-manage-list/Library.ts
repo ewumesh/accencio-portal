@@ -3,6 +3,7 @@ export class Library {
     name: string;
     date: string;
     description: string;
+    workbook: string;
     //LibraryWorkbooks: any[];
 }
 export class LibraryResponse {

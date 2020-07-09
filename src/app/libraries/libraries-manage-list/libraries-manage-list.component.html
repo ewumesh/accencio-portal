@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-start align-items-center">
-					<button class="btn btn-primary" (click)="addNewUserDialog()">Add Library<i class="fa fa-plus ml-2"></i></button>
+					<button class="btn btn-primary" (click)="addNewLibrary()">Add Library<i class="fa fa-plus ml-2"></i></button>
 				</div>
 			</div>
 		</div>
@@ -26,13 +26,14 @@
 				<table class="table table-striped mb-0">
 					<thead>
 						<tr class="text-muted font-sm">
-							<th scope="row">
+							<!--<th scope="row">
 								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" (change)="selectall($event)"><span class="custom-control-label p-cursor"></span></label></div>
-							</th>
+							</th>-->
               <th scope="col">Id</th>
 							<th scope="col">Name</th>
 							<th scope="col">Date</th>
 							<th scope="col">Desc</th>
+              <th scope="col">Workbook</th>
 							<!--<th scope="col">Status</th>
 							<th class="text-center text-nowrap" scope="col">Account Type</th>
 							<th class="text-center text-nowrap" scope="col">Date Created</th>-->
@@ -41,9 +42,9 @@
 					</thead>
 					<tbody>
 						<tr *ngFor="let librariesList of librariesManageList;let i = index">
-							<th scope="row">
+							<!--<th scope="row">
 								<div class="custom-control custom-checkbox user-grid-chkbox"><label class="text-relative"><input class="custom-control-input ng-untouched ng-pristine ng-valid" type="checkbox" name="checkboxes"><span class="custom-control-label p-cursor"></span></label></div>
-							</th>
+							</th>-->
               <td>
                 <span class="font-sm">{{librariesList.id}}</span>
               </td>
@@ -56,6 +57,9 @@
 							<td>
 								<span class="font-sm">{{librariesList.description}}</span>
 							</td>
+              <td>
+                <span class="font-sm">{{librariesList.workbook}}</span>
+              </td>
 							<!--<td>
 								<div class="d-flex">
 									<span class="fa fa-circle {{librariesList.statusType}} mr-2"></span>
@@ -70,8 +74,9 @@
 							</td>
 							<td class="text-center font-sm">{{librariesList.dateCreated|date}}</td>-->
 							<td class="text-center font-sm text-nowrap">
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onEditUserList(librariesList,i)"><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(librariesList, i)"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <a class="mr-3 text-muted" href="javascript:void(0)"
+                   [routerLink]="['/libraries/edit',librariesList.id]"><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(librariesList.id, i)"><i class="fa fa-times" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 					</tbody>

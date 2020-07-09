@@ -8,7 +8,8 @@ import { environment } from 'environments/environment';
 import { Library, LibraryResponse } from './Library';
 import {UserResponse} from "../../user-manage/user-manage-list/User";
 import {Workbook} from "../../dashboard-widgets/dash/workbook";
-
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-libraries-manage-list',
@@ -47,6 +48,8 @@ export class LibrariesManageListComponent implements OnInit {
 		public coreService: CoreService,
 		public translate: TranslateService,
 		private http: HttpClient,
+    private router: Router,
+    private toastr: ToastrService,
 		private session: ASession) { }
 
 	ngOnInit() {
@@ -61,7 +64,8 @@ export class LibrariesManageListComponent implements OnInit {
           id: element.id,
           name: element.name,
           date: element.date,
-          description: element.description
+          description: element.description,
+          workbook: element.workbook
           /*
 					image: "assets/img/user-1.jpg",
 					name: user.Attributes.find(el => el.Name == "given_name").Value,
@@ -145,28 +149,12 @@ export class LibrariesManageListComponent implements OnInit {
 	/**
 	   * onDelete method is used to open a delete dialog.
 	   */
-	onDelete(data, i) {
-		var  headers = new  HttpHeaders( {
-			//'Authorization':'eyJraWQiOiJrdGNmSm1FV0hMZmtCeU14ZWxPaktiU3d1XC84OWVHY3pia2ZFUGowTk5xbz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJkNDM2NjAyOC00MmZmLTRhNWQtODEyZi05NTRlNDdiODM0ZDgiLCJjb2duaXRvOmdyb3VwcyI6WyJVU0VSIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9WWmtDcVpFVDYiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGVtbyIsImdpdmVuX25hbWUiOiJkZW1vIiwiY3VzdG9tOmNvbXBhbnkiOiJEZW1vIiwiYXVkIjoiNDhiOW1pNWVlN21rcnNlbjc3aTluaHZhMmUiLCJldmVudF9pZCI6ImQyNzE5MzUxLWUzOWYtNDg5Mi04Mzc5LWFlNDA2ZmIyZDcxOSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNTkyOTk0NDMzLCJleHAiOjE1OTI5OTgwMzMsImlhdCI6MTU5Mjk5NDQzMywiY3VzdG9tOmcxIjoiVVNFUiIsImVtYWlsIjoiZGFuaWVsLmRhdmlkQGJpc3NvZnQucm8ifQ.nldVGObPEoUWMNcCsWolFGtvJp5Y8OyTDN3rZhSO4ZfiUuIJaDa3XBzAoyXwqiNZlUJ3NBadf3bUw9cjg5DYebcJycHgD_POwjrXL9gzQMtCi2_SDnxwQhGJV12jLp-9iaPTORbKVQKRp3vu6O0G-Y4bRv4pVcnZW-p6GxvY0rO8JUzhsAaF75aHHtIzewXiBFD-9df5oFNJW2jXO23F8ZDCkWIb3YswuCrBgpPQMRf-vk6B6tHXR6cIko7ihIhtwaMEpjSswlHrOvj-yGSV1F1V1UvaH78DmLNBEe4EXoK0QDOqZBxblyYxoh6Sv3RF-2lXnppt9uQyGdbaVYgmiw'
-		}
-		);
-		//headers = headers.set('Accept', 'application/json');
-		//headers = headers.set('Content-Type', 'application/json');
-		headers = headers.set('Authorization', this.session.id_token);
-		//headers = headers.set('Access-Control-Allow-Origin', '*');
-
-		let accountName = data.accountName;
-
-
-		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
-			then(res => {
-				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName, {headers}).subscribe(r => {
-								this.getDeleteResponse(res, i)
-							});
-
-			})
-			.catch(error => console.log(error))
-	}
+  onDelete(id, index) {
+    this.http.delete(environment.API_GATEWAY + '/library/' + id).subscribe(users => {
+      this.toastr.success('Library has been deleted.');
+      this.librariesManageList.splice(index, 1);
+    });
+  }
 
 	/**
 	  * getDeleteResponse method is used to delete a user from the user list.
@@ -198,4 +186,8 @@ export class LibrariesManageListComponent implements OnInit {
 				this.librariesManageList[i].accountTypeColor = this.color[response.accountType]
 		}
 	}
+
+  addNewLibrary(){
+	  this.router.navigate(['/libraries/add']);
+  }
 }

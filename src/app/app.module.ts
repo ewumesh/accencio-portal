@@ -16,7 +16,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { SidebarModule } from 'ng-sidebar';
 import { ToastrModule } from 'ngx-toastr';
-import 'hammerjs'; 
+import 'hammerjs';
 
 import { AuthService } from './service/auth/auth.service';
 
@@ -32,11 +32,12 @@ import { SessionDemoModule } from './session/session.module';
 import { WidgetsComponentModule } from './widgets-component/widgets-component.module';
 import { ASession } from 'request/session';
 import { WorkbookModule } from './workbooks/workbook.module';
+import { LibrariesModule } from './libraries/libraries.module';
 
 /********** Custom option for ngx-translate ******/
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-} 
+}
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -65,6 +66,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		MenuToggleModule,
 		HttpClientModule,
 		WorkbookModule,
+    LibrariesModule,
 		TranslateModule.forRoot({
 		loader: {
 			provide: TranslateLoader,
@@ -75,11 +77,11 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		ToastrModule.forRoot({
 			timeOut: 2000,
 			preventDuplicates: true
-		}),		
+		}),
 		WidgetsComponentModule
     ],
 	declarations: [
-		ChankyaAppComponent, 
+		ChankyaAppComponent,
 		MainComponent,
 		AuthComponent,
 		HorizontalLayoutComponent
