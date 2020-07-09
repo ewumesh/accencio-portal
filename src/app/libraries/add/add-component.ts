@@ -29,6 +29,7 @@ export class AddComponent implements OnInit {
   private id: string;
   public workbookId: string;
   public workbookName: string;
+  public workbook: string;
   dropdownSettings:IDropdownSettings;
   dropdownList = [];
   selectedItems = [];
