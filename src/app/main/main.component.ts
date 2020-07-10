@@ -167,14 +167,7 @@ export class MainComponent implements OnInit, OnDestroy {
 			document.getElementById('search-field').parentElement.classList.remove("search-active");
 		})
 
-		document.getElementById('#osearch').addEventListener('keypress', function (e) {
-			debugger;
-			if (e.key === 'Enter') {
-			  // code for enter
-			  document.getElementById('search-field').parentElement.classList.remove("search-active");
-	
-			}
-		});
+		
 	}
 
 	ngOnDestroy() {
