@@ -24,14 +24,13 @@ import { ChankyaAppComponent} from './app.component';
 import { RoutingModule } from "./app-routing.module";
 import { MainComponent }   from './main/main.component';
 import { AuthComponent }   from './auth/auth.component';
-import { HorizontalLayoutComponent } from './horizontal-layout/horizontal-layout.component';
 import { MenuToggleModule } from './core/menu/menu-toggle.module';
 import { MenuItems } from './core/menu/menu-items/menu-items';
 import { PageTitleService } from './core/page-title/page-title.service';
-import { SessionDemoModule } from './session/session.module';
+import { SessionModule } from './session/session.module';
 import { WidgetsComponentModule } from './widgets-component/widgets-component.module';
 import { ASession } from 'request/session';
-import { WorkbookModule } from './workbooks/workbook.module';
+
 
 /********** Custom option for ngx-translate ******/
 export function createTranslateLoader(http: HttpClient) {
@@ -57,14 +56,13 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		SidebarModule.forRoot(),
 		RoutingModule,
 		RouterModule,
-		SessionDemoModule,
+		SessionModule,
 		TourNgBootstrapModule.forRoot(),
 		NgbModalModule.forRoot(),
 		AgmCoreModule.forRoot({apiKey: 'AIzaSyBtdO5k6CRntAMJCF-H5uZjTCoSGX95cdk'}),
 		PerfectScrollbarModule,
 		MenuToggleModule,
 		HttpClientModule,
-		WorkbookModule,
 		TranslateModule.forRoot({
 		loader: {
 			provide: TranslateLoader,
@@ -81,8 +79,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 	declarations: [
 		ChankyaAppComponent,
 		MainComponent,
-		AuthComponent,
-		HorizontalLayoutComponent
+		AuthComponent
 	],
 	bootstrap: [ChankyaAppComponent],
 	providers:[

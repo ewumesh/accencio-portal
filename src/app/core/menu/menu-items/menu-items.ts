@@ -361,7 +361,7 @@ const MENUITEMS = [
 const MENUITEMS_USER = [
 
    {
-      state: 'dash-widget',
+      state: 'dashboard',
       name: 'Dashboard',
       type: 'link',
       label: '',
@@ -393,7 +393,7 @@ const MENUITEMS_USER = [
 
 const MENUITEMS_CLIENT_ADMIN = [
    {
-      state: 'dash-widget',
+      state: 'dashboard',
       name: 'Dashboard',
       type: 'link',
       label: '',
@@ -430,7 +430,7 @@ const MENUITEMS_CLIENT_ADMIN = [
 
 const MENUITEMS_ACCENCIO_ADMIN = [
    {
-      state: 'dash-widget',
+      state: 'dashboard',
       name: 'Dashboard',
       type: 'link',
       label: '',

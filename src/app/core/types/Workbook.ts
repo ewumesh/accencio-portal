@@ -1,5 +1,5 @@
 import { SafeResourceUrl } from '@angular/platform-browser';
-import { WorkbookType } from './workbooktype';
+import { WorkbookType } from './WorkbookType';
 
 export class Workbook {
   public shortName: string;

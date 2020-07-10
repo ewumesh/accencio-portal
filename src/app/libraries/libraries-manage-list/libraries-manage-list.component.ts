@@ -5,9 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
-import { Library, LibraryResponse } from './Library';
-import {UserResponse} from "../../user-manage/user-manage-list/User";
-import {Workbook} from "../../dashboard-widgets/dash/workbook";
+import { Library } from './Library';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -28,22 +26,6 @@ export class LibrariesManageListComponent implements OnInit {
 	}
 
 	librariesManageList = [];
-	userManage3List: any = [
-		{
-			image: "assets/img/user-1.jpg",
-			name: "Joseph",
-			accountName: "Pinney",
-			newStatus: true,
-			email: "JosephAPinney@rhyta.com",
-			status: "Active",
-			statusType: "online",
-			time: "Since 1 Hour",
-			accountType: "Platinum",
-			accountTypeColor: "primary",
-			dateCreated: "27 Oct 2018"
-		}];
-
-
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
 		public translate: TranslateService,
@@ -56,8 +38,6 @@ export class LibrariesManageListComponent implements OnInit {
 		this.translate.get('Libraries Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-    //console.log("Hey: " + this.http.get<LibraryResponse>(environment.API_GATEWAY + '/library/all').pipe());
-
 		this.http.get(environment.API_GATEWAY + '/library/all').subscribe(libraries => {
       (libraries as Library[]).forEach(element => {
 				this.librariesManageList.push({
@@ -66,42 +46,9 @@ export class LibrariesManageListComponent implements OnInit {
           date: element.date,
           description: element.description,
           workbook: element.workbook
-          /*
-					image: "assets/img/user-1.jpg",
-					name: user.Attributes.find(el => el.Name == "given_name").Value,
-					accountName: user.Username,
-					newStatus: false,
-					email: user.Attributes.find(el => el.Name == "email").Value,
-					status: user.UserStatus,
-					statusType: "online",
-					time: "Since 1 Hour",
-					accountType: user.Attributes.find(el => el.Name == "custom:g1").Value,
-					accountTypeColor: "primary",
-					dateCreated: "27 Oct 2018"*/
 				})
 			});
 		});
-
-
-
-    /* this.http.get<UserResponse>(environment.API_GATEWAY + '/user/list').subscribe(users => {
-      users.Users.forEach(user => {
-        this.userManageList.push({
-          image: "assets/img/user-1.jpg",
-          name: user.Attributes.find(el => el.Name == "given_name").Value,
-          accountName: user.Username,
-          newStatus: false,
-          email: user.Attributes.find(el => el.Name == "email").Value,
-          status: user.UserStatus,
-          statusType: "online",
-          time: "Since 1 Hour",
-          accountType: user.Attributes.find(el => el.Name == "custom:g1").Value,
-          accountTypeColor: "primary",
-          dateCreated: "27 Oct 2018"
-        })
-      }); */
-
-
 
 	}
 
@@ -123,7 +70,6 @@ export class LibrariesManageListComponent implements OnInit {
 			then(res => { this.getAddUserPopupResponse(res) })
 			.catch(error => console.log(error));
 	}
-
 
 	/**
 	  * getAddUserPopupResponse method is used to get a new user dialog response.
@@ -155,7 +101,6 @@ export class LibrariesManageListComponent implements OnInit {
       this.librariesManageList.splice(index, 1);
     });
   }
-
 	/**
 	  * getDeleteResponse method is used to delete a user from the user list.
 	  */

@@ -81,7 +81,7 @@ export class AuthService {
          //this.route.navigate(['/dashboard2']);
          this.toastr.success('You have been successfully logged In');
          this.setLocalUserProfile(value);
-         this.router.navigate(['dash-widget']);
+         this.router.navigate(['dashboard']);
       })
          .catch(err => this.toastr.error(err.message));
    }

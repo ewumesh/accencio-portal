@@ -11,8 +11,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { WidgetsComponentModule } from '../widgets-component/widgets-component.module';
 import { CourseComponent } from './course/course.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
-import { CoursePaymentComponent } from './course-payment/course-payment.component';
-import { CourseSigninComponent } from './course-signin/course-signin.component';
 import { CoursesRoutes } from './courses.routing';
 import { CourseDegreeComponent } from './course-widget/course-degree/course-degree.component';
 import { CourseCardComponent } from './course-widget/course-card/course-card.component';
@@ -46,8 +44,6 @@ import { CourseDetailDescription2Component } from './course-widget/course-detail
 	declarations: [
 		CourseComponent,
 		CourseDetailComponent,
-		CoursePaymentComponent,
-		CourseSigninComponent,
 		CourseDegreeComponent,
 		CourseCardComponent,
 		Course_DetailComponent,

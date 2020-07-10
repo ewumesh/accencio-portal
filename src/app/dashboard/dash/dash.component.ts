@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
-import { orders, products, customers, refunds, cost, pie } from '../dashboard.data';
+
 import PerfectScrollbar from 'perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
-import { Workbook } from './workbook';
+import { Workbook } from '../../core/types/Workbook';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
-import { WorkbookType } from './workbooktype';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Observable, forkJoin } from 'rxjs';
-import { WorkbookPerm } from './workbookperm';
+import { WorkbookPerm } from '../../core/types/WorkbookPerm';
 var i = 1;
 var lwbsspot: any;
 var lloadspot: any;

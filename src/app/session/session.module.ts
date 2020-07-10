@@ -40,4 +40,4 @@ import { SessionRoutes } from './session.routing';
    ]
 })
 
-export class SessionDemoModule {}
+export class SessionModule {}

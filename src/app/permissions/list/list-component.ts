@@ -7,10 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, forkJoin } from 'rxjs';
-import { Permission } from '../Permission';
-import { OrgPermission } from '../OrgPermission';
-import { Workbook } from 'app/dashboard-widgets/dash/workbook';
+import { forkJoin } from 'rxjs';
+import { Permission } from 'app/core/types/Permission';
+import { Workbook } from 'app/core/types/Workbook';
 
 @Component({
   selector: 'ms-perm-list',
