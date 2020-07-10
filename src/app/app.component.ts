@@ -3,12 +3,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './service/auth/auth.service';
 
 @Component({
-	selector: 'chankya-app',
+	selector: 'accencio-app',
 	template:'<router-outlet></router-outlet>',
 	encapsulation: ViewEncapsulation.None
 })
 
-export class ChankyaAppComponent {
+export class AccencioAppComponent {
    constructor(translate: TranslateService, authService: AuthService) {
 		translate.addLangs(['en', 'fr', 'he', 'ru' , 'ar' , 'zh' ,'de' , 'es', 'ja', 'ko' , 'it' ,'hu']);
 		translate.setDefaultLang('en');

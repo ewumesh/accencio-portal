@@ -17,7 +17,7 @@ declare var require;
 const screenfull = require('screenfull');
 
 @Component({
-	selector: 'chankya-layout',
+	selector: 'accencio-layout',
 	templateUrl: './main-material.html',
 	styleUrls: ['./main-material.scss'],
 	encapsulation: ViewEncapsulation.None
@@ -234,7 +234,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	addMenuItem(): void {
 		this.menuItems.add({
 			state: 'pages',
-			name: 'CHANKYA MENU',
+			name: 'accencio MENU',
 			type: 'sub',
 			icon: 'icon-plus icons',
 			children: [

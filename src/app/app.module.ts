@@ -20,7 +20,7 @@ import 'hammerjs';
 
 import { AuthService } from './service/auth/auth.service';
 
-import { ChankyaAppComponent} from './app.component';
+import { AccencioAppComponent} from './app.component';
 import { RoutingModule } from "./app-routing.module";
 import { MainComponent }   from './main/main.component';
 import { AuthComponent }   from './auth/auth.component';
@@ -77,11 +77,11 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		WidgetsComponentModule
     ],
 	declarations: [
-		ChankyaAppComponent,
+		AccencioAppComponent,
 		MainComponent,
 		AuthComponent
 	],
-	bootstrap: [ChankyaAppComponent],
+	bootstrap: [AccencioAppComponent],
 	providers:[
 		ASession,
 		MenuItems,
@@ -93,4 +93,4 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		}
 	]
 })
-export class ChankyaAppModule { }
+export class AccencioAppModule { }
