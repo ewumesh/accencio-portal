@@ -30,6 +30,7 @@ import { PageTitleService } from './core/page-title/page-title.service';
 import { SessionModule } from './session/session.module';
 import { WidgetsComponentModule } from './widgets-component/widgets-component.module';
 import { ASession } from 'request/session';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 /********** Custom option for ngx-translate ******/
@@ -57,6 +58,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		RoutingModule,
 		RouterModule,
 		SessionModule,
+		ModalModule.forRoot(),  
 		TourNgBootstrapModule.forRoot(),
 		NgbModalModule.forRoot(),
 		AgmCoreModule.forRoot({apiKey: 'AIzaSyBtdO5k6CRntAMJCF-H5uZjTCoSGX95cdk'}),

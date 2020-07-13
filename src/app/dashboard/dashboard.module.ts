@@ -12,6 +12,7 @@ import { DirectivesModule } from '../core/directive/directives.module';
 import { DashComponent } from './dash/dash.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DashboardRoutes } from './dashboard.routing';
+import { Dash1Component } from './dash-1/dash.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	suppressScrollX: true
@@ -29,7 +30,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     	RouterModule.forChild(DashboardRoutes)
 	],
 	declarations: [
-		DashComponent
+		DashComponent,
+		Dash1Component
 	],
 	providers: [
 		{

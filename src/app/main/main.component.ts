@@ -1,17 +1,20 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, HostListener, ViewEncapsulation, ElementRef, TemplateRef, ContentChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, NavigationEnd, Event } from '@angular/router';
+import { Router, NavigationEnd, Event, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from "@angular/flex-layout";
 import PerfectScrollbar from 'perfect-scrollbar';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TourService, IStepOption } from 'ngx-tour-ng-bootstrap';
 import { filter } from 'rxjs/operators';
-
 import { MenuItems } from '../core/menu/menu-items/menu-items';
 import { PageTitleService } from '../core/page-title/page-title.service';
 import { AuthService } from '../service/auth/auth.service';
 import { CoreService } from '../service/core/core-service.service';
 import { ASession } from 'request/session';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'environments/environment';
+import { WorkbookPerm } from 'app/core/types/WorkbookPerm';
 declare var require;
 
 const screenfull = require('screenfull');
@@ -24,16 +27,15 @@ const screenfull = require('screenfull');
 })
 
 export class MainComponent implements OnInit, OnDestroy {
-
 	dark: boolean;
 	boxed: boolean;
 	collapseSidebar: boolean;
 	compactSidebar: boolean;
 	customizerIn: boolean = false;
-	chatWindowOpen: boolean = false;
-	chatSidebar: boolean = false;
+
+
 	sidebarClosed: boolean = false;
-	chatpanelOpen: boolean = false;
+
 	sidenavOpen: boolean = true;
 	isMobile: boolean = false;
 	isFullscreen: boolean = false;
@@ -41,7 +43,6 @@ export class MainComponent implements OnInit, OnDestroy {
 	_showBackdrop: boolean = false;
 	_closeOnClickOutside: boolean = false;
 	showSettings: boolean = false;
-
 	_mode: string = "push";
 	sidenavMode: string = 'side';
 	themeSkinColor: any = "light";
@@ -57,10 +58,22 @@ export class MainComponent implements OnInit, OnDestroy {
 	private _mediaSubscription: Subscription;
 	private _routerEventsSubscription: Subscription;
 
+	modalRef: BsModalRef;
 	currentLang = 'en';
 	@ViewChild('sidenav', { static: false }) sidenav;
 
+	@ViewChild('template',  { static: false }) 
+	templateSearch: TemplateRef<any>;
+
+	public results = [
+	];
+
+	// tslint:disable-next-line:member-ordering
+	public tmp: any[] = this.results;
+
 	constructor(
+		private http: HttpClient,
+		private modalService: BsModalService,
 		public session: ASession,
 		public tourService: TourService,
 		private coreService: CoreService,
@@ -69,6 +82,7 @@ export class MainComponent implements OnInit, OnDestroy {
 		private pageTitleService: PageTitleService,
 		public translate: TranslateService,
 		private router: Router,
+		private route: ActivatedRoute,
 		private media: MediaObserver) {
 
 		const browserLang: string = translate.getBrowserLang();
@@ -126,11 +140,7 @@ export class MainComponent implements OnInit, OnDestroy {
 				ps.update();
 			}
 
-			/** Perfect scrollbar for chat window **/
-			const elemChatbar = <HTMLElement>document.querySelector('.chat-inner ');
-			if (window.matchMedia(`(min-width: 1280px)`).matches) {
-				const pse = new PerfectScrollbar(elemChatbar);
-			}
+
 		}
 
 		if (this.media.isActive('xs') || this.media.isActive('sm') || this.media.isActive('md')) {
@@ -157,17 +167,30 @@ export class MainComponent implements OnInit, OnDestroy {
 				this.sidenav.close();
 			}
 		});
-
-		//Add class on focus of search box in header
-		document.getElementById('search-field').addEventListener("focusin", function () {
-			document.getElementById('search-field').parentElement.classList.add("search-active");
+		let company = this.session.company;
+		const allpermService = this.http.get(environment.API_GATEWAY + '/permission/byid/' + company);
+		allpermService.subscribe(result => {
+		   const wbData = (result as WorkbookPerm).w;
+		   this.results = wbData.map(el =>  {
+			   let el1 = {
+			   'id' : el.id,
+			   'text' : el.name,
+			   'l1' : el.name[0]
+				};
+			return el1;
 		})
-
-		document.getElementById('search-field').addEventListener("focusout", function () {
-			document.getElementById('search-field').parentElement.classList.remove("search-active");
-		})
-
-		
+		console.log(this.results);
+		this.tmp = this.results;
+		});
+	}
+	elSearchFocusIn() {
+		this.modalRef = this.modalService.show(
+			this.templateSearch,
+			Object.assign({}, { class: 'searchmodal my-modal' })
+		);
+	}
+	elSearchFocusOut() {
+		this.modalRef.hide();
 	}
 
 	ngOnDestroy() {
@@ -200,19 +223,6 @@ export class MainComponent implements OnInit, OnDestroy {
 		this.customizerIn = !this.customizerIn;
 	}
 
-	/**
-	  * chatWindowFunction is used to open and close the chat window.
-	  */
-	chatWindowFunction() {
-		this.chatWindowOpen = !this.chatWindowOpen;
-	}
-
-	/**
-	  * chatSidebarFunction is used to open and close the chat sidebar list.
-	  */
-	chatSidebarFunction() {
-		this.chatSidebar = !this.chatSidebar;
-	}
 
 	/**
 	  * changeThemeColor function filter the color for sidebar section.
@@ -248,6 +258,21 @@ export class MainComponent implements OnInit, OnDestroy {
 	  */
 	onActivate(e, scrollContainer) {
 		scrollContainer.scrollTop = 0;
+	}
+	//values: string = '';
+
+	onKey(event: any) { // without type info
+		console.log(event.target.value);
+		var s1 = event.target.value as string;
+		s1 = s1.toLowerCase();
+		this.results = this.tmp.filter(s => {
+			return s.text.toLowerCase().includes(s1);
+		});
+	}
+
+	dash1(id) {
+		this.router.navigate(['/dashboard/' + id]);
+		this.modalRef.hide()
 	}
 
 	/**
@@ -296,7 +321,7 @@ export class MainComponent implements OnInit, OnDestroy {
 		else {
 			this.sidebarClosed = true;
 		}
-		return this._closeOnClickOutside;
+		//return this._closeOnClickOutside;
 	}
 
 	/**

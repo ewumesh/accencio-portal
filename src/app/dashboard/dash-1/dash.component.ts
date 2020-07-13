@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 
-import PerfectScrollbar from 'perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
 import { Workbook } from '../../core/types/Workbook';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
@@ -29,13 +28,13 @@ function onReady2Callback(response, newApp) {
 }
 
 @Component({
-   selector: 'ms-dash',
+   selector: 'ms-dash-1',
    templateUrl: './dash-component.html',
    styleUrls: ['./dash-component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 
-export class DashComponent implements OnInit {
+export class Dash1Component implements OnInit {
 
    wbsspot: Workbook[];
    wbs: Workbook[];
@@ -89,11 +88,15 @@ export class DashComponent implements OnInit {
       allpermService.subscribe(result => {
          
          const wbData = (result as WorkbookPerm).w;
-         this.initworkbooks(wbData);
+         console.log(wbData);
+         const w = wbData.find(el => el.id === this.id);
+         if (w)
+            this.initworkbooks(w);
       });
    }
-   initworkbooks(workbooks: Workbook[]) {
-      workbooks.forEach(element => {
+
+   initworkbooks(element: Workbook) {
+      
          if (element.type == 1) {
             const params = "?username=" + element.account + "&target_site=" + element.site;
             this.http.get(environment.API_GATEWAY + '/auth/trusted' + params).subscribe(ticket => {
@@ -133,7 +136,6 @@ export class DashComponent implements OnInit {
                null, '', element.analysis, ''));
             i++;
          }
-      });
       i = 1;
       lloadspot = this.loadspot;
       lwbsspot = this.wbsspot;
@@ -154,6 +156,7 @@ export class DashComponent implements OnInit {
    constructor(private pageTitleService: PageTitleService,
       public translate: TranslateService,
       private router: Router,
+      private route: ActivatedRoute,
       private sanitizer: DomSanitizer,
       private http: HttpClient,
       private session: ASession) {
@@ -165,13 +168,15 @@ export class DashComponent implements OnInit {
           };
    }
 
+   private id: string;
    ngOnInit() {
       this.translate.get('Dashboard').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
-      this.getDashboardData();
+      this.route.params.subscribe(params => {
+         this.id = params['id'];
+         this.getDashboardData();
+       });      
    }
-   dash1(id) {
-		this.router.navigate(['/dashboard/' + id]);
-	}
+
 }

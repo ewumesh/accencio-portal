@@ -38,7 +38,7 @@
   width: auto;
   margin: $modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
-  pointer-events: none;
+  // pointer-events: none;
 
   // When fading in the modal, animate it to slide down
   .modal.fade & {

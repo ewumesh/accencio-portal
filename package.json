@@ -66,6 +66,7 @@
 		"ng2-validation": "^4.2.0",
 		"ng2modules-easypiechart": "0.0.4",
 		"ngx-bar-rating": "^1.1.0",
+		"ngx-bootstrap": "^5.6.1",
 		"ngx-card": "^0.2.4",
 		"ngx-embed-video": "^1.0.4",
 		"ngx-mydatepicker": "^2.4.9",

@@ -4,6 +4,7 @@ import { WorkbookType } from './WorkbookType';
 export class Workbook {
   public shortName: string;
   constructor(
+    public iid: string,
     public id: string,
     public type: WorkbookType,
     public title: string,

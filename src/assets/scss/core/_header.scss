@@ -315,36 +315,54 @@
       width: calc(100% - 4rem);
    }
 }
-.search-modal {
-	.modal-dialog {
+.searchmodal {
+	.modal-content {
 		max-width: 100%;
 		width: 100%;
-	}
-	.search-list {
-		list-style: none;
-		padding: 0;
-		a {
-			color: $white;
-			font-size: 1.2rem;
-			.search-filter {
-				font-weight: 700;
+		background-color: black;
+		.search-list {
+			list-style: none;
+			padding: 0;
+			a {
+				color: $white;
+				font-size: 1.2rem;
+				.search-filter {
+					font-weight: 700;
+				}
 			}
 		}
 	}
+	
 	.square-50 {
 		float: left;
 	}
-	.close {
-		cursor: pointer;
-		font-size: 5rem;
-		outline: medium none;
-		right: 6%;
-		z-index: 55;
-	}
-	span {
-		color: $white;
-	}
+	
 }
+
+.my-modal {
+	background-color:black;
+	max-width: 100%;
+	width: 100%;
+  }
+  .my-modal .close {
+	cursor: pointer;
+	font-size: 5rem;
+	outline: medium none;
+	right: 6%;
+	z-index: 55;
+}
+.my-modal span {
+	color: $white;
+}
+  .my-modal .modal-header {
+	background-color: lime;
+  }
+  .my-modal .modal-dialog {
+	  max-width:100%;
+  }
+  .my-modal .modal-content {
+	background-color:black;
+  }
 .modal-backdrop.show {
 	opacity: 0.9;
 }

@@ -1,6 +1,6 @@
 <div class="row base-card">
 	<!-- tableau widgets-->
-	<div widget class="col-sm-12 col-md-6 col-lg-6 col-xl-6 cus-col" *ngFor="let wb of wbs">
+	<div widget class="col-sm-12 col-md-12 col-lg-12 col-xl-12 cus-col" *ngFor="let wb of wbs">
 		<div class="chk-block">
 			<div class="chk-block-title">
 				<div class="d-flex justify-content-between">
@@ -9,8 +9,6 @@
 					</div>
 					<div class="d-inline-flex align-self-center">
 						<div class="chk-contextual-link widget-controls">
-							<a class="icon-note icons" href="javascript:void(0)"></a>
-							<a class="icon-pie-chart icons" (click)="dash1(wb.iid)" href="javascript:void(0)"></a>
 							<a data-widgster="expand" href="javascript:void(0)" class="transition"><i
 									class="icon-plus icons"></i></a>
 							<a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
@@ -38,7 +36,7 @@
 					<angular-editor #description="ngModel" id="description" name="description" [ngModel]="wb.content" [config]="config" *ngIf="wb.type==3">
 					</angular-editor>
 				</div>
-				<div class="text-center text-muted"><a (click)="dash1(wb.iid)">View</a>
+				<div class="text-center text-muted"><a class="">View All</a>
 				</div>
 			</div>
 		</div>
@@ -46,7 +44,7 @@
 </div>
 <div class="row base-card" #spotcont>
 	<!-- spotfire widgets-->
-	<div widget class="col-sm-12 col-md-6 col-lg-6 col-xl-6 cus-col" *ngFor="let wb of wbsspot">
+	<div widget class="col-sm-12 col-md-12 col-lg-12 col-xl-12 cus-col" *ngFor="let wb of wbsspot">
 		<div class="chk-block">
 			<div class="chk-block-title">
 				<div class="d-flex justify-content-between">
@@ -55,8 +53,6 @@
 					</div>
 					<div class="d-inline-flex align-self-center">
 						<div class="chk-contextual-link widget-controls">
-							<a class="icon-note icons" href="javascript:void(0)"></a>
-							<a class="icon-pie-chart icons" (click)="dash1(wb.iid)" href="javascript:void(0)"></a>
 							<a data-widgster="expand" href="javascript:void(0)" class="transition"><i
 									class="icon-plus icons"></i></a>
 							<a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
@@ -81,7 +77,7 @@
 				<div class="embed-responsive embed-responsive-16by9 z-depth-1">
 					<div id="{{wb.id}}" class="embed-responsive-item"></div>
 				</div>
-				<div class="text-center text-muted"><a (click)="dash1(wb.iid)">View</a>
+				<div class="text-center text-muted"><a class="">View All</a>
 				</div>
 			</div>
 		</div>

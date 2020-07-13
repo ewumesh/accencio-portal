@@ -121,9 +121,9 @@
 							<div class="h-100 pl-4 search-bar w-100 h-100 d-none d-md-block search-w">
 								<form class="h-100 search-form">
 									<div class="h-100 search-i">
-										<input tourAnchor="tour-search" class="form-control accencio-input-top-bar" type="text"
-											placeholder="Search" data-toggle="modal" data-target="#search-modal"
-											id="search-field" />
+										<input tourAnchor="tour-search" class="form-control accencio-input-top-bar"
+											type="text" placeholder="Search" (focusin)="elSearchFocusIn()"
+											(focusout)="elSearchFocusOut()" id="searchfield" />
 									</div>
 								</form>
 							</div>
@@ -162,7 +162,8 @@
 												</div>
 												<small>{{'Chat'|translate}}</small>
 											</a>
-											<a class="dropdown-item pt-3" routerLink="/courses/courses" routerLinkActive="active-link">
+											<a class="dropdown-item pt-3" routerLink="/courses/courses"
+												routerLinkActive="active-link">
 												<div class="icon-area ">
 													<i class="icon-graduation icons"></i>
 												</div>
@@ -204,8 +205,7 @@
 												<div class="icon-area align-self-start">
 													<i class="fa fa-long-arrow-up" aria-hidden="true"></i>
 												</div>
-												<div class="icon-msg mx-2"> <span
-														class="align-self-start d-block ">{{'Research
+												<div class="icon-msg mx-2"> <span class="align-self-start d-block ">{{'Research
 														Scientists' | translate}}</span>
 													<small>5 hours ago</small>
 												</div>
@@ -217,8 +217,7 @@
 										<a class="relative rounded-bg" href="javascript:void(0)"
 											id="navbarDropdownMenuLin" data-toggle="dropdown" aria-haspopup="true"
 											aria-expanded="false">
-											<i
-												class="material-icons">account_box</i>
+											<i class="material-icons">account_box</i>
 
 										</a>
 										<div class="dropdown-menu rounded-0 dropdown-menu-right p-0"
@@ -275,268 +274,24 @@
 		<!-- Sidebar Closed -->
 	</ng-sidebar-container>
 	<!-- Sidebar -->
-
-	<div class="chat-sidebar-pan">
-		<div class="settings-panel">
-			<ul class="nav nav-tabs" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#chat" role="tab">{{'Chat'|translate}}</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#setting" role="tab">{{'Settings'|translate}}</a>
-				</li>
-			</ul>
-			<div class="tab-content">
-				<div class="tab-pane active" id="chat" role="tabpanel">
-					<div class="chat-tabs">
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""> <img class="img-responsive rounded-circle" alt="Chat session"
-										src="assets/img/user-1.jpg" width="50" height="50"> </div>
-								<div class="px-2">
-									<span class="d-block">Connor Soto</span> <small class="d-block">See you
-										later</small>
-								</div>
-							</div>
-						</a>
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""> <img class="rounded-circle" alt="Chat session"
-										src="assets/img/user-1.jpg" width="50" height="50"> </div>
-								<div class="px-2">
-									<span class="d-block">Miguel Romero</span> <small class="d-block">Hope for
-										best!</small>
-								</div>
-							</div>
-						</a>
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""> <img class="rounded-circle" alt="Chat session"
-										src="assets/img/user-2.jpg" width="50" height="50"> </div>
-								<div class="px-2">
-									<span class="d-block">Marguerite Riley</span> <small class="d-block">Good bye and
-										TC!</small>
-								</div>
-							</div>
-						</a>
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""><img class="rounded-circle" alt="Chat session" src="assets/img/user-3.jpg"
-										width="50" height="50"> </div>
-								<div class="px-2">
-									<span class="d-block">Marian Burke</span> <small class="d-block">Talk u
-										later</small>
-								</div>
-							</div>
-						</a>
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""><img class="rounded-circle" alt="Chat session" src="assets/img/user-4.jpg"
-										width="50" height="50"> </div>
-								<div class="px-2">
-									<span class="d-block">Wayne Hoffman</span> <small class="d-block">Ready for
-										sunday</small>
-								</div>
-							</div>
-						</a>
-						<a href="javascript:void(0)" (click)="chatWindowFunction()">
-							<div class="d-flex justify-content-start">
-								<div class=""> <img class="rounded-circle" alt="Chat session"
-										src="assets/img/user-5.jpg" width="50" height="50"> </div>
-								<div class="px-2 ">
-									<span class="d-block">Chris Evans</span> <small class="d-block">am fine
-										,thanks</small>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="tab-pane" id="setting" role="tabpanel">
-					<div class="system-setting">
-						<div class="setting-header text-muted"><i class="fa fa-cog"></i> System</div>
-						<ul class="list-style-none pl-0">
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Nofications</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-nofications" checked>
-									<label class="onoffswitch-label mb-0" for="switch-nofications">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Quick Results</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-results" checked>
-									<label class="onoffswitch-label mb-0" for="switch-results">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Auto Updates</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-updates" checked>
-									<label class="onoffswitch-label mb-0" for="switch-updates">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-						</ul>
-						<div class="setting-header mt-3 text-muted"> <i class="fa fa-user"></i> Account</div>
-						<ul class="list-style-none pl-0">
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Offline Mode</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-offline" checked>
-									<label class="onoffswitch-label mb-0" for="switch-offline">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Location Share</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-location" checked>
-									<label class="onoffswitch-label mb-0" for="switch-location">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Show Offline User</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-offline-user" checked>
-									<label class="onoffswitch-label mb-0" for="switch-offline-user">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-							<li class="d-flex justify-content-between">
-								<div class="align-self-center">Save History</div>
-								<div class="onoffswitch align-self-center">
-									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-										id="switch-history" checked>
-									<label class="onoffswitch-label mb-0" for="switch-history">
-										<span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--setting panel closed -->
-	</div>
-	<!-- Chat Sidebar -->
-	<div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-				aria-hidden="true">×</span></button>
-		<div class="modal-dialog" role="document">
+	<ng-template #template>
+		<button type="button" class="close" aria-label="Close" (click)="modalRef.hide()"><span>×</span></button>
+		<div class="modal-dialog">
 			<div class="container">
-				<div class="mb-5">
-					<input class="overlay-search" placeholder="Search...">
+				<div class="ml-5">
+					<input class="overlay-search" placeholder="Search..." (keyup)="onKey($event)">
 				</div>
 				<div class="search-suggestion">
-					<span class="d-block mb-3"><strong>Sugguestions</strong></span>
 					<ul class="row search-list">
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-							<a href="javascript:void(0)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">C</span><span
-									class="search-filter mx-1">IP-CompView </span> visualizations and analysis</a>
-							<span class="d-block">@ipcomp</span>
+						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4" *ngFor="let r of results">
+							<a (click)="dash1(r.id)"><span
+									class="d-inline-block square-50 circle bg-success mr-2">{{r.l1}}</span>
+								{{r.text}}</a>
 						</li>
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-							<a href="javascript:void(0)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">F</span><span
-									class="search-filter mx-1">IP-FolioView</span>  visualizations and analysis</a>
-							<span class="d-block">@ipfolio</span>
-						</li>
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-							<a href="javascript:void(0)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">G</span><span
-									class="search-filter mx-1">IP-GeoScape</span>  visualizations and analysis</a>
-							<span class="d-block">@geoscape</span>
-						</li>
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-							<a href="javascript:void(0)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">K</span><span
-									class="search-filter mx-1">IP-Kinship</span> visualizations and analysis</a>
-							<span class="d-block">@kinship</span>
-						</li>
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-							<a href="javascript:void(0)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">C</span><span
-									class="search-filter mx-1">The Accencio® </span> COVID-19 Initiative</a>
-							<span class="d-block">@covid</span>
-						</li>
-						
 					</ul>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Modal -->
-	<div class="chat-window">
-		<div class="chat-window-i">
-			<div class="user-name-chat bg-grey d-flex justify-content-between">
-				<span class="align-self-center">Dekota James</span> <a href="javascript:void(0)"
-					(click)="chatWindowFunction()"><i class="material-icons align-self-center">close</i></a>
-			</div>
-			<div class="chat-inner">
-				<ul>
-					<li class="user-msg mb-3">
-						<div class="d-flex">
-							<img src="assets/img/user-4.jpg" class="circle chat-user-img" width="55" height="55"
-								alt="user-image">
-							<div class="msg-detail px-2">
-								<span class="text-primary d-block mb-1">Dekota</span>
-								<div class="box-shadow p-2 msg-box mb-1">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, magni?
-									</p>
-								</div>
-								<div class="time text-muted"><small>3 min ago</small></div>
-							</div>
-						</div>
-					</li>
-					<li class="my-msg mb-3">
-						<div class="d-flex">
-							<img src="assets/img/user-2.jpg" class="circle chat-user-img" width="55" height="55"
-								alt="user-image">
-							<div class="msg-detail px-2">
-								<span class="text-primary d-block mb-1">Admin</span>
-								<div class="box-shadow p-2 msg-box mb-1">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing.
-									</p>
-								</div>
-								<div class="time text-muted"><small>3 min ago</small></div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="send-msg-chat p-3">
-				<input class="form-control form-control-lg mb-3" placeholder="Type message" type="text">
-				<button class="btn btn-primary" type="submit">Send</button>
-			</div>
-		</div>
-	</div>
-	<!-- Chat Window -->
+	</ng-template>
 </div>
 <!-- app closed -->
