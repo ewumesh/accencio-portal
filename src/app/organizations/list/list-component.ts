@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { ARequest } from 'request/request';
 
 @Component({
   selector: 'ms-organization-list',
@@ -23,7 +24,7 @@ export class ListOrgComponent implements OnInit {
               private router: Router,
               private toastr: ToastrService,
               private sanitizer: DomSanitizer,
-              private http: HttpClient,
+              private request: ARequest,
               private session: ASession) {}
 
   ngOnInit() {
@@ -31,21 +32,19 @@ export class ListOrgComponent implements OnInit {
       this.pageTitleService.setTitle(res);
     });
 
-    this.http.get(environment.API_GATEWAY + '/org/all').subscribe(orgs => {
+    this.request.get('/org/all').subscribe(orgs => {
       this.records = orgs as Object[];
     });
   }
   onDelete(id, index) {
-    this.http.delete(environment.API_GATEWAY + '/org/delete/' + id).subscribe(users => {
+    this.request.delete('/org/delete/' + id).subscribe(users => {
       this.toastr.success('Organization has been deleted.');
       this.records.splice(index, 1);
     });
   }
-
   addnew() {
     this.router.navigate(['/org/add']);
   }
-
 }
 
 

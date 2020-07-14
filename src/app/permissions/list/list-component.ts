@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { forkJoin } from 'rxjs';
 import { Permission } from 'app/core/types/Permission';
 import { Workbook } from 'app/core/types/Workbook';
+import { ARequest } from 'request/request';
 
 @Component({
   selector: 'ms-perm-list',
@@ -27,11 +28,8 @@ export class PermListComponent implements OnInit {
   public tabs: boolean[][];
   constructor(private pageTitleService: PageTitleService,
     public translate: TranslateService,
-    private router: Router,
     private toastr: ToastrService,
-    private sanitizer: DomSanitizer,
-    private http: HttpClient,
-    private session: ASession) {
+    private request: ARequest) {
     this.tabs = [];
     this.tabs[0] = [false];
   }
@@ -42,9 +40,9 @@ export class PermListComponent implements OnInit {
       this.pageTitleService.setTitle(res);
     });
 
-    const orgs = this.http.get(environment.API_GATEWAY + '/org/all');
-    const workbooks = this.http.get(environment.API_GATEWAY + '/wb/all');
-    const permissions = this.http.get(environment.API_GATEWAY + '/permission/all');
+    const orgs = this.request.get('/org/all');
+    const workbooks = this.request.get('/wb/all');
+    const permissions = this.request.get('/permission/all');
 
     forkJoin([orgs, workbooks, permissions]).subscribe(results => {
       this.records = results[0] as Object[];
@@ -93,7 +91,7 @@ export class PermListComponent implements OnInit {
       //const  s1 = JSON.stringify(perm1);
       //console.log(perm1);
 
-      this.http.post(environment.API_GATEWAY + '/permission/add',
+      this.request.post('/permission/add',
         JSON.stringify(perm1)
       ).subscribe(users => {
         if (orgid == 0)

@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Auth } from 'aws-amplify';
 import { UserResponse } from '../user-manage-list/User';
+import { ARequest } from 'request/request';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -36,7 +37,7 @@ export class AddUserComponent implements OnInit {
 		private router: Router,
 		private toastr: ToastrService,
 		private route: ActivatedRoute,
-		private http: HttpClient,
+		private request: ARequest,
 		private session: ASession) { }
 
 	ngOnInit() {
@@ -61,7 +62,7 @@ export class AddUserComponent implements OnInit {
 
 		if (this.id) {
 			this.title = "Edit User " + this.id;
-				this.http.get<UserResponse>(environment.API_GATEWAY + '/user/get/' + this.id).subscribe(users => {
+				this.request.get('/user/get/' + this.id).subscribe(users => {
 				const user = users.Users.find(el => el.Username === this.id);
 				this.form.setValue({
 					password: null,
@@ -75,7 +76,7 @@ export class AddUserComponent implements OnInit {
 			});
 		}
 		if (this.session.role === 'ACCENCIOADMIN') {
-			this.http.get(environment.API_GATEWAY + '/org/all').subscribe(
+			this.request.get('/org/all').subscribe(
 				result => {
 					this.companies = result;
 				}
@@ -120,7 +121,7 @@ export class AddUserComponent implements OnInit {
 	}
 
 	edit() {
-		this.http.post(environment.API_GATEWAY + '/user/update',
+		this.request.post('/user/update',
 		{
 		  username: this.form.value.account,
 		  givenname: this.form.value.fullname,

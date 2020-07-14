@@ -8,6 +8,7 @@ import { ASession } from 'request/session';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { ARequest } from 'request/request';
 
 
 @Injectable({
@@ -20,9 +21,9 @@ export class AuthService {
 
    constructor(private router: Router,
       private http: HttpClient,
+      private request: ARequest,
       private session: ASession,
       private toastr: ToastrService) {
-
    }
 
    /*
@@ -90,7 +91,7 @@ export class AuthService {
     * resetPassword is used to reset your password.
     */
    resetPassword(value): Observable<any> {
-      return this.http.post(environment.API_GATEWAY + '/user/forgot-password',
+      return this.request.post('/user/forgot-password',
          {
             username: value
          });
@@ -105,7 +106,7 @@ export class AuthService {
    }
 
    confirmCode(username, code, password): Observable<any> {
-      return this.http.post(environment.API_GATEWAY + '/user/confirm-code',
+      return this.request.post('/user/confirm-code',
          {
             username: username,
             code: code,

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   API_GATEWAY: 'https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod',
+  //API_GATEWAY: 'https://api.accencio.com',
   TABLEAU_API: 'https://visualize.accencio.com',
   SPOTFIRE_API: 'https://visualizer.accencio.com/spotfire/wp/'
 };

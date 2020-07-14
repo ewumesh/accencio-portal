@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { ARequest } from 'request/request';
 
 @Component({
   selector: 'ms-workbook-list',
@@ -22,21 +23,19 @@ export class ListComponent implements OnInit {
               public translate: TranslateService,
               private router: Router,
               private toastr: ToastrService,
-              private sanitizer: DomSanitizer,
-              private http: HttpClient,
-              private session: ASession) {}
+              private request: ARequest) {}
 
   ngOnInit() {
     this.translate.get('Workbooks').subscribe((res: string) => {
       this.pageTitleService.setTitle(res);
     });
 
-    this.http.get(environment.API_GATEWAY + '/wb/all').subscribe(users => {
+    this.request.get('/wb/all').subscribe(users => {
       this.workbooks = users as Object[];
     });
   }
   onDelete(id, index) {
-    this.http.delete(environment.API_GATEWAY + '/wb/delete/' + id).subscribe(users => {
+    this.request.delete('/wb/delete/' + id).subscribe(users => {
       this.toastr.success('Workbook has been deleted.');
       this.workbooks.splice(index, 1);
     }); 

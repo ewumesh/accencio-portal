@@ -15,6 +15,7 @@ import { ASession } from 'request/session';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { WorkbookPerm } from 'app/core/types/WorkbookPerm';
+import { ARequest } from 'request/request';
 declare var require;
 
 const screenfull = require('screenfull');
@@ -72,7 +73,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	public tmp: any[] = this.results;
 
 	constructor(
-		private http: HttpClient,
+		private request: ARequest,
 		private modalService: BsModalService,
 		public session: ASession,
 		public tourService: TourService,
@@ -168,7 +169,7 @@ export class MainComponent implements OnInit, OnDestroy {
 			}
 		});
 		let company = this.session.company;
-		const allpermService = this.http.get(environment.API_GATEWAY + '/permission/byid/' + company);
+		const allpermService = this.request.get('/permission/byid/' + company);
 		allpermService.subscribe(result => {
 		   const wbData = (result as WorkbookPerm).w;
 		   this.results = wbData.map(el =>  {

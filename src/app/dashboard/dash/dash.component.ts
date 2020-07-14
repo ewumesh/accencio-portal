@@ -12,6 +12,7 @@ import { environment } from 'environments/environment';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Observable, forkJoin } from 'rxjs';
 import { WorkbookPerm } from '../../core/types/WorkbookPerm';
+import { ARequest } from 'request/request';
 var i = 1;
 var lwbsspot: any;
 var lloadspot: any;
@@ -85,7 +86,7 @@ export class DashComponent implements OnInit {
       console.log(this.company);
       this.wbs = [];
       this.wbsspot = [];
-      const allpermService = this.http.get(environment.API_GATEWAY + '/permission/byid/' + this.company);
+      const allpermService = this.request.get('/permission/byid/' + this.company);
       allpermService.subscribe(result => {
          
          const wbData = (result as WorkbookPerm).w;
@@ -96,7 +97,7 @@ export class DashComponent implements OnInit {
       workbooks.forEach(element => {
          if (element.type == 1) {
             const params = "?username=" + element.account + "&target_site=" + element.site;
-            this.http.get(environment.API_GATEWAY + '/auth/trusted' + params).subscribe(ticket => {
+            this.request.get('/auth/trusted' + params).subscribe(ticket => {
                const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
                this.wbs.push(new Workbook(
                   element.id,
@@ -155,7 +156,7 @@ export class DashComponent implements OnInit {
       public translate: TranslateService,
       private router: Router,
       private sanitizer: DomSanitizer,
-      private http: HttpClient,
+      private request: ARequest,
       private session: ASession) {
          i = 1;
          this.config = {

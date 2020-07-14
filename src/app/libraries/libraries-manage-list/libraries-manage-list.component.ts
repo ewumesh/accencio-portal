@@ -8,6 +8,7 @@ import { environment } from 'environments/environment';
 import { Library } from './Library';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ARequest } from 'request/request';
 
 @Component({
 	selector: 'app-libraries-manage-list',
@@ -29,7 +30,7 @@ export class LibrariesManageListComponent implements OnInit {
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
 		public translate: TranslateService,
-		private http: HttpClient,
+		private request: ARequest,
     private router: Router,
     private toastr: ToastrService,
 		private session: ASession) { }
@@ -38,7 +39,7 @@ export class LibrariesManageListComponent implements OnInit {
 		this.translate.get('Libraries Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.http.get(environment.API_GATEWAY + '/library/all').subscribe(libraries => {
+		this.request.get('/library/all').subscribe(libraries => {
       (libraries as Library[]).forEach(element => {
 				this.librariesManageList.push({
           id: element.id,
@@ -61,42 +62,11 @@ export class LibrariesManageListComponent implements OnInit {
 			this.checkboxes[i].checked = source.target.checked;
 		}
 	}
-
-	/**
-	  * addNewUserDialog method is used to open a add new user dialog.
-	  */
-	addNewUserDialog() {
-		this.coreService.addNewUserDialog().
-			then(res => { this.getAddUserPopupResponse(res) })
-			.catch(error => console.log(error));
-	}
-
-	/**
-	  * getAddUserPopupResponse method is used to get a new user dialog response.
-	  * if response will be get then add new user into user list.
-	  */
-	getAddUserPopupResponse(response: any) {
-		if (response) {
-			let addUser = {
-				name: response.name,
-				accountName: response.accountName,
-				email: response.email,
-				accountType: response.accountType,
-				status: "Active",
-				statusType: "online",
-				time: "Since 1 hour",
-				dateCreated: new Date(),
-				accountTypeColor: this.color[response.accountType]
-			}
-			this.librariesManageList.push(addUser);
-		}
-	}
-
 	/**
 	   * onDelete method is used to open a delete dialog.
 	   */
   onDelete(id, index) {
-    this.http.delete(environment.API_GATEWAY + '/library/' + id).subscribe(users => {
+    this.request.delete('/library/' + id).subscribe(users => {
       this.toastr.success('Library has been deleted.');
       this.librariesManageList.splice(index, 1);
     });

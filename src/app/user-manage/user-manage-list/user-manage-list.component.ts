@@ -8,6 +8,7 @@ import { environment } from 'environments/environment';
 import { User, UserResponse } from './User';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ARequest } from 'request/request';
 
 
 @Component({
@@ -32,14 +33,14 @@ export class UserManageListComponent implements OnInit {
 		private router: Router,
 		public translate: TranslateService,
 		private toastr: ToastrService,
-		private http: HttpClient,
+		private request: ARequest,
 		private session: ASession) { }
 
 	ngOnInit() {
 		this.translate.get('User Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.http.get<UserResponse>(environment.API_GATEWAY + '/user/' + (this.session.role === 'ACCENCIOADMIN' ? 'list' : 'list-o/' + this.session.company)).subscribe(users => {
+		this.request.get('/user/' + (this.session.role === 'ACCENCIOADMIN' ? 'list' : 'list-o/' + this.session.company)).subscribe(users => {
 			users.Users.forEach(user => {
 				this.userManageList.push({
 					name: user.Attributes.find(el => el.Name == "given_name").Value,
@@ -114,7 +115,7 @@ export class UserManageListComponent implements OnInit {
 		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
 			then(res => {
-				this.http.delete(environment.API_GATEWAY + '/user/delete/' + accountName).subscribe(r => {
+				this.request.delete('/user/delete/' + accountName).subscribe(r => {
 								this.getDeleteResponse(res, i);
 								this.toastr.success('User has been deleted.');
 							});
@@ -128,7 +129,7 @@ export class UserManageListComponent implements OnInit {
 		const accountName = data.accountName;
 		this.coreService.deleteUserDialog("Are you sure you want to enable this user?").
 			then(res => {
-				this.http.post(environment.API_GATEWAY + '/user/enable/' + accountName, {}).subscribe(r => {
+				this.request.post('/user/enable/' + accountName, {}).subscribe(r => {
 								this.updateIsEnabledResponse(res, i, true);
 								this.toastr.success('User has been enabled.');
 							});
@@ -141,7 +142,7 @@ export class UserManageListComponent implements OnInit {
 		const accountName = data.accountName;
 		this.coreService.deleteUserDialog("Are you sure you want to disable this user?").
 			then(res => {
-				this.http.post(environment.API_GATEWAY + '/user/disable/' + accountName, {}).subscribe(r => {
+				this.request.post('/user/disable/' + accountName, {}).subscribe(r => {
 								this.updateIsEnabledResponse(res, i, false);
 								this.toastr.success('User has been disabled.');
 							});

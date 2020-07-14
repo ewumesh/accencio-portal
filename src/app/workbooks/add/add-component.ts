@@ -9,6 +9,7 @@ import { environment } from 'environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { ARequest } from 'request/request';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -32,8 +33,8 @@ export class AddComponent implements OnInit {
 			   private router: Router,
 			   private toastr: ToastrService,
 			   private route: ActivatedRoute,
-			   private http: HttpClient,
-              private session: ASession) {}
+			   private request: ARequest,
+               private session: ASession) {}
 
   	ngOnInit() {
 
@@ -83,7 +84,7 @@ export class AddComponent implements OnInit {
 			
 			if (this.id) {
 				this.title = "Edit " + this.id;
-				this.http.get(environment.API_GATEWAY + '/wb/byid/' + this.id).subscribe(
+				this.request.get('/wb/byid/' + this.id).subscribe(
 					res=> {
 						this.form.setValue(res);
 					}
@@ -99,7 +100,7 @@ export class AddComponent implements OnInit {
 		  	this.edit(); 	  
 	  }
 	add() {
-		this.http.post(environment.API_GATEWAY + '/wb/add', 
+		this.request.post('/wb/add', 
 		{
 		  id:  '_' + Math.random().toString(36).substr(2, 9),
 		  name: this.form.value.name,
@@ -118,7 +119,7 @@ export class AddComponent implements OnInit {
 	}
 
 	edit() {
-		this.http.post(environment.API_GATEWAY + '/wb/update', 
+		this.request.post('/wb/update', 
 		{
 		  id:  this.form.value.id,
 		  name: this.form.value.name,

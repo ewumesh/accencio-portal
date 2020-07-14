@@ -9,6 +9,7 @@ import { environment } from 'environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { ARequest } from 'request/request';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -32,7 +33,7 @@ export class AddOrgComponent implements OnInit {
 			   private router: Router,
 			   private toastr: ToastrService,
 			   private route: ActivatedRoute,
-			   private http: HttpClient,
+			   private request: ARequest,
               private session: ASession) {}
 
   	ngOnInit() {
@@ -58,7 +59,7 @@ export class AddOrgComponent implements OnInit {
 			
 			if (this.id) {
 				this.title = "Edit Company " + this.id;
-				this.http.get(environment.API_GATEWAY + '/org/byid/' + this.id).subscribe(
+				this.request.get('/org/byid/' + this.id).subscribe(
 					res=> {
 						this.form.setValue(res);
 					}
@@ -74,7 +75,7 @@ export class AddOrgComponent implements OnInit {
 		  	this.edit(); 	  
 	  }
 	add() {
-		this.http.post(environment.API_GATEWAY + '/org/add',
+		this.request.post('/org/add',
 		{
 		  id:  '_' + Math.random().toString(36).substr(2, 9),
 		  name: this.form.value.name,
@@ -91,7 +92,7 @@ export class AddOrgComponent implements OnInit {
 	}
 
 	edit() {
-		this.http.post(environment.API_GATEWAY + '/org/update',
+		this.request.post('/org/update',
 		{
 		  id:  this.form.value.id,
 		  name: this.form.value.name,

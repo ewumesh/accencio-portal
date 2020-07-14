@@ -31,6 +31,7 @@ import { SessionModule } from './session/session.module';
 import { WidgetsComponentModule } from './widgets-component/widgets-component.module';
 import { ASession } from 'request/session';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ARequest } from 'request/request';
 
 
 /********** Custom option for ngx-translate ******/
@@ -86,6 +87,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 	bootstrap: [AccencioAppComponent],
 	providers:[
 		ASession,
+		ARequest,
 		MenuItems,
 		PageTitleService,
 		AuthService,
