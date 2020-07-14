@@ -10,19 +10,17 @@ export class ARequest {
         return {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              'Cache-Control': 'no-cache',
               'Authorization': this.session.id_token
             })
           };
     }
     get(route): Observable<any> {
-        console.log(this.session.id_token);
-        return this.http.get(environment.API_GATEWAY + route);
+        return this.http.get(environment.API_GATEWAY + route, this.httpOptions);
     }
     delete(route): Observable<Object> {
-        return this.http.delete(environment.API_GATEWAY + route);
+        return this.http.delete(environment.API_GATEWAY + route, this.httpOptions);
     }
     post(route: string, body: any): Observable<any> {
-        return this.http.post(environment.API_GATEWAY + route, body);
+        return this.http.post(environment.API_GATEWAY + route, body, this.httpOptions);
 	}
 }
