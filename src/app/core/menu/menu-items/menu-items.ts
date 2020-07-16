@@ -425,6 +425,18 @@ const MENUITEMS_CLIENT_ADMIN = [
       type: 'link',
       icon: 'icon-organization icons'
    },
+   {
+      state: 'libraries',
+      name: 'Libraries',
+      type: 'link',
+      icon: 'icon-notebook icons'
+   },
+   {
+      state: 'favorites',
+      name: 'My Favorites',
+      type: 'link',
+      icon: 'icon-notebook icons'
+   }
   
 ];
 

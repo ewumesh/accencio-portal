@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-import { LibrariesRoutes } from './libraries.routing';
+import { LibrariesRoutes } from './favorites.routing';
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
-import { AddComponent } from './add/add-component';
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { ListComponent } from './list/libraries-manage-list.component';
+import { AddComponent } from './fav-component';
 
 @NgModule({
 	imports: [
@@ -24,8 +23,7 @@ import { ListComponent } from './list/libraries-manage-list.component';
 	],
 	declarations: [
 		AddComponent,
-		ListComponent
 	]
 })
 
-export class LibrariesModule { }
+export class FavoritesModule { }

@@ -1,0 +1,88 @@
+<div [innerHtml] = "description"></div>
+
+<div class="row base-card">
+	<!-- tableau widgets-->
+	<div widget class="col-sm-12 col-md-12 col-lg-12 col-xl-12 cus-col" *ngFor="let wb of wbs">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-self-center">
+						<h3 class="text-capitalize">{{wb.title}}</h3>
+					</div>
+					<div class="d-inline-flex align-self-center">
+						<div class="chk-contextual-link widget-controls">
+							<a data-widgster="expand" href="javascript:void(0)" class="transition"><i
+									class="icon-plus icons"></i></a>
+							<a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
+									class="icon-minus icons"></i></a>
+							<a data-widgster="close" href="javascript:void(0)" class="transition"><i
+									class="icon-close icons"></i></a>
+							<a data-widgster="fullscreen" href="javascript:void(0)">
+								<i class="icon-size-fullscreen icons"></i>
+							</a>
+							<a data-widgster="restore">
+								<i class="icon-size-actual icons"></i>
+							</a>
+						</div>
+						<!-- Contextual link closed -->
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content widget-body">
+				<div class="reports mb-2">
+					<div class="card-text" [innerHTML]="wb.description"></div>
+					<div class="embed-responsive embed-responsive-16by9 z-depth-1" *ngIf="wb.type==1">
+						<iframe class="embed-responsive-item" [src]="wb.url" [id]="">
+						</iframe>
+					</div>
+					<angular-editor #description="ngModel" id="description" name="description" [ngModel]="wb.content" [config]="config" *ngIf="wb.type==3">
+					</angular-editor>
+				</div>
+				<div class="text-center text-muted"><a class="">View All</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row base-card" #spotcont>
+	<!-- spotfire widgets-->
+	<div widget class="col-sm-12 col-md-12 col-lg-12 col-xl-12 cus-col" *ngFor="let wb of wbsspot">
+		<div class="chk-block">
+			<div class="chk-block-title">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex align-self-center">
+						<h3 class="text-capitalize">{{wb.title}}</h3>
+					</div>
+					<div class="d-inline-flex align-self-center">
+						<div class="chk-contextual-link widget-controls">
+							<a data-widgster="expand" href="javascript:void(0)" class="transition"><i
+									class="icon-plus icons"></i></a>
+							<a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
+									class="icon-minus icons"></i></a>
+							<a data-widgster="close" href="javascript:void(0)" class="transition"><i
+									class="icon-close icons"></i></a>
+							<a data-widgster="fullscreen" href="javascript:void(0)">
+								<i class="icon-size-fullscreen icons"></i>
+							</a>
+							<a data-widgster="restore">
+								<i class="icon-size-actual icons"></i>
+							</a>
+						</div>
+						<!-- Contextual link closed -->
+					</div>
+				</div>
+			</div>
+			<div class="chk-block-content widget-body">
+				<div class="reports mb-2">
+					<div class="card-text" [innerHTML]="wb.description"></div>
+				</div>
+				<div class="embed-responsive embed-responsive-16by9 z-depth-1">
+					<div id="{{wb.id}}" class="embed-responsive-item"></div>
+				</div>
+				<div class="text-center text-muted"><a class="">View All</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

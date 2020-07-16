@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 
-import PerfectScrollbar from 'perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
 import { Workbook } from '../../core/types/Workbook';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
@@ -30,17 +29,17 @@ function onReady2Callback(response, newApp) {
 }
 
 @Component({
-   selector: 'ms-dash',
+   selector: 'ms-dash-1',
    templateUrl: './dash-component.html',
    styleUrls: ['./dash-component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 
-export class DashComponent implements OnInit {
-
+export class Dash2Component implements OnInit {
    wbsspot: Workbook[];
    wbs: Workbook[];
    public company: any;
+   public description: string;
    public config: AngularEditorConfig;
 
    @ViewChild('spotcont', null) spotcont: ElementRef;
@@ -85,13 +84,24 @@ export class DashComponent implements OnInit {
       this.company = this.session.company;
       this.wbs = [];
       this.wbsspot = [];
-      const allpermService = this.request.get('/permission/byid/' + this.company);
-      allpermService.subscribe(result => {
-         
-         const wbData = (result as WorkbookPerm).w;
-         this.initworkbooks(wbData);
+      const permService = this.request.get('/permission/byid/' + this.company);
+      const libService = this.request.get('/library/byid/' + this.id);
+      forkJoin([libService, permService]).subscribe(results => {
+
+
+         const wbData = (results[1] as WorkbookPerm).w;
+         const lib = results[0].list as Object[];
+         const ids = lib.map(el => el['id']);
+         const ws = wbData.filter(el => ids.includes(el.id));
+         this.initworkbooks(ws);
+
+         this.description = results[0].description;
+         this.translate.get(results[0].name).subscribe((res: string) => {
+            this.pageTitleService.setTitle(res);
+         });
       });
    }
+
    initworkbooks(workbooks: Workbook[]) {
       workbooks.forEach(element => {
          if (element.type == 1) {
@@ -154,6 +164,7 @@ export class DashComponent implements OnInit {
    constructor(private pageTitleService: PageTitleService,
       public translate: TranslateService,
       private router: Router,
+      private route: ActivatedRoute,
       private sanitizer: DomSanitizer,
       private request: ARequest,
       private session: ASession) {
@@ -165,13 +176,12 @@ export class DashComponent implements OnInit {
           };
    }
 
+   private id: string;
    ngOnInit() {
-      this.translate.get('Dashboard').subscribe((res: string) => {
-         this.pageTitleService.setTitle(res);
-      });
-      this.getDashboardData();
+      this.route.params.subscribe(params => {
+         this.id = params['id'];
+         this.getDashboardData();
+       });      
    }
-   dash1(id) {
-		this.router.navigate(['/dashboard/' + id]);
-	}
+
 }

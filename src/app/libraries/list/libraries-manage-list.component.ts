@@ -16,7 +16,7 @@ import { ARequest } from 'request/request';
 	styleUrls: ['./libraries-manage-list.component.scss']
 })
 
-export class LibrariesManageListComponent implements OnInit {
+export class ListComponent implements OnInit {
 
 	checkboxes: any;
 
@@ -39,17 +39,11 @@ export class LibrariesManageListComponent implements OnInit {
 		this.translate.get('Libraries Manage List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.request.get('/library/all').subscribe(libraries => {
+		this.request.get('/library/all/'+ this.session.company).subscribe(libraries => {
       (libraries as Library[]).forEach(element => {
-				this.librariesManageList.push({
-          id: element.id,
-          name: element.name,
-          date: element.date,
-          description: element.description,
-          workbook: element.workbook
-				})
-			});
+				this.librariesManageList = libraries as Library[];	
 		});
+	});
 
 	}
 

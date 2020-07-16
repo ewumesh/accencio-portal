@@ -7,21 +7,6 @@
       <div class="chk-block-content">
         <form [formGroup]="form" (submit)="onSubmit()">
           <div class="form-group">
-            <label for="name">Title</label>
-            <input class="form-control" placeholder="Library Name" [formControl]="form.controls['name']">
-            <small class="chankya-block"
-                   *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
-                   class="text-danger">
-              library title.
-            </small>
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <angular-editor
-              [formControl]="form.controls['description']" [config]="config">
-            </angular-editor>
-          </div>
-          <div class="form-group">
             <label>Workbooks</label>
             <ng-multiselect-dropdown
               [name]="workbook"
@@ -38,8 +23,6 @@
             <div>
               <button class="btn btn-primary btn-lg btn-square" type="submit"
                       [disabled]="!form.valid">Submit</button>
-              &nbsp;
-              <button  class="btn btn-white btn-lg btn-square" [routerLink]="['/libraries/list']">Back</button>
             </div>
           </div>
         </form>

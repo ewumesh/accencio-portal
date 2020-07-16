@@ -4,7 +4,7 @@ export class Library {
     date: string;
     description: string;
     workbook: string;
-    //LibraryWorkbooks: any[];
+    list: any[];
 }
 export class LibraryResponse {
     Libraries: Library[];

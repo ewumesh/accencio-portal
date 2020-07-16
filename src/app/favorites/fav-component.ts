@@ -1,31 +1,28 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { PageTitleService } from '../../core/page-title/page-title.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { ASession } from 'request/session';
-import { environment } from 'environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ARequest } from 'request/request';
+import { PageTitleService } from 'app/core/page-title/page-title.service';
 
-const password = new FormControl('', Validators.required);
-const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
-  selector: 'ms-workbook-addedit',
-  templateUrl: './add-component.html',
-  styleUrls: ['./add-component.scss'],
+  selector: 'ms-fav-addedit',
+  templateUrl: './fav-component.html',
+  styleUrls: ['./fav-component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class AddComponent implements OnInit {
 
   public form: FormGroup;
   public config: AngularEditorConfig;
-  public title = "Add new library";
+  public title = "Configure favorites";
   public description: string;
   private id: string;
   public workbookId: string;
@@ -50,58 +47,30 @@ export class AddComponent implements OnInit {
     allpermService.subscribe(res => {
       this.dropdownList = res.w as Object[];
     });
-    this.config = {
-      editable: true,
-      spellcheck: true,
-      height: '15rem',
-      minHeight: '5rem',
-      placeholder: 'Enter text here...',
-      translate: 'no',
-      customClasses: [
-        {
-          name: "quote",
-          class: "quote",
-        },
-        {
-          name: 'redText',
-          class: 'redText'
-        },
-        {
-          name: "titleText",
-          class: "titleText",
-          tag: "h1",
-        },
-      ]
-    };
-    this.translate.get('Libraries').subscribe((res: string) => {
+
+    this.translate.get('Favorites').subscribe((res: string) => {
       this.pageTitleService.setTitle(res);
     });
 
     this.form = this.fb.group({
-      name: [null, Validators.compose([Validators.required])],
-      description: [null, Validators.compose([Validators.required])],
-      date: [null],
       id: [null]
-    });
-
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
     });
 
     this.selectedItems = [];
 
-    if (this.id) {
-      this.title = "Edit " + this.id;
-      this.request.get('/library/byid/' + this.id).subscribe(
-        res => {
+    this.request.get('/library/byid/' + "fav" + this.session.username).subscribe(
+      res => {
+        if (res) {
+          this.id = "fav" + this.session.username;
           this.workbookId = res['workbook'];
           this.form.patchValue({ id: res['id'] });
           this.form.patchValue({ name: res['name'] });
           this.form.patchValue({ description: res['description'] });
           this.selectedItems = res['list'];
         }
-      );
-    }
+      }
+    );
+
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -113,8 +82,8 @@ export class AddComponent implements OnInit {
       allowSearchFilter: true
     }
   }
-  onSelectAll(items: any) {
 
+  onSelectAll(items: any) {
   }
 
   onSubmit() {
@@ -126,15 +95,14 @@ export class AddComponent implements OnInit {
   add() {
     this.request.post('/library/add',
       {
-        id: '_' + Math.random().toString(36).substr(2, 9),
+        id: "fav" + this.session.username,
         name: this.form.value.name,
         description: this.form.value.description,
         date: new Date(),
-        org: this.session.company,
-        list: this.selectedItems
+        list: this.selectedItems,
+        username: this.session.username
       }).subscribe(res => {
-        this.toastr.success('Library has been added.');
-        this.router.navigate(['/libraries/list'])
+        this.toastr.success('My Favorites has been added.');
       });
   }
   edit() {
@@ -144,11 +112,10 @@ export class AddComponent implements OnInit {
         name: this.form.value.name,
         description: this.form.value.description,
         date: new Date(),
-        org: this.session.company,
-        list: this.selectedItems
+        list: this.selectedItems,
+        username: this.session.username
       }).subscribe(res => {
-        this.toastr.success('Library has been updated.');
-        this.router.navigate(['/libraries/list'])
+        this.toastr.success('Favorites has been updated.');
       });
   }
 }

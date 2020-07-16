@@ -35,7 +35,12 @@ export const AppRoutes: Routes = [
       }, {
          path: 'libraries', loadChildren: () =>
             import('./libraries/libraries.module').then(m => m.LibrariesModule)
-      }, {
+      },
+      {
+         path: 'favorites', loadChildren: () =>
+            import('./favorites/favorites.module').then(m => m.FavoritesModule)
+      },
+      {
          path: 'courses', loadChildren: () =>
             import('./courses/courses.module').then(m => m.CoursesModule)
       }, {
