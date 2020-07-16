@@ -391,7 +391,7 @@ const MENUITEMS_USER = [
       state: 'libraries',
       name: 'Libraries',
       type: 'link',
-      icon: 'icon-notebook icons'
+      icon: 'icon-share icons'
    },
    {
       state: 'favorites',
@@ -441,7 +441,7 @@ const MENUITEMS_CLIENT_ADMIN = [
       state: 'libraries',
       name: 'Libraries',
       type: 'link',
-      icon: 'icon-notebook icons'
+      icon: 'icon-share icons'
    },
    {
       state: 'favorites',
@@ -494,6 +494,12 @@ const MENUITEMS_ACCENCIO_ADMIN = [
      {
       state: 'libraries',
       name: 'Libraries',
+      type: 'link',
+      icon: 'icon-share icons'
+   },
+   {
+      state: 'favorites',
+      name: 'My Favorites',
       type: 'link',
       icon: 'icon-notebook icons'
    }
