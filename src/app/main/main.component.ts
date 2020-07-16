@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener, ViewEncapsulation, ElementRef, TemplateRef, ContentChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd, Event, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 import { MediaChange, MediaObserver } from "@angular/flex-layout";
 import PerfectScrollbar from 'perfect-scrollbar';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -63,14 +63,21 @@ export class MainComponent implements OnInit, OnDestroy {
 	currentLang = 'en';
 	@ViewChild('sidenav', { static: false }) sidenav;
 
-	@ViewChild('template',  { static: false }) 
+	@ViewChild('template', { static: false })
 	templateSearch: TemplateRef<any>;
 
 	public results = [
 	];
 
-	// tslint:disable-next-line:member-ordering
+	public libraries = [
+	];
+
+	public favorites = [
+	];
+
 	public tmp: any[] = this.results;
+	public tmp2: any[] = this.libraries;
+	public tmp3: any[] = this.favorites;
 
 	constructor(
 		private request: ARequest,
@@ -168,20 +175,37 @@ export class MainComponent implements OnInit, OnDestroy {
 				this.sidenav.close();
 			}
 		});
-		let company = this.session.company;
-		const allpermService = this.request.get('/permission/byid/' + company);
-		allpermService.subscribe(result => {
-		   const wbData = (result as WorkbookPerm).w;
-		   this.results = wbData.map(el =>  {
-			   let el1 = {
-			   'id' : el.id,
-			   'text' : el.name,
-			   'l1' : el.name[0]
+		const permService = this.request.get('/permission/byid/' + this.session.company);
+		const librariesService = this.request.get('/library/all/' + this.session.company);
+		const favService = this.request.get('/library/byid/' + "fav" + this.session.username);
+		forkJoin([permService, librariesService, favService]).subscribe(results => {
+			const wbData = (results[0] as WorkbookPerm).w;
+			this.results = wbData.map(el => {
+				let el1 = {
+					'id': el.id,
+					'text': el.name,
+					'l1': el.name[0]
 				};
-			return el1;
-		})
-		console.log(this.results);
-		this.tmp = this.results;
+				return el1;
+			})
+			this.favorites = (results[2].list as Object[]).map(el => {
+				let el1 = {
+					'id': el['id'],
+					'text': el['name']
+				};
+				return el1;
+			});
+			this.libraries = (results[1] as Object[]).map(el => {
+				let el1 = {
+					'id': el['id'],
+					'name': el['name'],
+					'description': el['description']
+				};
+				return el1;
+			});
+			this.tmp = this.results;
+			this.tmp2 = this.libraries;
+			this.tmp3 = this.favorites;
 		});
 	}
 	elSearchFocusIn() {
@@ -263,10 +287,15 @@ export class MainComponent implements OnInit, OnDestroy {
 	//values: string = '';
 
 	onKey(event: any) { // without type info
-		console.log(event.target.value);
 		var s1 = event.target.value as string;
 		s1 = s1.toLowerCase();
 		this.results = this.tmp.filter(s => {
+			return s.text.toLowerCase().includes(s1);
+		});
+		this.libraries = this.tmp2.filter(s => {
+			return s.name.toLowerCase().includes(s1);
+		});
+		this.favorites = this.tmp3.filter(s => {
 			return s.text.toLowerCase().includes(s1);
 		});
 	}
@@ -274,6 +303,14 @@ export class MainComponent implements OnInit, OnDestroy {
 	dash1(id) {
 		this.router.navigate(['/dashboard/' + id]);
 		this.modalRef.hide()
+	}
+
+	dashlib(id) {
+		this.router.navigate(['/dashboard/lib/' + id]);
+		this.modalRef.hide()
+	}
+	myfavorites() {
+		this.router.navigate(['/dashboard/lib/fav' + this.session.username]);
 	}
 
 	/**
