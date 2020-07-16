@@ -386,6 +386,18 @@ const MENUITEMS_USER = [
       type: 'link',
       icon: 'icon-control-play icons',
       label: ''
+   },
+   {
+      state: 'libraries',
+      name: 'Libraries',
+      type: 'link',
+      icon: 'icon-notebook icons'
+   },
+   {
+      state: 'favorites',
+      name: 'My Favorites',
+      type: 'link',
+      icon: 'icon-notebook icons'
    }
 ];
 

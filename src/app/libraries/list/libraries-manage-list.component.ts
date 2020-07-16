@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
 		"Gold": "success",
 		"Silver": "warning"
 	}
-
+	public isAllowed = false;
 	librariesManageList = [];
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
@@ -41,10 +41,10 @@ export class ListComponent implements OnInit {
 		});
 		this.request.get('/library/all/'+ this.session.company).subscribe(libraries => {
       (libraries as Library[]).forEach(element => {
-				this.librariesManageList = libraries as Library[];	
+				this.librariesManageList = libraries as Library[];
 		});
+		this.isAllowed = this.session.role != 'USER';
 	});
-
 	}
 
 	/**

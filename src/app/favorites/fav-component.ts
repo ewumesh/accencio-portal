@@ -24,7 +24,7 @@ export class AddComponent implements OnInit {
   public config: AngularEditorConfig;
   public title = "Configure favorites";
   public description: string;
-  private id: string;
+  public id: string;
   public workbookId: string;
   public workbookName: string;
   public workbook: string;
@@ -102,6 +102,7 @@ export class AddComponent implements OnInit {
         list: this.selectedItems,
         username: this.session.username
       }).subscribe(res => {
+        this.id = "fav" + this.session.username;
         this.toastr.success('My Favorites has been added.');
       });
   }

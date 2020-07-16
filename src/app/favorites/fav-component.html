@@ -21,8 +21,11 @@
 
           <div class="pad-wrap">
             <div>
-              <button class="btn btn-primary btn-lg btn-square" type="submit"
-                      [disabled]="!form.valid">Submit</button>
+              <button class="mr-3 btn btn-primary btn-lg btn-square" type="submit"
+                      [disabled]="!form.valid">Save</button>
+              <button class="mr-3 btn btn-warning btn-lg btn-square" type="button"
+              [routerLink]="['/dashboard/lib',id]"
+              [disabled]="!id">View</button>
             </div>
           </div>
         </form>
