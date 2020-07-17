@@ -66,18 +66,15 @@ export class MainComponent implements OnInit, OnDestroy {
 	@ViewChild('template', { static: false })
 	templateSearch: TemplateRef<any>;
 
-	public results = [
-	];
+	public results: any[];
 
-	public libraries = [
-	];
+	public libraries: any[];
 
-	public favorites = [
-	];
+	public favorites: any[];
 
-	public tmp: any[] = this.results;
-	public tmp2: any[] = this.libraries;
-	public tmp3: any[] = this.favorites;
+	public tmp: any[];
+	public tmp2: any[];
+	public tmp3: any[];
 
 	constructor(
 		private request: ARequest,
@@ -175,47 +172,18 @@ export class MainComponent implements OnInit, OnDestroy {
 				this.sidenav.close();
 			}
 		});
-		const permService = this.request.get('/permission/byid/' + this.session.company);
-		const librariesService = this.request.get('/library/all/' + this.session.company);
-		const favService = this.request.get('/library/byid/' + "fav" + this.session.username);
-		forkJoin([permService, librariesService, favService]).subscribe(results => {
-			const wbData = (results[0] as WorkbookPerm).w;
-			this.results = wbData.map(el => {
-				let el1 = {
-					'id': el.id,
-					'text': el.name,
-					'l1': el.name[0]
-				};
-				return el1;
-			})
-			this.favorites = (results[2].list as Object[]).map(el => {
-				let el1 = {
-					'id': el['id'],
-					'text': el['name']
-				};
-				return el1;
-			});
-			this.libraries = (results[1] as Object[]).map(el => {
-				let el1 = {
-					'id': el['id'],
-					'name': el['name'],
-					'description': el['description']
-				};
-				return el1;
-			});
-			this.tmp = this.results;
-			this.tmp2 = this.libraries;
-			this.tmp3 = this.favorites;
-		});
 	}
 	elSearchFocusIn() {
 		this.modalRef = this.modalService.show(
 			this.templateSearch,
 			Object.assign({}, { class: 'searchmodal my-modal' })
 		);
+		this.mysearch();
 	}
 	elSearchFocusOut() {
 		this.modalRef.hide();
+		this.tmp = this.tmp2 = this.tmp3 = null;
+		this.results = this.favorites = this.libraries = null;
 	}
 
 	ngOnDestroy() {
@@ -309,10 +277,46 @@ export class MainComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/dashboard/lib/' + id]);
 		this.modalRef.hide()
 	}
+
 	myfavorites() {
 		this.router.navigate(['/dashboard/lib/fav' + this.session.username]);
 	}
 
+	mysearch() {
+		const permService = this.request.get('/permission/byid/' + this.session.company);
+		const librariesService = this.request.get('/library/all/' + this.session.company);
+		const favService = this.request.get('/library/byid/' + "fav" + this.session.username);
+		forkJoin([permService, librariesService, favService]).subscribe(results => {
+			const wbData = (results[0] as WorkbookPerm).w;
+			this.results = wbData.map(el => {
+				let el1 = {
+					'id': el.id,
+					'text': el.name,
+					'l1': el.name[0]
+				};
+				return el1;
+			})
+			this.favorites = (results[2].list as Object[]).map(el => {
+				let el1 = {
+					'id': el['id'],
+					'text': el['name']
+				};
+				return el1;
+			});
+			this.libraries = (results[1] as Object[]).map(el => {
+				let el1 = {
+					'id': el['id'],
+					'name': el['name'],
+					'description': el['description']
+				};
+				return el1;
+			});
+			this.tmp = this.results;
+			this.tmp2 = this.libraries;
+			this.tmp3 = this.favorites;
+		});
+
+	}
 	/**
 	  * changeRTL method is used to change the layout of template.
 	  */
