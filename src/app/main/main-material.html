@@ -1,8 +1,9 @@
 <!-- Main-->
 <div id="app" class="app {{headerSkinColor}} {{themeSkinColor}}" [dir]="layout" [class.app-dark]="dark"
-	[class.boxed]="boxed" [class.collapsed-sidebar]="collapseSidebar" [class.compact-sidebar]="compactSidebar"
-	[class.customizer-in]="customizerIn" [class.sidebar-closed]="sidebarClosed" [class.sidebar-opened]="!sidebarClosed"
-	[ngClass]="{'icon-sidebar-wrap': miniSidebar}">
+	[class.collapsed-sidebar]="collapseSidebar" [class.compact-sidebar]="compactSidebar"
+	[class.customizer-in]="customizerIn" [class.chat-window--open]="chatWindowOpen"
+	[class.sidebar-closed]="sidebarClosed" [class.sidebar-opened]="!sidebarClosed" [class.chat-sidebar]="chatSidebar"
+	[ngClass]="{'icon-sidebar-wrap': miniSidebar}">>
 	<ng-sidebar-container>
 		<div ng-sidebar-content>
 			<ng-sidebar #sidenav [(opened)]="_opened" [(mode)]="_mode" [closeOnClickOutside]="closeOnClickOutside()"
@@ -36,6 +37,7 @@
 													<li><a routerLink="/session/loginone" (click)="logOut()"><i
 																class="icon-logout icons"></i><span>{{'Logout'|translate}}</span></a>
 													</li>
+
 												</ul>
 											</div>
 										</div>
@@ -235,6 +237,10 @@
 										<a class="d-flex pb-2" (click)="logOut()">
 											<i class="fa fa-power-off"></i>
 										</a></li>
+									<li class="d-none d-md-block dropdown">
+										<a (click)="chatSidebarFunction()" class="zoom-out"><i
+												class="material-icons">more_horiz</i></a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -283,7 +289,8 @@
 				<div class="search-suggestion">
 					<div class="chk-block">
 						<div class="chk-block-title bg-light">
-							<h1>Favorites</h1></div>
+							<h1>Favorites</h1>
+						</div>
 					</div>
 					<div class="card-body">
 						<ul class="row search-list">
@@ -295,31 +302,62 @@
 					</div>
 					<div class="chk-block">
 						<div class="chk-block-title bg-light">
-							<h1>Libraries</h1></div>
+							<h1>Libraries</h1>
+						</div>
 					</div>
 					<ul class="row search-list">
 						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4" *ngFor="let r of libraries">
 							<a (click)="dashlib(r.id)">
 								{{r.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-								
+
 							<br />
 							<div [innerHtml]="r.description"></div>
 						</li>
 					</ul>
 					<div class="chk-block">
 						<div class="chk-block-title bg-light">
-							<h1>Workbooks</h1></div>
+							<h1>Workbooks</h1>
+						</div>
 					</div>
 					<ul class="row search-list ">
 						<li class="col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-4" *ngFor="let r of results">
 							<a (click)="dash1(r.id)"><span
 									class="d-inline-block square-50 circle bg-success mr-2">{{r.l1}}</span>
-								{{r.text}}  <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+								{{r.text}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</ng-template>
+	<!-- Modal -->
+	<div class="chat-window">
+		<div class="chat-window-i">
+			<div class="user-name-chat bg-grey d-flex justify-content-between">
+				<span class="align-self-center">Accencio bot</span> <a href="javascript:void(0)"
+					(click)="chatWindowFunction()"><i class="material-icons align-self-center">close</i></a>
+			</div>
+			<div class="chat-inner">
+				<ul>
+					<li class="media" *ngFor="let m of messages">
+						<div [ngClass]="['media-body', m.type==0?'mr-5':'ml-5']">
+							<span [ngClass]="['text-muted small d-block mb-1',m.type==0?'':'text-right']">{{m.name}}</span>
+							<div [class]="m.cssclass">
+								<p>{{m.text}}</p>
+							</div>
+							<p [ngClass]="['text-muted small mt-1', m.type==1?'text-right':'']">5 Min ago</p>
+						</div>
+
+					</li>
+				</ul>
+			</div>
+			<div class="send-msg-chat p-3">
+				<input [(ngModel)] = "fi" class="form-control form-control-lg mb-3" placeholder="Type message" type="text">
+				<button class="btn btn-primary" type="submit" (click)="sendmessage()">Send</button>
+			</div>
+		</div>
+	</div>
 </div>
+
+<!-- Chat Window -->
 <!-- app closed -->

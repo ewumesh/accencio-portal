@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { WorkbookPerm } from 'app/core/types/WorkbookPerm';
 import { ARequest } from 'request/request';
+import { Interactions } from 'aws-amplify';
 declare var require;
 
 const screenfull = require('screenfull');
@@ -76,6 +77,12 @@ export class MainComponent implements OnInit, OnDestroy {
 	public tmp2: any[];
 	public tmp3: any[];
 
+
+	fi:string;
+
+   public messages = [
+   ];
+
 	constructor(
 		private request: ARequest,
 		private modalService: BsModalService,
@@ -121,6 +128,42 @@ export class MainComponent implements OnInit, OnDestroy {
 		}
 	}
 
+	async sendtobot(userInput2) {
+		const response = await Interactions.send("accewb", userInput2);
+		// Log chatbot response
+	   if (response['messageFormat'] === 'Composite') {
+		   (JSON.parse(response['message']).messages as Object[]).forEach(m => {
+			  this.messages.push({
+				 name: "accencio",
+				 type: 1,
+				 text: m['value'],
+				 cssclass: "chat-content sender",
+				 date: new Date()
+			  });
+		   });
+		   
+		} else {
+		this.messages.push({
+		   name: "accencio",
+		   type: 1,
+		   text: response['message'],
+		   cssclass: "chat-content sender",
+		   date: new Date()
+		});
+	 }
+		this.fi = '';
+	 }
+  
+	 async sendmessage() {
+		this.messages.push({
+		   name: "me",
+		   text: this.fi,
+		   type: 0,
+		   cssclass: "chat-content receiver",
+		   date: new Date()
+		});
+		await this.sendtobot(this.fi);
+	 }
 	ngOnInit() {
 		this.innerWidth = window.innerWidth;
 		this.pageTitleService.title.subscribe((val: string) => {
@@ -144,15 +187,13 @@ export class MainComponent implements OnInit, OnDestroy {
 				});
 				ps.update();
 			}
-
-
 		}
 
 		if (this.media.isActive('xs') || this.media.isActive('sm') || this.media.isActive('md')) {
 			this._mode = 'over';
 			this._closeOnClickOutside = true;
 			this._showBackdrop = true;
-			this._opened = false;
+			this._opened = true;
 			this.sidebarClosed = false;
 		}
 
@@ -172,6 +213,8 @@ export class MainComponent implements OnInit, OnDestroy {
 				this.sidenav.close();
 			}
 		});
+
+		this._opened = true;
 	}
 	elSearchFocusIn() {
 		this.modalRef = this.modalService.show(
@@ -215,8 +258,22 @@ export class MainComponent implements OnInit, OnDestroy {
 	customizerFunction() {
 		this.customizerIn = !this.customizerIn;
 	}
+	chatWindowOpen         : boolean = false;
+	chatSidebar            : boolean = false;
+/**
+	  * chatWindowFunction is used to open and close the chat window.
+	  */
+	 chatWindowFunction() {
+		this.chatWindowOpen = !this.chatWindowOpen;
+	}
 
-
+		/**
+	  * chatSidebarFunction is used to open and close the chat sidebar list.
+	  */
+	 chatSidebarFunction() {
+		this.chatSidebar = !this.chatSidebar;
+		this.chatWindowOpen = !this.chatWindowOpen;
+	}
 	/**
 	  * changeThemeColor function filter the color for sidebar section.
 	  */

@@ -6,6 +6,8 @@ import {AccencioAppModule} from './app/app.module';
 import {environment} from './environments/environment';
 
 Amplify.configure(awsconfig);
+
+
 if (environment.production) {
   enableProdMode();
 }
