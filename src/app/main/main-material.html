@@ -342,8 +342,7 @@
 					<li class="media" *ngFor="let m of messages">
 						<div [ngClass]="['media-body', m.type==0?'mr-5':'ml-5']">
 							<span [ngClass]="['text-muted small d-block mb-1',m.type==0?'':'text-right']">{{m.name}}</span>
-							<div [class]="m.cssclass">
-								<p>{{m.text}}</p>
+							<div [class]="m.cssclass" [innerHtml]="m.text">
 							</div>
 							<p [ngClass]="['text-muted small mt-1', m.type==1?'text-right':'']">5 Min ago</p>
 						</div>

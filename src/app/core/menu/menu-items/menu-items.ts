@@ -367,13 +367,13 @@ const MENUITEMS_USER = [
       label: '',
       icon: 'icon-speedometer icons'
    },
-   {
-      state: 'chat',
-      name: 'CHAT',
-      type: 'link',
-      label: 'new',
-      icon: 'icon-bubbles icons'
-   },
+   // {
+   //    state: 'chat',
+   //    name: 'CHAT',
+   //    type: 'link',
+   //    label: 'new',
+   //    icon: 'icon-bubbles icons'
+   // },
    {
       state: 'courses',
       name: 'Learning',
@@ -411,13 +411,13 @@ const MENUITEMS_CLIENT_ADMIN = [
       label: '',
       icon: 'icon-speedometer icons'
    },
-   {
-      state: 'chat',
-      name: 'CHAT',
-      type: 'link',
-      label: 'new',
-      icon: 'icon-bubbles icons'
-   },
+   // {
+   //    state: 'chat',
+   //    name: 'CHAT',
+   //    type: 'link',
+   //    label: 'new',
+   //    icon: 'icon-bubbles icons'
+   // },
    {
       state: 'courses',
       name: 'Learning',
@@ -460,13 +460,13 @@ const MENUITEMS_ACCENCIO_ADMIN = [
       label: '',
       icon: 'icon-speedometer icons'
    },
-   {
-      state: 'chat',
-      name: 'CHAT',
-      type: 'link',
-      label: 'new',
-      icon: 'icon-bubbles icons'
-   },
+   // {
+   //    state: 'chat',
+   //    name: 'CHAT',
+   //    type: 'link',
+   //    label: 'new',
+   //    icon: 'icon-bubbles icons'
+   // },
      {
       state: 'org',
       name: 'Organizations',
