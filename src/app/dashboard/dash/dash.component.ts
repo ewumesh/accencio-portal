@@ -142,8 +142,8 @@ export class DashComponent implements OnInit {
             if (mutation.addedNodes[0].childNodes) {
                const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
                const wb = lwbsspot.find(el => el.id == id);
-               if (id == "spot-1")
-                  lloadspot(wb.analysis, wb.name);
+               //if (id == "spot-1")
+               //   lloadspot(wb.analysis, wb.name);
             }
          });
       });
