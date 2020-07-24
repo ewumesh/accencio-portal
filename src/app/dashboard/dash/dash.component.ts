@@ -20,33 +20,31 @@ var loginLauncher;
 function getLoginElement() {
    var els = document.getElementsByClassName("inner-container");
    var ell = document.getElementById('loginLauncher');
-   if (!ell) 
-   {
-   loginLauncher = document.createElement("div");
-   loginLauncher.id = "loginLauncher";
-   loginLauncher.className  = "mb-1 col-4 card shadow-box border";
-   var infoSection = document.createElement("div");
-   infoSection.innerText = "You need to authenticate before loading the requested analysis.";
-   loginLauncher.appendChild(infoSection);
+   if (!ell) {
+      loginLauncher = document.createElement("div");
+      loginLauncher.id = "loginLauncher";
+      loginLauncher.className = "mb-1 col-4 card shadow-box border";
+      var infoSection = document.createElement("div");
+      infoSection.innerText = "You need to authenticate before loading the requested analysis.";
+      loginLauncher.appendChild(infoSection);
 
-   var button = document.createElement("button");
-   button.innerText = "Log in";
-   button.id = "btnLoginSpot";
-   button.className  = "btn btn-info";
-   loginLauncher.appendChild(button);
+      var button = document.createElement("button");
+      button.innerText = "Log in";
+      button.id = "btnLoginSpot";
+      button.className = "btn btn-info";
+      loginLauncher.appendChild(button);
 
-   //document.body.appendChild(loginLauncher);
-   els[0].prepend(loginLauncher);
-   return   button;
-   } 
+      //document.body.appendChild(loginLauncher);
+      els[0].prepend(loginLauncher);
+      return button;
+   }
    return document.getElementById('btnLoginSpot');
 }
 function onReady2Callback(response, newApp) {
-   if (loginLauncher)
-		{
-			// Remove the custom login launch UI.
-			loginLauncher.parentNode.removeChild(loginLauncher);
-		}
+   if (loginLauncher) {
+      // Remove the custom login launch UI.
+      loginLauncher.parentNode.removeChild(loginLauncher);
+   }
    if (response.status === "OK") {
 
       newApp.openDocument("spot-" + i.toString());
@@ -99,17 +97,17 @@ export class DashComponent implements OnInit {
       var reloadInstances = true;
       var apiVersion = "7.14";
 
-         //lwbsspot.forEach(wb=> {
-         spotfire.webPlayer.createApplication(
-            environment.SPOTFIRE_API,
-            customizationInfo,
-            analysis,
-            parameters,
-            reloadInstances,
-            apiVersion,
-            onReady2Callback,
-            getLoginElement
-         );
+      //lwbsspot.forEach(wb=> {
+      spotfire.webPlayer.createApplication(
+         environment.SPOTFIRE_API,
+         customizationInfo,
+         analysis,
+         parameters,
+         reloadInstances,
+         apiVersion,
+         onReady2Callback,
+         getLoginElement
+      );
    }
 
    getDashboardData() {

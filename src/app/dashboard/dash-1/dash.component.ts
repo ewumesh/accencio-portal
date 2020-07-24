@@ -15,7 +15,35 @@ import { ARequest } from 'request/request';
 var i = 1;
 var lwbsspot: any;
 var lloadspot: any;
+var loginLauncher;
+function getLoginElement() {
+   var els = document.getElementsByClassName("inner-container");
+   var ell = document.getElementById('loginLauncher');
+   if (!ell) {
+      loginLauncher = document.createElement("div");
+      loginLauncher.id = "loginLauncher";
+      loginLauncher.className = "mb-1 col-4 card shadow-box border";
+      var infoSection = document.createElement("div");
+      infoSection.innerText = "You need to authenticate before loading the requested analysis.";
+      loginLauncher.appendChild(infoSection);
+
+      var button = document.createElement("button");
+      button.innerText = "Log in";
+      button.id = "btnLoginSpot";
+      button.className = "btn btn-info";
+      loginLauncher.appendChild(button);
+
+      //document.body.appendChild(loginLauncher);
+      els[0].prepend(loginLauncher);
+      return button;
+   }
+   return document.getElementById('btnLoginSpot');
+}
 function onReady2Callback(response, newApp) {
+   if (loginLauncher) {
+      // Remove the custom login launch UI.
+      loginLauncher.parentNode.removeChild(loginLauncher);
+   }
    if (response.status === "OK") {
 
       newApp.openDocument("spot-" + i.toString());
@@ -24,7 +52,7 @@ function onReady2Callback(response, newApp) {
       const wb = lwbsspot.find(el => el.id == ("spot-" + i.toString()));
       if (wb) {
          lloadspot(wb.analysis, wb.name, lwbsspot);
-      }    
+      }
    }
 }
 
@@ -76,7 +104,8 @@ export class Dash1Component implements OnInit {
          parameters,
          reloadInstances,
          apiVersion,
-         onReady2Callback
+         onReady2Callback,
+         getLoginElement
       );
    }
 
@@ -87,7 +116,7 @@ export class Dash1Component implements OnInit {
       this.wbsspot = [];
       const allpermService = this.request.get('/permission/byid/' + this.company);
       allpermService.subscribe(result => {
-         
+
          const wbData = (result as WorkbookPerm).w;
          console.log(wbData);
          const w = wbData.find(el => el.id === this.id);
@@ -97,46 +126,46 @@ export class Dash1Component implements OnInit {
    }
 
    initworkbooks(element: Workbook) {
-      
-         if (element.type == 1) {
-            const params = "?username=" + element.account + "&target_site=" + element.site;
-            this.request.get('/auth/trusted' + params).subscribe(ticket => {
-               const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
-               this.wbs.push(new Workbook(
-                  element.id,
-                  element.name,
-                  element.type,
-                  element.title,
-                  element.description,
-                  element.site,
-                  element.name,
-                  element.date,
-                  wbUrl, '', '', null));
-            });
-         } else if (element.type == 3) {
-               this.wbs.push(new Workbook(
-                  element.id,
-                  element.name,
-                  element.type,
-                  element.title,
-                  element.description,
-                  element.site,
-                  element.name,
-                  element.date,
-                  null, '', '', element.content));
-         } else { //spotfire
-            this.wbsspot.push(new Workbook(
+
+      if (element.type == 1) {
+         const params = "?username=" + element.account + "&target_site=" + element.site;
+         this.request.get('/auth/trusted' + params).subscribe(ticket => {
+            const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
+            this.wbs.push(new Workbook(
                element.id,
-               "spot-" + i.toString(),
+               element.name,
                element.type,
                element.title,
                element.description,
                element.site,
                element.name,
                element.date,
-               null, '', element.analysis, ''));
-            i++;
-         }
+               wbUrl, '', '', null));
+         });
+      } else if (element.type == 3) {
+         this.wbs.push(new Workbook(
+            element.id,
+            element.name,
+            element.type,
+            element.title,
+            element.description,
+            element.site,
+            element.name,
+            element.date,
+            null, '', '', element.content));
+      } else { //spotfire
+         this.wbsspot.push(new Workbook(
+            element.id,
+            "spot-" + i.toString(),
+            element.type,
+            element.title,
+            element.description,
+            element.site,
+            element.name,
+            element.date,
+            null, '', element.analysis, ''));
+         i++;
+      }
       i = 1;
       lloadspot = this.loadspot;
       lwbsspot = this.wbsspot;
@@ -161,12 +190,12 @@ export class Dash1Component implements OnInit {
       private sanitizer: DomSanitizer,
       private request: ARequest,
       private session: ASession) {
-         i = 1;
-         this.config = {
-            editable: false,
-            showToolbar: false,
-            translate: 'no'
-          };
+      i = 1;
+      this.config = {
+         editable: false,
+         showToolbar: false,
+         translate: 'no'
+      };
    }
 
    private id: string;
@@ -177,7 +206,7 @@ export class Dash1Component implements OnInit {
       this.route.params.subscribe(params => {
          this.id = params['id'];
          this.getDashboardData();
-       });      
+      });
    }
 
 }
