@@ -17,12 +17,13 @@ var lwbsspot: any;
 var lloadspot: any;
 var loginLauncher;
 function getLoginElement() {
-   var els = document.getElementsByClassName("inner-container");
+   var els = document.getElementsByClassName("chankya-base-container");
    var ell = document.getElementById('loginLauncher');
    if (!ell) {
       loginLauncher = document.createElement("div");
       loginLauncher.id = "loginLauncher";
-      loginLauncher.className = "mb-1 col-4 card shadow-box border";
+      loginLauncher.style="float:right";
+      loginLauncher.className = "mt-1 mr-4";
       var infoSection = document.createElement("div");
       infoSection.innerText = "You need to authenticate before loading the requested analysis.";
       loginLauncher.appendChild(infoSection);
