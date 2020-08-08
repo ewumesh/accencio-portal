@@ -31,6 +31,8 @@ export class AddUserComponent implements OnInit {
 	public id: string;
 	companies: any;
 	roles: any;
+	fieldTextType: boolean = false;
+	submitted = false;
 	constructor(private fb: FormBuilder,
 		private pageTitleService: PageTitleService,
 		public translate: TranslateService,
@@ -47,12 +49,11 @@ export class AddUserComponent implements OnInit {
 		});
 
 		this.form = this.fb.group({
-			name: [null, Validators.compose([Validators.required])],
-			account: [null, Validators.compose([Validators.required])],
-			email: [null],
-			fullname: [null],
-			password: [null],
-			role: [null],
+			account: ['', [Validators.required]],
+			email: ['', [Validators.required]],
+			fullname: ['', [Validators.required]],
+			password: ['',[Validators.required]],
+			role: ['', [Validators.required]],
 			company: ['', [Validators.required]]
 		});
 		this.id = null;
@@ -62,7 +63,7 @@ export class AddUserComponent implements OnInit {
 
 		if (this.id) {
 			this.title = "Edit User " + this.id;
-				this.request.get('/user/get/' + this.id).subscribe(users => {
+			this.request.get('/user/get/' + this.id).subscribe(users => {
 				const user = users.Users.find(el => el.Username === this.id);
 				this.form.setValue({
 					password: null,
@@ -71,7 +72,6 @@ export class AddUserComponent implements OnInit {
 					account: user.Username,
 					email: user.Attributes.find(el => el.Name == "email").Value,
 					role: user.Attributes.find(el => el.Name == "custom:g1").Value,
-					name:user.Username
 				});
 			});
 		}
@@ -95,6 +95,11 @@ export class AddUserComponent implements OnInit {
 		}
 	}
 
+
+
+	toggleFieldTextType() {
+		this.fieldTextType = !this.fieldTextType;
+	}
 	onSubmit() {
 		if (!this.id)
 			this.add();
@@ -102,8 +107,13 @@ export class AddUserComponent implements OnInit {
 			this.edit();
 	}
 	add() {
+		this.submitted = true;
+		if (!this.form.valid) {
+			return;
+		}
+		this.submitted = false;
 		const user = {
-			username: this.form.value.name,
+			username: this.form.value.account,
 			password: this.form.value.password,
 			attributes: {
 				email: this.form.value.email,
@@ -117,21 +127,27 @@ export class AddUserComponent implements OnInit {
 				this.toastr.success('User has been added.');
 				this.router.navigate(['/user-management'])
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				if (err.code == 'InvalidParameterException') {
+					//this.toastr.error(err.message);
+					this.form.setErrors({code: err.message}); 
+				}
+			});
 	}
 
 	edit() {
 		this.request.post('/user/update',
-		{
-		  username: this.form.value.account,
-		  givenname: this.form.value.fullname,
-		  company: this.form.value.company,
-		  role: this.form.value.role,
-		  email: this.form.value.email,
-		}).subscribe(res=> {
-		  this.toastr.success('User has been updated.');
-		  this.router.navigate(['/user-management'])
-		});
+			{
+				username: this.form.value.account,
+				givenname: this.form.value.fullname,
+				company: this.form.value.company,
+				role: this.form.value.role,
+				email: this.form.value.email,
+			}).subscribe(res => {
+				this.toastr.success('User has been updated.');
+				this.router.navigate(['/user-management'])
+			});
 
 	}
 }

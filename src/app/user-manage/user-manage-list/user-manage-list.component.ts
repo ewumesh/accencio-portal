@@ -115,10 +115,12 @@ export class UserManageListComponent implements OnInit {
 		
 		this.coreService.deleteUserDialog("Are you sure you want to delete this user permanently?").
 			then(res => {
+				if (res === true) {
 				this.request.delete('/user/delete/' + accountName).subscribe(r => {
 								this.getDeleteResponse(res, i);
 								this.toastr.success('User has been deleted.');
 							});
+						}
 					
 			})
 			.catch(error => console.log(error))

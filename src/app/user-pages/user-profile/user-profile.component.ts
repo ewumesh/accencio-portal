@@ -2,6 +2,7 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ASession } from 'request/session';
+import { ARequest } from 'request/request';
 
 @Component({
     selector: 'ms-user-profile',
@@ -70,12 +71,24 @@ export class UserProfileComponent implements OnInit {
   
   constructor(private pageTitleService: PageTitleService,
       public session: ASession,
-              public translate: TranslateService) {}
+      private request: ARequest,
+      public translate: TranslateService) {}
 
   ngOnInit() {
     this.translate.get('User Profile').subscribe((res: string) => {
       this.pageTitleService.setTitle(res);
     });
+    /*this.request.get('/user/me/' + this.session.name).subscribe(users => {
+      const user = users.Users.find(el => el.Username === this.id);
+      this.form.setValue({
+        password: null,
+        fullname: user.Attributes.find(el => el.Name == "given_name").Value,
+        company: user.Attributes.find(el => el.Name == "custom:company").Value,
+        account: user.Username,
+        email: user.Attributes.find(el => el.Name == "email").Value,
+        role: user.Attributes.find(el => el.Name == "custom:g1").Value,
+        name:user.Username
+      });*/
   }
 }
 
