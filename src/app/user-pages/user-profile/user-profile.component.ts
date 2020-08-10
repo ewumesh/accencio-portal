@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
       account: ['', [Validators.required]],
       email: ['', [Validators.required]],
       fullname: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       role: ['', [Validators.required]],
       company: ['', [Validators.required]]
     });
@@ -103,6 +103,10 @@ export class UserProfileComponent implements OnInit {
     this.edit();
   }
   edit() {
+    if (this.form.controls['password'].hasError('minlength'))
+      return;
+    //if (!this.form.valid)
+    //  return;
     var params = {
       username: this.form.value.account,
       givenname: this.form.value.fullname,

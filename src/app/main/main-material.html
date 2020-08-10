@@ -3,7 +3,7 @@
 	[class.collapsed-sidebar]="collapseSidebar" [class.compact-sidebar]="compactSidebar"
 	[class.customizer-in]="customizerIn" [class.chat-window--open]="chatWindowOpen"
 	[class.sidebar-closed]="sidebarClosed" [class.sidebar-opened]="!sidebarClosed" [class.chat-sidebar]="chatSidebar"
-	[ngClass]="{'icon-sidebar-wrap': miniSidebar}">>
+	[ngClass]="{'icon-sidebar-wrap': miniSidebar}">
 	<ng-sidebar-container>
 		<div ng-sidebar-content>
 			<ng-sidebar #sidenav [(opened)]="_opened" [(mode)]="_mode" [closeOnClickOutside]="closeOnClickOutside()"
@@ -107,7 +107,7 @@
 			<section class="main-contents">
 				<header class="main-header">
 					<div class="d-flex justify-content-between align-items-center chankya-header-toolbar w-100">
-						<div class="h-100 d-flex align-items-center col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
+						<div class="h-100 d-flex align-items-center col-sm-4 col-md-4 col-lg-4 pl-0 pr-0">
 							<div class="h-100 d-flex justify-content-start align-items-center">
 								<div class="h-100 chankya-ham-icon">
 									<button class="c-hamburger c-hamburger--rot" (click)="_toggleOpened()">
@@ -129,12 +129,13 @@
 								</form>
 							</div>
 						</div>
-						<div class="align-items-end pr-0 col-sm-6 col-md-6 col-lg-6">
+						<div class="align-items-end pr-0 col-sm-8 col-md-8 col-lg-8">
 							<div class="d-flex secondary-menu justify-content-end align-items-center">
 								<ul class="nav secondary-menu-list d-flex justify-content-end align-items-center"
 									data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-									<li>
-										Welcome {{session.name}} as {{session.role}}
+									<li class="d-none d-md-block">
+										<a href="javascript:void(0)">Welcome {{session.name}} as {{session.role}}
+										</a>
 									</li>
 									<li tourAnchor="tour-full-screen" class="d-none d-md-block fullscreen-toggle"
 										(click)="toggleFullscreen()">
@@ -213,8 +214,7 @@
 											</a>
 										</div>
 									</li>
-
-									<li class="dropdown">
+									<li class="d-none d-md-block dropdown">
 										<a class="relative rounded-bg" href="javascript:void(0)"
 											id="navbarDropdownMenuLin" data-toggle="dropdown" aria-haspopup="true"
 											aria-expanded="false">
@@ -233,14 +233,14 @@
 											</a>
 										</div>
 									</li>
-									<li class="d-none d-md-block">
-										<a class="d-flex pb-2" (click)="logOut()">
-											<i class="fa fa-power-off"></i>
-										</a></li>
 									<li class="d-none d-md-block dropdown">
 										<a (click)="chatSidebarFunction()" class="zoom-out"><i
 												class="material-icons">more_horiz</i></a>
 									</li>
+									<li class="">
+										<a class="d-flex pb-2" (click)="logOut()">
+											<i class="fa fa-power-off"></i>
+										</a></li>
 								</ul>
 							</div>
 						</div>
@@ -341,7 +341,8 @@
 				<ul>
 					<li class="media" *ngFor="let m of messages; let last = last">
 						<div [ngClass]="['media-body', m.type==0?'mr-5':'ml-5']">
-							<span [ngClass]="['text-muted small d-block mb-1',m.type==0?'':'text-right']">{{m.name}}</span>
+							<span
+								[ngClass]="['text-muted small d-block mb-1',m.type==0?'':'text-right']">{{m.name}}</span>
 							<div [class]="m.cssclass" [innerHtml]="m.text">
 							</div>
 							<!-- <p [ngClass]="['text-muted small mt-1', m.type==1?'text-right':'']">5 Min ago</p> -->
@@ -352,7 +353,8 @@
 				</ul>
 			</div>
 			<div class="send-msg-chat p-3">
-				<input [(ngModel)] = "fi" class="form-control form-control-lg mb-3" placeholder="Type message" type="text">
+				<input [(ngModel)]="fi" class="form-control form-control-lg mb-3" placeholder="Type message"
+					type="text">
 				<button class="btn btn-primary" type="submit" (click)="sendmessage()">Send</button>
 			</div>
 		</div>

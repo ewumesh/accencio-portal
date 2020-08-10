@@ -107,7 +107,7 @@ export class MainComponent implements OnInit, OnDestroy {
 				anchorId: 'start.tour',
 				content: 'Welcome to user portal tour!',
 				placement: 'below',
-				title: 'Welcome to Accencio <sup>®</sup>',
+				title: 'Welcome to Accencio ®',
 			},
 			{
 				anchorId: 'tour-search',
