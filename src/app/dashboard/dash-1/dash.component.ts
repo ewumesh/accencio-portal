@@ -3,7 +3,7 @@ import { PageTitleService } from '../../core/page-title/page-title.service';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Workbook } from '../../core/types/Workbook';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterState } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
@@ -186,7 +186,6 @@ export class Dash1Component implements OnInit {
 
    constructor(private pageTitleService: PageTitleService,
       public translate: TranslateService,
-      private router: Router,
       private route: ActivatedRoute,
       private sanitizer: DomSanitizer,
       private request: ARequest,
@@ -197,6 +196,7 @@ export class Dash1Component implements OnInit {
          showToolbar: false,
          translate: 'no'
       };
+      
    }
 
    private id: string;
@@ -209,5 +209,4 @@ export class Dash1Component implements OnInit {
          this.getDashboardData();
       });
    }
-
 }

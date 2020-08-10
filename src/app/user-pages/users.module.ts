@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { UserListComponent } from './user-list/userlist.component';
@@ -16,6 +16,7 @@ import { UserProfileCardComponent } from './user-profile-v2-widgets/user-profile
    imports: [
       CommonModule,
       FormsModule,
+		ReactiveFormsModule,
       RouterModule.forChild(UsersRoutes),
       TranslateModule
    ],

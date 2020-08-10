@@ -33,6 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
 
    forgetPassword(value) {
       this.message = '';
+      debugger;
       if (this.step === 0 && value.username != undefined) {
          this.authService.resetPassword(value.username).subscribe(res => {
             if (res.status !== 'success') {
@@ -43,6 +44,9 @@ export class ForgotPasswordComponent implements OnInit {
                this.form.get('code').setValidators([Validators.required]);
                this.form.get('password').setValidators([Validators.required]);
             }
+         },
+         err => {
+            this.toastr.error(err.message);
          });
       }
 

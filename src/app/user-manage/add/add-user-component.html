@@ -24,12 +24,12 @@
 						<div class="input-group">
 							<input [type]="fieldTextType ? 'text' : 'password'" class="form-control"
 								placeholder="password" [formControl]="form.controls['password']">
-							<div class="input-group-append">
+							<div class="input-group-append" (click)="toggleFieldTextType()">
 								<span class="input-group-text">
 									<i class="fa" [ngClass]="{
 									'fa-eye-slash': !fieldTextType,
 									'fa-eye': fieldTextType
-								  }" (click)="toggleFieldTextType()"></i>
+								  }"></i>
 								</span>
 							</div>
 						</div>

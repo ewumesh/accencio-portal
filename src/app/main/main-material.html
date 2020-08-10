@@ -337,14 +337,15 @@
 				<span class="align-self-center">Accencio bot</span> <a href="javascript:void(0)"
 					(click)="chatWindowFunction()"><i class="material-icons align-self-center">close</i></a>
 			</div>
-			<div class="chat-inner">
+			<div #myList class="chat-inner">
 				<ul>
-					<li class="media" *ngFor="let m of messages">
+					<li class="media" *ngFor="let m of messages; let last = last">
 						<div [ngClass]="['media-body', m.type==0?'mr-5':'ml-5']">
 							<span [ngClass]="['text-muted small d-block mb-1',m.type==0?'':'text-right']">{{m.name}}</span>
 							<div [class]="m.cssclass" [innerHtml]="m.text">
 							</div>
-							<p [ngClass]="['text-muted small mt-1', m.type==1?'text-right':'']">5 Min ago</p>
+							<!-- <p [ngClass]="['text-muted small mt-1', m.type==1?'text-right':'']">5 Min ago</p> -->
+							{{last ? scrollToBottom() : ''}}
 						</div>
 
 					</li>
@@ -357,6 +358,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Chat Window -->
-<!-- app closed -->

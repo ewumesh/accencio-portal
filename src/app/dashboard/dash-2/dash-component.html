@@ -38,9 +38,9 @@
 					<angular-editor #description="ngModel" id="description" name="description" [ngModel]="wb.content" [config]="config" *ngIf="wb.type==3">
 					</angular-editor>
 				</div>
-				<div class="text-center text-muted"><a class="">View All</a>
-				</div>
 			</div>
+		</div>
+		<div class="text-center text-muted"><a (click)="dash1(wb.iid)">View</a>
 		</div>
 	</div>
 </div>
@@ -79,10 +79,9 @@
 				<div class="embed-responsive embed-responsive-16by9 z-depth-1">
 					<div id="{{wb.id}}" class="embed-responsive-item"></div>
 				</div>
-				<div class="text-center text-muted"><a class="">View All</a>
-				</div>
 			</div>
 		</div>
-
+		<div class="text-center text-muted"><a (click)="dash1(wb.iid)">View</a>
+		</div>
 	</div>
 </div>

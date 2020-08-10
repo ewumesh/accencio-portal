@@ -45,18 +45,6 @@ export class AuthService {
 * signupUserProfile method save the user sign in data into local storage.
 */
    signupUserProfile(value) {
-      /*this.firebaseAuth
-    .auth
-    .createUserWithEmailAndPassword(value.email, value.password)
-    .then(value => {
-      this.toastr.success('Account Created!');
-      this.setLocalUserProfile(value);
-      this.router.navigate(['/']);
-    })
-    .catch(err => {
-       this.toastr.error(err.message);
-    });    */
-
       const authInfo = {
          username: value.account,
          password: value.password
@@ -79,7 +67,6 @@ export class AuthService {
       };
       Auth.signIn(authInfo).then(user => {
          this.getUserInfo();
-         //this.route.navigate(['/dashboard2']);
          this.toastr.success('You have been successfully logged In');
          this.setLocalUserProfile(value);
          this.router.navigate(['dashboard']);
@@ -95,14 +82,6 @@ export class AuthService {
          {
             username: value
          });
-      /*   this.firebaseAuth.auth.sendPasswordResetEmail(value.email)
-            .then(value => {
-                 this.toastr.success("Email Sent");
-                 this.router.navigate(['/session/loginone']);
-            })
-            .catch(err => {
-               this.toastr.error(err.message);
-            });*/
    }
 
    confirmCode(username, code, password): Observable<any> {
