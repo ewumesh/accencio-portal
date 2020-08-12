@@ -69,7 +69,20 @@ export class AuthService {
          this.getUserInfo();
          this.toastr.success('You have been successfully logged In');
          this.setLocalUserProfile(value);
-         this.router.navigate(['dashboard']);
+
+
+         //const rperm2 = this.request.get('/org/byname/' + this.session.company);
+         //rperm2.subscribe(orgs => {
+         //   debugger;
+         //});
+         /*const rperm = this.request.get('/org/all/');
+         rperm.subscribe(orgs => {
+            const org = (orgs as any[]).find(e => e.name === this.session.company);
+            this.session.oid = org.id;
+            this.router.navigate(['home']);
+         })*/
+         this.router.navigate(['home']);
+
       })
          .catch(err => this.toastr.error(err.message));
    }
@@ -121,5 +134,21 @@ export class AuthService {
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
       this.session.role = au.attributes['custom:g1'];
+   }
+   public async getOrg() {
+      if (this.session.oid)
+         return;
+      var au = await Auth.currentAuthenticatedUser();
+      if (!au)
+         return;
+      const rperm2 = this.request.get('/org/byname/' + this.session.company);
+      rperm2.subscribe(orgs => {
+      });
+      const rperm = this.request.get('/org/all/');
+      rperm.subscribe(orgs => {
+         const org = (orgs as any[]).find(e => e.name === this.session.company);
+         this.session.oid = org.id;
+         console.log("org initialized");
+      })
    }
 }

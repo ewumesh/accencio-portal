@@ -3,6 +3,7 @@ export class ASession {
     name: string;
     username: string;
     company: string;
+    oid: string;
     role: string;
     id_token: string;
 }

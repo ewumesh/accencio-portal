@@ -71,6 +71,16 @@
 													<span class="sidebar-label">{{menuitem.label}}</span>
 												</ng-container>
 											</a>
+											<a menuToggle [routerLink]="['/', menuitem.state, menuitem.sub]"
+												routerLinkActive="active-link" *ngIf="menuitem.type === 'link2'">
+												<i class="{{ menuitem.icon }}"></i>
+												<p class="text-nowrap mb-0">
+													<span>{{ menuitem.name | translate }}</span>
+												</p>
+												<ng-container *ngIf="menuitem.label">
+													<span class="sidebar-label">{{menuitem.label}}</span>
+												</ng-container>
+											</a>
 											<a menuToggle href="javascript:void(0)" *ngIf="menuitem.type === 'sub'">
 												<i class="{{ menuitem.icon }}"></i>
 												<p class="text-nowrap mb-0">

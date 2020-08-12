@@ -115,9 +115,8 @@ export class Dash1Component implements OnInit {
       console.log(this.company);
       this.wbs = [];
       this.wbsspot = [];
-      const allpermService = this.request.get('/permission/byid/' + this.company);
+      const allpermService = this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username);
       allpermService.subscribe(result => {
-
          const wbData = (result as WorkbookPerm).w;
          console.log(wbData);
          const w = wbData.find(el => el.id === this.id);
@@ -201,9 +200,7 @@ export class Dash1Component implements OnInit {
 
    private id: string;
    ngOnInit() {
-      this.translate.get('Dashboard').subscribe((res: string) => {
-         this.pageTitleService.setTitle(res);
-      });
+      this.pageTitleService.setTitle('');
       this.route.params.subscribe(params => {
          this.id = params['id'];
          this.getDashboardData();

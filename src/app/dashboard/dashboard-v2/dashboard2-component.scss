@@ -1,0 +1,16 @@
+
+.to-do-list-wrap {
+   height: 225px;
+}
+@media(max-width:1514px) and (min-width:1200px){
+   .custom-3col-resp{
+      .cus-col{
+         max-width: 50%;
+         flex: 0 0 50%;
+      }
+      .cus-col-change{
+         max-width: 100%;
+         flex: 0 0 100%;
+      }
+   }
+}

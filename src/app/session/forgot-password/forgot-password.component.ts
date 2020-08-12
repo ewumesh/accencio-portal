@@ -33,7 +33,6 @@ export class ForgotPasswordComponent implements OnInit {
 
    forgetPassword(value) {
       this.message = '';
-      debugger;
       if (this.step === 0 && value.username != undefined) {
          this.authService.resetPassword(value.username).subscribe(res => {
             if (res.status !== 'success') {

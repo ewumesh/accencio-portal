@@ -7,6 +7,8 @@ import { PermissionRoutes } from './permission.routing';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { PermListComponent } from './list/list-component';
+import { PermOrgListComponent } from './olist/list-component';
+import { PermUserListComponent } from './ulist/component';
 
 @NgModule({
    imports: [
@@ -19,7 +21,9 @@ import { PermListComponent } from './list/list-component';
       TranslateModule
    ],
    declarations: [
-      PermListComponent
+      PermListComponent,
+      PermOrgListComponent,
+      PermUserListComponent
    ]
 })
 

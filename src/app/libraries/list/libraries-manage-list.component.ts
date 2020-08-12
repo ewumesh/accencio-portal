@@ -31,20 +31,20 @@ export class ListComponent implements OnInit {
 		public coreService: CoreService,
 		public translate: TranslateService,
 		private request: ARequest,
-    private router: Router,
-    private toastr: ToastrService,
+		private router: Router,
+		private toastr: ToastrService,
 		private session: ASession) { }
 
 	ngOnInit() {
-		this.translate.get('Libraries Manage List').subscribe((res: string) => {
+		this.translate.get('Dashboards').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.request.get('/library/all/'+ this.session.company).subscribe(libraries => {
-      (libraries as Library[]).forEach(element => {
+		this.request.get('/library/all/' + this.session.company).subscribe(libraries => {
+			(libraries as Library[]).forEach(element => {
 				this.librariesManageList = libraries as Library[];
+			});
+			this.isAllowed = this.session.role != 'USER';
 		});
-		this.isAllowed = this.session.role != 'USER';
-	});
 	}
 
 	/**
@@ -59,12 +59,18 @@ export class ListComponent implements OnInit {
 	/**
 	   * onDelete method is used to open a delete dialog.
 	   */
-  onDelete(id, index) {
-    this.request.delete('/library/' + id).subscribe(users => {
-      this.toastr.success('Library has been deleted.');
-      this.librariesManageList.splice(index, 1);
-    });
-  }
+	onDelete(id, index) {
+
+		this.coreService.deleteUserDialog("Are you sure you want to delete this dashboard?").
+			then(res => {
+				if (res === true) {
+					this.request.delete('/library/' + id).subscribe(users => {
+						this.toastr.success('Library has been deleted.');
+						this.librariesManageList.splice(index, 1);
+					});
+				}
+			});
+	}
 	/**
 	  * getDeleteResponse method is used to delete a user from the user list.
 	  */
@@ -96,7 +102,7 @@ export class ListComponent implements OnInit {
 		}
 	}
 
-  addNewLibrary(){
-	  this.router.navigate(['/libraries/add']);
-  }
+	addNewLibrary() {
+		this.router.navigate(['/libraries/add']);
+	}
 }

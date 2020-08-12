@@ -114,11 +114,9 @@ export class Dash2Component implements OnInit {
       this.company = this.session.company;
       this.wbs = [];
       this.wbsspot = [];
-      const permService = this.request.get('/permission/byid/' + this.company);
+      const permService = this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username);
       const libService = this.request.get('/library/byid/' + this.id);
       forkJoin([libService, permService]).subscribe(results => {
-
-
          const wbData = (results[1] as WorkbookPerm).w;
          const lib = results[0].list as Object[];
          const ids = lib.map(el => el['id']);

@@ -8,7 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 export const AppRoutes: Routes = [
    {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'home',
       pathMatch: 'full',
    },
    {
@@ -20,10 +20,16 @@ export const AppRoutes: Routes = [
       component: MainComponent,
       canActivate: [AuthGuard],
       runGuardsAndResolvers: 'always',
-      children: [{
+      children: [
+      {
          path: 'dashboard', loadChildren: () =>
             import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }, {
+      },
+      {
+         path: 'home', loadChildren: () =>
+            import('./home/home.module').then(m => m.HomeModule)
+      },
+      {
          path: 'chat', loadChildren: () =>
             import('./chat/chat.module').then(m => m.ChatModule)
       }, {

@@ -8,17 +8,9 @@
 						<a class="text-muted" href="javascript:void(0)"><i class="fa fa-refresh"
 								aria-hidden="true"></i></a>
 					</div>
-					<div class="form-group form-field mr-3 mb-0 text-nowrap">
-						<select class="form-control h-auto p-cursor custom-select">
-							<option>All</option>
-							<option>Edit</option>
-							<option>Delete</option>
-							<option>New</option>
-						</select>
-					</div>
 				</div>
 				<div class="d-flex justify-content-start align-items-center">
-					<button *ngIf="isAllowed" class="btn btn-primary" (click)="addNewLibrary()">Add Library<i
+					<button *ngIf="isAllowed" class="btn btn-primary" (click)="addNewLibrary()">Add Dashboard<i
 							class="fa fa-plus ml-2"></i></button>
 				</div>
 			</div>
@@ -56,14 +48,12 @@
 							<td class="text-center font-sm text-nowrap">
 								<button class="mr-3 btn btn-primary" href="javascript:void(0)"
 									[routerLink]="['/dashboard/lib',librariesList.id]">View</button>
-								<div *ngIf="isAllowed">
-									<a class="mr-3 text-muted" href="javascript:void(0)"
-										[routerLink]="['/libraries/edit',librariesList.id]"><i class="fa fa-edit"
-											aria-hidden="true"></i></a>
-									<a class="mr-3 text-muted" href="javascript:void(0)"
-										(click)="onDelete(librariesList.id, i)"><i class="fa fa-times"
-											aria-hidden="true"></i></a>
-								</div>
+								<a *ngIf="isAllowed" class="mr-3 btn btn-info text-white" href="javascript:void(0)"
+									[routerLink]="['/libraries/edit',librariesList.id]"><i class="fa fa-edit"
+										aria-hidden="true"></i></a>
+								<a *ngIf="isAllowed" class="mr-3 btn btn-danger text-white" href="javascript:void(0)"
+									(click)="onDelete(librariesList.id, i)"><i class="fa fa-times"
+										aria-hidden="true"></i></a>
 							</td>
 						</tr>
 					</tbody>

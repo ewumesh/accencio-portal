@@ -1,0 +1,246 @@
+<div class="row align-items-stretch custom-3col-resp">
+    <!-- My Dashboard-->
+    <div widget class="col-sm-12 col-md-12 col-lg-6 col-xl-4 cus-col">
+        <div class="chk-block support-wrap">
+            <div class="chk-block-title">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-self-center">
+                        <h3 class="text-capitalize">{{"My Dashboard"|translate}}</h3>
+                    </div>
+                    <div class="d-inline-flex align-self-center">
+                        <div class="chk-contextual-link widget-controls">
+                            <a data-widgster="expand" href="javascript:void(0)" class="transition"><i
+                                    class="icon-plus icons"></i></a>
+                            <a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
+                                    class="icon-minus icons"></i></a>
+                            <a data-widgster="close" href="javascript:void(0)" class="transition"><i
+                                    class="icon-close icons"></i></a>
+                            <a data-widgster="fullscreen" href="javascript:void(0)">
+                                <i class="icon-size-fullscreen icons"></i>
+                            </a>
+                            <a data-widgster="restore">
+                                <i class="icon-size-actual icons"></i>
+                            </a>
+                        </div>
+                        <!-- Contextual link closed -->
+                    </div>
+                </div>
+            </div>
+            <div class="chk-block-content mb-3 widget-body">
+                <div class="d-flex justify-content-between mb-2 ripple">
+                    <div class=""><img src="assets/img/new-geoscape.png" class="mb-1 blur-img-50" alt="user image"
+                            width="95" />
+                    </div>
+                    <div class="ml-4 support-content">
+                        <span><strong>Default</strong></span>
+                        <p class="text-over-p">Default dashboard.</p>
+                    </div>
+                    <div class="support-action text-primary text-center">
+                        <a routerLink="/dashboard/my"><i class="fa fa-dot-circle-o"></i> View</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mb-2 ripple" *ngFor="let w of dashboards">
+                    <div class=""><img src="assets/img/new-kinship.png" class="mb-1 blur-img-50" alt="user image"
+                            width="95" />
+                    </div>
+                    <div class="ml-4 support-content">
+                        <span><strong>{{w.name}}</strong></span>
+                            <div class="text-over-p" [innerHtml]="w.description"></div>
+                    </div>
+                    <div class="support-action text-primary text-center">
+                        <a (click)="dashlib1(w.id)"><i class="fa fa-dot-circle-o"></i> View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Dashboard Block Closed -->
+
+    <!-- Workbooks-->
+    <div widget class="col-sm-12 col-md-12 col-lg-6 col-xl-4 cus-col">
+        <div class="chk-block">
+            <div class="chk-block-title">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-self-center">
+                        <h3 class="text-capitalize">{{"Workbooks"|translate}}</h3>
+                    </div>
+                    <div class="d-inline-flex align-self-center">
+                        <div class="chk-contextual-link widget-controls">
+                            <a data-widgster="expand" href="javascript:void(0)" class="transition"><i
+                                    class="icon-plus icons"></i></a>
+                            <a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
+                                    class="icon-minus icons"></i></a>
+                            <a data-widgster="close" href="javascript:void(0)" class="transition"><i
+                                    class="icon-close icons"></i></a>
+                            <a data-widgster="fullscreen" href="javascript:void(0)">
+                                <i class="icon-size-fullscreen icons"></i>
+                            </a>
+                            <a data-widgster="restore">
+                                <i class="icon-size-actual icons"></i>
+                            </a>
+                        </div>
+                        <!-- Contextual link closed -->
+                    </div>
+                </div>
+            </div>
+            <div class="chk-block-content widget-body">
+                <div class="reports mb-3" *ngFor="let w of workbooks">
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <div class="d-flex">
+                                <div class="text-muted align-self-center">
+                                    <ng-container *ngIf="w.type==2">
+                                        <span class="badge badge-primary mt-1">Spotfire</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="w.type==1">
+                                        <span class="badge badge-success mt-1">Tableau</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="w.type==3">
+                                        <span class="badge badge-warning mt-1">Content</span>
+                                    </ng-container>
+
+                                </div>
+                                <div class="px-3 align-self-center">
+                                    <p class="mb-0">{{w.title}}</p>
+                                    <span class="date">{{w.date}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a (click)='dash1(w.id)' class="text-primary">
+                                <i class="fa fa-dot-circle-o"></i> View
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="text-center text-muted"><a class="">View All</a>
+                </div>
+            </div>
+        </div>
+        <!-- Download Data Block closed -->
+    </div>
+    <!-- Workbooks Block Closed -->
+    <!-- Notifications-->
+    <div widget class="col-sm-12 col-md-12 col-xl-4 cus-col-change">
+        <div class="chk-block">
+            <div class="chk-block-title">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-self-center">
+                        <h3 class="text-capitalize">{{"Notifications"|translate}}</h3>
+                    </div>
+                    <div class="d-inline-flex align-self-center">
+                        <div class="chk-contextual-link widget-controls">
+                            <a data-widgster="expand" href="javascript:void(0)" class="transition"><i
+                                    class="icon-plus icons"></i></a>
+                            <a data-widgster="collapse" href="javascript:void(0)" class="transition"><i
+                                    class="icon-minus icons"></i></a>
+                            <a data-widgster="close" href="javascript:void(0)" class="transition"><i
+                                    class="icon-close icons"></i></a>
+                            <a data-widgster="fullscreen" href="javascript:void(0)">
+                                <i class="icon-size-fullscreen icons"></i>
+                            </a>
+                            <a data-widgster="restore">
+                                <i class="icon-size-actual icons"></i>
+                            </a>
+                        </div>
+                        <!-- Contextual link closed -->
+                    </div>
+                </div>
+            </div>
+            <div class="chk-block-content widget-body">
+                <div>
+                    <ul class="pl-0 list-style-none mb-3 ripple-list">
+                        <li class="bg-white shadow-box pb-3 pt-3 px-3 mb-4 d-flex justify-content-between">
+                            <div class="d-flex">
+                                <i class="fa-lg icon-space fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                <div class="px-2">Site goes is down for 6 hours.</div>
+                            </div>
+                        </li>
+                        <li class="bg-light shadow-box pb-3 pt-3 px-3 mb-4 d-flex justify-content-between">
+                            <div class="d-flex">
+                                <i class="fa-lg icon-space fa fa-check" aria-hidden="true"></i>
+                                <div class="px-2">New users can grab 30% off offer.</div>
+                            </div>
+                        </li>
+                        <li class="bg-light pb-3 pt-3 px-3 mb-4 d-flex justify-content-between">
+                            <div class="d-flex">
+                                <i class="fa-lg icon-space fa fa-smile-o" aria-hidden="true"></i>
+                                <div class="px-2">Bug detected from the development team.</div>
+                            </div>
+                        </li>
+                        <li class="bg-info shadow-box pb-3 pt-3 px-3 mb-4 d-flex justify-content-between">
+                            <div class="d-flex">
+                                <i class="fa-lg icon-space fa fa-exclamation" aria-hidden="true"></i>
+                                <div class="px-2">Automatic system will be initialize at 10.00 PM.</div>
+                            </div>
+                        </li>
+                        <li class="bg-primary shadow-box pb-3 pt-3 px-3 hide-lap d-flex justify-content-between">
+                            <div class="d-flex">
+                                <i class="fa-lg icon-space fa fa-info" aria-hidden="true"></i>
+                                <div class="px-2">Trash box is almost full.</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="text-center text-muted"><a>View All Notfications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Notification Block Closed -->
+</div>
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3 grid-b-space">
+        <div class="bg-light base-card-border lazy-up">
+            <div class="d-flex bg-white justify-content-between p-4">
+                <div>
+                    <h4 class="font-weight-normal">Sales</h4>
+                    <h2 class="font-weight-normal m-0">81%</h2>
+                </div>
+                <div class="dash-icon">
+                    <i class="icon-wallet icons font-xl text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 grid-b-space">
+        <div class="bg-light base-card-border lazy-up">
+            <div class="d-flex bg-white justify-content-between p-4">
+                <div>
+                    <h4 class="font-weight-normal">Likes</h4>
+                    <h2 class="font-weight-normal m-0">47,513</h2>
+                </div>
+                <div class="dash-icon">
+                    <i class="icon-like font-xl text-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 grid-b-space">
+        <div class="bg-light base-card-border lazy-up">
+            <div class="d-flex bg-white justify-content-between p-4">
+                <div>
+                    <h4 class="font-weight-normal">Download</h4>
+                    <h2 class="font-weight-normal m-0">1,89,200</h2>
+                </div>
+                <div class="dash-icon">
+                    <i class="icon-cloud-download icons font-xl text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 grid-b-space">
+        <div class="bg-light base-card-border lazy-up">
+            <div class="d-flex bg-white justify-content-between p-4">
+                <div>
+                    <h4 class="font-weight-normal">Message</h4>
+                    <h2 class="font-weight-normal m-0">81%</h2>
+                </div>
+                <div class="dash-icon">
+                    <i class="icon-envelope-open icons font-xl text-danger"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -292,17 +292,6 @@ export class MainComponent implements OnInit, OnDestroy {
 	/**
 	  * addMenuItem is used to add a new menu into menu list.
 	  */
-	addMenuItem(): void {
-		this.menuItems.add({
-			state: 'pages',
-			name: 'accencio MENU',
-			type: 'sub',
-			icon: 'icon-plus icons',
-			children: [
-				{ state: 'blank', name: 'SUB MENU1' }
-			]
-		});
-	}
 
 	/**
 	  * As router outlet will emit an activate event any time a new component is being instantiated.

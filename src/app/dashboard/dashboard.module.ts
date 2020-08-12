@@ -14,6 +14,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DashboardRoutes } from './dashboard.routing';
 import { Dash1Component } from './dash-1/dash.component';
 import { Dash2Component } from './dash-2/dash.component';
+import { Dashboardv1Component } from './dashboard-v1/dashboard.component';
+import { Dashboardv2Component } from './dashboard-v2/dashboard2.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	suppressScrollX: true
@@ -33,7 +35,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	declarations: [
 		DashComponent,
 		Dash1Component,
-		Dash2Component
+		Dash2Component,
+		Dashboardv1Component,
+		Dashboardv2Component
 	],
 	providers: [
 		{

@@ -46,7 +46,7 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
 
-    const allpermService = this.request.get('/permission/byid/' + this.session.company);
+    const allpermService = this.request.get('/permission/byid2/' + this.session.oid);
     allpermService.subscribe(res => {
       this.dropdownList = res.w as Object[];
     });
@@ -73,10 +73,8 @@ export class AddComponent implements OnInit {
         },
       ]
     };
-    this.translate.get('Libraries').subscribe((res: string) => {
-      this.pageTitleService.setTitle(res);
-    });
-
+    
+    
     this.form = this.fb.group({
       name: [null, Validators.compose([Validators.required])],
       description: [null, Validators.compose([Validators.required])],
@@ -89,8 +87,9 @@ export class AddComponent implements OnInit {
     });
 
     this.selectedItems = [];
-
+    this.pageTitleService.setTitle('Dashboard -> Add new');
     if (this.id) {
+      this.pageTitleService.setTitle('Dashboard -> Edit');
       this.title = "Edit " + this.id;
       this.request.get('/library/byid/' + this.id).subscribe(
         res => {
