@@ -33,9 +33,40 @@
 							</div>
 						</div>
 					</div>
+					<div class="chk-block-title bg-light">
+						<div class="d-flex justify-content-between">
+							<div class="d-flex align-content-start">
+								<h3 class="mb-0 text-capitalize">Private notes</h3>
+							</div>
+							<div class="d-flex align-content-end">
+							</div>
+						</div>
+					</div>
+					<div class="chk-block-content">
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="tab-2" role="tabpanel">
+								<div class="chat-wrapper">
+									<div class="media" *ngFor="let m of privateMessages;let isOdd=odd; let isEven=even">
+										<div [ngClass]="['media-body', 'ml-1']"
+										[class.odd]="isOdd" 
+										[class.text-white]="isOdd" 
+										[class.even]="isEven">
+											<span  [ngClass]="['small d-block mb-1', isOdd?'text-white':'']">
+												{{m.date | date:'medium'}}</span>
+												<p>{{m.msg}}</p>
+											<p [ngClass]="['small mt-1', isOdd?'text-white':'']"></p>
+										</div>
+	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<!-- Chk Block Content Closed -->
 					<div class="send-msg  p-4 bg-light m-0">
 						<div class="input-group">
+							<label><input name="prv" [(ngModel)]="priv" type="checkbox" class="form-control"
+								>My note</label>	
 							<input name="fi" [(ngModel)]="fi" type="text" class="form-control"
 								placeholder="Type message...">
 							<span class="input-group-append">

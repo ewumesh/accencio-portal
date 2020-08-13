@@ -11,23 +11,27 @@ import { Observable } from 'rxjs/Rx';
 
 @Component({
    selector: 'wb-message',
-   templateUrl:'./m-component.html',
+   templateUrl: './m-component.html',
    styleUrls: ['./m-component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 
 export class MComponent implements OnInit {
-   
+
    public fi: string;
+   public priv: boolean;
    @Input('id') id: string;
+   @Input('classMessage') classMessage: string;
    public messages: Message[];
-   constructor( private request: ARequest,
+   public privateMessages: Message[];
+   constructor(private request: ARequest,
       private session: ASession,
       public translate: TranslateService) {
    }
 
    ngOnInit() {
       this.getMessages();
+      this.getPrivateMessages();
    }
 
    getMessages() {
@@ -36,25 +40,34 @@ export class MComponent implements OnInit {
          this.messages = res;
       });
    }
+   getPrivateMessages() {
+      const params = "/" + this.session.oid + "/" + this.id + "/" + this.session.username;
+      this.request.get('/message/byme' + params).subscribe(res => {
+         this.privateMessages = res;
+      });
+   }
    addmessage() {
       this.addmi(this.id, this.fi).subscribe(() => {
-         this.getMessages();
+         if (this.priv)
+            this.getPrivateMessages();
+         else
+            this.getMessages();
          this.fi = '';
       });
    }
-   addmi(refId, msg) : Observable<any>{
+   addmi(refId, msg): Observable<any> {
       return this.request.post('/message/add', {
-			id:  '_' + Math.random().toString(36).substr(2, 9),
-			org: this.session.company,
-			orgid: this.session.oid,
-			type: 'm',
-			wb: refId,
-			date: new Date(),
-			from: this.session.username,
-			to: '',
-			status: 1,
-			msg: msg
-		  });
+         id: '_' + Math.random().toString(36).substr(2, 9),
+         org: this.session.company,
+         orgid: this.session.oid,
+         type: 'm',
+         wb: refId,
+         date: new Date(),
+         from: this.session.username,
+         to: '',
+         status: (this.priv ? 3 : 1),
+         msg: msg
+      });
    }
 }
 
