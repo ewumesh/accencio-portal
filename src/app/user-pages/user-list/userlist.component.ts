@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class UserListComponent implements OnInit {
 
+  public users = [];
    constructor(private pageTitleService: PageTitleService,
               public translate: TranslateService) {}
 

@@ -5,6 +5,12 @@
 .to-do-list-wrap {
    height: 225px;
 }
+.even {
+   background-color:white;
+}
+.odd {
+   background-color:#31a5e0;   
+}
 //Dashboard responsive col classes
 @media(max-width:1514px) and (min-width:1200px){
    .custom-3col-resp{

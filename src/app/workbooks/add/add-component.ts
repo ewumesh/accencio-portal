@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ARequest } from 'request/request';
+import { Observable } from 'rxjs';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -100,9 +101,10 @@ export class AddComponent implements OnInit {
 		  	this.edit(); 	  
 	  }
 	add() {
-		this.request.post('/wb/add', 
+		const id = '_' + Math.random().toString(36).substr(2, 9);
+		this.request.post('/wb/add',
 		{
-		  id:  '_' + Math.random().toString(36).substr(2, 9),
+		  id: id,
 		  name: this.form.value.name,
 		  title: this.form.value.title,
 		  description: this.form.value.description,
@@ -114,7 +116,9 @@ export class AddComponent implements OnInit {
 		  site: this.form.value.site
 		}).subscribe(res=> {
 		  this.toastr.success('Workbook has been added.');
-		  this.router.navigate(['/workbooks/list'])
+		  this.logmessage(id, 'Workbook ' + this.form.value.title + ' added').subscribe(res => {
+			this.router.navigate(['/workbooks/list']);
+		  })
 		});
 	}
 
@@ -132,9 +136,25 @@ export class AddComponent implements OnInit {
 		  type: this.form.value.type,
 		  site: this.form.value.site
 		}).subscribe(res=> {
-		  this.toastr.success('Workbook has been added.');
-		  this.router.navigate(['/workbooks/list'])
+		  this.toastr.success('Workbook has been updated.');
+		  this.logmessage(this.form.value.id, 'Workbook ' + this.form.value.title + ' updated').subscribe(res => {
+			this.router.navigate(['/workbooks/list']);
+		  })
 		});
+	}
+	logmessage(refId, msg): Observable<any> {
+		return this.request.post('/message/add', {
+			id:  '_' + Math.random().toString(36).substr(2, 9),
+			org: this.session.company,
+			orgid: this.session.oid,
+			type: 'n',
+			wb: refId,
+			date: new Date(),
+			from1:'',
+			to: '',
+			status: 1,
+			msg: msg
+		  });
 	}
 }
 

@@ -10,13 +10,6 @@ import { BaseComponent } from 'app/core/BaseControler';
 import { Router } from '@angular/router';
 import { Library } from 'app/libraries/list/Library';
 
-function getNewTime(d) {
-   let h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
-      m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(),
-      s = (d.getSeconds() < 10 ? '0' : '') + d.getSeconds(),
-      time = h + ":" + m + ":" + s;
-   return time;
-}
 
 @Component({
    selector: 'ms-home-2',
@@ -27,64 +20,9 @@ function getNewTime(d) {
 
 export class HomeComponent implements OnInit {
 
-   // line chart label
-   public label: string[] = ['15', '30', '45', '60', '75', '90', '105'];
-
-   //line chart data
-   public data: any[] = [
-      { data: [40, 80, 20, 95, 30, 80, 40], label: "Daily Sales" }
-   ];
-
-   //line chart color
-   public color: Array<any> = [
-      {
-         pointHoverBorderWidth: 4,
-         pointBorderWidth: 3,
-         lineTension: 0.4,
-         borderColor: '#1862c6',
-         pointRadius: 6,
-         borderWidth: 4,
-         fill: false,
-         fillOpacity: 0.3,
-         pointHoverRadius: 7,
-         pointBackgroundColor: '#1862c6'
-      }
-   ];
-
-   //Today's sale line chart option
-   public lineChartOptions: any = {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-         yAxes: [{
-            ticks: {
-               beginAtZero: true,
-               display: false
-            },
-            gridLines: {
-               display: true,
-               drawBorder: false,
-               drawTicks: false
-            },
-         }],
-         xAxes: [{
-            ticks: {
-               display: false,
-               beginAtZero: true
-            },
-            gridLines: {
-               display: false,
-               Border: false
-            }
-         }]
-      },
-      legend: {
-         display: false
-      }
-   }
-
    public workbooks: Workbook[];
    public dashboards: Library[];
+   public notifications: Notification[] = [];
 
    constructor(private pageTitleService: PageTitleService,
       private request: ARequest,
@@ -99,13 +37,9 @@ export class HomeComponent implements OnInit {
          this.pageTitleService.setTitle(res);
       });
 
-      //const rperm2 = this.request.get('/org/byname/' + this.session.company);
-      //rperm2.subscribe(orgs => {
-      //   debugger;
-      //});
-      const rperm = this.request.get('/org/all/');
-      rperm.subscribe(orgs => {
-         const org = (orgs as any[]).find(e => e.name === this.session.company);
+      const rperm2 = this.request.get('/org/byname/' + this.session.company);
+      rperm2.subscribe(orgs => {
+         const org = orgs[0];
          this.session.oid = org.id;
          this.request.get('/library/all/' + this.session.company).subscribe(
             res => {
@@ -115,16 +49,35 @@ export class HomeComponent implements OnInit {
 
          this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
             res => {
-               this.workbooks = res.w
+               this.workbooks = res.w;
+               this.request.get('/message/notif/' + this.session.oid).subscribe(
+                  res2 => {
+                     this.notifications = res2;
+                     //this.notifications.filter(f=>)
+                  });
             });
-      })
+      });
+      //const rperm = this.request.get('/org/all/');
+      //rperm.subscribe(orgs => {
+      //    const org = (orgs as any[]).find(e => e.name === this.session.company);
+
+
+
+      // })
 
    }
 
-   dash1(id) {
+   gotoworkbook(id) {
       this.router.navigate(['/dashboard/' + id]);
    }
-   dashlib1(id) {
+   gotodashboard(id) {
       this.router.navigate(['/dashboard/lib/' + id]);
+   }
+
+   gotonotif(n) {
+      if (n.status == 1) // wb
+         this.gotoworkbook(n.wb);
+      if (n.status == 2) // dashboards
+         this.gotodashboard(n.wb);
    }
 }

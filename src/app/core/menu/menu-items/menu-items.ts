@@ -30,7 +30,7 @@ const MENUITEMS_USER = [
       state: 'libraries',
       name: 'Dashboards',
       type: 'link',
-      icon: 'icon-share icons'
+      icon: 'icon-speedometer icons'
    },
    {
       state: 'favorites',

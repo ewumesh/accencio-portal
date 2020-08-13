@@ -66,8 +66,7 @@ export class PermUserListComponent implements OnInit {
       //this.initmap(this.org.id);
     });
   }
-  changeUser(e) {
-
+  changeUser() {
     const rperm = this.request.get('/permission/byidname/' + this.org.id + '/' + this.user);
     rperm.subscribe(p => {
       this.initmap(p);

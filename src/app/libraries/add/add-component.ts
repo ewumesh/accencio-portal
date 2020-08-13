@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ARequest } from 'request/request';
+import { Observable } from 'rxjs/Rx';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -123,17 +124,19 @@ export class AddComponent implements OnInit {
       this.edit();
   }
   add() {
+    const id = '_' + Math.random().toString(36).substr(2, 9); 
     this.request.post('/library/add',
       {
-        id: '_' + Math.random().toString(36).substr(2, 9),
+        id: id,
         name: this.form.value.name,
         description: this.form.value.description,
         date: new Date(),
         org: this.session.company,
         list: this.selectedItems
       }).subscribe(res => {
-        this.toastr.success('Library has been added.');
-        this.router.navigate(['/libraries/list'])
+        this.toastr.success('Dashboard has been added.');
+        this.logmessage(id, 'Dashboard ' + this.form.value.name + ' has been added.').subscribe(
+          el =>  { this.router.navigate(['/libraries/list']) } );
       });
   }
   edit() {
@@ -146,10 +149,25 @@ export class AddComponent implements OnInit {
         org: this.session.company,
         list: this.selectedItems
       }).subscribe(res => {
-        this.toastr.success('Library has been updated.');
-        this.router.navigate(['/libraries/list'])
+        this.toastr.success('Dashboard has been updated.');
+        this.logmessage(this.form.value.id, 'Dashboard ' + this.form.value.name + ' has been updated.' ).subscribe(
+          el =>  { this.router.navigate(['/libraries/list']) } );
       });
   }
+  logmessage(refId, msg): Observable<any> {
+		return this.request.post('/message/add', {
+			id:  '_' + Math.random().toString(36).substr(2, 9),
+			org: this.session.company,
+			orgid: this.session.oid,
+			type: 'n',
+			wb: refId,
+			date: new Date(),
+			from1:'',
+			to: '',
+			status: 2,
+			msg: msg
+		  });
+	}
 }
 
 

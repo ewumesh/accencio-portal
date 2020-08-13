@@ -53,7 +53,7 @@ export class PermOrgListComponent implements OnInit {
       //this.initmap('');
     });
   }
-  changeOrg(e) {
+  changeOrg() {
     this.initmap(this.org.id);
   }
   initmap(orgId) {
