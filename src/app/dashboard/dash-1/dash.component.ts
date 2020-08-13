@@ -69,13 +69,13 @@ export class Dash1Component implements OnInit {
 
    wbsspot: Workbook[];
    wbs: Workbook[];
-   public messages: Message[];
+   
    public company: any;
    public config: AngularEditorConfig;
    public classChart = '';
    public classMessage = 'd-none';
    public tabIcon = 'icon-bubble';
-   public fi: string;
+   
    @ViewChild('spotcont', null) spotcont: ElementRef;
    observer: MutationObserver;
 
@@ -100,10 +100,8 @@ export class Dash1Component implements OnInit {
       this.route.params.subscribe(params => {
          this.id = params['id'];
          this.getDashboardData();
-         this.getMessages();
       });
    }
-
 
    public loadspot(analysis, name, lwbsspot) {
       var customizationInfo = {
@@ -218,32 +216,5 @@ export class Dash1Component implements OnInit {
       this.classChart = this.classChart === '' ? 'd-none' : '';
       this.classMessage = this.classMessage === '' ? 'd-none' : '';
       this.tabIcon = this.classChart === 'd-none' ? 'icon-chart': 'icon-bubble';
-   }
-   getMessages() {
-
-      const params = "/" + this.session.oid + "/" + this.id;
-      this.request.get('/message/byw' + params).subscribe(res => {
-         this.messages = res;
-      });
-   }
-   addmessage() {
-      this.addmi(this.id, this.fi).subscribe(el=> {
-         this.getMessages();
-         this.fi = '';
-      });
-   }
-   addmi(refId, msg) : Observable<any>{
-      return this.request.post('/message/add', {
-			id:  '_' + Math.random().toString(36).substr(2, 9),
-			org: this.session.company,
-			orgid: this.session.oid,
-			type: 'm',
-			wb: refId,
-			date: new Date(),
-			from: this.session.username,
-			to: '',
-			status: 1,
-			msg: msg
-		  });
-   }
+   }  
 }
