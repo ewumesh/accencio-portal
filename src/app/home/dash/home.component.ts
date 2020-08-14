@@ -41,29 +41,33 @@ export class HomeComponent implements OnInit {
       rperm2.subscribe(orgs => {
          const org = orgs[0];
          this.session.oid = org.id;
-         this.request.get('/library/all/' + this.session.company).subscribe(
-            res => {
-               this.dashboards = res;
-            }
-         );
 
          this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
             res => {
                this.workbooks = res.w;
+               const ids = this.workbooks.map(el => el.id);
+
                this.request.get('/message/notif/' + this.session.oid).subscribe(
                   res2 => {
                      this.notifications = res2;
-                     //this.notifications.filter(f=>)
+                     this.notifications = this.notifications.filter(f => ids.includes(f['wb']));
                   });
-            });
+
+               this.request.get('/library/all/' + this.session.company).subscribe(
+                  res3 => {
+                     let adashboards = (res3 as Library[]);
+                     this.dashboards = adashboards.filter(f => {
+                        for (let i = 0, len = f.list.length; i < len; i++) {
+                          if (ids.includes(f.list[i].id)) {
+                              return true;
+                          }
+                        }
+                        return false;
+                     });
+                  });
+            }
+         );
       });
-      //const rperm = this.request.get('/org/all/');
-      //rperm.subscribe(orgs => {
-      //    const org = (orgs as any[]).find(e => e.name === this.session.company);
-
-
-
-      // })
 
    }
 

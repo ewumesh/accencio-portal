@@ -42,8 +42,27 @@ export class ListComponent implements OnInit {
 		this.request.get('/library/all/' + this.session.company).subscribe(libraries => {
 			(libraries as Library[]).forEach(element => {
 				this.librariesManageList = libraries as Library[];
+
+				if (this.session.role === 'USER') {
+					this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
+						res => {
+						   const ids = res.w.map(el => el.id);
+						   this.librariesManageList = this.librariesManageList.filter(f => {
+							for (let i = 0, len = f.list.length; i < len; i++) {
+							  if (ids.includes(f.list[i].id)) {
+								  return true;
+							  }
+							}
+							return false;
+						 });
+						}
+					);
+				}
+
 			});
 			this.isAllowed = this.session.role != 'USER';
+
+		
 		});
 	}
 
