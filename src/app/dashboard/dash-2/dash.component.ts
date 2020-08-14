@@ -211,5 +211,8 @@ export class Dash2Component implements OnInit {
          this.getDashboardData();
       });
    }
+   dash1(id) {
+      this.router.navigate(['/dashboard/' + id]);
+   }
 
 }

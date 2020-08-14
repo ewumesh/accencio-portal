@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Workbook } from '../../core/types/Workbook';
 import { Router, ActivatedRoute, RouterState } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
@@ -80,6 +81,7 @@ export class Dash1Component implements OnInit {
    observer: MutationObserver;
 
    constructor(private pageTitleService: PageTitleService,
+      private location: Location,
       public translate: TranslateService,
       private route: ActivatedRoute,
       private sanitizer: DomSanitizer,
@@ -216,5 +218,8 @@ export class Dash1Component implements OnInit {
       this.classChart = this.classChart === '' ? 'd-none' : '';
       this.classMessage = this.classMessage === '' ? 'd-none' : '';
       this.tabIcon = this.classChart === 'd-none' ? 'icon-chart': 'icon-bubble';
-   }  
+   }
+   back() {
+      this.location.back();
+   }
 }

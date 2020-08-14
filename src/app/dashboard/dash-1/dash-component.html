@@ -37,7 +37,7 @@
 					</div>
 					<angular-editor #description="ngModel" id="description" name="description" [ngModel]="wb.content" [config]="config" *ngIf="wb.type==3">
 					</angular-editor>
-					<div class="mt-3"><a class="btn btn-primary large" [routerLink]="['../']">Back</a>
+					<div class="mt-3"><a class=" btn btn-primary large" (click)="back()">Back</a>
 					</div>
 				</div>
 			</div>
@@ -83,7 +83,7 @@
 				<div class="embed-responsive embed-responsive-16by9 z-depth-1">
 					<div id="{{wb.id}}" class="embed-responsive-item"></div>
 				</div>
-				<div class="mt-3"><a class=" btn btn-primary large" [routerLink]="['../']">Back</a>
+				<div class="mt-3"><a class=" btn btn-primary large" (click)="back()">Back</a>
 				</div>
 			</div>
 		</div>
