@@ -12,7 +12,7 @@ import { AuthService } from '../../service/auth/auth.service';
 })
 
 export class LoginoneComponent {
-
+   fieldTextType: boolean = false;
    email    : string ="";
    password : string = "";
    name     :string;
@@ -25,7 +25,9 @@ export class LoginoneComponent {
    logIn(value){
       this.authService.loginUser(value);
    }
-	
+	toggleFieldTextType() {
+      this.fieldTextType = !this.fieldTextType;
+    }
 }
 
 

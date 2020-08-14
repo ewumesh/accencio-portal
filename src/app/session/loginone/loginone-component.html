@@ -9,15 +9,23 @@
 
 			</div>
 			<div class="mb-4">
-				<p class="text-muted font-weight-bold mb-0">{{'Welcome To Accencio'|translate}}</p>
+				<p class="text-muted font-weight-bold mb-0">{{'Welcome To Accencio ®'|translate}}</p>
 				<h2 class="text-primary font-weight-normal">{{'Sign into your account'|translate}}</h2>
 			</div>
 			<form #form="ngForm" (ngSubmit)=logIn(form.value) class="login-form" action="javascript:void(0)" method="post">
 				<div class="form-group">
 					<input name="fname" [(ngModel)]="name" class="form-control session-input-font input-square" type="text" placeholder="Account" required>
 				</div>
-				<div class="form-group">
-					<input name="password" type="password" [(ngModel)]="password" placeholder="Password" class="form-control session-input-font input-square" required>
+				<div class="form-group input-group">
+					<input name="password" [type]="fieldTextType ? 'text' : 'password'" [(ngModel)]="password" placeholder="Password" class="form-control session-input-font input-square" required>
+					<div class="input-group-append" (click)="toggleFieldTextType()">
+						<span class="input-group-text">
+							<i class="fa" [ngClass]="{
+							'fa-eye-slash': !fieldTextType,
+							'fa-eye': fieldTextType
+						  }" ></i>
+						</span>
+					</div>
 				</div>
 				<div class="login-meta mb-3">
 					<div class="row">
