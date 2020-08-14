@@ -55,11 +55,16 @@ export class PermUserListComponent implements OnInit {
         this.pageTitleService.setTitle(res);
       });
     this.tabs = [];
-    const users = this.request.get('/user/list-o/' + this.org.name);
-    const workbooks = this.request.get('/permission/byid2/' + this.org.id);
-    
+    let users = this.request.get('/user/list-o/' + this.org.name);
+    let workbooks = this.request.get('/permission/byid2/' + this.org.id);
+    if (this.session.role === 'CLIENTADMIN')
+      workbooks = this.request.get('/permission/byidname/' + this.org.id + '/' + this.session.username);
+    if (this.session.role === 'CLIENTADMIN')
+      users = this.request.get('/user/list-o1/' + this.org.name);
+
 
     forkJoin([users, workbooks]).subscribe(results => {
+      debugger;
       this.users = results[0].Users as Object[];
       this.workbooks = results[1].w as Workbook[];
       //this.permissions = results[2] as Permission[];

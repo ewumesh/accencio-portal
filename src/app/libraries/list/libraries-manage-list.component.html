@@ -46,7 +46,7 @@
 								<span class="font-sm" *ngFor="let w of librariesList.list">{{w.name}}<br /></span>
 							</td>
 							<td class="text-center font-sm text-nowrap">
-								<button class="mr-3 btn btn-primary" href="javascript:void(0)"
+								<button *ngIf="isView" class="mr-3 btn btn-primary" href="javascript:void(0)"
 									[routerLink]="['/dashboard/lib',librariesList.id]">View</button>
 								<a *ngIf="isAllowed" class="mr-3 btn btn-info text-white" href="javascript:void(0)"
 									[routerLink]="['/libraries/edit',librariesList.id]"><i class="fa fa-edit"

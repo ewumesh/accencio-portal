@@ -43,7 +43,7 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
 
-    const allpermService = this.request.get('/permission/byid/' + this.session.company);
+    const allpermService = this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username);
     allpermService.subscribe(res => {
       this.dropdownList = res.w as Object[];
     });

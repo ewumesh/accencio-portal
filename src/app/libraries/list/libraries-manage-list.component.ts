@@ -26,6 +26,7 @@ export class ListComponent implements OnInit {
 		"Silver": "warning"
 	}
 	public isAllowed = false;
+	public isView = false;
 	librariesManageList = [];
 	constructor(private pageTitleService: PageTitleService,
 		public coreService: CoreService,
@@ -39,15 +40,15 @@ export class ListComponent implements OnInit {
 		this.translate.get('Dashboards').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
+		this.isView = false;
 		this.request.get('/library/all/' + this.session.company).subscribe(libraries => {
-			(libraries as Library[]).forEach(element => {
-				this.librariesManageList = libraries as Library[];
-
 				if (this.session.role === 'USER') {
+					this.isView = true;
 					this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
 						res => {
+							(libraries as Library[]).forEach(element => {
 						   const ids = res.w.map(el => el.id);
-						   this.librariesManageList = this.librariesManageList.filter(f => {
+						   this.librariesManageList = (libraries as Library[]).filter(f => {
 							for (let i = 0, len = f.list.length; i < len; i++) {
 							  if (ids.includes(f.list[i].id)) {
 								  return true;
@@ -55,11 +56,12 @@ export class ListComponent implements OnInit {
 							}
 							return false;
 						 });
+							}) 
 						}
 					);
+				} else {
+					this.librariesManageList = (libraries as Library[]);
 				}
-
-			});
 			this.isAllowed = this.session.role != 'USER';
 
 		
