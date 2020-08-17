@@ -32,6 +32,7 @@ import { WidgetsComponentModule } from './widgets-component/widgets-component.mo
 import { ASession } from 'request/session';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ARequest } from 'request/request';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 
 /********** Custom option for ngx-translate ******/
@@ -59,6 +60,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		RoutingModule,
 		RouterModule,
 		SessionModule,
+		NgxSpinnerModule,
 		ModalModule.forRoot(),  
 		TourNgBootstrapModule.forRoot(),
 		NgbModalModule.forRoot(),
@@ -90,6 +92,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		ARequest,
 		MenuItems,
 		PageTitleService,
+		NgxSpinnerService,
 		AuthService,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,

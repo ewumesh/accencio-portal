@@ -5,7 +5,7 @@ import { AuthService } from 'app/service/auth/auth.service';
 export class BaseComponent {
 
     constructor(authService: AuthService) {
-        authService.getUserInfo();
-        authService.getOrg();
+        //authService.getUserInfo();
+        //authService.getOrg();
     }
 }

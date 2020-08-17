@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { Auth } from 'aws-amplify';
+import { Auth, Hub } from 'aws-amplify';
 import { ASession } from 'request/session';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
@@ -18,6 +18,15 @@ export class AuthService {
 
    userData: any;
    isLoggedIn = false;
+
+   public fed1_mapping = [{
+      src: "27bdb1cb-dd0e-40d0-80ba-62fe76226851",
+      dest: "USER"
+   }, {
+      src: "b6ac1289-7913-465b-b23e-b982110e26e6",
+      dest: "CLIENTADMIN"
+   }
+   ]
 
    constructor(private router: Router,
       private http: HttpClient,
@@ -66,27 +75,34 @@ export class AuthService {
          password: value.password
       };
       Auth.signIn(authInfo).then(user => {
-         this.getUserInfo();
-         this.toastr.success('You have been successfully logged In');
+         //this.getUserInfo();
+
          this.setLocalUserProfile(value);
 
-
-         //const rperm2 = this.request.get('/org/byname/' + this.session.company);
-         //rperm2.subscribe(orgs => {
-         //   debugger;
-         //});
-         /*const rperm = this.request.get('/org/all/');
-         rperm.subscribe(orgs => {
-            const org = (orgs as any[]).find(e => e.name === this.session.company);
-            this.session.oid = org.id;
-            this.router.navigate(['home']);
-         })*/
-         this.router.navigate(['home']);
-
+         Auth.currentAuthenticatedUser().then(au => {
+            this.session.isLogged = true;
+            this.session.id_token = au.signInUserSession.idToken.getJwtToken();
+            this.session.username = au.username;
+            this.session.name = au.attributes['given_name'];
+            this.session.company = au.attributes['custom:company'];
+            this.session.role = au.attributes['custom:g1'];
+            this.toastr.success('You have been successfully logged In');
+            this.router.navigate(['/home']);
+         });
       })
          .catch(err => this.toastr.error(err.message));
    }
 
+   fed1() {
+      Auth.federatedSignIn({
+         customProvider: 'acc1'
+      }).then(fuser => {
+         debugger;
+      }
+
+      ).catch(x =>
+         console.log(x))
+   }
    /*
     * resetPassword is used to reset your password.
     */
@@ -120,11 +136,13 @@ export class AuthService {
    /*
     * setLocalUserProfile function is used to set local user profile data.
     */
-   setLocalUserProfile(value) {
+   public setLocalUserProfile(value) {
       localStorage.setItem("userProfile", JSON.stringify(value));
       this.isLoggedIn = true;
    }
-   public async getUserInfo() {
+
+   public async getUserInfo2() {
+
       var au = await Auth.currentAuthenticatedUser();
       if (!au)
          return;
@@ -133,7 +151,20 @@ export class AuthService {
       this.session.username = au.username;
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
-      this.session.role = au.attributes['custom:g1'];
+      if (this.session.isSSO) {
+         const role = this.fed1_mapping.find(el => {
+            const s = el.src;
+            return (au.attributes['custom:g1'] as any[]).includes(s)
+         });
+
+         if (role)
+            this.session.role = role.dest;
+
+      } else {
+
+         this.session.role = au.attributes['custom:g1'];
+
+      }
    }
    public async getOrg() {
       if (this.session.oid)
@@ -148,7 +179,6 @@ export class AuthService {
       rperm.subscribe(orgs => {
          const org = (orgs as any[]).find(e => e.name === this.session.company);
          this.session.oid = org.id;
-         console.log("org initialized");
       })
    }
 }

@@ -1,5 +1,6 @@
 export class ASession {
     isLogged = false;
+    isSSO = false;
     name: string;
     username: string;
     company: string;

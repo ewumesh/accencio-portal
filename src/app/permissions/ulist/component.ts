@@ -64,7 +64,6 @@ export class PermUserListComponent implements OnInit {
 
 
     forkJoin([users, workbooks]).subscribe(results => {
-      debugger;
       this.users = results[0].Users as Object[];
       this.workbooks = results[1].w as Workbook[];
       //this.permissions = results[2] as Permission[];

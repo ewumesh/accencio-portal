@@ -16,6 +16,6 @@ export class AccencioAppComponent {
 		const browserLang: string = translate.getBrowserLang();
 		translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
 
-		authService.getUserInfo();
+		//authService.getUserInfo();
 	}
 }

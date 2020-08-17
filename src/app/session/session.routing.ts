@@ -10,6 +10,7 @@ import { UnderMaintanceComponent } from './under-maintance/under-maintance.compo
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ComingsoonV2Component } from './coming-soonV2/coming-soonV2.component';
 import { MaintenanceV2Component } from './maintenanceV2/maintenanceV2.component';
+import { InProgressComponent } from './inprogress/ip.component';
 
 export const SessionRoutes: Routes = [{
   path: '',
@@ -20,6 +21,10 @@ export const SessionRoutes: Routes = [{
   children: [{
     path: 'loginone',
     component: LoginoneComponent
+  }, 
+  {
+    path: 'ip',
+    component: InProgressComponent
   }, {
     path: 'register',
     component: RegisterComponent

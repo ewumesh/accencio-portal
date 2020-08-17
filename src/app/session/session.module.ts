@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ComingsoonV2Component } from './coming-soonV2/coming-soonV2.component';
 import { MaintenanceV2Component } from './maintenanceV2/maintenanceV2.component';
 import { SessionRoutes } from './session.routing';
+import { InProgressComponent } from './inprogress/ip.component';
 
 @NgModule({
    imports: [
@@ -28,6 +29,7 @@ import { SessionRoutes } from './session.routing';
    ],
    declarations: [ 
       LoginoneComponent,
+      InProgressComponent,
       RegisterComponent,
       ForgotPasswordComponent,
       ComingSoonComponent,

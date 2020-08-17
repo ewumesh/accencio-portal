@@ -297,48 +297,28 @@
 					<input class="overlay-search" placeholder="Search..." (keyup)="onKey($event)">
 				</div>
 				<div class="search-suggestion">
-					<div class="chk-block">
-						<div class="chk-block-title bg-light">
-							<h1>Favorites</h1>
-						</div>
-					</div>
 					<div class="card-body">
 						<ul class="row search-list">
-							<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4" *ngFor="let r of favorites">
+							<li class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2" *ngFor="let r of favorites">
 								<a (click)="dash1(r.id)">
-									{{r.text}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+									{{r.text}}</a>
+							</li>
+							<li class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2" *ngFor="let r of libraries">
+								<a (click)="dashlib(r.id)">
+									{{r.name}}</a>
+								<br />
+								<div [innerHtml]="r.description"></div>
+							</li>
+							<li class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2" *ngFor="let r of results">
+								<a (click)="dash1(r.id)">
+									{{r.text}}</a>
+								<div [innerHtml]="r.description"></div>
 							</li>
 						</ul>
 					</div>
-					<div class="chk-block">
-						<div class="chk-block-title bg-light">
-							<h1>Libraries</h1>
-						</div>
-					</div>
-					<ul class="row search-list">
-						<li class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4" *ngFor="let r of libraries">
-							<a (click)="dashlib(r.id)">
-								{{r.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-
-							<br />
-							<div [innerHtml]="r.description"></div>
-						</li>
-					</ul>
-					<div class="chk-block">
-						<div class="chk-block-title bg-light">
-							<h1>Workbooks</h1>
-						</div>
-					</div>
-					<ul class="row search-list ">
-						<li class="col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-4" *ngFor="let r of results">
-							<a (click)="dash1(r.id)"><span
-									class="d-inline-block square-50 circle bg-success mr-2">{{r.l1}}</span>
-								{{r.text}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-						</li>
-					</ul>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</ng-template>
 	<!-- Modal -->
 	<div class="chat-window">

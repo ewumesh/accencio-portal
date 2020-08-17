@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PageTitleService } from '../../core/page-title/page-title.service';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { Auth, Hub } from 'aws-amplify';
 import { TranslateService } from '@ngx-translate/core';
 import { ARequest } from 'request/request';
 import { Workbook } from 'app/core/types/Workbook';
@@ -36,7 +37,6 @@ export class HomeComponent implements OnInit {
       this.translate.get('Home').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
-
       const rperm2 = this.request.get('/org/byname/' + this.session.company);
       rperm2.subscribe(orgs => {
          const org = orgs[0];

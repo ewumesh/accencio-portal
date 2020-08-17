@@ -7,10 +7,18 @@ import { ASession } from './session';
 export class ARequest {
     constructor(private http: HttpClient, private session: ASession) {}
     get httpOptions() {
+    if (this.session.isLogged)  
         return {
+          
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
               'Authorization': this.session.id_token
+            })
+          };
+
+          return {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json'
             })
           };
     }
