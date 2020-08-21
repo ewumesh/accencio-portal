@@ -10,6 +10,7 @@ import { AuthService } from 'app/service/auth/auth.service';
 import { BaseComponent } from 'app/core/BaseControler';
 import { Router } from '@angular/router';
 import { Library } from 'app/libraries/list/Library';
+import { Notification } from '../../core/types/Notification';
 
 
 @Component({
@@ -49,8 +50,14 @@ export class HomeComponent implements OnInit {
 
                this.request.get('/message/notif/' + this.session.oid).subscribe(
                   res2 => {
-                     this.notifications = res2;
-                     this.notifications = this.notifications.filter(f => ids.includes(f['wb']));
+                     let n = res2;
+                     n = n.filter(f => ids.includes(f['wb']));
+                     n = n.sort((a: Notification, b: Notification) => {
+                        return new Date(b.date).getTime() - new Date(a.date).getTime() ;
+                    })
+
+                     this.notifications = n;
+                     
                   });
 
                this.request.get('/library/all/' + this.session.company).subscribe(
