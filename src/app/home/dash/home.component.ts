@@ -55,8 +55,14 @@ export class HomeComponent implements OnInit {
                      n = n.sort((a: Notification, b: Notification) => {
                         return new Date(b.date).getTime() - new Date(a.date).getTime() ;
                     })
-
-                     this.notifications = n;
+                     this.notifications = [];
+                     (n as Notification[]).forEach(el => {
+                        let ee = this.notifications.find(x=> x.msg === el.msg);
+                        if (this.notifications.length < 5 && !ee)
+                        {
+                           this.notifications.push(el);
+                        }
+                     });
                      
                   });
 
