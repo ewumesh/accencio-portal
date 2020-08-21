@@ -29,7 +29,6 @@ export class InProgressComponent {
             authService.setLocalUserProfile(data);
             
             Auth.currentAuthenticatedUser().then(au => {
-            debugger;
             this.session.isLogged = true;
             this.session.id_token = au.signInUserSession.idToken.getJwtToken();
             this.session.username = au.username;

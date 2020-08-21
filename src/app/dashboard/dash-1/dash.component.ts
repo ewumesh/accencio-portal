@@ -146,7 +146,7 @@ export class Dash1Component implements OnInit {
       console.log(this.company);
       this.wbs = [];
       this.wbsspot = [];
-      const allpermService = this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username);
+      const allpermService = this.request.get('/permission/byidname/' + this.session.oid);
       allpermService.subscribe(result => {
          const wbData = (result as WorkbookPerm).w;
          console.log(wbData);

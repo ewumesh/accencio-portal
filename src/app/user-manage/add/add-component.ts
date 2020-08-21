@@ -30,6 +30,7 @@ export class AddUserComponent implements OnInit {
 	public description: string;
 	public id: string;
 	companies: any;
+	company: any;
 	roles: any;
 	fieldTextType: boolean = false;
 	submitted = false;
@@ -65,6 +66,10 @@ export class AddUserComponent implements OnInit {
 			this.title = "Edit User " + this.id;
 			this.request.get('/user/get/' + this.id).subscribe(users => {
 				const user = users.Users.find(el => el.Username === this.id);
+				this.company = {
+					//id: user.Attributes.find(el => el.Name == "custom:oid").Value,
+					name: user.Attributes.find(el => el.Name == "custom:company").Value,
+				} 
 				this.form.setValue({
 					password: null,
 					fullname: user.Attributes.find(el => el.Name == "given_name").Value,
@@ -111,15 +116,22 @@ export class AddUserComponent implements OnInit {
 		if (!this.form.valid) {
 			return;
 		}
+		debugger;
 		this.submitted = false;
+		let oid = this.session.oid;
+
+		if (this.session.role === 'ACCENCIOADMIN') 
+			oid = this.form.value.company.id;
+			
 		const user = {
 			username: this.form.value.account,
 			password: this.form.value.password,
 			attributes: {
 				email: this.form.value.email,
 				given_name: this.form.value.fullname,
-				'custom:company': this.form.value.company,
-				'custom:g1': this.form.value.role
+				'custom:company': this.form.value.company.name,
+				'custom:g1': this.form.value.role,
+				'custom:oid': oid
 			}
 		}
 		Auth.signUp(user)
@@ -137,11 +149,12 @@ export class AddUserComponent implements OnInit {
 	}
 
 	edit() {
+		debugger;
 		this.request.post('/user/update',
 			{
 				username: this.form.value.account,
 				givenname: this.form.value.fullname,
-				company: this.form.value.company,
+				company: this.company.name,
 				role: this.form.value.role,
 				email: this.form.value.email,
 			}).subscribe(res => {

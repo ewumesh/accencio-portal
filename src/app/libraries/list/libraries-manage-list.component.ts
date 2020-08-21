@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
 		this.request.get('/library/all/' + this.session.company).subscribe(libraries => {
 				if (this.session.role === 'USER') {
 					this.isView = true;
-					this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
+					this.request.get('/permission/byidname/' + this.session.oid).subscribe(
 						res => {
 							(libraries as Library[]).forEach(element => {
 						   const ids = res.w.map(el => el.id);

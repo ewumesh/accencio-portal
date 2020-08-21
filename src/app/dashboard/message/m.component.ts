@@ -41,7 +41,7 @@ export class MComponent implements OnInit {
       });
    }
    getPrivateMessages() {
-      const params = "/" + this.session.oid + "/" + this.id + "/" + this.session.username;
+      const params = "/" + this.session.oid + "/" + this.id;
       this.request.get('/message/byme' + params).subscribe(res => {
          this.privateMessages = res;
       });

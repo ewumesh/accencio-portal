@@ -58,7 +58,7 @@ export class PermUserListComponent implements OnInit {
     let users = this.request.get('/user/list-o/' + this.org.name);
     let workbooks = this.request.get('/permission/byid2/' + this.org.id);
     if (this.session.role === 'CLIENTADMIN')
-      workbooks = this.request.get('/permission/byidname/' + this.org.id + '/' + this.session.username);
+      workbooks = this.request.get('/permission/byidname/' + this.org.id);
     if (this.session.role === 'CLIENTADMIN')
       users = this.request.get('/user/list-o1/' + this.org.name);
 
@@ -71,7 +71,7 @@ export class PermUserListComponent implements OnInit {
     });
   }
   changeUser() {
-    const rperm = this.request.get('/permission/byidname/' + this.org.id + '/' + this.user);
+    const rperm = this.request.get('/permission/byidname/' + this.org.id);
     rperm.subscribe(p => {
       this.initmap(p);
     })

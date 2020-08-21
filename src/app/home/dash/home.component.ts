@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
          const org = orgs[0];
          this.session.oid = org.id;
 
-         this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username).subscribe(
+         this.request.get('/permission/byidname/' + this.session.oid).subscribe(
             res => {
                this.workbooks = res.w;
                const ids = this.workbooks.map(el => el.id);

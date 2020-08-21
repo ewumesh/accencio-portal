@@ -49,7 +49,7 @@ export class AddComponent implements OnInit {
 
     let allpermService = this.request.get('/permission/byid2/' + this.session.oid);
     if (this.session.role === 'CLIENTADMIN')
-      allpermService = this.request.get('/permission/byidname/' + this.session.oid + '/' + this.session.username);
+      allpermService = this.request.get('/permission/byidname/' + this.session.oid);
 
     allpermService.subscribe(res => {
       this.dropdownList = res.w as Object[];
