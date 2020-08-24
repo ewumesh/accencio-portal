@@ -72,7 +72,7 @@ export class UserManageListComponent implements OnInit {
 	  * addNewUserDialog method is used to open a add new user dialog.
 	  */
 	addNew() {
-			this.router.navigate(['/user-management/add']);
+			this.router.navigate(['/user/add']);
 	}
 
 

@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
    //register method is used to sign up on the template.
    register() {
       if(this.ngForm.valid) {
-         this.authService.signupUserProfile(this.ngForm.value);
+         //this.authService.signupUserProfile(this.ngForm.value);
       }
    }
 }

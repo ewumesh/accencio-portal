@@ -70,7 +70,7 @@ const MENUITEMS_CLIENT_ADMIN = [
       icon: 'icon-speedometer icons'
    },
    {
-      state: 'user-management',
+      state: 'user',
       name: 'My Organization',
       type: 'link',
       icon: 'icon-organization icons'
@@ -149,7 +149,7 @@ const MENUITEMS_ACCENCIO_ADMIN = [
       icon: 'icon-organization icons'
    },
    {
-      state: 'user-management',
+      state: 'user',
       name: 'Users',
       type: 'link',
       icon: 'icon-people icons'

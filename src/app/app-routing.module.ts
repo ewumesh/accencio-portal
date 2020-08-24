@@ -6,11 +6,7 @@ import { MainComponent } from './main/main.component';
 import { AuthComponent } from './auth/auth.component';
 
 export const AppRoutes: Routes = [
-   {
-      path: '',
-      redirectTo: 'home',
-      pathMatch: 'full',
-   },
+
    {
       path: 'session', loadChildren: () =>
          import('./session/session.module').then(m => m.SessionModule)
@@ -36,7 +32,7 @@ export const AppRoutes: Routes = [
          path: 'user-pages', loadChildren: () =>
             import('./user-pages/users.module').then(m => m.UsersDemoModule)
       }, {
-         path: 'user-management', loadChildren: () =>
+         path: 'user', loadChildren: () =>
             import('./user-manage/user-manage.module').then(m => m.UserManageModule)
       }, {
          path: 'libraries', loadChildren: () =>

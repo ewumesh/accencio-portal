@@ -53,7 +53,7 @@ export class AuthService {
 * signupUserProfile method save email and password into firabse &
 * signupUserProfile method save the user sign in data into local storage.
 */
-   signupUserProfile(value) {
+  /* signupUserProfile(value) {
       const authInfo = {
          username: value.account,
          password: value.password
@@ -65,7 +65,7 @@ export class AuthService {
       })
          .catch(err => this.toastr.error(err.message));
    }
-
+*/
    /*
     * loginUser fuction used to login.
     */
@@ -75,10 +75,6 @@ export class AuthService {
          password: value.password
       };
       Auth.signIn(authInfo).then(user => {
-         //this.getUserInfo();
-
-         this.setLocalUserProfile(value);
-
          Auth.currentAuthenticatedUser().then(au => {
             this.session.isLogged = true;
             this.session.id_token = au.signInUserSession.idToken.getJwtToken();
@@ -86,6 +82,7 @@ export class AuthService {
             this.session.name = au.attributes['given_name'];
             this.session.company = au.attributes['custom:company'];
             this.session.role = au.attributes['custom:g1'];
+            this.setLocalUserProfile(this.session);
             this.toastr.success('You have been successfully logged In');
             this.router.navigate(['/home']);
          });
@@ -97,7 +94,7 @@ export class AuthService {
       Auth.federatedSignIn({
          customProvider: 'acc1'
       }).then(fuser => {
-         debugger;
+         
       }
 
       ).catch(x =>
@@ -131,6 +128,12 @@ export class AuthService {
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");
       this.router.navigate(['/session/loginone']);
+   }
+
+   async ilogOut() {
+      await Auth.signOut();
+      localStorage.removeItem("userProfile");
+      this.isLoggedIn = false;      
    }
 
    /*

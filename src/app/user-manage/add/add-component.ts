@@ -116,7 +116,6 @@ export class AddUserComponent implements OnInit {
 		if (!this.form.valid) {
 			return;
 		}
-		debugger;
 		this.submitted = false;
 		let oid = this.session.oid;
 
@@ -137,7 +136,7 @@ export class AddUserComponent implements OnInit {
 		Auth.signUp(user)
 			.then(data => {
 				this.toastr.success('User has been added.');
-				this.router.navigate(['/user-management'])
+				this.router.navigate(['/user'])
 			})
 			.catch(err => {
 				console.log(err);
@@ -149,7 +148,6 @@ export class AddUserComponent implements OnInit {
 	}
 
 	edit() {
-		debugger;
 		this.request.post('/user/update',
 			{
 				username: this.form.value.account,
@@ -159,7 +157,7 @@ export class AddUserComponent implements OnInit {
 				email: this.form.value.email,
 			}).subscribe(res => {
 				this.toastr.success('User has been updated.');
-				this.router.navigate(['/user-management'])
+				this.router.navigate(['/user'])
 			});
 
 	}

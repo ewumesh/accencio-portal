@@ -43,7 +43,6 @@ export class LoginoneComponent {
       Auth.federatedSignIn({
          customProvider: 'acc1'
       }).then(fuser => {
-         debugger;
       }
 
       ).catch(x =>

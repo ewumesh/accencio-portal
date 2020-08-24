@@ -7,14 +7,14 @@ import { AddUserComponent } from './add/add-component';
 export const UserManageRoutes: Routes = [
    {
       path: '',
-      redirectTo: 'management-list',
+      redirectTo: 'list',
       pathMatch: 'full',
    },
    {
       path: '',
       children: [
          {
-            path: 'management-list',
+            path: 'list',
             component: UserManageListComponent
          },
          {
