@@ -19,13 +19,6 @@
 				<table class="table table-striped mb-0">
 					<thead>
 						<tr class="text-muted font-sm">
-							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label
-										class="text-relative"><input
-											class="custom-control-input ng-untouched ng-pristine ng-valid"
-											type="checkbox" (change)="selectall($event)"><span
-											class="custom-control-label p-cursor"></span></label></div>
-							</th>
 							<th scope="col">Company</th>
 							<th scope="col">User</th>
 							<th scope="col">Name</th>
@@ -38,13 +31,6 @@
 					</thead>
 					<tbody>
 						<tr *ngFor="let userList of userManageList;let i = index">
-							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label
-										class="text-relative"><input
-											class="custom-control-input ng-untouched ng-pristine ng-valid"
-											type="checkbox" name="checkboxes"><span
-											class="custom-control-label p-cursor"></span></label></div>
-							</th>
 							<td>
 								<span class="font-sm">{{userList.company}}</span>
 							</td>

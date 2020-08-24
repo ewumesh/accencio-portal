@@ -3,14 +3,6 @@
 		<div class="chk-block-title px-4">
 			<div class="d-block d-sm-flex justify-content-between align-items-center">
 				<div class="d-flex justify-content-start align-items-center mb-sm-0 mb-3">
-					<div class="form-group form-field mr-3 mb-0 text-nowrap">
-						<select class="form-control h-auto p-cursor custom-select">
-							<option>All</option>
-							<option>Edit</option>
-							<option>Delete</option>
-							<option>New</option>
-						</select>
-					</div>
 				</div>
 				<div class="d-flex justify-content-start align-items-center">
 					<button class="btn btn-primary" (click)="addnew()">Add<i class="fa fa-plus ml-2"></i></button>
@@ -22,13 +14,7 @@
 				<table class="table table-striped mb-0">
 					<thead>
 						<tr class="text-muted font-sm">
-							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label
-										class="text-relative"><input
-											class="custom-control-input ng-untouched ng-pristine ng-valid"
-											type="checkbox"><span
-											class="custom-control-label p-cursor"></span></label></div>
-							</th>
+							
 							<th scope="col">Id</th>
 							<th scope="col">Name</th>
 							<th scope="col">Address1</th>
@@ -38,13 +24,6 @@
 					</thead>
 					<tbody>
 						<tr *ngFor="let r of records; let i = index">
-							<th scope="row">
-								<div class="custom-control custom-checkbox user-grid-chkbox"><label
-										class="text-relative"><input
-											class="custom-control-input ng-untouched ng-pristine ng-valid"
-											type="checkbox" name="checkboxes"><span
-											class="custom-control-label p-cursor"></span></label></div>
-							</th>
 							<td>
 								<div class="d-flex align-items-center">
 									<div>
