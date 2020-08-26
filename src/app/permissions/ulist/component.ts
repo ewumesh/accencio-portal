@@ -100,10 +100,12 @@ export class PermUserListComponent implements OnInit {
     const perm1 = new Permission();
     debugger;
     let by = this.session.username;
-    if (this.session.role === 'ACCENCIOADMIN')
-     by = 'ACCENCIOADMIN';
+    //if (this.session.role === 'ACCENCIOADMIN')
+    // by = 'ACCENCIOADMIN';
     //if (this.session.role === 'CLIENTADMIN')
-    perm1.id = (this.org.id + '_' + by + '_' + this.user);
+    //perm1.id = (this.org.id + '_' + by + '_' + this.user);
+
+    perm1.id = (this.org.id + '_' + this.user);
     //perm1.id = (this.org.id + '_' + this.user);
     perm1.orgid = this.org.id;
     perm1.org = this.org.name;
@@ -118,8 +120,6 @@ export class PermUserListComponent implements OnInit {
         }
       );
     }); //endfor
-    //const  s1 = JSON.stringify(perm1);
-    //console.log(perm1);
 
     this.request.post('/permission/add',
       JSON.stringify(perm1)
