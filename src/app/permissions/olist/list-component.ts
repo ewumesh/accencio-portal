@@ -25,13 +25,14 @@ export class PermOrgListComponent implements OnInit {
   workbooks: Workbook[];
   permissions: Permission[];
   public tabs: boolean[][];
-  public org = {id: '', name: ''};
+  public org = { id: '', name: '' };
   public orgPerm = true;
-  public emptyrecord = {id: '', name: ''};
+  public emptyrecord = { id: '', name: '' };
   constructor(private router: Router,
     private pageTitleService: PageTitleService,
     public translate: TranslateService,
     private toastr: ToastrService,
+    private session: ASession,
     private request: ARequest) {
     this.tabs = [];
     this.tabs[0] = [false];
@@ -58,13 +59,15 @@ export class PermOrgListComponent implements OnInit {
   }
   initmap(orgId) {
     this.tabs[orgId] = [];
-    const orgPermission = this.permissions.find(el => el.id === orgId);
-    this.workbooks.forEach(w => {
-      w.shortName = this.shortName(w.name);
-      const workbookPermsOrg = JSON.parse(orgPermission.permission.toString());
-      const workbookPermOrg = workbookPermsOrg.find(pe => pe.workbook === w.id);
-      this.tabs[orgId][w.id] = (workbookPermOrg && workbookPermOrg.enabled) ? true : false;
-    });
+    const orgPermission = this.permissions.find(el => el.id === (orgId));
+    if (orgPermission) {
+      this.workbooks.forEach(w => {
+        w.shortName = this.shortName(w.name);
+        const workbookPermsOrg = JSON.parse(orgPermission.permission.toString());
+        const workbookPermOrg = workbookPermsOrg.find(pe => pe.workbook === w.id);
+        this.tabs[orgId][w.id] = (workbookPermOrg && workbookPermOrg.enabled) ? true : false;
+      });
+    }
   }
 
   shortName(name) {

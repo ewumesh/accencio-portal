@@ -55,12 +55,14 @@ export class PermListComponent implements OnInit {
     this.records.forEach(org => {
       this.tabs[org.id] = [];
       const orgPermission = this.permissions.find(el => el.orgid === org.id);
-      this.workbooks.forEach(w => {
-        w.shortName = this.shortName(w.name);
-        const workbookPermsOrg = JSON.parse(orgPermission.permission.toString());
-        const workbookPermOrg = workbookPermsOrg.find(pe => pe.workbook === w.id);
-        this.tabs[org.id][w.id] = (workbookPermOrg && workbookPermOrg.enabled) ? true : false;
-      });
+      if (orgPermission) {
+        this.workbooks.forEach(w => {
+          w.shortName = this.shortName(w.name);
+          const workbookPermsOrg = JSON.parse(orgPermission.permission.toString());
+          const workbookPermOrg = workbookPermsOrg.find(pe => pe.workbook === w.id);
+          this.tabs[org.id][w.id] = (workbookPermOrg && workbookPermOrg.enabled) ? true : false;
+        });
+      }
     });
   }
 

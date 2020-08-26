@@ -40,7 +40,6 @@ export class PermUserListComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       this.org.id = params['id'];
       this.org.name = params['name'];
@@ -56,9 +55,11 @@ export class PermUserListComponent implements OnInit {
       });
     this.tabs = [];
     let users = this.request.get('/user/list-o/' + this.org.name);
+    if (this.session.role === 'CLIENTADMIN')
+      this.user = this.session.username;
     let workbooks = this.request.get('/permission/byid2/' + this.org.id);
     if (this.session.role === 'CLIENTADMIN')
-      workbooks = this.request.get('/permission/byidname/' + this.org.id);
+      workbooks = this.request.get('/permission/byidname2/' + this.org.id + '/' + this.user);
     if (this.session.role === 'CLIENTADMIN')
       users = this.request.get('/user/list-o1/' + this.org.name);
 
@@ -71,7 +72,7 @@ export class PermUserListComponent implements OnInit {
     });
   }
   changeUser() {
-    const rperm = this.request.get('/permission/byidname/' + this.org.id);
+    const rperm = this.request.get('/permission/byidname2/' + this.org.id + '/' + this.user);
     rperm.subscribe(p => {
       this.initmap(p);
     })
@@ -97,7 +98,13 @@ export class PermUserListComponent implements OnInit {
   }
   apply() {
     const perm1 = new Permission();
-    perm1.id = this.org.id + "_" + this.user;
+    debugger;
+    let by = this.session.username;
+    if (this.session.role === 'ACCENCIOADMIN')
+     by = 'ACCENCIOADMIN';
+    //if (this.session.role === 'CLIENTADMIN')
+    perm1.id = (this.org.id + '_' + by + '_' + this.user);
+    //perm1.id = (this.org.id + '_' + this.user);
     perm1.orgid = this.org.id;
     perm1.org = this.org.name;
     perm1.un = this.user;
