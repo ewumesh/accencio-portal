@@ -37,10 +37,17 @@ export class UserManageListComponent implements OnInit {
 		private session: ASession) { }
 
 	ngOnInit() {
-		this.translate.get('User Manage List').subscribe((res: string) => {
+		this.translate.get('User List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-		this.request.get('/user/' + (this.session.role === 'ACCENCIOADMIN' ? 'list' : 'list-o/' + this.session.company)).subscribe(users => {
+		let rq = '';
+		if (this.session.role === 'ACCENCIOADMIN')
+			rq = 'list';
+		
+		if (this.session.role === 'CLIENTADMIN')
+			rq = ('list-o/' + this.session.company);
+			
+		this.request.get('/user/' + rq).subscribe(users => {
 			users.Users.forEach(user => {
 				this.userManageList.push({
 					name: user.Attributes.find(el => el.Name == "given_name").Value,

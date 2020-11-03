@@ -85,12 +85,12 @@ export class DashComponent implements OnInit {
          showDodPanel: false,
          showExportFile: false,
          showExportVisualization: false,
-         showFilterPanel: false,
+         showFilterPanel: true,
          showHelp: false,
          showLogout: false,
          showPageNavigation: true,
          showReloadAnalysis: false,
-         showStatusBar: false,
+         showStatusBar: true,
          showToolBar: false,
          showUndoRedo: false
       }

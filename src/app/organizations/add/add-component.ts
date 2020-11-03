@@ -43,7 +43,29 @@ export class AddOrgComponent implements OnInit {
 		this.translate.get('Organization').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
-
+		this.config = {
+			editable: true,
+			spellcheck: true,
+			height: '15rem',
+			minHeight: '5rem',
+			placeholder: 'Enter text here...',
+			translate: 'no',
+			customClasses: [
+			  {
+				name: "quote",
+				class: "quote",
+			  },
+			  {
+				name: 'redText',
+				class: 'redText'
+			  },
+			  {
+				name: "titleText",
+				class: "titleText",
+				tag: "h1",
+			  },
+			]
+		  };
 		this.form = this.fb.group({
 			name: [null, Validators.compose([Validators.required])],
 			address1: [null, Validators.compose([Validators.required])],
@@ -53,6 +75,7 @@ export class AddOrgComponent implements OnInit {
 			zip: [null],
 			info: [null],
 			id: [null],
+			nolicences: [null],
 			country: ['US']
 		});
 
@@ -64,9 +87,8 @@ export class AddOrgComponent implements OnInit {
 			this.title = "Edit Company " + this.id;
 			this.request.get('/org/byid/' + this.id).subscribe(
 				res => {
-					//res['country'] = 'US';
+					debugger;
 					this.form.setValue(res);
-					
 				}
 			)
 		}
@@ -90,7 +112,8 @@ export class AddOrgComponent implements OnInit {
 				state: this.form.value.state,
 				zip: this.form.value.zip,
 				info: this.form.value.info,
-				country: this.form.value.country
+				country: this.form.value.country,
+				no: this.form.value.nolicences
 			}).subscribe(res => {
 				this.toastr.success('Organization has been added.');
 				this.router.navigate(['/org/list'])
@@ -98,7 +121,7 @@ export class AddOrgComponent implements OnInit {
 	}
 
 	edit() {
-		this.request.post('/org/update',
+		this.request.post('/org/add',
 			{
 				id: this.form.value.id,
 				name: this.form.value.name,
@@ -108,6 +131,7 @@ export class AddOrgComponent implements OnInit {
 				state: this.form.value.state,
 				zip: this.form.value.zip,
 				info: this.form.value.info,
+				no: this.form.value.nolicences,
 				country: this.form.value.country
 			}).subscribe(res => {
 				this.toastr.success('Organization has been updated.');

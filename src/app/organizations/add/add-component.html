@@ -53,9 +53,15 @@
 					   </select>
 					</div>
 					<div class="form-group">
-						<label for="contact">Info</label>
-						<input class="form-control" placeholder="info"
-							[formControl]="form.controls['info']">
+						<label for="city">No licenses</label>
+						<input class="form-control" placeholder="number of licenses"
+							[formControl]="form.controls['nolicences']">
+					</div>
+					<div class="form-group">
+						<label for="contact">Company Info</label>
+						<angular-editor 
+						[formControl]="form.controls['info']" [config]="config">
+						</angular-editor>
 					</div>
 
 
