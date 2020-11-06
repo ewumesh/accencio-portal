@@ -82,7 +82,7 @@ export class Dashboardv2Component implements OnInit  {
    }
 
    ngOnInit() {
-      this.translate.get('Dashboard 2').subscribe((res: string) => {
+      this.translate.get('AccencioView').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
    }

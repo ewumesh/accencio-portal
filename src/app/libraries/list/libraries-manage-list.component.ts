@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
 		private session: ASession) { }
 
 	ngOnInit() {
-		this.translate.get('Dashboards').subscribe((res: string) => {
+		this.translate.get('AccencioViews').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
 		this.isView = false;

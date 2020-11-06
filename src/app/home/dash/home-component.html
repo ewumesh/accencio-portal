@@ -5,7 +5,7 @@
             <div class="chk-block-title">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex align-self-center">
-                        <h3 class="text-capitalize">{{"My Dashboard"|translate}}</h3>
+                        <h3 class="text-capitalize">{{"AccencioView"|translate}}</h3>
                     </div>
                     <div class="d-inline-flex align-self-center">
                         <div class="chk-contextual-link widget-controls">
@@ -26,19 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="chk-block-content mb-3 widget-body">
-                <div class="d-flex justify-content-between mb-2 ripple">
-                    <div class=""><img src="assets/img/new-geoscape.png" class="mb-1 blur-img-50" alt="user image"
-                            width="95" />
-                    </div>
-                    <div class="ml-4 support-content">
-                        <span><strong>Default</strong></span>
-                        <p class="text-over-p">Default dashboard.</p>
-                    </div>
-                    <div class="support-action text-primary text-center">
-                        <a routerLink="/dashboard/my"><i class="fa fa-dot-circle-o"></i> View</a>
-                    </div>
-                </div>
+            <div class="chk-block-content mb-3 widget-body fixed-panel style-6">
                 <div class="d-flex justify-content-between mb-2 ripple" *ngFor="let w of dashboards">
                     <div class=""><img src="assets/img/new-kinship.png" class="mb-1 blur-img-50" alt="user image"
                             width="95" />
@@ -49,6 +37,18 @@
                     </div>
                     <div class="support-action text-primary text-center">
                         <a (click)="gotodashboard(w.id)"><i class="fa fa-dot-circle-o"></i> View</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mb-2 ripple">
+                    <div class=""><img src="assets/img/new-geoscape.png" class="mb-1 blur-img-50" alt="user image"
+                            width="95" />
+                    </div>
+                    <div class="ml-4 support-content">
+                        <span><strong>All workbooks</strong></span>
+                        <p class="text-over-p">View all your workbooks.</p>
+                    </div>
+                    <div class="support-action text-primary text-center">
+                        <a routerLink="/dashboard/my"><i class="fa fa-dot-circle-o"></i> View</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="chk-block-content widget-body">
+            <div class="chk-block-content widget-body fixed-panel style-6">
                 <div class="reports mb-3" *ngFor="let w of workbooks">
                     <div class="d-flex justify-content-between">
                         <div class="">
@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="chk-block-content widget-body">
+            <div class="chk-block-content widget-body fixed-panel style-6">
                 <div>
                     <ul class="pl-0 list-style-none mb-3 ripple-list">
                         <li class="bg-light shadow-box pb-3 pt-3 px-3 mb-4 d-flex justify-content-between"

@@ -45,7 +45,7 @@ export class UserManageListComponent implements OnInit {
 			rq = 'list';
 		
 		if (this.session.role === 'CLIENTADMIN')
-			rq = ('list-o/' + this.session.company);
+			rq = ('list-o/' + this.session.oid);
 			
 		this.request.get('/user/' + rq).subscribe(users => {
 			users.Users.forEach(user => {

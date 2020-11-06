@@ -26,31 +26,31 @@ const MENUITEMS_USER = [
       label: '',
       icon: 'icon-home icons'
    },
-   {
-      state: 'libraries',
-      name: 'Dashboards',
-      type: 'link',
-      icon: 'icon-speedometer icons'
-   },
+   // {
+   //    state: 'libraries',
+   //    name: 'AccencioView',
+   //    type: 'link',
+   //    icon: 'icon-speedometer icons'
+   // },
    {
       state: 'favorites',
       name: 'My Favorites',
       type: 'link',
       icon: 'icon-notebook icons'
    },
-   {
-      state: 'courses',
-      name: 'Learning',
-      type: 'link',
-      icon: 'icon-book-open icons'
-   },
-   {
-      state: 'video-player',
-      name: 'Media',
-      type: 'link',
-      icon: 'icon-control-play icons',
-      label: ''
-   }
+   // {
+   //    state: 'courses',
+   //    name: 'Learning',
+   //    type: 'link',
+   //    icon: 'icon-book-open icons'
+   // },
+   // {
+   //    state: 'video-player',
+   //    name: 'Media',
+   //    type: 'link',
+   //    icon: 'icon-control-play icons',
+   //    label: ''
+   // }
 ];
 
 
@@ -65,7 +65,7 @@ const MENUITEMS_CLIENT_ADMIN = [
    },
    {
       state: 'libraries',
-      name: 'Dashboards',
+      name: 'AccencioView',
       type: 'link',
       icon: 'icon-speedometer icons'
    },
@@ -100,19 +100,19 @@ const MENUITEMS_CLIENT_ADMIN = [
    },
   
   
-   {
-      state: 'courses',
-      name: 'Learning',
-      type: 'link',
-      icon: 'icon-book-open icons'
-   },
-   {
-      state: 'video-player',
-      name: 'Media',
-      type: 'link',
-      icon: 'icon-control-play icons',
-      label: ''
-   }
+   // {
+   //    state: 'courses',
+   //    name: 'Learning',
+   //    type: 'link',
+   //    icon: 'icon-book-open icons'
+   // },
+   // {
+   //    state: 'video-player',
+   //    name: 'Media',
+   //    type: 'link',
+   //    icon: 'icon-control-play icons',
+   //    label: ''
+   // }
 
 ];
 
@@ -126,7 +126,7 @@ const MENUITEMS_ACCENCIO_ADMIN = [
    },
    {
       state: 'libraries',
-      name: 'Dashboards',
+      name: 'AccencioViews',
       type: 'link',
       icon: 'icon-speedometer icons'
    },

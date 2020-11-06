@@ -196,7 +196,7 @@ export class DashComponent implements OnInit {
    }
 
    ngOnInit() {
-      this.translate.get('Dashboard').subscribe((res: string) => {
+      this.translate.get('AccencioView').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
       this.getDashboardData();

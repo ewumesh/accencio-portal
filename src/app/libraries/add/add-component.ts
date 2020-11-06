@@ -91,9 +91,9 @@ export class AddComponent implements OnInit {
     });
 
     this.selectedItems = [];
-    this.pageTitleService.setTitle('Dashboard -> Add new');
+    this.pageTitleService.setTitle('AccencioView -> Add new');
     if (this.id) {
-      this.pageTitleService.setTitle('Dashboard -> Edit');
+      this.pageTitleService.setTitle('AccencioView -> Edit');
       this.title = "Edit " + this.id;
       this.request.get('/library/byid/' + this.id).subscribe(
         res => {
@@ -137,8 +137,8 @@ export class AddComponent implements OnInit {
         org: this.session.company,
         list: this.selectedItems
       }).subscribe(res => {
-        this.toastr.success('Dashboard has been added.');
-        this.logmessage(id, 'Dashboard ' + this.form.value.name + ' has been added.').subscribe(
+        this.toastr.success('View has been added.');
+        this.logmessage(id, 'View ' + this.form.value.name + ' has been added.').subscribe(
           el =>  { this.router.navigate(['/libraries/list']) } );
       });
   }
@@ -152,8 +152,8 @@ export class AddComponent implements OnInit {
         org: this.session.company,
         list: this.selectedItems
       }).subscribe(res => {
-        this.toastr.success('Dashboard has been updated.');
-        this.logmessage(this.form.value.id, 'Dashboard ' + this.form.value.name + ' has been updated.' ).subscribe(
+        this.toastr.success('AccencioView has been updated.');
+        this.logmessage(this.form.value.id, 'AccencioView ' + this.form.value.name + ' has been updated.' ).subscribe(
           el =>  { this.router.navigate(['/libraries/list']) } );
       });
   }
