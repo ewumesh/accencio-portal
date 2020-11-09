@@ -31,7 +31,7 @@
 			<div class="chk-block-content widget-body">
 				<div class="reports mb-2">
 					<div class="card-text" [innerHTML]="wb.description"></div>
-					<div class="embed-responsive embed-responsive-16by9 z-depth-1" *ngIf="wb.type==1">
+					<div class="embed-responsive embed-responsive-21by9 z-depth-1" *ngIf="wb.type==1">
 						<iframe class="embed-responsive-item" [src]="wb.url" [id]="">
 						</iframe>
 					</div>
@@ -76,7 +76,7 @@
 				<div class="reports mb-2">
 					<div class="card-text" [innerHTML]="wb.description"></div>
 				</div>
-				<div class="embed-responsive embed-responsive-16by9 z-depth-1">
+				<div class="embed-responsive embed-responsive-21by9 z-depth-1">
 					<div id="{{wb.id}}" class="embed-responsive-item"></div>
 				</div>
 			</div>

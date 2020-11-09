@@ -45,6 +45,7 @@ function onReady2Callback(response, newApp) {
       // Remove the custom login launch UI.
       loginLauncher.parentNode.removeChild(loginLauncher);
    }
+   console.log(response.status)
    if (response.status === "OK") {
 
       newApp.openDocument("spot-" + i.toString());

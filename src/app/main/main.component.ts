@@ -312,12 +312,12 @@ export class MainComponent implements OnInit, OnDestroy {
 		this.results = this.tmp.filter(s => {
 			return s.text.toLowerCase().includes(s1);
 		});
-		this.libraries = this.tmp2.filter(s => {
+		/*this.libraries = this.tmp2.filter(s => {
 			return s.name.toLowerCase().includes(s1);
 		});
 		this.favorites = this.tmp3.filter(s => {
 			return s.text.toLowerCase().includes(s1);
-		});
+		});*/
 	}
 
 	dash1(id) {
@@ -335,10 +335,10 @@ export class MainComponent implements OnInit, OnDestroy {
 	}
 
 	mysearch() {
-		const permService = this.request.get('/permission/byid/' + this.session.company);
-		const librariesService = this.request.get('/library/all/' + this.session.company);
-		const favService = this.request.get('/library/byid/' + "fav" + this.session.username);
-		forkJoin([permService, librariesService, favService]).subscribe(results => {
+		const permService = this.request.get('/permission/byidname/' + this.session.oid);
+		//const librariesService = this.request.get('/library/all/' + this.session.company);
+		//const favService = this.request.get('/library/byid/' + "fav" + this.session.username);
+		forkJoin([permService]).subscribe(results => {
 			const wbData = (results[0] as WorkbookPerm).w;
 			this.results = wbData.map(el => {
 				let el1 = {
@@ -348,7 +348,7 @@ export class MainComponent implements OnInit, OnDestroy {
 				};
 				return el1;
 			})
-			this.favorites = (results[2].list as Object[]).map(el => {
+			/*this.favorites = (results[2].list as Object[]).map(el => {
 				let el1 = {
 					'id': el['id'],
 					'text': el['name']
@@ -362,10 +362,10 @@ export class MainComponent implements OnInit, OnDestroy {
 					'description': el['description']
 				};
 				return el1;
-			});
+			});*/
 			this.tmp = this.results;
-			this.tmp2 = this.libraries;
-			this.tmp3 = this.favorites;
+			//this.tmp2 = this.libraries;
+			//this.tmp3 = this.favorites;
 		});
 
 	}
