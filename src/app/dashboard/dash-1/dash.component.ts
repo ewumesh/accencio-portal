@@ -71,13 +71,13 @@ export class Dash1Component implements OnInit {
 
    wbsspot: Workbook[];
    wbs: Workbook[];
-   
+
    public company: any;
    public config: AngularEditorConfig;
    public classChart = '';
    public classMessage = 'd-none';
    public tabIcon = 'icon-bubble';
-   
+
    @ViewChild('spotcont', null) spotcont: ElementRef;
    observer: MutationObserver;
 
@@ -150,7 +150,6 @@ export class Dash1Component implements OnInit {
       const allpermService = this.request.get('/permission/byidname/' + this.session.oid);
       allpermService.subscribe(result => {
          const wbData = (result as WorkbookPerm).w;
-         console.log(wbData);
          const w = wbData.find(el => el.id === this.id);
          if (w)
             this.initworkbooks(w);
@@ -201,24 +200,28 @@ export class Dash1Component implements OnInit {
       i = 1;
       lloadspot = this.loadspot;
       lwbsspot = this.wbsspot;
-      this.observer = new MutationObserver(mutations => {
-         mutations.forEach(function (mutation) {
-            if (mutation.addedNodes[0].childNodes) {
-               const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
-               const wb = lwbsspot.find(el => el.id == id);
-               if (id == "spot-1")
+      if (!this.observer) {
+         this.observer = new MutationObserver(mutations => {
+            mutations.forEach(function (mutation) {
+               if (mutation.addedNodes && mutation.addedNodes.length > 0 && mutation.addedNodes[0].childNodes) {
+                  const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
+                  const wb = lwbsspot.find(el => el.id == id);
+                  console.log(id);
+                  //if (id == "spot-1")
                   lloadspot(wb.analysis, wb.name);
-            }
+               }
+            });
          });
-      });
-      const config = { attributes: true, childList: true, characterData: true };
-      this.observer.observe(this.spotcont.nativeElement, config);
+         //this.observer.disconnect();
+         const config = { attributes: true, childList: true, characterData: true };
+         this.observer.observe(this.spotcont.nativeElement, config);
+      }
    }
 
    switch() {
       this.classChart = this.classChart === '' ? 'd-none' : '';
       this.classMessage = this.classMessage === '' ? 'd-none' : '';
-      this.tabIcon = this.classChart === 'd-none' ? 'icon-chart': 'icon-bubble';
+      this.tabIcon = this.classChart === 'd-none' ? 'icon-chart' : 'icon-bubble';
    }
    back() {
       this.location.back();

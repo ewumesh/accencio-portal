@@ -3,6 +3,14 @@
 <div class="loginone-wrapper" >
 	<div class="login-content text-center">
 		<div class="login-inner-wrapper-2 shadow-box p-4">
+			<ngx-spinner
+			bdColor="rgba(51,51,51,0.8)"
+			size="medium"
+			color="#22a5e0"
+			type="ball-scale-multiple"
+		  >
+			<p style="font-size: 20px; color: white">Signing...</p>
+		  </ngx-spinner>
 			<div class="sidebar-logo d-flex justify-content-center mb-4">
 				<div class="logo-sign">
 					<img src="assets/img/logo.png" alt="Accencio">
@@ -13,6 +21,7 @@
 				<p class="text-muted font-weight-bold mb-0">{{'Welcome To Accencio ®'|translate}}</p>
 				<h2 class="text-primary font-weight-normal">{{'Sign into your account'|translate}}</h2>
 			</div>
+			
 			<form #form="ngForm" (ngSubmit)=logIn(form.value) class="login-form" action="javascript:void(0)" method="post">
 				<div class="form-group">
 					<input name="fname" [(ngModel)]="name" class="form-control session-input-font input-square" type="text" placeholder="Account" required>

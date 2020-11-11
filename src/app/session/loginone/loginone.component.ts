@@ -23,13 +23,12 @@ export class LoginoneComponent {
       private spinner: NgxSpinnerService,
       private zone: NgZone,
       public translate: TranslateService) {
-
+         this.spinner.hide();
       Auth.currentAuthenticatedUser()
          .then(() => {
             this.router.navigate(['/home'], { replaceUrl: true });
          }).catch((err) => {
             console.log(err);
-            this.spinner.hide();
          })
    }
 

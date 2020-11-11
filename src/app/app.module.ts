@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule} from '@angular/platform-browser';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -33,6 +33,7 @@ import { ASession } from 'request/session';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ARequest } from 'request/request';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { MyHttpInterceptor } from "./service/MyHttpInterceptor";
 
 
 /********** Custom option for ngx-translate ******/
@@ -93,6 +94,11 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		MenuItems,
 		PageTitleService,
 		NgxSpinnerService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: MyHttpInterceptor,
+			multi: true,
+		},
 		AuthService,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,

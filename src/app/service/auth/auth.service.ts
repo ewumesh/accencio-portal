@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { ARequest } from 'request/request';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Injectable({
@@ -32,6 +33,7 @@ export class AuthService {
       private http: HttpClient,
       private request: ARequest,
       private session: ASession,
+      private spinner: NgxSpinnerService,
       private toastr: ToastrService) {
    }
 
@@ -74,6 +76,7 @@ export class AuthService {
          username: value.fname,
          password: value.password
       };
+      this.spinner.show();
       Auth.signIn(authInfo).then(user => {
          Auth.currentAuthenticatedUser().then(au => {
             this.session.isLogged = true;
@@ -83,11 +86,11 @@ export class AuthService {
             this.session.company = au.attributes['custom:company'];
             this.session.role = au.attributes['custom:g1'];
             this.setLocalUserProfile(this.session);
-            this.toastr.success('You have been successfully logged In');
+            //this.toastr.success('You have been successfully logged In');
             this.router.navigate(['/home']);
          });
       })
-         .catch(err => this.toastr.error(err.message));
+         .catch(err => { this.toastr.error(err.message); this.spinner.hide();});
    }
 
    fed1() {
@@ -123,10 +126,12 @@ export class AuthService {
     * logOut function is used to sign out .
     */
    async logOut() {
+      this.spinner.show();
       await Auth.signOut();
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");
+      this.spinner.hide();
       this.router.navigate(['/session/loginone']);
    }
 

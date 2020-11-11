@@ -17,12 +17,16 @@ import { ComingsoonV2Component } from './coming-soonV2/coming-soonV2.component';
 import { MaintenanceV2Component } from './maintenanceV2/maintenanceV2.component';
 import { SessionRoutes } from './session.routing';
 import { InProgressComponent } from './inprogress/ip.component';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyHttpInterceptor } from 'app/service/MyHttpInterceptor';
 
 @NgModule({
    imports: [
       CommonModule,
       FormsModule,
       TranslateModule,
+      NgxSpinnerModule,
       ReactiveFormsModule,
       ToastrModule.forRoot(),
       RouterModule.forChild(SessionRoutes)
@@ -39,6 +43,14 @@ import { InProgressComponent } from './inprogress/ip.component';
       NotFoundComponent,
       ComingsoonV2Component,
       MaintenanceV2Component
+   ],
+   providers: [
+      NgxSpinnerService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: MyHttpInterceptor,
+			multi: true,
+		}
    ]
 })
 

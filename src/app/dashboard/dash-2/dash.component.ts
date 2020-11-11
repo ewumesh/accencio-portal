@@ -22,7 +22,7 @@ function getLoginElement() {
    if (!ell) {
       loginLauncher = document.createElement("div");
       loginLauncher.id = "loginLauncher";
-      loginLauncher.style="float:right";
+      loginLauncher.style = "float:right";
       loginLauncher.className = "mt-1 mr-4";
       var infoSection = document.createElement("div");
       infoSection.innerText = "You need to authenticate before loading the requested analysis.";
@@ -176,18 +176,21 @@ export class Dash2Component implements OnInit {
       i = 1;
       lloadspot = this.loadspot;
       lwbsspot = this.wbsspot;
-      this.observer = new MutationObserver(mutations => {
-         mutations.forEach(function (mutation) {
-            if (mutation.addedNodes[0].childNodes) {
-               const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
-               const wb = lwbsspot.find(el => el.id == id);
-               if (id == "spot-1")
+      if (!this.observer) {
+         this.observer = new MutationObserver(mutations => {
+            mutations.forEach(function (mutation) {
+               if (mutation.addedNodes && mutation.addedNodes.length > 0 && mutation.addedNodes[0].childNodes) {
+                  const id = (mutation.addedNodes[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0] as HTMLElement).id;
+                  const wb = lwbsspot.find(el => el.id == id);
+                  console.log(id);
+                  //if (id == "spot-1")
                   lloadspot(wb.analysis, wb.name);
-            }
+               }
+            });
          });
-      });
-      const config = { attributes: true, childList: true, characterData: true };
-      this.observer.observe(this.spotcont.nativeElement, config);
+         const config = { attributes: true, childList: true, characterData: true };
+         this.observer.observe(this.spotcont.nativeElement, config);
+      }
    }
 
    constructor(private pageTitleService: PageTitleService,
