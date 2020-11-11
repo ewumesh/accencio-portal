@@ -14,7 +14,6 @@ import { Observable, forkJoin } from 'rxjs';
 import { WorkbookPerm } from '../../core/types/WorkbookPerm';
 import { ARequest } from 'request/request';
 import { Message } from 'app/core/types/Message';
-var i = 1;
 var lwbsspot: any;
 var lloadspot: any;
 var loginLauncher;
@@ -50,13 +49,12 @@ function onReady2Callback(response, newApp) {
    console.log(response.status)
    if (response.status === "OK") {
 
-      newApp.openDocument("spot-" + i.toString());
+      newApp.openDocument("spot-1");
 
-      i++;
-      const wb = lwbsspot.find(el => el.id == ("spot-" + i.toString()));
-      if (wb) {
-         lloadspot(wb.analysis, wb.name, lwbsspot);
-      }
+      //const wb = lwbsspot.find(el => el.id === 'spot-1');
+      //if (wb) {
+      //   lloadspot(wb.analysis, wb.name, lwbsspot);
+     // }
    }
 }
 
@@ -88,7 +86,6 @@ export class Dash1Component implements OnInit {
       private sanitizer: DomSanitizer,
       private request: ARequest,
       private session: ASession) {
-      i = 1;
       this.config = {
          editable: false,
          showToolbar: false,
@@ -141,10 +138,15 @@ export class Dash1Component implements OnInit {
          getLoginElement
       );
    }
+   // getPreDashboardData(oid, dashid) {
+   //    this.session.oid =  oid;
+   //    this.session.company = "1"
+   //    this.getDashboardData();   
 
+   // }
    getDashboardData() {
+      debugger;
       this.company = this.session.company;
-      console.log(this.company);
       this.wbs = [];
       this.wbsspot = [];
       const allpermService = this.request.get('/permission/byidname/' + this.session.oid);
@@ -187,7 +189,7 @@ export class Dash1Component implements OnInit {
       } else { //spotfire
          this.wbsspot.push(new Workbook(
             element.id,
-            "spot-" + i.toString(),
+            "spot-1",
             element.type,
             element.title,
             element.description,
@@ -195,9 +197,7 @@ export class Dash1Component implements OnInit {
             element.name,
             element.date,
             null, '', element.analysis, ''));
-         i++;
       }
-      i = 1;
       lloadspot = this.loadspot;
       lwbsspot = this.wbsspot;
       if (!this.observer) {

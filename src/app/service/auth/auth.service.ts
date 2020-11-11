@@ -82,6 +82,7 @@ export class AuthService {
             this.session.isLogged = true;
             this.session.id_token = au.signInUserSession.idToken.getJwtToken();
             this.session.username = au.username;
+            this.session.oid = au.attributes['custom:oid'];
             this.session.name = au.attributes['given_name'];
             this.session.company = au.attributes['custom:company'];
             this.session.role = au.attributes['custom:g1'];
@@ -150,13 +151,15 @@ export class AuthService {
    }
 
    public async getUserInfo2() {
-
+      debugger;
       var au = await Auth.currentAuthenticatedUser();
       if (!au)
          return;
       this.session.isLogged = true;
       this.session.id_token = au.signInUserSession.idToken.getJwtToken();
       this.session.username = au.username;
+      debugger;
+      this.session.oid = au.attributes['custom:oid'];
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
       if (this.session.isSSO) {

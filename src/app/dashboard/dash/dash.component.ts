@@ -42,14 +42,13 @@ function getLoginElement() {
    return document.getElementById('btnLoginSpot');
 }
 function onReady2Callback(response, newApp) {
-   if (loginLauncher) {
-      // Remove the custom login launch UI.
-      loginLauncher.parentNode.removeChild(loginLauncher);
-   }
-   console.log(response.status)
    if (response.status === "OK") {
 
       newApp.openDocument("spot-" + i.toString());
+
+      //var els = document.getElementsByClassName("chankya-base-container");
+
+      //els[0].scrollTop = 0;
 
       i++;
       const wb = lwbsspot.find(el => el.id == ("spot-" + i.toString()));
