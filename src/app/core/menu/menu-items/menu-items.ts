@@ -65,7 +65,7 @@ const MENUITEMS_CLIENT_ADMIN = [
    },
    {
       state: 'libraries',
-      name: 'AccencioView',
+      name: 'AccencioViews',
       type: 'link',
       icon: 'icon-speedometer icons'
    },

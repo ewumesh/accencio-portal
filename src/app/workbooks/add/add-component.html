@@ -9,8 +9,8 @@
 					<div class="form-group">
 						<label for="type">Type</label>
 						<select formControlName="type" class="form-control h-auto p-cursor custom-select">
-							<option value="1">Tableau</option>
-							<option value="2">Spotfire</option>
+							<option value="1">Custom</option>
+							<option value="2">IP-GeoScape</option>
 							<option value="3">Content</option>
 						</select>
 					</div>
@@ -39,16 +39,16 @@
 						</angular-editor>
 					</div>
 					<div class="form-group" *ngIf="form.value.type==1">
-						<input class="form-control" placeholder="tableau account"
+						<input class="form-control" placeholder="account"
 							[formControl]="form.controls['account']">
 					</div>
 					<div class="form-group" *ngIf="form.value.type==1">
-						<input class="form-control" placeholder="tableau site(folder)"
+						<input class="form-control" placeholder="folder"
 							[formControl]="form.controls['site']">
 					</div>
 					<div class="form-group" *ngIf="form.value.type==2">
-						<label for="analysis">Spotfire analysis</label>
-						<input class="form-control" placeholder="spotfire analysis"
+						<label for="analysis">path analysis</label>
+						<input class="form-control" placeholder="path analysis"
 							[formControl]="form.controls['analysis']">
 					</div>
 					<div class="form-group" *ngIf="form.value.type==3">

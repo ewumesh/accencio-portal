@@ -26,7 +26,7 @@ export class AddComponent implements OnInit {
 
   public form: FormGroup;
   public config: AngularEditorConfig;
-  public title = "Add new library";
+  public title = "Add New AccencioView";
   public description: string;
   private id: string;
   public workbookId: string;
