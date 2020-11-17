@@ -83,6 +83,7 @@ export class Dash1Component implements OnInit {
       private location: Location,
       public translate: TranslateService,
       private route: ActivatedRoute,
+      private router: Router,
       private sanitizer: DomSanitizer,
       private request: ARequest,
       private session: ASession) {
@@ -93,7 +94,7 @@ export class Dash1Component implements OnInit {
       };
 
    }
-
+   private returnUrl: string;
    private id: string;
    ngOnInit() {
       this.pageTitleService.setTitle('');
@@ -101,6 +102,9 @@ export class Dash1Component implements OnInit {
          this.id = params['id'];
          this.getDashboardData();
       });
+      this.route.queryParams.subscribe((params) => {
+         this.returnUrl = params.returnUrl;
+     });
    }
 
    public loadspot(analysis, name, lwbsspot) {
@@ -145,7 +149,6 @@ export class Dash1Component implements OnInit {
 
    // }
    getDashboardData() {
-      debugger;
       this.company = this.session.company;
       this.wbs = [];
       this.wbsspot = [];
@@ -157,13 +160,18 @@ export class Dash1Component implements OnInit {
             this.initworkbooks(w);
       });
    }
-
+   goBack() {
+     // this.location.back();
+     //this.router.navigateByUrl(this.returnUrl);
+     this.router.navigate([".."]);
+      console.log( 'goBack()...' );
+   }
    initworkbooks(element: Workbook) {
 
       if (element.type == 1) {
          const params = "?username=" + element.account + "&target_site=" + element.site;
          this.request.get('/auth/trusted' + params).subscribe(ticket => {
-            const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name);
+            const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name + '&:toolbar=n');
             this.wbs.push(new Workbook(
                element.id,
                element.name,

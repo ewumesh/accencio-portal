@@ -87,7 +87,6 @@ export class AddOrgComponent implements OnInit {
 			this.title = "Edit Company " + this.id;
 			this.request.get('/org/byid/' + this.id).subscribe(
 				res => {
-					debugger;
 					this.form.setValue(res);
 				}
 			)

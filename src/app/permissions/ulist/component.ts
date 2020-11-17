@@ -98,7 +98,6 @@ export class PermUserListComponent implements OnInit {
   }
   apply() {
     const perm1 = new Permission();
-    debugger;
     let by = this.session.username;
     //if (this.session.role === 'ACCENCIOADMIN')
     // by = 'ACCENCIOADMIN';

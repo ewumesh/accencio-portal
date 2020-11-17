@@ -34,11 +34,9 @@ export class LoginoneComponent {
 
    // when email and password is correct, user logged in.
    logIn(value) {
-      this.spinner.show();
       this.authService.loginUser(value);
    }
    fed1() {
-      this.spinner.show();
       Auth.federatedSignIn({
          customProvider: 'acc1'
       }).then(fuser => {

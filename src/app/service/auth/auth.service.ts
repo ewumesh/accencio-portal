@@ -76,7 +76,6 @@ export class AuthService {
          username: value.fname,
          password: value.password
       };
-      this.spinner.show();
       Auth.signIn(authInfo).then(user => {
          Auth.currentAuthenticatedUser().then(au => {
             this.session.isLogged = true;
@@ -91,7 +90,9 @@ export class AuthService {
             this.router.navigate(['/home']);
          });
       })
-         .catch(err => { this.toastr.error(err.message); this.spinner.hide();});
+         .catch(err => { 
+            this.toastr.error(err.message); 
+            this.spinner.hide();});
    }
 
    fed1() {
@@ -151,14 +152,12 @@ export class AuthService {
    }
 
    public async getUserInfo2() {
-      debugger;
       var au = await Auth.currentAuthenticatedUser();
       if (!au)
          return;
       this.session.isLogged = true;
       this.session.id_token = au.signInUserSession.idToken.getJwtToken();
       this.session.username = au.username;
-      debugger;
       this.session.oid = au.attributes['custom:oid'];
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
