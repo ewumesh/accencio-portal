@@ -125,7 +125,10 @@ export class MainComponent implements OnInit, OnDestroy {
 		);
 
 		if (window.innerWidth > 1280) {
-			this.tourService.start();
+			if (this.session.isTourEnabled) {
+				this.session.isTourEnabled = false;
+				this.tourService.start();
+			}
 		}
 	}
 

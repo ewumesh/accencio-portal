@@ -85,6 +85,7 @@ export class AuthService {
             this.session.name = au.attributes['given_name'];
             this.session.company = au.attributes['custom:company'];
             this.session.role = au.attributes['custom:g1'];
+            
             this.setLocalUserProfile(this.session);
             //this.toastr.success('You have been successfully logged In');
             this.router.navigate(['/home']);

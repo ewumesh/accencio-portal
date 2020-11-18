@@ -78,7 +78,12 @@
 						<label for="company">Company</label>
 						<input class="form-control" name="company" formControlName="company" [readonly]='true'>
 					</div>
-
+					<div [formGroup]="myGroup" class="form-group">						
+						<label class="col-2" for="cupt">User Portal Tour</label><br/>
+						<input class="form-control col-1" formControlName="cupt" name="cupt" type="checkbox" (click)="changeSettings()">
+						
+					</div>
+					
 					<div class="pad-wrap">
 						<div>
 							<button  class="btn btn-primary btn-lg btn-square"

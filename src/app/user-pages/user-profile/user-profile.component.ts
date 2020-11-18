@@ -27,11 +27,13 @@ export class UserProfileComponent implements OnInit {
   public config: AngularEditorConfig;
   public title = "Add new";
   public description: string;
+  public isPortalTour = false;
   public id: string;
   companies: any;
   roles: any;
   fieldTextType: boolean = false;
   submitted = false;
+  public myGroup: FormGroup;
   constructor(private fb: FormBuilder,
     private pageTitleService: PageTitleService,
     public translate: TranslateService,
@@ -46,6 +48,9 @@ export class UserProfileComponent implements OnInit {
       this.pageTitleService.setTitle(res);
     });
 
+    this.myGroup = new FormGroup({
+      cupt: new FormControl()
+   });
     this.form = this.fb.group({
       account: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -67,6 +72,8 @@ export class UserProfileComponent implements OnInit {
         role: user.Attributes.find(el => el.Name == "custom:g1").Value,
       });
     });
+
+    this.myGroup.controls['cupt'].setValue(this.session.isTourEnabled);
 
     if (this.session.role === 'ACCENCIOADMIN') {
       this.request.get('/org/all').subscribe(
@@ -93,7 +100,11 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-
+  changeSettings() {
+    this.session.isTourEnabled = !this.session.isTourEnabled;
+    this.myGroup.controls['cupt'].setValue(this.session.isTourEnabled);
+    this.toastr.success('User Portal tour has been ' + (this.session.isTourEnabled ? 'enabled' : 'disabled'));
+  }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
