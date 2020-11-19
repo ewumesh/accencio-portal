@@ -105,21 +105,39 @@ export class MainComponent implements OnInit, OnDestroy {
 		this.tourService.initialize([
 			{
 				anchorId: 'start.tour',
-				content: 'Welcome to user portal tour!',
+				content: 'Click Next to explore!',
+				placement: 'right-top',
+				title: 'Welcome to AccencioView™',
+			},
+			{
+				anchorId: 'tour-hide',
+				content: 'Completely hide the Navigation Pane to increase the space in your window',
 				placement: 'below',
-				title: 'Welcome to Accencio ®',
+				title: 'Left Navigator',
 			},
 			{
 				anchorId: 'tour-search',
-				content: 'Enjoying Search box with sugestion and many more things',
+				content: 'Search here to find any of your workbooks',
 				placement: 'below',
 				title: 'Search Box',
 			},
 			{
 				anchorId: 'tour-full-screen',
-				content: 'By pressing this button you can switch to fullscreen mode.',
+				content: 'Click here to switch to full screen mode',
 				placement: 'below',
 				title: 'Full Screen',
+			},
+			{
+				anchorId: 'tour-fav',
+				content: 'Click here to configure my favorites',
+				placement: 'below',
+				title: 'My Favorites',
+			},
+			{
+				anchorId: 'tour-chat',
+				content: 'Click here to chat',
+				placement: 'below',
+				title: 'Chat',
 			}
 		]
 		);

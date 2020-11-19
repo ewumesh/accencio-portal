@@ -28,8 +28,19 @@
             </div>
             <div class="chk-block-content mb-3 widget-body fixed-panel style-6">
                 <div class="d-flex justify-content-between mb-2 ripple" *ngFor="let w of dashboards">
-                    <div class=""><img src="assets/img/new-kinship.png" class="mb-1 blur-img-50" alt="user image"
+                    <div class="">
+                        <ng-container *ngIf="w.imagemodel==1">
+                            <img src="assets/img/new-folioview.png" class="mb-1 blur-img-50" alt="user image"
                             width="95" />
+                        </ng-container>                        
+                        <ng-container *ngIf="w.imagemodel==2">
+                            <img src="assets/img/new-geoscape.png" class="mb-1 blur-img-50" alt="user image"
+                            width="95" />
+                        </ng-container>
+                        <ng-container *ngIf="w.imagemodel==3">
+                            <img src="assets/img/new-folioview.png" class="mb-1 blur-img-50" alt="user image"
+                            width="95" />
+                        </ng-container>
                     </div>
                     <div class="ml-4 support-content">
                         <span><strong>{{w.name}}</strong></span>
@@ -89,15 +100,15 @@
                         <div class="">
                             <div class="d-flex">
                                 <div class="text-muted align-self-center">
-                                    <!-- <ng-container *ngIf="w.type==2">
-                                        <span class="badge badge-primary mt-1">Spotfire</span>
+                                    <ng-container *ngIf="w.type==2">
+                                        <span class="badge badge-primary mt-1">IP-Geoscape</span>
                                     </ng-container>
                                     <ng-container *ngIf="w.type==1">
-                                        <span class="badge badge-success mt-1">Tableau</span>
+                                        <span class="badge badge-success mt-1">Custom</span>
                                     </ng-container>
                                     <ng-container *ngIf="w.type==3">
                                         <span class="badge badge-warning mt-1">Content</span>
-                                    </ng-container> -->
+                                    </ng-container>
 
                                 </div>
                                 <div class="px-3 align-self-center">

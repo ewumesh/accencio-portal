@@ -8,10 +8,10 @@
 		<div ng-sidebar-content>
 			<ng-sidebar #sidenav [(opened)]="_opened" [(mode)]="_mode" [closeOnClickOutside]="closeOnClickOutside()"
 				[(showBackdrop)]="_showBackdrop">
-				<div class="sidebar-panel chankya-sidenav icon-sidebar" id="showSidebar">
+				<div tourAnchor="start.tour" class="sidebar-panel chankya-sidenav icon-sidebar" id="showSidebar">
 					<div class="sidebar-logo-wrap">
 						<div class="sidebar-logo d-flex">
-							<div class="logo-sign">
+							<div  class="logo-sign">
 								<img src="assets/img/icon-accencio.png" alt="">
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 										<li class="nav-item" menuToggleLink *ngFor="let menuitem of menuItems.getAll()"
 											[ngClass]="{'menu-item-has-child': menuitem.type=='sub'}">
 											<a target="_blank" href="{{menuitem.state}}"
-												*ngIf="menuitem.type === 'ext-link'" tourAnchor="tour-ui">
+												*ngIf="menuitem.type === 'ext-link'">
 												<i class="{{ menuitem.icon }}"></i>
 												<p class="text-nowrap mb-0">
 													<span>{{ menuitem.name | translate }}</span>{{menuitem.label}}
@@ -121,7 +121,7 @@
 							<div class="h-100 d-flex justify-content-start align-items-center">
 								<div class="h-100 chankya-ham-icon">
 									<button class="c-hamburger c-hamburger--rot" (click)="_toggleOpened()">
-										<span tourAnchor="start.tour">toggle menu</span>
+										<span tourAnchor="tour-hide">toggle menu</span>
 									</button>
 
 								</div>
@@ -154,13 +154,13 @@
 											<i class="material-icons" *ngIf="isFullscreen">fullscreen_exit</i>
 										</a>
 									</li>
-									<li class="d-none d-md-block dropdown fav-links">
+									<li tourAnchor="tour-fav" class="d-none d-md-block dropdown fav-links">
 										<a href="javascript:void(0)" class="rotate-90" id="navbarD"
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
 												class="material-icons">apps</i></a>
 										<div class="dropdown-menu rounded-0 dropdown-menu-right dropdown-menu-lg p-0"
 											aria-labelledby="navbarD">
-											<div class="dropdown-header bg-light d-flex justify-content-between"><span
+											<div  class="dropdown-header bg-light d-flex justify-content-between"><span
 													class="align-self-center">{{'Quick Links'|translate}}</span></div>
 											<a class="dropdown-item pt-3" (click)="myfavorites()">
 												<div class="icon-area ">
@@ -168,19 +168,19 @@
 												</div>
 												<small>{{'My Favorites'|translate}}</small>
 											</a>
-											<a class="dropdown-item pt-3" routerLink="/chat">
+											<a  class="dropdown-item pt-3" routerLink="/chat">
 												<div class="icon-area ">
 													<i class="material-icons">chat_bubble_outline</i>
 												</div>
 												<small>{{'Chat'|translate}}</small>
 											</a>
-											<a class="dropdown-item pt-3" routerLink="/courses/courses"
+											<!-- <a class="dropdown-item pt-3" routerLink="/courses/courses"
 												routerLinkActive="active-link">
 												<div class="icon-area ">
 													<i class="icon-graduation icons"></i>
 												</div>
 												<small>{{ 'COURSES' | translate }}</small>
-											</a>
+											</a> -->
 										</div>
 									</li>
 									<!-- <li class="d-none d-md-block dropdown">
@@ -243,7 +243,7 @@
 											</a>
 										</div>
 									</li>
-									<li class="d-none d-md-block dropdown">
+									<li tourAnchor="tour-chat" class="d-none d-md-block dropdown">
 										<a (click)="chatSidebarFunction()" class="zoom-out"><i
 												class="material-icons">more_horiz</i></a>
 									</li>

@@ -83,7 +83,8 @@ export class AddComponent implements OnInit {
       name: [null, Validators.compose([Validators.required])],
       description: [null, Validators.compose([Validators.required])],
       date: [null],
-      id: [null]
+      id: [null],
+      imagemodel: [null]
     });
 
     this.route.params.subscribe(params => {
@@ -102,6 +103,7 @@ export class AddComponent implements OnInit {
           this.form.patchValue({ name: res['name'] });
           this.form.patchValue({ description: res['description'] });
           this.selectedItems = res['list'];
+          this.form.patchValue({ imagemodel: res['imagemodel'] });
         }
       );
     }
@@ -135,7 +137,8 @@ export class AddComponent implements OnInit {
         description: this.form.value.description,
         date: new Date(),
         org: this.session.company,
-        list: this.selectedItems
+        list: this.selectedItems,
+        imagemodel: this.form.value.imagemodel
       }).subscribe(res => {
         this.toastr.success('View has been added.');
         this.logmessage(id, 'View ' + this.form.value.name + ' has been added.').subscribe(
@@ -150,7 +153,8 @@ export class AddComponent implements OnInit {
         description: this.form.value.description,
         date: new Date(),
         org: this.session.company,
-        list: this.selectedItems
+        list: this.selectedItems,
+        imagemodel: this.form.value.imagemodel
       }).subscribe(res => {
         this.toastr.success('AccencioView has been updated.');
         this.logmessage(this.form.value.id, 'AccencioView ' + this.form.value.name + ' has been updated.' ).subscribe(

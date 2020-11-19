@@ -8,11 +8,11 @@
         <form [formGroup]="form" (submit)="onSubmit()">
           <div class="form-group">
             <label for="name">Title</label>
-            <input class="form-control" placeholder="Library Name" [formControl]="form.controls['name']">
+            <input class="form-control" placeholder="View Name" [formControl]="form.controls['name']">
             <small class="chankya-block"
                    *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
                    class="text-danger">
-              library title.
+              view title.
             </small>
           </div>
           <div class="form-group">
@@ -25,7 +25,7 @@
             <label>Workbooks</label>
             <ng-multiselect-dropdown
               [name]="workbook"
-              [placeholder]="'Please select a workbook for this library'"
+              [placeholder]="'Please select a workbook for this view'"
               [data]="dropdownList"
               [(ngModel)]="selectedItems"
               [settings]="dropdownSettings"
@@ -33,7 +33,13 @@
             >
             </ng-multiselect-dropdown>
           </div>
-
+          <div class="form-group">
+						<label for="type">Image model</label>
+						<select formControlName="imagemodel" class="form-control h-auto p-cursor custom-select">
+							<option value="1">Custom</option>
+              <option value="2">IP-GeoScape</option>
+						</select>
+					</div>
           <div class="pad-wrap">
             <div>
               <button class="btn btn-primary btn-lg btn-square" type="submit"
