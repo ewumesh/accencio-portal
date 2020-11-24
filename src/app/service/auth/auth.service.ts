@@ -170,6 +170,7 @@ export class AuthService {
       this.spinner.hide();
       //this.router.navigate(['/session/loginone']);
       window.location.href = '/session/loginone';
+      //window.location.reload();
    }
 
    async ilogOut() {
