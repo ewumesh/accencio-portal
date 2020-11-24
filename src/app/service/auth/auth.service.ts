@@ -85,8 +85,9 @@ export class AuthService {
             this.session.name = au.attributes['given_name'];
             this.session.company = au.attributes['custom:company'];
             this.session.role = au.attributes['custom:g1'];
-            
+            this.session.email = au.attributes['email'];
             this.setLocalUserProfile(this.session);
+            this.loginzc(this.session.username, this.session.email);
             //this.toastr.success('You have been successfully logged In');
             this.router.navigate(['/home']);
          });
@@ -96,6 +97,38 @@ export class AuthService {
             this.spinner.hide();});
    }
 
+   loginzc(un, email) {
+ zE(function() {
+   zE.identify({
+      name: un,
+      email: email
+      
+    });
+    return;
+     $zopim(function() {
+      debugger;
+
+      //$zopim.setName(un);
+      //$zopim.setEmail(email);
+      return;
+      // $zopim.livechat.clearAll();
+      $zopim.livechat.authenticate({
+         jwtFn: function(callback) {
+         fetch('https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/zenc',
+         {
+            method: 'post',
+            body: JSON.stringify({username: un, email: email})
+         }).then(function(res) {
+            res.text().then(function(jwt) {
+               debugger;
+            callback(jwt);
+            });
+         });
+         }
+      });
+   });
+ });
+   }
    fed1() {
       Auth.federatedSignIn({
          customProvider: 'acc1'
@@ -135,7 +168,8 @@ export class AuthService {
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");
       this.spinner.hide();
-      this.router.navigate(['/session/loginone']);
+      //this.router.navigate(['/session/loginone']);
+      window.location.href = '/session/loginone';
    }
 
    async ilogOut() {
@@ -162,6 +196,7 @@ export class AuthService {
       this.session.oid = au.attributes['custom:oid'];
       this.session.name = au.attributes['given_name'];
       this.session.company = au.attributes['custom:company'];
+      this.session.email = au.attributes['email'];
       if (this.session.isSSO) {
          const role = this.fed1_mapping.find(el => {
             const s = el.src;
@@ -176,6 +211,7 @@ export class AuthService {
          this.session.role = au.attributes['custom:g1'];
 
       }
+      this.loginzc(this.session.username, this.session.email);
    }
    public async getOrg() {
       if (this.session.oid)

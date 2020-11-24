@@ -23,6 +23,9 @@
 	<!-- <script src="https://unpkg.com/card@2.3.0/dist/card.js"></script>
 	<script src="https://unpkg.com/card@2.3.0/dist/card.js"></script> -->
 	<script src="https://visualizer.accencio.com/spotfire/js-api/loader.js"></script>
+	<!-- Start of accencio Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=12d7d8f1-4f67-4081-87a5-ee701af3f0b1"> </script>
+<!-- End of accencio Zendesk Widget script -->
 </head>
 
 <body>
@@ -53,6 +56,29 @@
 			}
 		})(window);
 	</script>
+
+	<!-- <script>
+
+	zE(function() {
+			$zopim(function() {
+         debugger;
+         $zopim.livechat.clearAll();
+         $zopim.livechat.authenticate({
+            jwtFn: function(callback) {
+            fetch('https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/zenc',
+            {
+               method: 'post',
+               body: JSON.stringify({username: "acce", email: "noreply@q"})
+            }).then(function(res) {
+               res.text().then(function(jwt) {
+               callback(jwt);
+               });
+            });
+            }
+         });
+      });
+  });
+	</script> -->
 </body>
 
 </html>

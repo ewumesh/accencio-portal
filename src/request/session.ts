@@ -6,6 +6,7 @@ export class ASession {
     company: string;
     oid: string;
     role: string;
+    email: string;
     id_token: string;
     isTourEnabled = true;
 }

@@ -132,13 +132,13 @@ export class MainComponent implements OnInit, OnDestroy {
 				content: 'Click here to configure my favorites',
 				placement: 'below',
 				title: 'My Favorites',
-			},
-			{
-				anchorId: 'tour-chat',
-				content: 'Click here to chat',
-				placement: 'below',
-				title: 'Chat',
 			}
+			// {
+			// 	anchorId: 'tour-chat',
+			// 	content: 'Click here to chat',
+			// 	placement: 'below',
+			// 	title: 'Chat',
+			// }
 		]
 		);
 
