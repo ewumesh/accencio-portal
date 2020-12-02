@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
          const auth1 = this.userAuthService.getLocalStorageUser();
          if (!auth1) {
             this.userAuthService.ilogOut();
-            this.router.navigate(['/session/loginone'], { queryParams: { returnUrl: state.url }});
+            //this.router.navigate(['/session/loginone'], { queryParams: { returnUrl: state.url }});
             return false;
          }
          //refresh token

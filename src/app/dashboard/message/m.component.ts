@@ -7,6 +7,7 @@ import { ASession } from 'request/session';
 import { ARequest } from 'request/request';
 import { Message } from 'app/core/types/Message';
 import { Observable } from 'rxjs/Rx';
+import { CoreService } from 'app/service/core/core-service.service';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class MComponent implements OnInit {
    @Input('classMessage') classMessage: string;
    public messages: Message[];
    public privateMessages: Message[];
-   constructor(private request: ARequest,
+   constructor(
+      public coreService: CoreService,
+		private request: ARequest,
       private session: ASession,
       public translate: TranslateService) {
    }
@@ -38,6 +41,11 @@ export class MComponent implements OnInit {
       const params = "/" + this.session.oid + "/" + this.id;
       this.request.get('/message/byw' + params).subscribe(res => {
          this.messages = res;
+
+         this.messages.forEach(m=> {
+            m.isEditing = false;
+            m.canEdit = m.from1 === this.session.username;
+         });
       });
    }
    getPrivateMessages() {
@@ -46,8 +54,30 @@ export class MComponent implements OnInit {
          this.privateMessages = res;
       });
    }
+
+   onCancel(id, index, list) {
+      list[index].isEditing = false;
+   }
+   onSave(id, index, list) {
+      this.addmi(this.id, list[index].msg, list[index]).subscribe(() => {
+         list[index].isEditing = false;
+      });
+   }
+   onEdit(id, index, list) {
+      list[index].isEditing = true;
+   }
+   onDelete(id, index, list) {
+      this.coreService.deleteUserDialog("Are you sure you want to delete this message?").
+      then(res => {
+         if (res === true) {
+            this.request.delete('/message/delete/' + id).subscribe(users => {
+               list.splice(index, 1);
+            });
+         }
+      });
+   }
    addmessage() {
-      this.addmi(this.id, this.fi).subscribe(() => {
+      this.addmi(this.id, this.fi, null).subscribe(() => {
          if (this.priv)
             this.getPrivateMessages();
          else
@@ -55,9 +85,16 @@ export class MComponent implements OnInit {
          this.fi = '';
       });
    }
-   addmi(refId, msg): Observable<any> {
+   addmi(refId, msg, m): Observable<any> {
+     let iid = '_' + Math.random().toString(36).substr(2, 9);
+     let status = this.priv ? 3 : 1;
+     debugger;
+     if(m) {
+      iid = m.id;
+      status = m.status;
+     }
       return this.request.post('/message/add', {
-         id: '_' + Math.random().toString(36).substr(2, 9),
+         id: iid,
          org: this.session.company,
          orgid: this.session.oid,
          type: 'm',
@@ -65,7 +102,7 @@ export class MComponent implements OnInit {
          date: new Date(),
          from: this.session.username,
          to: '',
-         status: (this.priv ? 3 : 1),
+         status: status,
          msg: msg
       });
    }

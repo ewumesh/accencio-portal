@@ -8,6 +8,8 @@ export class Message {
     public date: Date,
     public msg: string,
     public status: number,
-    public from1: string
+    public from1: string,
+    public isEditing: boolean,
+    public canEdit: boolean
   ) {}
 }

@@ -55,19 +55,19 @@ export class AuthService {
 * signupUserProfile method save email and password into firabse &
 * signupUserProfile method save the user sign in data into local storage.
 */
-  /* signupUserProfile(value) {
-      const authInfo = {
-         username: value.account,
-         password: value.password
-      };
-
-      Auth.signIn(authInfo).then(user => {
-         this.setLocalUserProfile(value);
-         this.router.navigate(['/']);
-      })
-         .catch(err => this.toastr.error(err.message));
-   }
-*/
+   /* signupUserProfile(value) {
+       const authInfo = {
+          username: value.account,
+          password: value.password
+       };
+ 
+       Auth.signIn(authInfo).then(user => {
+          this.setLocalUserProfile(value);
+          this.router.navigate(['/']);
+       })
+          .catch(err => this.toastr.error(err.message));
+    }
+ */
    /*
     * loginUser fuction used to login.
     */
@@ -92,48 +92,53 @@ export class AuthService {
             this.router.navigate(['/home']);
          });
       })
-         .catch(err => { 
-            this.toastr.error(err.message); 
-            this.spinner.hide();});
+         .catch(err => {
+            this.toastr.error(err.message);
+            this.spinner.hide();
+         });
    }
-
+   logoutzc() {
+      zE(function () {
+         //zE('webWidget', 'clear');
+         zE.logout();
+      });
+   }
    loginzc(un, email) {
- zE(function() {
-   zE.identify({
-      name: un,
-      email: email
-      
-    });
-    return;
-     $zopim(function() {
-      debugger;
+      zE(function () {
+         zE.identify({
+            name: un,
+            email: email
+         });
+         return;
+         $zopim(function () {
+            debugger;
 
-      //$zopim.setName(un);
-      //$zopim.setEmail(email);
-      return;
-      // $zopim.livechat.clearAll();
-      $zopim.livechat.authenticate({
-         jwtFn: function(callback) {
-         fetch('https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/zenc',
-         {
-            method: 'post',
-            body: JSON.stringify({username: un, email: email})
-         }).then(function(res) {
-            res.text().then(function(jwt) {
-               debugger;
-            callback(jwt);
+            //$zopim.setName(un);
+            //$zopim.setEmail(email);
+            return;
+            // $zopim.livechat.clearAll();
+            $zopim.livechat.authenticate({
+               jwtFn: function (callback) {
+                  fetch('https://hmdz1lq98a.execute-api.us-east-1.amazonaws.com/Prod/auth/zenc',
+                     {
+                        method: 'post',
+                        body: JSON.stringify({ username: un, email: email })
+                     }).then(function (res) {
+                        res.text().then(function (jwt) {
+                           debugger;
+                           callback(jwt);
+                        });
+                     });
+               }
             });
          });
-         }
       });
-   });
- });
    }
    fed1() {
       Auth.federatedSignIn({
          customProvider: 'acc1'
       }).then(fuser => {
-         
+
       }
 
       ).catch(x =>
@@ -163,20 +168,23 @@ export class AuthService {
     */
    async logOut() {
       this.spinner.show();
-      await Auth.signOut();
+
       localStorage.removeItem("userProfile");
       this.isLoggedIn = false;
       this.toastr.success("You have been successfully logged out.");
       this.spinner.hide();
-      //this.router.navigate(['/session/loginone']);
-      window.location.href = '/session/loginone';
-      //window.location.reload();
+      this.logoutzc();
+      await Auth.signOut();
+      window.location.href = '/session/loginone'
+
    }
 
    async ilogOut() {
+      //this.logoutzc();
       await Auth.signOut();
       localStorage.removeItem("userProfile");
-      this.isLoggedIn = false;      
+      this.isLoggedIn = false;
+      window.document.location.href = '/session/loginone';
    }
 
    /*
