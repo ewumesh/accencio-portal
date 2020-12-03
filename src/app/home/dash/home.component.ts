@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
                this.workbooks = res.w;
                const ids = this.workbooks.map(el => el.id);
 
-               this.request.get('/message/notif/' + this.session.oid).subscribe(
+               this.request.get('/message/notif/' + this.session.oid + '/' + this.session.username).subscribe(
                   res2 => {
                      let n = res2;
                      n = n.filter(f => ids.includes(f['wb']));

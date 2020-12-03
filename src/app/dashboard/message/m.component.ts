@@ -88,10 +88,12 @@ export class MComponent implements OnInit {
    addmi(refId, msg, m): Observable<any> {
      let iid = '_' + Math.random().toString(36).substr(2, 9);
      let status = this.priv ? 3 : 1;
+     let to = null;
      debugger;
      if(m) {
       iid = m.id;
       status = m.status;
+      to = m.to1;
      }
       return this.request.post('/message/add', {
          id: iid,
@@ -101,7 +103,7 @@ export class MComponent implements OnInit {
          wb: refId,
          date: new Date(),
          from: this.session.username,
-         to: '',
+         to: to,
          status: status,
          msg: msg
       });

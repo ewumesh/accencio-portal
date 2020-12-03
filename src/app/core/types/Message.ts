@@ -9,6 +9,7 @@ export class Message {
     public msg: string,
     public status: number,
     public from1: string,
+    public to1: string,
     public isEditing: boolean,
     public canEdit: boolean
   ) {}

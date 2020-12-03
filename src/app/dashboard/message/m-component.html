@@ -23,6 +23,9 @@
 											[class.text-white]="isOdd" [class.even]="isEven">
 											<span [ngClass]="['small d-block mb-1', isOdd?'text-white':'']">
 												{{m.from1}}, {{m.date | date:'medium'}}</span>
+											<p *ngIf="!m.isEditing && m.canEdit">Tags: {{m.to1}}</p>
+											<input *ngIf="m.isEditing && m.canEdit" [(ngModel)]="m.to1" type="text"
+													class="form-control" placeholder="Tags, type usernames ...">
 											<p *ngIf="!m.isEditing">{{m.msg}}</p>
 											<p [ngClass]="['small mt-1', isOdd?'text-white':'']"></p>
 											
