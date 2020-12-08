@@ -30,12 +30,13 @@ export class ListComponent implements OnInit {
       this.pageTitleService.setTitle(res);
     });
 
-    this.request.get('/wb/all').subscribe(users => {
-      this.workbooks = users as Object[];
+    this.request.get('/wb/all').subscribe(wbs => {
+      this.workbooks = wbs as Object[];
+      $('.table').footable();
     });
   }
   onDelete(id, index) {
-    this.request.delete('/wb/delete/' + id).subscribe(users => {
+    this.request.delete('/wb/delete/' + id).subscribe(wb => {
       this.toastr.success('Workbook has been deleted.');
       this.workbooks.splice(index, 1);
     }); 

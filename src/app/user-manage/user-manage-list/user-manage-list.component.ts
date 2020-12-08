@@ -40,6 +40,7 @@ export class UserManageListComponent implements OnInit {
 		this.translate.get('User List').subscribe((res: string) => {
 			this.pageTitleService.setTitle(res);
 		});
+		
 		let rq = '';
 		if (this.session.role === 'ACCENCIOADMIN')
 			rq = 'list';
@@ -62,6 +63,7 @@ export class UserManageListComponent implements OnInit {
 					dateCreated: user.UserCreateDate
 				})
 			});
+			$('.table').footable();
 		});
 	}
 

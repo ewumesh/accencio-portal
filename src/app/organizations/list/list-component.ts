@@ -36,6 +36,7 @@ export class ListOrgComponent implements OnInit {
 
     this.request.get('/org/all').subscribe(orgs => {
       this.records = orgs as Object[];
+      $('.table').footable();
     });
   }
   onDelete(id, index) {
