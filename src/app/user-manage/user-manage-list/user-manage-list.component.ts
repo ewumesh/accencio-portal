@@ -63,7 +63,25 @@ export class UserManageListComponent implements OnInit {
 					dateCreated: user.UserCreateDate
 				})
 			});
-			$('.table').footable();
+			$('.table').footable({
+				"columns": [{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "text"
+				},{
+					"type": "html"
+				}]
+			});
 		});
 	}
 
