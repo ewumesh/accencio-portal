@@ -61,7 +61,7 @@ export class PermUserListComponent implements OnInit {
     if (this.session.role === 'CLIENTADMIN')
       workbooks = this.request.get('/permission/byidname2/' + this.org.id + '/' + this.user);
     if (this.session.role === 'CLIENTADMIN')
-      users = this.request.get('/user/list-o1/' + this.org.name);
+      users = this.request.get('/user/list-o1/' + this.org.id);
 
 
     forkJoin([users, workbooks]).subscribe(results => {
