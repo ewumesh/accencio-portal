@@ -70,6 +70,12 @@ export class AddUserComponent implements OnInit {
 					//id: user.Attributes.find(el => el.Name == "custom:oid").Value,
 					name: user.Attributes.find(el => el.Name == "custom:company").Value,
 				} 
+				if (this.session.role != 'ACCENCIOADMIN') {
+					this.company = {
+						//id: user.Attributes.find(el => el.Name == "custom:oid").Value,
+						name: this.session.company
+					}
+				}
 				this.form.setValue({
 					password: null,
 					fullname: user.Attributes.find(el => el.Name == "given_name").Value,
@@ -148,6 +154,7 @@ export class AddUserComponent implements OnInit {
 	}
 
 	edit() {
+		debugger;
 		this.request.post('/user/update',
 			{
 				username: this.form.value.account,
