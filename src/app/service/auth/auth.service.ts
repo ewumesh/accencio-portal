@@ -199,6 +199,7 @@ export class AuthService {
       var au = await Auth.currentAuthenticatedUser();
       if (!au)
          return;
+      debugger;
       this.session.isLogged = true;
       this.session.id_token = au.signInUserSession.idToken.getJwtToken();
       this.session.username = au.username;
@@ -220,7 +221,14 @@ export class AuthService {
          this.session.role = au.attributes['custom:g1'];
 
       }
-      this.loginzc(this.session.username, this.session.email);
+     
+      const rgeto = this.request.get('/org/byid/' + this.session.oid);
+      rgeto.subscribe(org => {
+         this.session.company = org.name;
+         this.loginzc(this.session.username, this.session.email);
+      });
+     
+
    }
    public async getOrg() {
       if (this.session.oid)

@@ -38,10 +38,10 @@ export class HomeComponent implements OnInit {
       this.translate.get('Home').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
-      const rperm2 = this.request.get('/org/byname/' + this.session.company);
-      rperm2.subscribe(orgs => {
-         const org = orgs[0];
-         this.session.oid = org.id;
+      debugger;
+      const rperm2 = this.request.get('/org/byid/' + this.session.oid);
+      rperm2.subscribe(org => {
+         this.session.company = org.name;
 
          this.request.get('/permission/byidname/' + this.session.oid).subscribe(
             res => {
