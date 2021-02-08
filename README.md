@@ -1,5 +1,9 @@
 # User Portal Web 
 
+create stack 
+
+aws cloudformation create-stack --stack-name portal-dev --template-body file://stack.yml
+
 
 npm run-script deploy
 
