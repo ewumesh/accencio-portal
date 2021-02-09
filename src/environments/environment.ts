@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   API_GATEWAY: 'https://87io963525.execute-api.us-east-1.amazonaws.com/Stage',
-  TABLEAU_API: 'https://visualize.accencio.com',
-  SPOTFIRE_API: 'https://visualizer.accencio.com/spotfire/wp'
+  TABLEAU_API: 'http://18.214.214.157',
+  SPOTFIRE_API: 'http://52.203.6.121/spotfire/wp'
 };
 
 /*
