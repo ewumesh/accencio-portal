@@ -59,8 +59,7 @@
               "node_modules/jqvmap/dist/maps/jquery.vmap.world.js",
               "src/assets/summernote/summernote.js",
               "src/assets/foo-table/js/footable.js",
-              "node_modules/slick-carousel/slick/slick.min.js",
-              "src/assets/spotfire/spotfire.js"
+              "node_modules/slick-carousel/slick/slick.min.js"
             ]
           },
           "configurations": {
