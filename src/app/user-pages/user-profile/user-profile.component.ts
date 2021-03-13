@@ -130,6 +130,10 @@ export class UserProfileComponent implements OnInit {
     this.request.post('/user/update',
       (params)
     ).subscribe(res => {
+      if (res.status == "failed") {
+        this.form.setErrors({ code: res.message });
+        return;
+      }
       this.toastr.success('User has been updated.');
     },
       err => {
