@@ -146,7 +146,12 @@ export class AddUserComponent implements OnInit {
 			})
 			.catch(err => {
 				console.log(err);
+				debugger;
 				if (err.code == 'InvalidParameterException') {
+					//this.toastr.error(err.message);
+					this.form.setErrors({code: err.message}); 
+				}
+				if (err.code == 'InvalidPasswordException') {
 					//this.toastr.error(err.message);
 					this.form.setErrors({code: err.message}); 
 				}
