@@ -168,8 +168,8 @@ export class Dash1Component implements OnInit {
    }
    initworkbooks(element: Workbook) {
 
-      if (element.type == 999) {
-         const params = "?username=" + element.account + "&target_site=" + element.site;
+      //if (element.type == 999) {
+         /*const params = "?username=" + element.account + "&target_site=" + element.site;
          this.request.get('/auth/trusted' + params).subscribe(ticket => {
             const wbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.TABLEAU_API + "/trusted/" + ticket + "/t/" + element.site + "/views/" + element.name + '&:toolbar=yes&:customViews=no&:refresh=yes&:showShareOptions=false');
             this.wbs.push(new Workbook(
