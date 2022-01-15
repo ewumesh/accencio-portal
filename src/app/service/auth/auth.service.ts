@@ -10,6 +10,7 @@ import { environment } from 'environments/environment';
 import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { ARequest } from 'request/request';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 @Injectable({
@@ -29,7 +30,9 @@ export class AuthService {
    }
    ]
 
-   constructor(private router: Router,
+   constructor(
+      public googleAnalytics: GoogleAnalyticsService,
+      private router: Router,
       private http: HttpClient,
       private request: ARequest,
       private session: ASession,
@@ -88,6 +91,8 @@ export class AuthService {
             this.session.email = au.attributes['email'];
             this.setLocalUserProfile(this.session);
             this.loginzc(this.session.username, this.session.email);
+            this.googleAnalytics.set({'userId':this.session.username, 'company': this.session.company, 'email':this.session.email});
+            //this.googleAnalytics.event('enter_name', 'user_register_form', 'Name');
             //this.toastr.success('You have been successfully logged In');
             this.router.navigate(['/home']);
          });

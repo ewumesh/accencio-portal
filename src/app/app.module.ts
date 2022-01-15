@@ -34,7 +34,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ARequest } from 'request/request';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { MyHttpInterceptor } from "./service/MyHttpInterceptor";
-
+import { environment } from 'environments/environment';
+import { GoogleAnalyticsService, NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
 /********** Custom option for ngx-translate ******/
 export function createTranslateLoader(http: HttpClient) {
@@ -69,6 +70,8 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		PerfectScrollbarModule,
 		MenuToggleModule,
 		HttpClientModule,
+		NgxGoogleAnalyticsModule.forRoot('G-H9BQNM7VRW'),
+    	NgxGoogleAnalyticsRouterModule.forRoot({ include: ['/full-uri-match' ]}),
 		TranslateModule.forRoot({
 		loader: {
 			provide: TranslateLoader,
@@ -103,7 +106,8 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,
 			useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-		}
+		},
+		GoogleAnalyticsService
 	]
 })
 export class AccencioAppModule { }

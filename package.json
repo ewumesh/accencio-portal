@@ -72,6 +72,7 @@
 		"ngx-bootstrap": "^5.6.1",
 		"ngx-card": "^0.2.4",
 		"ngx-embed-video": "^1.0.4",
+		"ngx-google-analytics": "^11.2.1",
 		"ngx-mydatepicker": "^2.4.9",
 		"ngx-perfect-scrollbar": "^7.2.1",
 		"ngx-quill": "^5.2.0",

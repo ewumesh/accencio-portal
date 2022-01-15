@@ -29,15 +29,15 @@
             <div class="chk-block-content mb-3 widget-body fixed-panel style-6">
                 <div class="d-flex justify-content-between mb-2 ripple" *ngFor="let w of dashboards">
                     <div class="">
-                        <ng-container *ngIf="w.imagemodel==1">
+                        <ng-container *ngIf="w.imagemodel==999">
                             <img src="assets/img/new-folioview.png" class="mb-1 blur-img-50" alt="user image"
                             width="95" />
                         </ng-container>                        
-                        <ng-container *ngIf="w.imagemodel==2">
+                        <ng-container *ngIf="w.imagemodel==2 || w.imagemodel==1">
                             <img src="assets/img/new-geoscape.png" class="mb-1 blur-img-50" alt="user image"
                             width="95" />
                         </ng-container>
-                        <ng-container *ngIf="w.imagemodel==3">
+                        <ng-container *ngIf="w.imagemodel==3" >
                             <img src="assets/img/new-folioview.png" class="mb-1 blur-img-50" alt="user image"
                             width="95" />
                         </ng-container>
