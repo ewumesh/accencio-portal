@@ -41,10 +41,10 @@
 							</td>
 							<td>
 								<span class="font-sm">{{wb.name}}<br />
-									<ng-container *ngIf="wb.type==1">
+									<ng-container *ngIf="wb.type==999">
 										{{wb.account}}
 									</ng-container>
-									<ng-container *ngIf="wb.type==2">
+									<ng-container *ngIf="wb.type==2 || wb.type==1">
 										{{wb.analysis}}
 									</ng-container>
 								</span>
