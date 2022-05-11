@@ -8,6 +8,7 @@ import { ASession } from 'request/session';
 import { environment } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { ARequest } from 'request/request';
+import { CoreService } from 'app/service/core/core-service.service';
 
 @Component({
   selector: 'ms-workbook-list',
@@ -20,6 +21,7 @@ export class ListComponent implements OnInit {
 
   workbooks: any[];
   constructor(private pageTitleService: PageTitleService,
+              public coreService: CoreService,
               public translate: TranslateService,
               private router: Router,
               private toastr: ToastrService,
@@ -33,9 +35,18 @@ export class ListComponent implements OnInit {
     this.request.get('/wb/all').subscribe(wbs => {
       this.workbooks = wbs as Object[];
       $('.table').footable();
+
+      $(document).on('click', '.dele', ($event) => {
+        debugger;
+        let id1 = $event.currentTarget.getAttribute("id2");
+        let id2 = $event.currentTarget.getAttribute("dataid");
+        this.onDelete(id2,id1);
+        //this.deleteCustCat(customerId);
+    });
     });
   }
   onDelete(id, index) {
+
     this.request.delete('/wb/delete/' + id).subscribe(wb => {
       this.toastr.success('Workbook has been deleted.');
       this.workbooks.splice(index, 1);

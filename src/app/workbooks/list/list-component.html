@@ -18,7 +18,7 @@
 							<th scope="col" data-sorted="true" data-direction="ASC" data-sortable="true">Name</th>
 							<th scope="col" data-sortable="true">Title</th>
 							<th class="text-center text-nowrap" scope="col" data-sortable="false" data-type="date">Date</th>
-							<th class="text-center" scope="col">Action</th>
+							<th class="text-center" data-sortable="false" scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,8 +59,11 @@
 								<a class="mr-3 text-muted" href="javascript:void(0)"
 								[routerLink]="['/workbooks/edit',wb.id]"><i class="fa fa-edit"
 										aria-hidden="true"></i></a>
-								<a class="mr-3 text-muted" href="javascript:void(0)" (click)="onDelete(wb.id, i)"><i
-										class="fa fa-times" aria-hidden="true"></i></a>
+								<div class="mr-3 text-muted dele" href="javascript:void(0)" 
+								[attr.dataid]="wb.id"
+								[attr.id2]="i"
+								(click)="onDelete(wb.id, i)"><i
+									class="fa fa-times" aria-hidden="true"></i></div>
 							</td>
 						</tr>
 					</tbody>
