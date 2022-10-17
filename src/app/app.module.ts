@@ -37,6 +37,8 @@ import { MyHttpInterceptor } from "./service/MyHttpInterceptor";
 import { environment } from 'environments/environment';
 import { GoogleAnalyticsService, NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+
 /********** Custom option for ngx-translate ******/
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,6 +62,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		CdkTableModule,
 		SidebarModule.forRoot(),
 		RoutingModule,
+		NgIdleKeepaliveModule.forRoot(),
 		RouterModule,
 		SessionModule,
 		NgxSpinnerModule,
