@@ -19,7 +19,6 @@ definitions:
               AZURE_TENANT_ID: $AZURE_TENANT_ID
               AZURE_RESOURCE_GROUP: $AZURE_RESOURCE_GROUP
               AZURE_APP_NAME: $AZURE_APP_NAME
-              SLOT: $AZURE_APP_SLOT
               ZIP_FILE: "accencioportal-build-$BITBUCKET_BUILD_NUMBER.zip"
 
 pipelines:
