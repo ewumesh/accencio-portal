@@ -9,6 +9,7 @@ definitions:
         size: 2x
         script:
           - nvm use 12
+          - npm i
           - npx ng build --aot --prod
           - cd dist
           - zip -r accencioportal-build-$BITBUCKET_BUILD_NUMBER.zip *
