@@ -1,0 +1,31 @@
+options:
+  max-time: 15
+
+definitions:
+  steps:
+    - step: &builddeploy
+        name: "Build and Deploy"
+        image: byrdalley/pipelines-dotnetcore
+        size: 2x
+        script:
+          - nvm use 12
+          - npx ng build --aot --prod
+          - cd dist
+          - zip -r accencioportal-build-$BITBUCKET_BUILD_NUMBER.zip *
+          - pipe: microsoft/azure-web-apps-deploy:1.0.0
+            variables:
+              AZURE_APP_ID: $AZURE_APP_ID
+              AZURE_PASSWORD: $AZURE_PASSWORD
+              AZURE_TENANT_ID: $AZURE_TENANT_ID
+              AZURE_RESOURCE_GROUP: $AZURE_RESOURCE_GROUP
+              AZURE_APP_NAME: $AZURE_APP_NAME
+              SLOT: $AZURE_APP_SLOT
+              ZIP_FILE: "accencioportal-build-$BITBUCKET_BUILD_NUMBER.zip"
+
+pipelines:
+  branches:
+    main:
+      - step:
+          <<: *builddeploy
+          deployment: development
+
