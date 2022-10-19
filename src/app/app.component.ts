@@ -6,95 +6,107 @@ import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
-  selector: 'accencio-app',
-  template: '<router-outlet></router-outlet>',
-  encapsulation: ViewEncapsulation.None
+	selector: 'accencio-app',
+	template: '<router-outlet></router-outlet>',
+	encapsulation: ViewEncapsulation.None
 })
 
 export class AccencioAppComponent {
 
-  loadAPI: Promise<any>;
+	loadAPI: Promise<any>;
 
-  idleState = 'Not started.';
-  timedOut = false;
-  lastPing?: Date = null;
-  title = 'sajha-portal';
-  userDetails;
-  userName;
-  userType;
+	idleState = 'Not started.';
+	timedOut = false;
+	lastPing?: Date = null
+	userData:any;
+	isLoggedIn:boolean = false;
 
-  constructor(translate: TranslateService, authService: AuthService, private idle: Idle, private keepalive: Keepalive,) {
-    translate.addLangs(['en', 'fr', 'he', 'ru', 'ar', 'zh', 'de', 'es', 'ja', 'ko', 'it', 'hu']);
-    translate.setDefaultLang('en');
+	constructor(translate: TranslateService, private authService: AuthService, public idle: Idle, public keepalive: Keepalive) {
+		this.getLocalStorageUser();
+		if(this.isLoggedIn) {
+		this.catchApplicationIdleTime();
+		}
 
-    const browserLang: string = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+		translate.addLangs(['en', 'fr', 'he', 'ru', 'ar', 'zh', 'de', 'es', 'ja', 'ko', 'it', 'hu']);
+		translate.setDefaultLang('en');
 
-    authService.getUserInfo2();
+		const browserLang: string = translate.getBrowserLang();
+		translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
 
-    this.loadAPI = new Promise((resolve) => {
-      console.log('resolving promise...');
-      this.loadScript();
-    });
+		authService.getUserInfo2();
 
-    // Idle Time out
-    // sets an idle timeout of 10 mins
-    idle.setIdle(600);
-    // sets a timeout period of 5 seconds. after 10 mins of inactivity, the user will be considered timed out.
-    idle.setTimeout(5);
-    // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
-    idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
-
-    idle.onIdleEnd.subscribe(() => {
-      this.idleState = 'No longer idle.'
-      console.log(this.idleState);
-      this.reset();
-    });
-
-    idle.onTimeoutWarning.subscribe((countdown) => {
-      this.idleState = 'You will time out in ' + countdown + ' seconds!'
-
-      if (countdown === 1) {
-        authService.logOut();
-        window.location.reload();
-      }
-      console.log(this.idleState);
-    });
-
-    // sets the ping interval to 15 seconds
-    keepalive.interval(15);
-
-    keepalive.onPing.subscribe(() => this.lastPing = new Date());
-  }
+		this.loadAPI = new Promise((resolve) => {
+			console.log('resolving promise...');
+			this.loadScript();
+		});
+	}
 
 
-  makeString(): string {
-    let outString: string = '';
-    let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+	catchApplicationIdleTime() {
 
-    for (let i = 0; i < 32; i++) {
+		// sets an idle timeout of 10 minutes.
+		this.idle.setIdle(600);
+		
+		// sets a timeout period of 3 seconds. after 10 minutes of inactivity, the user will be considered timed out.
+		this.idle.setTimeout(3);
+		// this.idle.watch();
+		// sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
+		this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
-      outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+		this.idle.onIdleStart.subscribe(() => {
+			alert('idle for 10 minutes.')
+			this.authService.logOut();
+		  });
+		  this.idle.watch();
 
-    }
+		// sets the ping interval to 15 seconds
+		this.keepalive.interval(15);
 
-    return outString;
-  }
+		this.keepalive.onPing.subscribe(() => this.lastPing = new Date());
+		// this.reset();
+	}
 
-  public loadScript() {
-    console.log('preparing to load...')
-    let node = document.createElement('script');
-    node.src = 'https://static.zdassets.com/ekr/snippet.js?key=12d7d8f1-4f67-4081-87a5-ee701af3f0b1&rnd=' + this.makeString();
-    node.type = 'text/javascript';
-    node.id = 'ze-snippet';
-    node.async = true;
-    node.charset = 'utf-8';
-    document.getElementsByTagName('head')[0].appendChild(node);
-  }
+	   /*
+    *  getLocalStorageUser function is used to get local user profile data.
+    */
+	   getLocalStorageUser() {
+		this.userData = JSON.parse(localStorage.getItem("userProfile"));
+		if (this.userData) {
+		   this.isLoggedIn = true;
+		   return true;
+		} else {
+		   this.isLoggedIn = false;
+		   return false;
+		}
+	 }
 
-  reset() {
-    this.idle.watch();
-    this.idleState = 'Started.';
-    this.timedOut = false;
-  }
+	reset() {
+		this.idle.watch();
+		this.idleState = 'Started.';
+		this.timedOut = false;
+	}
+
+	makeString(): string {
+		let outString: string = '';
+		let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+		for (let i = 0; i < 32; i++) {
+
+			outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+
+		}
+
+		return outString;
+	}
+
+	public loadScript() {
+		console.log('preparing to load...')
+		let node = document.createElement('script');
+		node.src = 'https://static.zdassets.com/ekr/snippet.js?key=12d7d8f1-4f67-4081-87a5-ee701af3f0b1&rnd=' + this.makeString();
+		node.type = 'text/javascript';
+		node.id = 'ze-snippet';
+		node.async = true;
+		node.charset = 'utf-8';
+		document.getElementsByTagName('head')[0].appendChild(node);
+	}
 }

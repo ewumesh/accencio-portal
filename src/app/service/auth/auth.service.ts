@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { Auth, Hub } from 'aws-amplify';
+import { Auth, Hub, JS } from 'aws-amplify';
 import { ASession } from 'request/session';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
@@ -197,6 +197,8 @@ export class AuthService {
     */
    public setLocalUserProfile(value) {
       localStorage.setItem("userProfile", JSON.stringify(value));
+      let userStatus:boolean = true;
+      localStorage.setItem("userStatus", JSON.stringify(userStatus))
       this.isLoggedIn = true;
    }
 

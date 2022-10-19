@@ -35,6 +35,13 @@ export class HomeComponent implements OnInit {
    }
 
    ngOnInit() {
+
+      let isUserLogged = JSON.parse(localStorage.getItem("userStatus"));
+      if(isUserLogged) {
+         localStorage.removeItem("userStatus");
+         location.reload();
+      }
+
       this.translate.get('Home').subscribe((res: string) => {
          this.pageTitleService.setTitle(res);
       });
