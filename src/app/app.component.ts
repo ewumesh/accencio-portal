@@ -46,7 +46,7 @@ export class AccencioAppComponent {
 
 		// sets an idle timeout of 10 minutes.
 		this.idle.setIdle(600);
-		
+
 		// sets a timeout period of 3 seconds. after 10 minutes of inactivity, the user will be considered timed out.
 		this.idle.setTimeout(3);
 		// this.idle.watch();
@@ -54,7 +54,8 @@ export class AccencioAppComponent {
 		this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
 		this.idle.onIdleStart.subscribe(() => {
-			alert('idle for 10 minutes.')
+      console.log('Logging out')
+			alert('You were idle for 10 minutes. Logging out!')
 			this.authService.logOut();
 		  });
 		  this.idle.watch();
