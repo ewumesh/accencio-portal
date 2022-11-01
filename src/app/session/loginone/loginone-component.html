@@ -21,7 +21,7 @@
 				<p class="text-muted font-weight-bold mb-0">{{'Welcome To Accencio ®'|translate}}</p>
 				<h2 class="text-primary font-weight-normal">{{'Sign into your account'|translate}}</h2>
 			</div>
-			
+
 			<form #form="ngForm" (ngSubmit)=logIn(form.value) class="login-form" action="javascript:void(0)" method="post">
 				<div class="form-group">
 					<input name="fname" [(ngModel)]="name" class="form-control session-input-font input-square" type="text" placeholder="Account" required>
@@ -63,6 +63,9 @@
 					<ul class="list-inline">
 						<li class="list-inline-item"><a (click)="fed1()">
 							<img height="64px" src="assets/img/office-365-cloud.png" alt="Office 365"/></a></li>
+
+            <li class="list-inline-item"><a (click)="signInWithGoogle()">
+              GOOGLE</a></li>
 					</ul>
 				</div>
 			</form>

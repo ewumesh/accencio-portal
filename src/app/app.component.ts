@@ -1,6 +1,6 @@
 import { Component, Optional, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from './service/auth/auth.service';
+import { AuthServices } from './service/auth/auth.service';
 
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
@@ -21,7 +21,7 @@ export class AccencioAppComponent {
 	userData:any;
 	isLoggedIn:boolean = false;
 
-	constructor(translate: TranslateService, private authService: AuthService, public idle: Idle, public keepalive: Keepalive) {
+	constructor(translate: TranslateService, private authService: AuthServices, public idle: Idle, public keepalive: Keepalive) {
 		this.getLocalStorageUser();
 		if(this.isLoggedIn) {
 		this.catchApplicationIdleTime();

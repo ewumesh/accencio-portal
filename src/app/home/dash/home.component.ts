@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ARequest } from 'request/request';
 import { Workbook } from 'app/core/types/Workbook';
 import { ASession } from 'request/session';
-import { AuthService } from 'app/service/auth/auth.service';
+import { AuthServices } from 'app/service/auth/auth.service';
 import { BaseComponent } from 'app/core/BaseControler';
 import { Router } from '@angular/router';
 import { Library } from 'app/libraries/list/Library';
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       private request: ARequest,
       private session: ASession,
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthServices,
       public translate: TranslateService) {
    }
 
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
                            this.notifications.push(el);
                         }
                      });
-                     
+
                   });
 
                this.request.get('/library/all/' + this.session.company).subscribe(

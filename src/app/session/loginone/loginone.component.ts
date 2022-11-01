@@ -2,10 +2,17 @@ import { Component, OnInit, ViewEncapsulation, NgZone } from '@angular/core';
 import { Router } from "@angular/router";
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AuthService } from '../../service/auth/auth.service';
+import { AuthServices } from '../../service/auth/auth.service';
 import { Auth, Hub } from 'aws-amplify';
 import { ASession } from 'request/session';
 import { ARequest } from 'request/request';
+
+import {
+  FacebookLoginProvider,
+  AuthService,
+  SocialUser, GoogleLoginProvider,
+} from 'angularx-social-login';
+
 @Component({
    selector: 'ms-loginone-session',
    templateUrl: './loginone-component.html',
@@ -19,7 +26,8 @@ export class LoginoneComponent {
    password: string = "";
    name: string;
    constructor(private router: Router,
-      private authService: AuthService,
+      private authService: AuthServices,
+               private socialService: AuthService,
       private spinner: NgxSpinnerService,
       private zone: NgZone,
       public translate: TranslateService) {
@@ -48,4 +56,26 @@ export class LoginoneComponent {
    toggleFieldTextType() {
       this.fieldTextType = !this.fieldTextType;
    }
+
+  public signInWithGoogle(): void {
+    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (x: SocialUser) => {
+        console.log(x, "GOOGLE DATA")
+        this.authService
+          .loginWithGoogle({
+            userName: x.email,
+            firstName: x.firstName,
+            lastName: x.lastName ? x.lastName : '  ',
+            profileImage: x.photoUrl,
+            authProvider: x.provider,
+          })
+          .subscribe(
+            (x) => {
+              this.router.navigate(['/']);
+            },
+            (error) => {}
+          );
+      }
+    );
+  }
 }

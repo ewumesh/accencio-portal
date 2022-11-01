@@ -11,12 +11,13 @@ import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/styl
 import { ARequest } from 'request/request';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import {map} from "rxjs/operators";
 
 
 @Injectable({
    providedIn: 'root'
 })
-export class AuthService {
+export class AuthServices {
 
    userData: any;
    isLoggedIn = false;
@@ -63,7 +64,7 @@ export class AuthService {
           username: value.account,
           password: value.password
        };
- 
+
        Auth.signIn(authInfo).then(user => {
           this.setLocalUserProfile(value);
           this.router.navigate(['/']);
@@ -228,13 +229,13 @@ export class AuthService {
          this.session.role = au.attributes['custom:g1'];
 
       }
-     
+
       const rgeto = this.request.get('/org/byid/' + this.session.oid);
       rgeto.subscribe(org => {
          this.session.company = org.name;
          this.loginzc(this.session.username, this.session.email);
       });
-     
+
 
    }
    public async getOrg() {
@@ -252,4 +253,35 @@ export class AuthService {
          this.session.oid = org.id;
       })
    }
+
+  loginWithGoogle(data):Observable<any> {
+     console.log(data, "GOOGLE DATA...")
+    return;
+    // return this.http.post<any>(`${baseUrl}public/login/auth`, data).pipe(
+    //   map((data) => {
+    //     if (data.status == 'SUCCESS') {
+    //       this.loggedUser = data.object.username;
+    //       localStorage.setItem(this.JWT_TOKEN, data.object.token);
+    //       localStorage.setItem(this.REFRESH_TOKEN, data.object.refreshToken);
+    //
+    //       let userDetails = new Object();
+    //       userDetails = {
+    //         userId: data.object.userId,
+    //         firstName: data.object.firstName,
+    //         lastName: data.object.lastName,
+    //         username: data.object.username,
+    //         userGroupName: data.object.userGroupName,
+    //         partnerName: data.object.partnerName,
+    //         groupType: data.object.groupType,
+    //         partnerId: data.object.partnerId,
+    //         groupId: data.object.groupId,
+    //       };
+    //       localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    //       return data;
+    //     } else {
+    //       return data;
+    //     }
+    //   })
+    // );
+  }
 }

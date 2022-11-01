@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, NgZone } from '@angular/core';
 import { Router } from "@angular/router";
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AuthService } from '../../service/auth/auth.service';
+import { AuthServices } from '../../service/auth/auth.service';
 import { Auth, Hub } from 'aws-amplify';
 import { ASession } from 'request/session';
 import { ARequest } from 'request/request';
@@ -16,7 +16,7 @@ import { ARequest } from 'request/request';
 export class InProgressComponent {
    public isProcessing = false;
    constructor(private router: Router,
-      private authService: AuthService,
+      private authService: AuthServices,
       private session: ASession,
       private request: ARequest,
       private spinner: NgxSpinnerService,
@@ -27,7 +27,7 @@ export class InProgressComponent {
          if (event === "cognitoHostedUI" || event === "signedIn") {
             this.session.isSSO = (event === "cognitoHostedUI");
             authService.setLocalUserProfile(data);
-            
+
             Auth.currentAuthenticatedUser().then(au => {
             this.session.isLogged = true;
             this.session.id_token = au.signInUserSession.idToken.getJwtToken();
@@ -39,27 +39,27 @@ export class InProgressComponent {
                   const s = el.src;
                   return (au.attributes['custom:g1'] as any[]).includes(s)
                });
-      
+
                if (role)
                   this.session.role = role.dest;
-      
+
             } else {
-      
+
                this.session.role = au.attributes['custom:g1'];
-      
+
             }
 
             this.zone.run(() => this.router.navigate(['/home']));
          });
 
             //this.spinner.hide();
-            
+
          } else {
             this.isProcessing = true;
          }
       });
 
-      
+
       //currentAuthenticatedUser: when user comes to login page again
       Auth.currentAuthenticatedUser()
          .then(() => {

@@ -18,7 +18,7 @@ import { SidebarModule } from 'ng-sidebar';
 import { ToastrModule } from 'ngx-toastr';
 import 'hammerjs';
 
-import { AuthService } from './service/auth/auth.service';
+import { AuthServicess } from './service/auth/auth.service';
 
 import { AccencioAppComponent} from './app.component';
 import { RoutingModule } from "./app-routing.module";
@@ -66,7 +66,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 		RouterModule,
 		SessionModule,
 		NgxSpinnerModule,
-		ModalModule.forRoot(),  
+		ModalModule.forRoot(),
 		TourNgBootstrapModule.forRoot(),
 		NgbModalModule.forRoot(),
 		AgmCoreModule.forRoot({apiKey: 'AIzaSyBtdO5k6CRntAMJCF-H5uZjTCoSGX95cdk'}),
@@ -105,7 +105,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
 			useClass: MyHttpInterceptor,
 			multi: true,
 		},
-		AuthService,
+		AuthServices,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,
 			useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

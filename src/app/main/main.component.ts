@@ -9,7 +9,7 @@ import { TourService, IStepOption } from 'ngx-tour-ng-bootstrap';
 import { filter } from 'rxjs/operators';
 import { MenuItems } from '../core/menu/menu-items/menu-items';
 import { PageTitleService } from '../core/page-title/page-title.service';
-import { AuthService } from '../service/auth/auth.service';
+import { AuthServices } from '../service/auth/auth.service';
 import { CoreService } from '../service/core/core-service.service';
 import { ASession } from 'request/session';
 import { HttpClient } from '@angular/common/http';
@@ -90,7 +90,7 @@ export class MainComponent implements OnInit, OnDestroy {
 		public session: ASession,
 		public tourService: TourService,
 		private coreService: CoreService,
-		private authService: AuthService,
+		private authService: AuthServices,
 		public menuItems: MenuItems,
 		private pageTitleService: PageTitleService,
 		public translate: TranslateService,
@@ -320,7 +320,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	onActivate(e, scrollContainer) {
 		scrollContainer.scrollTop = 0;
 	}
-	
+
 	scrollToBottom() {
 		if (this.myList)
 		this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight;
@@ -424,7 +424,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	  */
 	logOut() {
 		this.authService.logOut().then(()=> {
-			
+
 		});
 	}
 

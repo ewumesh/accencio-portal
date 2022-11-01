@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Router } from "@angular/router";
-import { AuthService } from '../../service/auth/auth.service';
+import { AuthServices } from '../../service/auth/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -11,13 +11,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
    encapsulation: ViewEncapsulation.None,
 })
 export class RegisterComponent implements OnInit {
-   
+
    ngForm  : FormGroup;
    emailPattern    : string = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
 
    constructor(
       private router: Router,
-      private authService : AuthService,
+      private authService : AuthServices,
       private formBuilder : FormBuilder,
       public translate: TranslateService
    ) { }
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
          password     : ['',[Validators.required]]
       })
    }
-   
+
    //register method is used to sign up on the template.
    register() {
       if(this.ngForm.valid) {

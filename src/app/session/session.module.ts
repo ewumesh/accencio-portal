@@ -21,6 +21,8 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyHttpInterceptor } from 'app/service/MyHttpInterceptor';
 
+import {SocialLoginModule} from 'angularx-social-login';
+
 @NgModule({
    imports: [
       CommonModule,
@@ -29,9 +31,11 @@ import { MyHttpInterceptor } from 'app/service/MyHttpInterceptor';
       NgxSpinnerModule,
       ReactiveFormsModule,
       ToastrModule.forRoot(),
-      RouterModule.forChild(SessionRoutes)
+      RouterModule.forChild(SessionRoutes),
+
+     SocialLoginModule
    ],
-   declarations: [ 
+   declarations: [
       LoginoneComponent,
       InProgressComponent,
       RegisterComponent,

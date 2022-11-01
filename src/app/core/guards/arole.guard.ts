@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot,Router } from '@angular/router';
-import { AuthService } from '../../service/auth/auth.service';
+import { AuthServices } from '../../service/auth/auth.service';
 
 @Injectable({
    providedIn: 'root'
@@ -8,10 +8,10 @@ import { AuthService } from '../../service/auth/auth.service';
 
 export class ARoleGuard implements CanActivate {
 
-	constructor(private router: Router, private userAuthService: AuthService) { }
-	
+	constructor(private router: Router, private userAuthServices: AuthServices) { }
+
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      if (this.userAuthService.getLocalStorageUser()) {
+      if (this.userAuthServices.getLocalStorageUser()) {
          return true;
       }
 
